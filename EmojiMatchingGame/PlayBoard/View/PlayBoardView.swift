@@ -18,6 +18,16 @@ final class PlayBoardView: UIView {
         return stack
     }()
     
+    private(set) var button: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("new level", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemPurple
+
+        return button
+    }()
+    
     private var cells: [UIButton] = []
     
     
@@ -38,6 +48,7 @@ final class PlayBoardView: UIView {
         backgroundColor = .systemYellow
         
         addSubview(board)
+        addSubview(button)
         
         let margins: CGFloat = max(max(layoutMargins.left, layoutMargins.right), max(layoutMargins.top, layoutMargins.bottom))
         let width: CGFloat = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - margins
@@ -47,23 +58,28 @@ final class PlayBoardView: UIView {
             board.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             board.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             board.widthAnchor.constraint(equalToConstant: width),
-            board.heightAnchor.constraint(equalToConstant: width)
+            board.heightAnchor.constraint(equalToConstant: width),
+            
+            button.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            button.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
+            button.heightAnchor.constraint(equalToConstant: 50)
         ])
         
-        make()
+        make(level: .one)
     }
     
-    private func make() {
+    func make(level: Level) {
         remove()
-        
-        for _ in 0 ..< 10 {
+
+        for _ in 0 ..< level.rawValue {
             let row = UIStackView()
             row.translatesAutoresizingMaskIntoConstraints = false
             row.axis = .horizontal
             row.distribution = .fillEqually
             row.spacing = board.spacing
             
-            for _ in 0 ..< 10 {
+            for _ in 0 ..< level.rawValue {
                 let cell = UIButton()
                 cell.backgroundColor = .systemRed
                 cell.layer.cornerRadius = 5
@@ -78,7 +94,12 @@ final class PlayBoardView: UIView {
     
     private func remove() {
         board.arrangedSubviews.forEach { view in
-            board.removeArrangedSubview(view)
+            if let row = view as? UIStackView {
+                row.arrangedSubviews.forEach { cell in
+                    cell.removeFromSuperview()
+                }
+                row.removeFromSuperview()
+            }
         }
         cells.removeAll()
     }

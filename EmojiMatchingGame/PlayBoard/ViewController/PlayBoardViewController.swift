@@ -16,6 +16,7 @@ final class PlayBoardViewController: UIViewController {
         return view
     }
     
+    private var level: Level = .one
     
     
     override func loadView() {
@@ -24,5 +25,17 @@ final class PlayBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playBoardView.button.addTarget(self, action: #selector(newLevelTapped), for: .touchUpInside)
+    }
+}
+
+
+extension PlayBoardViewController {
+    
+    @objc
+    private func newLevelTapped(_ sender: UIButton) {
+        level = level.next()
+        playBoardView.make(level: level)
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6072A55B75900E23388 /* PlayBoardView.swift */; };
+		4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6092A56EBCD00E23388 /* Level.swift */; };
 		4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E3D2A55B145004B54AC /* AppDelegate.swift */; };
 		4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */; };
 		4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		4E86D6072A55B75900E23388 /* PlayBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardView.swift; sourceTree = "<group>"; };
+		4E86D6092A56EBCD00E23388 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4ED35E3A2A55B145004B54AC /* EmojiMatchingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiMatchingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED35E3D2A55B145004B54AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				4ED35E462A55B146004B54AC /* Assets.xcassets */,
 				4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */,
 				4ED35E4B2A55B146004B54AC /* Info.plist */,
+				4E86D6092A56EBCD00E23388 /* Level.swift */,
 			);
 			path = EmojiMatchingGame;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */,
 				4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */,
 				4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */,
+				4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */,
 				4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
