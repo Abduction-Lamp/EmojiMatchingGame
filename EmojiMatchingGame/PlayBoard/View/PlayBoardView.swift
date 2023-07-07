@@ -9,12 +9,12 @@ import UIKit
 
 final class PlayBoardView: UIView {
     
-    private lazy var board: UIStackView = {
+    private let board: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = max(max(layoutMargins.left, layoutMargins.right), max(layoutMargins.top, layoutMargins.bottom))
+        stack.spacing = 6
         return stack
     }()
     
@@ -27,10 +27,6 @@ final class PlayBoardView: UIView {
 
         return button
     }()
-    
-    private var cells: [UIButton] = []
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,12 +58,27 @@ final class PlayBoardView: UIView {
             
             button.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             button.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            button.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
+            button.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             button.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         make(level: .one)
     }
+    
+    private func remove() {
+        board.arrangedSubviews.forEach { view in
+            if let row = view as? UIStackView {
+                row.arrangedSubviews.forEach { cell in
+                    cell.removeFromSuperview()
+                }
+                row.removeFromSuperview()
+            }
+        }
+    }
+}
+
+
+extension PlayBoardView {
     
     func make(level: Level) {
         remove()
@@ -80,27 +91,11 @@ final class PlayBoardView: UIView {
             row.spacing = board.spacing
             
             for _ in 0 ..< level.rawValue {
-                let cell = UIButton()
-                cell.backgroundColor = .systemRed
-                cell.layer.cornerRadius = 5
-                
-                cells.append(cell)
+                let cell = CardView()
                 row.addArrangedSubview(cell)
             }
             
             board.addArrangedSubview(row)
         }
-    }
-    
-    private func remove() {
-        board.arrangedSubviews.forEach { view in
-            if let row = view as? UIStackView {
-                row.arrangedSubviews.forEach { cell in
-                    cell.removeFromSuperview()
-                }
-                row.removeFromSuperview()
-            }
-        }
-        cells.removeAll()
     }
 }

@@ -28,6 +28,16 @@ final class PlayBoardViewController: UIViewController {
         
         playBoardView.button.addTarget(self, action: #selector(newLevelTapped), for: .touchUpInside)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
 }
 
 
