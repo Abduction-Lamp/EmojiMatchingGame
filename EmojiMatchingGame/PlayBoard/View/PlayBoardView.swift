@@ -14,7 +14,7 @@ final class PlayBoardView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 6
+        stack.spacing = 5
         return stack
     }()
     
@@ -92,10 +92,20 @@ extension PlayBoardView {
             
             for _ in 0 ..< level.rawValue {
                 let cell = CardView()
+                cell.tap.addTarget(self, action: #selector(cardTaps(_:)))
+                cell.emoji.text = "\u{1F470}"
                 row.addArrangedSubview(cell)
             }
             
             board.addArrangedSubview(row)
+        }
+    }
+    
+    @objc
+    private func cardTaps(_ sender: UIGestureRecognizer) {
+        if let cart = sender.view as? CardView {
+            cart.backgroundColor = cart.emoji.isHidden ? .clear : .systemRed
+            cart.emoji.isHidden = !cart.emoji.isHidden
         }
     }
 }

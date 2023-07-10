@@ -18,11 +18,14 @@ final class CardView: UIView {
         label.numberOfLines = 1
         label.adjustsFontForContentSizeCategory = true
         label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.01
+        label.minimumScaleFactor = 0.02
         label.font = .systemFont(ofSize: 500)
         label.isHidden = true
         return label
     }()
+    
+    private(set) var tap = UITapGestureRecognizer()
+    
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,10 +49,12 @@ final class CardView: UIView {
         addSubview(emoji)
         
         NSLayoutConstraint.activate([
-            emoji.topAnchor.constraint(equalTo: topAnchor, constant: 6),
-            emoji.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 6),
-            emoji.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -6),
-            emoji.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6)
+            emoji.topAnchor.constraint(equalTo: topAnchor),
+            emoji.leadingAnchor.constraint(equalTo: leadingAnchor),
+            emoji.trailingAnchor.constraint(equalTo: trailingAnchor),
+            emoji.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        addGestureRecognizer(tap)
     }
 }

@@ -26,7 +26,7 @@ final class PlayBoardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        playBoardView.button.addTarget(self, action: #selector(newLevelTapped), for: .touchUpInside)
+        playBoardView.button.addTarget(self, action: #selector(newLevelTapped(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,5 +47,14 @@ extension PlayBoardViewController {
     private func newLevelTapped(_ sender: UIButton) {
         level = level.next()
         playBoardView.make(level: level)
+        let emoji = Emoji()
+        let array = emoji.makeSequence(for: level)
+        print(array)
+    }
+    
+    
+    @objc
+    private func cardTaps(_ sender: UIGestureRecognizer) {
+        
     }
 }
