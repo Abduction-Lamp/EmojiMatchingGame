@@ -49,7 +49,7 @@ extension PlayBoardViewController {
         playBoardView.make(level: level)
         let emoji = Emoji()
         let array = emoji.makeSequence(for: level)
-        print(array)
+        print("\(array)_\(array.count)")
     }
     
     @objc

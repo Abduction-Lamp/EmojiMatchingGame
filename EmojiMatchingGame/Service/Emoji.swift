@@ -182,10 +182,17 @@ final class Emoji {
         /// Второй массив с индексами игового поля, нужен для получение случайного индекса ячейки игрового поля,
         /// чтобы индексы не повторялисль, будем удалять их из массива.
         ///
-        var sequence = Array(repeating: "", count: (2 * level.rawValue))
-        var sequenceIndexArray: [Int] = (0 ..< (2 * level.rawValue)).map { $0 }
+        /// Так как игового поле - это квадрат со стороной level, то количество яцеек в квадрате = level^2
+        ///
+        var sequence = Array(repeating: "", count: (level.rawValue * level.rawValue))
+        var sequenceIndexArray: [Int] = (0 ..< (level.rawValue * level.rawValue)).map { $0 }
         
-        for _ in 0 ..< level.rawValue {
+        ///
+        /// Уменьшаем число итераций в двое так как один и тот же эмоджи ставиться на две случайных позиции
+        ///
+        let end = sequence.count/2
+        
+        for _ in 0 ..< end {
             let emojiIndex = Int.random(in: 0 ..< emojiArray.count)
             if let scalar = UnicodeScalar(emojiArray[emojiIndex]) {
                 var emoji = String(scalar)
