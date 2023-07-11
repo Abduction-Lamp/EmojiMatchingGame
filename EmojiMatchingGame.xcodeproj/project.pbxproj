@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E027BBA2A5D8C43009CB092 /* Flag.swift */; };
 		4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6072A55B75900E23388 /* PlayBoardView.swift */; };
 		4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6092A56EBCD00E23388 /* Level.swift */; };
 		4E86D60E2A56FD1C00E23388 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D60D2A56FD1C00E23388 /* Design.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E027BBA2A5D8C43009CB092 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
 		4E86D6072A55B75900E23388 /* PlayBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardView.swift; sourceTree = "<group>"; };
 		4E86D6092A56EBCD00E23388 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4E86D60D2A56FD1C00E23388 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				4E86D60D2A56FD1C00E23388 /* Design.swift */,
 				4E86D6092A56EBCD00E23388 /* Level.swift */,
 				4E98C57A2A5890040034522B /* Emoji.swift */,
+				4E027BBA2A5D8C43009CB092 /* Flag.swift */,
 				4ED35E462A55B146004B54AC /* Assets.xcassets */,
 				4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */,
 				4ED35E4B2A55B146004B54AC /* Info.plist */,
@@ -177,6 +180,7 @@
 				4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */,
 				4E98C57B2A5890040034522B /* Emoji.swift in Sources */,
 				4E86D60E2A56FD1C00E23388 /* Design.swift in Sources */,
+				4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */,
 				4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */,
 				4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */,
 				4EF61F5B2A5778DA00E79C74 /* CardView.swift in Sources */,
