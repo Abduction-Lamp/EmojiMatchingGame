@@ -188,9 +188,16 @@ final class Emoji {
         for _ in 0 ..< level.rawValue {
             let emojiIndex = Int.random(in: 0 ..< emojiArray.count)
             if let scalar = UnicodeScalar(emojiArray[emojiIndex]) {
+                var emoji = String(scalar)
+                
+                if let unicodeScalar = emoji.unicodeScalars.first?.value, (0x1F1E6 ... 0x1F1FF).contains(unicodeScalar) {
+                    emoji = getRandomEmojiFlag(of: sequence)
+                }
+                emoji += VS16
+                
                 var sequenceIndex = Int.random(in: 0 ..< sequenceIndexArray.count)
                 var index = sequenceIndexArray[sequenceIndex]
-                let emoji = String(scalar) + VS16
+                
                 sequence[index] = emoji
                 sequenceIndexArray.remove(at: sequenceIndex)
                 
@@ -202,5 +209,17 @@ final class Emoji {
             emojiArray.remove(at: emojiIndex)
         }
         return sequence
+    }
+    
+    
+    private func getRandomEmojiFlag(of outside: [String]) -> String {
+        let flag = Flag()
+        guard flag.count > outside.count else { return "" }
+        
+        var emoji = ""
+        repeat {
+            emoji = flag.getRandomFlag()
+        } while outside.contains(emoji)
+        return emoji
     }
 }
