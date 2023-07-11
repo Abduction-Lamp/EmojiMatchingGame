@@ -47,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E027BBC2A5DAAB6009CB092 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4E98C57A2A5890040034522B /* Emoji.swift */,
+				4E027BBA2A5D8C43009CB092 /* Flag.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		4E86D6042A55B6E800E23388 /* PlayBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,13 +101,12 @@
 		4ED35E3C2A55B145004B54AC /* EmojiMatchingGame */ = {
 			isa = PBXGroup;
 			children = (
+				4E027BBC2A5DAAB6009CB092 /* Service */,
 				4E86D6042A55B6E800E23388 /* PlayBoard */,
 				4ED35E3D2A55B145004B54AC /* AppDelegate.swift */,
 				4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */,
 				4E86D60D2A56FD1C00E23388 /* Design.swift */,
 				4E86D6092A56EBCD00E23388 /* Level.swift */,
-				4E98C57A2A5890040034522B /* Emoji.swift */,
-				4E027BBA2A5D8C43009CB092 /* Flag.swift */,
 				4ED35E462A55B146004B54AC /* Assets.xcassets */,
 				4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */,
 				4ED35E4B2A55B146004B54AC /* Info.plist */,

@@ -50,11 +50,7 @@ extension PlayBoardViewController {
         let emoji = Emoji()
         let array = emoji.makeSequence(for: level)
         print(array)
-        
-        let flag = Flag()
-        print(flag.getRandomFlag())
     }
-    
     
     @objc
     private func cardTaps(_ sender: UIGestureRecognizer) {
