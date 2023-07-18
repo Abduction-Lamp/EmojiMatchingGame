@@ -17,20 +17,29 @@ protocol PlayBoardPresentable: AnyObject {
 }
 
 
-final class PlayBoardPresenter: PlayBoardPresentable  {
+final class PlayBoardPresenter {
     
     private var level: Level
     private var cards: [String] = []
     
+    private var upsideDownFirstIndex: Int? = nil
+    private var upsideDownSecondIndex: Int? = nil
+    
+    
     weak var viewController: PlayBoardDisplayable?
+    
     
     init(_ vc: PlayBoardDisplayable, level: Level = .one) {
         self.viewController = vc
         self.level = level
     }
- 
+}
+
+
+extension PlayBoardPresenter: PlayBoardPresentable {
     
     func play() {
+        remove()
         level = level.next()
         cards = Emoji().makeSequence(for: level)
         
@@ -44,8 +53,13 @@ final class PlayBoardPresenter: PlayBoardPresentable  {
     }
     
     
-    var upsideDownFirstIndex: Int? = nil
-    var upsideDownSecondIndex: Int? = nil
+    
+    private func remove() {
+        upsideDownFirstIndex = nil
+        upsideDownSecondIndex = nil
+        
+        cards.removeAll()
+    }
     
     private func check(index: Int) {
         

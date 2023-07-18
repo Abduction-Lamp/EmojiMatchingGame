@@ -56,23 +56,6 @@ final class PlayBoardViewController: UIViewController {
 }
 
 
-extension PlayBoardViewController {
-
-    @objc
-    private func newLevelTapped(_ sender: UIButton) {
-        presenter?.play()
-    }
-    
-    @objc
-    private func cardTaps(_ sender: UIGestureRecognizer) {
-        if let card = sender.view as? CardView,
-           let index = cards.firstIndex(of: card) {
-            presenter?.flip(index: index)
-        }
-    }
-}
-
-
 extension PlayBoardViewController: PlayBoardDisplayable {
     
     func play(level: Level, with sequence: [String]) {
@@ -95,5 +78,22 @@ extension PlayBoardViewController: PlayBoardDisplayable {
     func disableCards(index first: Int, and second: Int) {        
         cards[first].tap.isEnabled = false
         cards[second].tap.isEnabled = false
+    }
+}
+
+
+extension PlayBoardViewController {
+
+    @objc
+    private func newLevelTapped(_ sender: UIButton) {
+        presenter?.play()
+    }
+    
+    @objc
+    private func cardTaps(_ sender: UIGestureRecognizer) {
+        if let card = sender.view as? CardView,
+           let index = cards.firstIndex(of: card) {
+            presenter?.flip(index: index)
+        }
     }
 }

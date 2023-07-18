@@ -186,7 +186,6 @@ final class Emoji {
         ///
         var sequence = Array(repeating: "", count: (level.rawValue * level.rawValue))
         var sequenceIndexArray: [Int] = (0 ..< (level.rawValue * level.rawValue)).map { $0 }
-        
         ///
         /// Уменьшаем число итераций в двое так как один и тот же эмоджи ставиться на две случайных позиции
         ///
@@ -196,7 +195,6 @@ final class Emoji {
             let emojiIndex = Int.random(in: 0 ..< emojiArray.count)
             if let scalar = UnicodeScalar(emojiArray[emojiIndex]) {
                 var emoji = String(scalar)
-                
                 ///
                 /// Если выбранный эмоджи из диапозона Флаги, то запускаем генератор случайных влагов
                 /// Диапозон с флагоми - 0x1F1E6 ... 0x1F1FF он же диапозон от 🇦️ до 🇿️
@@ -208,7 +206,6 @@ final class Emoji {
                 
                 var sequenceIndex = Int.random(in: 0 ..< sequenceIndexArray.count)
                 var index = sequenceIndexArray[sequenceIndex]
-                
                 sequence[index] = emoji
                 sequenceIndexArray.remove(at: sequenceIndex)
                 
@@ -221,7 +218,6 @@ final class Emoji {
         }
         return sequence
     }
-    
     
     ///
     /// Если хотим избежать повторений, то необходимо убедиться в том, что количество достпных флагов больще чем уже собранная последовательность;
