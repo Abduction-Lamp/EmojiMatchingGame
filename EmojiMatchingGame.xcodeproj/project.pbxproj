@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E027BBA2A5D8C43009CB092 /* Flag.swift */; };
+		4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */; };
 		4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6072A55B75900E23388 /* PlayBoardView.swift */; };
 		4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6092A56EBCD00E23388 /* Level.swift */; };
 		4E86D60E2A56FD1C00E23388 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D60D2A56FD1C00E23388 /* Design.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		4E027BBA2A5D8C43009CB092 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardPresenter.swift; sourceTree = "<group>"; };
 		4E86D6072A55B75900E23388 /* PlayBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardView.swift; sourceTree = "<group>"; };
 		4E86D6092A56EBCD00E23388 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4E86D60D2A56FD1C00E23388 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
@@ -56,11 +58,20 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		4E64AD8F2A602A5100A7E40C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		4E86D6042A55B6E800E23388 /* PlayBoard */ = {
 			isa = PBXGroup;
 			children = (
 				4E86D6052A55B71200E23388 /* View */,
 				4E86D6062A55B73400E23388 /* ViewController */,
+				4E64AD8F2A602A5100A7E40C /* Presenter */,
 			);
 			path = PlayBoard;
 			sourceTree = "<group>";
@@ -189,6 +200,7 @@
 				4E98C57B2A5890040034522B /* Emoji.swift in Sources */,
 				4E86D60E2A56FD1C00E23388 /* Design.swift in Sources */,
 				4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */,
+				4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */,
 				4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */,
 				4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */,
 				4EF61F5B2A5778DA00E79C74 /* CardView.swift in Sources */,

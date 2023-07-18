@@ -12,14 +12,14 @@ final class CardView: UIView {
     private(set) var emoji: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
         label.baselineAdjustment = .alignCenters
+        label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 1
         label.adjustsFontForContentSizeCategory = true
         label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.02
         label.font = .systemFont(ofSize: 500)
+        label.minimumScaleFactor = 0.02
         label.isHidden = true
         return label
     }()
@@ -56,5 +56,14 @@ final class CardView: UIView {
         ])
         
         addGestureRecognizer(tap)
+    }
+}
+
+
+extension CardView {
+    
+    func flip() {
+        backgroundColor = emoji.isHidden ? .clear : .systemRed
+        emoji.isHidden = !emoji.isHidden
     }
 }

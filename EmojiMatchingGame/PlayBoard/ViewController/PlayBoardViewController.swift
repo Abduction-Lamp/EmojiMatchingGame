@@ -7,16 +7,29 @@
 
 import UIKit
 
+
+protocol PlayBoardDisplayable: AnyObject {
+    
+    var presenter: PlayBoardPresentable? { get }
+    
+    func play(level: Level, with sequence: [String])
+}
+
+
 final class PlayBoardViewController: UIViewController {
 
+    var presenter: PlayBoardPresentable?
+    
+    private var level: Level = .one
+    private var cards: [CardView] = []
+    
+    
     private var playBoardView: PlayBoardView {
         guard let view = self.view as? PlayBoardView else {
             return PlayBoardView(frame: self.view.frame)
         }
         return view
     }
-    
-    private var level: Level = .one
     
     
     override func loadView() {
@@ -25,7 +38,7 @@ final class PlayBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         playBoardView.button.addTarget(self, action: #selector(newLevelTapped(_:)), for: .touchUpInside)
     }
     
@@ -42,18 +55,41 @@ final class PlayBoardViewController: UIViewController {
 
 
 extension PlayBoardViewController {
-    
+
     @objc
     private func newLevelTapped(_ sender: UIButton) {
-        level = level.next()
-        playBoardView.make(level: level)
-        let emoji = Emoji()
-        let array = emoji.makeSequence(for: level)
-        print("\(array)_\(array.count)")
+        if let presenter = self.presenter {
+            presenter.play()
+        } else {
+            print("аа")
+        }
     }
     
     @objc
     private func cardTaps(_ sender: UIGestureRecognizer) {
+        if let card = sender.view as? CardView {
+            card.flip()
+            
+            if let index = cards.firstIndex(of: card) {
+                print(index)
+            }
+        }
+    }
+}
+
+
+extension PlayBoardViewController: PlayBoardDisplayable {
+    
+    func play(level: Level, with sequence: [String]) {
+        cards.removeAll()
         
+        sequence.forEach { emoji in
+            let card = CardView()
+            card.emoji.text = emoji
+            card.tap.addTarget(self, action: #selector(cardTaps(_:)))
+            cards.append(card)
+        }
+        
+        playBoardView.make(level: level, with: cards)
     }
 }

@@ -15,7 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let navigation = UINavigationController(rootViewController: PlayBoardViewController())
+        let playBoardVC = PlayBoardViewController()
+        let playBoardPresenter = PlayBoardPresenter(playBoardVC)
+        playBoardVC.presenter = playBoardPresenter
+        
+        let navigation = UINavigationController(rootViewController: playBoardVC)
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
