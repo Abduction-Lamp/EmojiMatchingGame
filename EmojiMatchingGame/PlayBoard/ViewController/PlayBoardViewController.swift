@@ -13,6 +13,8 @@ protocol PlayBoardDisplayable: AnyObject {
     var presenter: PlayBoardPresentable? { get }
     
     func play(level: Level, with sequence: [String])
+    func flip(index: Int)
+    func disableCards(index first: Int, and second: Int)
 }
 
 
@@ -58,21 +60,14 @@ extension PlayBoardViewController {
 
     @objc
     private func newLevelTapped(_ sender: UIButton) {
-        if let presenter = self.presenter {
-            presenter.play()
-        } else {
-            print("аа")
-        }
+        presenter?.play()
     }
     
     @objc
     private func cardTaps(_ sender: UIGestureRecognizer) {
-        if let card = sender.view as? CardView {
-            card.flip()
-            
-            if let index = cards.firstIndex(of: card) {
-                print(index)
-            }
+        if let card = sender.view as? CardView,
+           let index = cards.firstIndex(of: card) {
+            presenter?.flip(index: index)
         }
     }
 }
@@ -91,5 +86,14 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         }
         
         playBoardView.make(level: level, with: cards)
+    }
+    
+    func flip(index: Int) {
+        cards[index].flip()
+    }
+    
+    func disableCards(index first: Int, and second: Int) {        
+        cards[first].tap.isEnabled = false
+        cards[second].tap.isEnabled = false
     }
 }
