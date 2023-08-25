@@ -24,7 +24,7 @@ final class CardView: UIView {
         return label
     }()
     
-    private(set) var tap = UITapGestureRecognizer()
+    private(set) var tap =  UITapGestureRecognizer()
     
         
     override init(frame: CGRect) {
@@ -44,7 +44,7 @@ final class CardView: UIView {
     
     private func configuration() {
         layer.masksToBounds = true
-        backgroundColor = .systemRed
+        layer.backgroundColor = UIColor.systemYellow.cgColor
 
         addSubview(emoji)
         
@@ -62,8 +62,34 @@ final class CardView: UIView {
 
 extension CardView {
     
-    func flip() {
-        backgroundColor = emoji.isHidden ? .clear : .systemRed
+    private func changeState() {
+        backgroundColor = emoji.isHidden ? .clear : .systemYellow
         emoji.isHidden = !emoji.isHidden
+    }
+    
+    func flip(completion: ((Bool) -> Void)? = nil) {
+        UIView.transition(
+            with: self,
+            duration: 0.4,
+            options: [.transitionFlipFromLeft, .curveEaseInOut]) { [weak self] in
+                guard let self = self else { return }
+                self.changeState()
+            } completion: { isCompleted in
+                guard let completion = completion else { return }
+                completion(isCompleted)
+            }
+    }
+    
+    func shake(whih delay: CFTimeInterval = .zero) {
+        let shift: CGFloat = 7
+        let animation = CABasicAnimation(keyPath: "position.x")
+        animation.duration = 0.07
+        animation.timeOffset = delay
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = center.x - shift
+        animation.toValue = center.x + shift
+        
+        layer.add(animation, forKey: "shake")
     }
 }

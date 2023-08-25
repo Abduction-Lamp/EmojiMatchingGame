@@ -23,7 +23,7 @@ final class PlayBoardView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("new level", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemPurple
+        button.backgroundColor = .systemRed
         return button
     }()
 
@@ -31,7 +31,6 @@ final class PlayBoardView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configuration()
     }
     
@@ -42,7 +41,7 @@ final class PlayBoardView: UIView {
     
     
     private func configuration() {
-        backgroundColor = .systemYellow
+        backgroundColor = .systemBlue
         
         addSubview(board)
         addSubview(button)
@@ -74,11 +73,7 @@ final class PlayBoardView: UIView {
             }
         }
     }
-}
-
-
-extension PlayBoardView {
- 
+    
     func make(level: Level, with cards: [CardView]) {
         remove()
         

@@ -25,7 +25,7 @@ final class PlayBoardPresenter {
     private var upsideDownFirstIndex: Int? = nil
     private var upsideDownSecondIndex: Int? = nil
     
-    
+
     weak var viewController: PlayBoardDisplayable?
     
     
@@ -42,36 +42,20 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         remove()
         level = level.next()
         cards = Emoji().makeSequence(for: level)
-        
         viewController?.play(level: level, with: cards)
     }
     
     func flip(index: Int) {
-        viewController?.flip(index: index)
-    
-        check(index: index)
-    }
-    
-    
-    
-    private func remove() {
-        upsideDownFirstIndex = nil
-        upsideDownSecondIndex = nil
-        
-        cards.removeAll()
-    }
-    
-    private func check(index: Int) {
-        
         if let first = upsideDownFirstIndex, let second = upsideDownSecondIndex {
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
-            viewController?.flip(index: first)
-            viewController?.flip(index: second)
+            viewController?.flipCard(index: first, completion: nil)
+            viewController?.flipCard(index: second, completion: nil)
         }
         
         guard let first = upsideDownFirstIndex else {
             upsideDownFirstIndex = index
+            viewController?.flipCard(index: index, completion: nil)
             return
         }
         
@@ -81,11 +65,28 @@ extension PlayBoardPresenter: PlayBoardPresentable {
             if cards[first] == cards[index] {
                 upsideDownFirstIndex = nil
                 upsideDownSecondIndex = nil
+                
+                viewController?.flipCard(index: index, completion: nil)
                 viewController?.disableCards(index: first, and: index)
+                
+                if viewController?.isGameOver() == true {
+                    print("GameOver")
+                }
+            } else {
+                viewController?.flipCard(index: index, completion: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.viewController?.shakingCards(index: first, and: index)
+                })
             }
         } else {
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
         }
+    }
+    
+    private func remove() {
+        upsideDownFirstIndex = nil
+        upsideDownSecondIndex = nil
+        cards.removeAll()
     }
 }
