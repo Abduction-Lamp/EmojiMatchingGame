@@ -13,9 +13,12 @@ protocol PlayBoardDisplayable: AnyObject {
     var presenter: PlayBoardPresentable? { get }
     
     func play(level: Level, with sequence: [String])
+    
     func flipCard(index: Int, completion: ((Bool) -> Void)?)
     func shakingCards(index first: Int, and second: Int)
+    func matchingCards(index first: Int, and second: Int)
     func disableCards(index first: Int, and second: Int)
+    
     func isGameOver() -> Bool
 }
 
@@ -88,6 +91,12 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         cards[second].shake()
     }
     
+    func matchingCards(index first: Int, and second: Int) {
+        cards[first].match()
+        cards[second].match()
+    }
+    
+    
     func isGameOver() -> Bool {
         for card in cards {
             if card.tap.isEnabled {
@@ -110,12 +119,16 @@ extension PlayBoardViewController {
     private func cardTaps(_ sender: UITapGestureRecognizer) {
         if let card = sender.view as? CardView,
            let index = cards.firstIndex(of: card) {
-            switch sender.state {
-            case .began: cards[index].backgroundColor = .black
-            case .ended: cards[index].backgroundColor = .systemYellow
-            default: break
+//            switch sender.state {
+//            case .began: cards[index].backgroundColor = .black
+//            case .ended: cards[index].backgroundColor = .systemYellow
+//            default: break
+//            }
+            
+            if let _ = card.layer.animationKeys() {
+                return
             }
-
+            
             presenter?.flip(index: index)
         }
     }
@@ -129,21 +142,21 @@ extension PlayBoardViewController: UIGestureRecognizerDelegate {
 //        return true
 //    }
 //
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        switch touch.phase {
-//        case .began:         print("began"); gestureRecognizer.view?.backgroundColor = .black
-//        case .ended:         print("ended");  gestureRecognizer.view?.backgroundColor = .cyan
-//        case .cancelled:     print("cancelled")
-//        case .moved:         print("moved")
-//        case .regionEntered: print("regionEntered")
-//        case .regionExited:  print("regionExited")
-//        case .regionMoved:   print("regionMoved")
-//        case .stationary:    print("stationary")
-//        @unknown default:
-//            print("@unknown")
-//        }
-//        return true
-//    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        switch touch.phase {
+        case .began:         print("began")//; gestureRecognizer.view?.backgroundColor = .black
+        case .ended:         print("ended")//;  gestureRecognizer.view?.backgroundColor = .cyan
+        case .cancelled:     print("cancelled")
+        case .moved:         print("moved")
+        case .regionEntered: print("regionEntered")
+        case .regionExited:  print("regionExited")
+        case .regionMoved:   print("regionMoved")
+        case .stationary:    print("stationary")
+        @unknown default:
+            print("@unknown")
+        }
+        return true
+    }
     
 //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool {
 //        switch press.phase {

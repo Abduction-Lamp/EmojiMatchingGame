@@ -24,7 +24,12 @@ final class CardView: UIView {
         return label
     }()
     
-    private(set) var tap =  UITapGestureRecognizer()
+    private(set) lazy var tap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTouchesRequired = 1
+        tap.numberOfTapsRequired = 1
+        return tap
+    }()
     
         
     override init(frame: CGRect) {
@@ -82,14 +87,35 @@ extension CardView {
     
     func shake(whih delay: CFTimeInterval = .zero) {
         let shift: CGFloat = 7
+        let duration: CFTimeInterval = 0.05
+        
         let animation = CABasicAnimation(keyPath: "position.x")
-        animation.duration = 0.07
+        animation.duration = duration
         animation.timeOffset = delay
         animation.repeatCount = 5
         animation.autoreverses = true
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         animation.fromValue = center.x - shift
         animation.toValue = center.x + shift
         
         layer.add(animation, forKey: "shake")
+    }
+    
+    func match(whih delay: CFTimeInterval = .zero) {
+        let duration: TimeInterval = 0.15
+        let scale: CGFloat = 1.25
+        
+        UIView.animate(
+            withDuration: duration,
+            delay: 0,
+            options: [.curveLinear],
+            animations: {
+                self.transform = CGAffineTransform(scaleX: scale, y: scale)
+            },
+            completion: { _ in
+                UIView.animate(withDuration: duration) {
+                    self.transform = .identity
+                }
+            })
     }
 }

@@ -46,6 +46,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     }
     
     func flip(index: Int) {
+        
         if let first = upsideDownFirstIndex, let second = upsideDownSecondIndex {
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
@@ -63,11 +64,15 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         
         if first != index {
             if cards[first] == cards[index] {
+                viewController?.disableCards(index: first, and: index)
+                
                 upsideDownFirstIndex = nil
                 upsideDownSecondIndex = nil
                 
-                viewController?.flipCard(index: index, completion: nil)
-                viewController?.disableCards(index: first, and: index)
+                viewController?.flipCard(index: index, completion: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.viewController?.matchingCards(index: first, and: index)
+                })
                 
                 if viewController?.isGameOver() == true {
                     print("GameOver")
@@ -79,6 +84,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                 })
             }
         } else {
+            viewController?.flipCard(index: index, completion: nil)
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
         }
