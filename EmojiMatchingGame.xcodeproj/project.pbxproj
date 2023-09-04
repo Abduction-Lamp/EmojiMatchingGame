@@ -78,6 +78,29 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		4E5EB6DA2AA61E280074C7B5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4E5EB6DB2AA61E630074C7B5 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		4E5EB6DC2AA61E9D0074C7B5 /* Resources  */ = {
+			isa = PBXGroup;
+			children = (
+				4ED35E462A55B146004B54AC /* Assets.xcassets */,
+				4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */,
+			);
+			path = "Resources ";
+			sourceTree = "<group>";
+		};
 		4E64AD8F2A602A5100A7E40C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +114,8 @@
 			children = (
 				4E7FAB372A9F79AD0020C771 /* Menu */,
 				4E86D6042A55B6E800E23388 /* PlayBoard */,
+				4ED35E3D2A55B145004B54AC /* AppDelegate.swift */,
+				4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -174,14 +199,13 @@
 		4ED35E3C2A55B145004B54AC /* EmojiMatchingGame */ = {
 			isa = PBXGroup;
 			children = (
+				4E5EB6DC2AA61E9D0074C7B5 /* Resources  */,
+				4E17E23B2A66DF2F00391454 /* Entities */,
 				4E17E23C2A66DF5200391454 /* Core */,
 				4E027BBC2A5DAAB6009CB092 /* Services */,
-				4E17E23B2A66DF2F00391454 /* Entities */,
+				4E5EB6DB2AA61E630074C7B5 /* Assembly */,
+				4E5EB6DA2AA61E280074C7B5 /* Router */,
 				4E7FAB362A9F797D0020C771 /* App */,
-				4ED35E3D2A55B145004B54AC /* AppDelegate.swift */,
-				4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */,
-				4ED35E462A55B146004B54AC /* Assets.xcassets */,
-				4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */,
 				4ED35E4B2A55B146004B54AC /* Info.plist */,
 			);
 			path = EmojiMatchingGame;

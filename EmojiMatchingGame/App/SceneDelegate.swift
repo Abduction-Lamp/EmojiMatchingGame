@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let menuVC = MenuViewController()
         
-        let navigation = UINavigationController(rootViewController: menuVC)//playBoardVC)
+        let navigation = UINavigationController(rootViewController: playBoardVC)//menuVC)//playBoardVC)
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()

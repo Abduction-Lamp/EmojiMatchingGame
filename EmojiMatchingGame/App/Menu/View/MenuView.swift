@@ -10,10 +10,10 @@ import UIKit
 
 final class MenuView: UIView {
     
-    private let gradient: CAGradientLayer = {
+    private(set) var gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.startPoint = .zero
-        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
         gradient.locations = [0, 0.5, 1]
         gradient.colors = gradient.randomColors(for: 3)
         return gradient
@@ -30,7 +30,7 @@ final class MenuView: UIView {
     private(set) var newGameButton: UIButton = {
         let attributedText = NSAttributedString(
             string: "Новая игра",
-            attributes: [.font: UIFont.boldSystemFont(ofSize: 23)]
+            attributes: [.font: UIFont.boldSystemFont(ofSize: 27)]
         )
         
         var config = UIButton.Configuration.tinted()
@@ -48,7 +48,7 @@ final class MenuView: UIView {
     private(set) var statisticsButton: UIButton = {
         let attributedText = NSAttributedString(
             string: "Статистика",
-            attributes: [.font: UIFont.boldSystemFont(ofSize: 23)]
+            attributes: [.font: UIFont.boldSystemFont(ofSize: 27)]
         )
         
         var config = UIButton.Configuration.tinted()
@@ -66,7 +66,7 @@ final class MenuView: UIView {
     private(set) var settingsButton: UIButton = {
         let attributedText = NSAttributedString(
             string: "Настройки",
-            attributes: [.font: UIFont.boldSystemFont(ofSize: 23)]
+            attributes: [.font: UIFont.boldSystemFont(ofSize: 27)]
         )
         
         var config = UIButton.Configuration.tinted()
@@ -110,8 +110,6 @@ final class MenuView: UIView {
             stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
         ])
-        
-        gradient.animation()
     }
 }
 

@@ -28,6 +28,8 @@ final class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        menuView.gradient.animation()
+        menuView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,5 +40,14 @@ final class MenuViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         navigationController?.navigationBar.isHidden = false
+    }
+}
+
+
+extension MenuViewController {
+    
+    @objc
+    private func newGameButtonTapped(_ sender: UIButton) {
+        print("!!!")
     }
 }

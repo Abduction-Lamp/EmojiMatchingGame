@@ -25,9 +25,7 @@ final class PlayBoardPresenter {
     private var upsideDownFirstIndex: Int? = nil
     private var upsideDownSecondIndex: Int? = nil
     
-
     weak var viewController: PlayBoardDisplayable?
-    
     
     init(_ vc: PlayBoardDisplayable, level: Level = .one) {
         self.viewController = vc
@@ -46,7 +44,6 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     }
     
     func flip(index: Int) {
-        
         if let first = upsideDownFirstIndex, let second = upsideDownSecondIndex {
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
@@ -89,6 +86,8 @@ extension PlayBoardPresenter: PlayBoardPresentable {
             upsideDownSecondIndex = nil
         }
     }
+    
+    
     
     private func remove() {
         upsideDownFirstIndex = nil
