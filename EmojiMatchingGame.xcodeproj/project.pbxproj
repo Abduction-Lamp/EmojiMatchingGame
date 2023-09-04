@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E027BBA2A5D8C43009CB092 /* Flag.swift */; };
 		4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */; };
+		4E7FAB3C2A9F7A170020C771 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3B2A9F7A170020C771 /* MenuViewController.swift */; };
+		4E7FAB3E2A9F8B360020C771 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3D2A9F8B360020C771 /* MenuView.swift */; };
+		4E8460B02AA0DD4A00624DD2 /* CAGradientLayerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8460AF2AA0DD4A00624DD2 /* CAGradientLayerExtention.swift */; };
 		4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6072A55B75900E23388 /* PlayBoardView.swift */; };
 		4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6092A56EBCD00E23388 /* Level.swift */; };
-		4E86D60E2A56FD1C00E23388 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D60D2A56FD1C00E23388 /* Design.swift */; };
 		4E98C57B2A5890040034522B /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E98C57A2A5890040034522B /* Emoji.swift */; };
 		4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E3D2A55B145004B54AC /* AppDelegate.swift */; };
 		4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */; };
@@ -24,9 +26,11 @@
 /* Begin PBXFileReference section */
 		4E027BBA2A5D8C43009CB092 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
 		4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardPresenter.swift; sourceTree = "<group>"; };
+		4E7FAB3B2A9F7A170020C771 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		4E7FAB3D2A9F8B360020C771 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		4E8460AF2AA0DD4A00624DD2 /* CAGradientLayerExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAGradientLayerExtention.swift; sourceTree = "<group>"; };
 		4E86D6072A55B75900E23388 /* PlayBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardView.swift; sourceTree = "<group>"; };
 		4E86D6092A56EBCD00E23388 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		4E86D60D2A56FD1C00E23388 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		4E98C57A2A5890040034522B /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		4ED35E3A2A55B145004B54AC /* EmojiMatchingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiMatchingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED35E3D2A55B145004B54AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +73,7 @@
 		4E17E23C2A66DF5200391454 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				4E86D60D2A56FD1C00E23388 /* Design.swift */,
+				4E8460AF2AA0DD4A00624DD2 /* CAGradientLayerExtention.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -78,6 +82,48 @@
 			isa = PBXGroup;
 			children = (
 				4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4E7FAB362A9F797D0020C771 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4E7FAB372A9F79AD0020C771 /* Menu */,
+				4E86D6042A55B6E800E23388 /* PlayBoard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4E7FAB372A9F79AD0020C771 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4E7FAB382A9F79D50020C771 /* View */,
+				4E7FAB392A9F79DC0020C771 /* ViewController */,
+				4E7FAB3A2A9F79E40020C771 /* Presenter */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		4E7FAB382A9F79D50020C771 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E7FAB3D2A9F8B360020C771 /* MenuView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E7FAB392A9F79DC0020C771 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4E7FAB3B2A9F7A170020C771 /* MenuViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4E7FAB3A2A9F79E40020C771 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -131,7 +177,7 @@
 				4E17E23C2A66DF5200391454 /* Core */,
 				4E027BBC2A5DAAB6009CB092 /* Services */,
 				4E17E23B2A66DF2F00391454 /* Entities */,
-				4E86D6042A55B6E800E23388 /* PlayBoard */,
+				4E7FAB362A9F797D0020C771 /* App */,
 				4ED35E3D2A55B145004B54AC /* AppDelegate.swift */,
 				4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */,
 				4ED35E462A55B146004B54AC /* Assets.xcassets */,
@@ -212,10 +258,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */,
+				4E7FAB3E2A9F8B360020C771 /* MenuView.swift in Sources */,
 				4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */,
 				4E98C57B2A5890040034522B /* Emoji.swift in Sources */,
-				4E86D60E2A56FD1C00E23388 /* Design.swift in Sources */,
+				4E7FAB3C2A9F7A170020C771 /* MenuViewController.swift in Sources */,
 				4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */,
+				4E8460B02AA0DD4A00624DD2 /* CAGradientLayerExtention.swift in Sources */,
 				4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */,
 				4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */,
 				4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */,

@@ -20,7 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let playBoardPresenter = PlayBoardPresenter(playBoardVC)
         playBoardVC.presenter = playBoardPresenter
         
-        let navigation = UINavigationController(rootViewController: playBoardVC)
+        let menuVC = MenuViewController()
+        
+        let navigation = UINavigationController(rootViewController: menuVC)//playBoardVC)
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
@@ -54,7 +56,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-
