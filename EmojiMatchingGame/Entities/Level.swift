@@ -8,12 +8,12 @@
 import Foundation
 
 enum Level: Int {
-    case one = 2
-    case two = 4
+    case one   = 2
+    case two   = 4
     case three = 6
-    case four = 8
-    case five = 10
-    case six = 12
+    case four  = 8
+    case five  = 10
+    case six   = 12
     
     func next() -> Level {
         switch self {

@@ -35,6 +35,12 @@ final class CardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configuration()
+        
+        print("\tVIEW:\t😈\tCard")
+    }
+    
+    deinit {
+        print("\tVIEW:\t♻️\tCard")
     }
     
     required init?(coder: NSCoder) {

@@ -7,6 +7,14 @@
 
 import Foundation
 
+
+protocol EmojiGeneratable {
+    
+    init(flag service: FlagGeneratable)
+    func makeSequence(for level: Level) -> [String]
+}
+
+
 //
 // Cодержит диапазоны Unicode для различных групп простых (не сотавных) эмодзи
 // Всего 1378 элемента
@@ -156,7 +164,23 @@ fileprivate let unicodeEmojiList = [
 ]
 
 
-final class Emoji {
+final class Emoji: EmojiGeneratable {
+    
+    private let flag: FlagGeneratable
+    
+    //
+    // TODO: - Logging info
+    //
+    init(flag service: FlagGeneratable = Flag()) {
+        flag = service
+        
+        print("SERVICE:\t😈\tEmoji")
+    }
+    
+    deinit {
+        print("SERVICE:\t♻️\tEmoji")
+    }
+    
     
     ///
     /// Variation Selector-16
@@ -164,7 +188,6 @@ final class Emoji {
     /// Требуется только в том случае, если предыдущий символ по умолчанию имеет текстовое представление.
     ///
     private let VS16 = "\u{FE0F}"
-    
     
     
     func makeSequence(for level: Level) -> [String] {
@@ -226,7 +249,6 @@ final class Emoji {
     /// Если повторение не нужно то можно передовать в вункцию пустую последовательность.
     ///
     private func getRandomEmojiFlag(of outside: [String]) -> String {
-        let flag = Flag()
         guard flag.count > outside.count/2 else { return "" }
         
         var emoji = ""

@@ -10,7 +10,7 @@ import Foundation
 
 protocol PlayBoardPresentable: AnyObject {
     
-    var viewController: PlayBoardDisplayable? { get }
+    init(_ viewController: PlayBoardDisplayable, level: Level, router: Routable, emoji: Emoji)
     
     func play()
     func flip(index: Int)
@@ -19,18 +19,27 @@ protocol PlayBoardPresentable: AnyObject {
 
 final class PlayBoardPresenter {
     
+    private weak var viewController: PlayBoardDisplayable?
     private var level: Level
-    private var cards: [String] = []
+    private let router: Routable
+    private let emoji: Emoji
     
+    init(_ viewController: PlayBoardDisplayable, level: Level = .one, router: Routable, emoji: Emoji) {
+        self.viewController = viewController
+        self.level = level
+        self.router = router
+        self.emoji = emoji
+        
+        print("PRESENTER:\t😈\tPlayBoard")
+    }
+    
+    deinit {
+        print("PRESENTER:\t♻️\tPlayBoard")
+    }
+    
+    private var cards: [String] = []
     private var upsideDownFirstIndex: Int? = nil
     private var upsideDownSecondIndex: Int? = nil
-    
-    weak var viewController: PlayBoardDisplayable?
-    
-    init(_ vc: PlayBoardDisplayable, level: Level = .one) {
-        self.viewController = vc
-        self.level = level
-    }
 }
 
 
@@ -39,7 +48,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     func play() {
         remove()
         level = level.next()
-        cards = Emoji().makeSequence(for: level)
+        cards = emoji.makeSequence(for: level)
         viewController?.play(level: level, with: cards)
     }
     

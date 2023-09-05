@@ -9,6 +9,7 @@ import UIKit
 
 protocol MenuDisplayable: AnyObject {
     
+    var presenter: MenuPresentable? { get set }
 }
 
 
@@ -21,11 +22,19 @@ final class MenuViewController: UIViewController {
         return view
     }
     
+    var presenter: MenuPresentable?
+
+    
     
     override func loadView() {
+        print("VC:\t\t\t😈\tMenu (loadView)")
         view = MenuView()
     }
     
+    deinit {
+        print("VC:\t\t\t♻️\tMenu")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView.gradient.animation()
@@ -44,10 +53,10 @@ final class MenuViewController: UIViewController {
 }
 
 
-extension MenuViewController {
+extension MenuViewController: MenuDisplayable {
     
     @objc
     private func newGameButtonTapped(_ sender: UIButton) {
-        print("!!!")
+        presenter?.newGame()
     }
 }

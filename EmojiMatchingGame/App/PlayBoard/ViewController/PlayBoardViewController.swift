@@ -10,7 +10,7 @@ import UIKit
 
 protocol PlayBoardDisplayable: AnyObject {
     
-    var presenter: PlayBoardPresentable? { get }
+    var presenter: PlayBoardPresentable? { get set }
     
     func play(level: Level, with sequence: [String])
     
@@ -39,11 +39,17 @@ final class PlayBoardViewController: UIViewController {
     
     
     override func loadView() {
-        self.view = PlayBoardView()
+        print("VC:\t\t\t😈\tPlayBoard (loadView)")
+        view = PlayBoardView()
+    }
+    
+    deinit {
+        print("VC:\t\t\t♻️\tPlayBoard")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = false
         playBoardView.button.addTarget(self, action: #selector(newLevelTapped(_:)), for: .touchUpInside)
     }
     

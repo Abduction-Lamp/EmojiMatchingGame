@@ -32,6 +32,12 @@ final class PlayBoardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configuration()
+        
+        print("\tVIEW:\t😈\tPlayBoard")
+    }
+    
+    deinit {
+        print("\tVIEW:\t♻️\tPlayBoard")
     }
     
     required init?(coder: NSCoder) {
@@ -58,7 +64,7 @@ final class PlayBoardView: UIView {
             
             button.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             button.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            button.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             button.heightAnchor.constraint(equalToConstant: 50)
         ])
     }

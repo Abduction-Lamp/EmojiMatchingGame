@@ -10,19 +10,15 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var router: Routable?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        // FIXME: - Реализовать билдер
-        let playBoardVC = PlayBoardViewController()
-        let playBoardPresenter = PlayBoardPresenter(playBoardVC)
-        playBoardVC.presenter = playBoardPresenter
+        let navigation = UINavigationController()
+        router = Router(navigation: navigation, builder: Builder())
+        router?.initVC()
         
-        let menuVC = MenuViewController()
-        
-        let navigation = UINavigationController(rootViewController: playBoardVC)//menuVC)//playBoardVC)
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()

@@ -7,6 +7,16 @@
 
 import Foundation
 
+
+protocol FlagGeneratable {
+    
+    var count: Int { get }
+    
+    func makeFlag(_ tag: String) -> String
+    func getRandomFlag() -> String
+}
+
+
 ///
 /// Эможи-флаг - это состовной эможи, состоящие последовательности двух или более эмоджи
 ///
@@ -86,7 +96,7 @@ fileprivate let countryTags: [String] = [
 ]
 
 
-final class Flag {
+final class Flag: FlagGeneratable {
     
     var count: Int {
         return countryTags.count
@@ -104,5 +114,18 @@ final class Flag {
     
     func getRandomFlag() -> String {
         return makeFlag(countryTags[Int.random(in: 0 ..< countryTags.count)])
+    }
+    
+    
+    
+    //
+    // TODO: - Logging info
+    //
+    init() {
+        print("SERVICE:\t😈\tFlag")
+    }
+    
+    deinit {
+        print("SERVICE:\t♻️\tFlag")
     }
 }
