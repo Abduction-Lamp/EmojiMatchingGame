@@ -18,12 +18,18 @@ final class PlayBoardView: UIView {
         return stack
     }()
     
-    private(set) var button: UIButton = {
+    private(set) var backMenuButton: UIButton = {
+        let img = UIImage(systemName: "arrow.uturn.backward.circle.fill")
+        let largeSymbolStyle = UIImage.SymbolConfiguration(textStyle: .largeTitle)
+        
+        var config = UIButton.Configuration.plain()
+        config.image = img
+        config.baseForegroundColor = .systemYellow
+        config.preferredSymbolConfigurationForImage = largeSymbolStyle
+
         let button = UIButton()
+        button.configuration = config
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("new level", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemRed
         return button
     }()
 
@@ -47,10 +53,10 @@ final class PlayBoardView: UIView {
     
     
     private func configuration() {
-        backgroundColor = .systemBlue
+        backgroundColor = .white
         
         addSubview(board)
-        addSubview(button)
+        addSubview(backMenuButton)
         
         let margins: CGFloat = max(max(layoutMargins.left, layoutMargins.right), max(layoutMargins.top, layoutMargins.bottom))
         let width: CGFloat = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - margins
@@ -62,10 +68,8 @@ final class PlayBoardView: UIView {
             board.widthAnchor.constraint(equalToConstant: width),
             board.heightAnchor.constraint(equalToConstant: width),
             
-            button.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            button.heightAnchor.constraint(equalToConstant: 50)
+            backMenuButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            backMenuButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
         ])
     }
     

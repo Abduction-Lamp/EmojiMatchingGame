@@ -12,10 +12,11 @@ final class MenuView: UIView {
     
     private(set) var gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
-        gradient.startPoint = .zero
+        gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 1)
-        gradient.locations = [0, 0.5, 1]
-        gradient.colors = gradient.randomColors(for: 3)
+        gradient.locations = [0.0, 1.0] as [NSNumber]
+        gradient.colors = gradient.randomColors(for: 2)
+        gradient.type = .axial
         return gradient
     }()
     

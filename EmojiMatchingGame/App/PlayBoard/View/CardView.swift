@@ -99,7 +99,6 @@ extension CardView {
         animation.duration = duration
         animation.timeOffset = delay
         animation.repeatCount = 5
-        animation.autoreverses = true
         animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         animation.fromValue = center.x - shift
         animation.toValue = center.x + shift
@@ -108,13 +107,13 @@ extension CardView {
     }
     
     func match(whih delay: CFTimeInterval = .zero) {
-        let duration: TimeInterval = 0.15
+        let duration: TimeInterval = 0.11
         let scale: CGFloat = 1.25
-        
+                
         UIView.animate(
             withDuration: duration,
             delay: 0,
-            options: [.curveLinear],
+            options: [.curveEaseOut],
             animations: {
                 self.transform = CGAffineTransform(scaleX: scale, y: scale)
             },

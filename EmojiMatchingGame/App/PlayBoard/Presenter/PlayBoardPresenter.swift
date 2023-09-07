@@ -14,6 +14,8 @@ protocol PlayBoardPresentable: AnyObject {
     
     func play()
     func flip(index: Int)
+    
+    func goToMenu()
 }
 
 
@@ -102,5 +104,10 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         upsideDownFirstIndex = nil
         upsideDownSecondIndex = nil
         cards.removeAll()
+    }
+    
+    
+    func goToMenu() {
+        router.popToRootVC()
     }
 }

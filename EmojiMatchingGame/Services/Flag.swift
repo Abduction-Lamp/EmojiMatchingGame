@@ -113,7 +113,7 @@ final class Flag: FlagGeneratable {
     }
     
     func getRandomFlag() -> String {
-        return makeFlag(countryTags[Int.random(in: 0 ..< countryTags.count)])
+        return makeFlag(countryTags[.random(in: 0 ..< countryTags.count)])
     }
     
     

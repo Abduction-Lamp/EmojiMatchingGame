@@ -49,18 +49,18 @@ final class PlayBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false
-        playBoardView.button.addTarget(self, action: #selector(newLevelTapped(_:)), for: .touchUpInside)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        playBoardView.backMenuButton.addTarget(self, action: #selector(backMenuButtonTapped(_:)), for: .touchUpInside)
+        
+        presenter?.play()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        navigationController?.navigationBar.isHidden = false
     }
 }
 
@@ -117,8 +117,8 @@ extension PlayBoardViewController: PlayBoardDisplayable {
 extension PlayBoardViewController {
 
     @objc
-    private func newLevelTapped(_ sender: UIButton) {
-        presenter?.play()
+    private func backMenuButtonTapped(_ sender: UIButton) {
+        presenter?.goToMenu()
     }
     
     @objc
