@@ -16,10 +16,10 @@ protocol PlayBoardDisplayable: AnyObject {
     
     func flipCard(index: Int, completion: ((Bool) -> Void)?)
     func shakingCards(index first: Int, and second: Int)
-    func matchingCards(index first: Int, and second: Int)
+    func matchingCards(index first: Int, and second: Int, completion: ((Bool) -> Void)?)
     func disableCards(index first: Int, and second: Int)
     
-    func isGameOver() -> Bool
+    func isGameOver()
 }
 
 
@@ -51,6 +51,7 @@ final class PlayBoardViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         playBoardView.backMenuButton.addTarget(self, action: #selector(backMenuButtonTapped(_:)), for: .touchUpInside)
+        playBoardView.gameOverView.nextLevelButton.addTarget(self, action: #selector(nextLevelButtonTapped(_:)), for: .touchUpInside)
         
         presenter?.play()
     }
@@ -70,6 +71,7 @@ extension PlayBoardViewController: PlayBoardDisplayable {
     func play(level: Level, with sequence: [String]) {
         newSetCards(sequence)
         playBoardView.make(level: level, with: cards)
+        playBoardView.newGameAnimatin()
     }
     
     func flipCard(index: Int, completion: ((Bool) -> Void)? = nil) {
@@ -86,19 +88,18 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         cards[second].shake()
     }
     
-    func matchingCards(index first: Int, and second: Int) {
+    func matchingCards(index first: Int, and second: Int, completion: ((Bool) -> Void)?) {
         cards[first].match()
-        cards[second].match()
+        cards[second].match { isCompletion in
+            completion?(isCompletion)
+        }
     }
     
-    
-    func isGameOver() -> Bool {
+    func isGameOver() {
         for card in cards {
-            if card.tap.isEnabled {
-                return false
-            }
+            if card.tap.isEnabled { return }
         }
-        return true
+        playBoardView.gameOverAnimatin()     
     }
     
     
@@ -119,6 +120,14 @@ extension PlayBoardViewController {
     @objc
     private func backMenuButtonTapped(_ sender: UIButton) {
         presenter?.goToMenu()
+    }
+    
+    @objc
+    private func nextLevelButtonTapped(_ sender: UIButton) {
+        playBoardView.nextLevelAnimatin() { [weak self]_ in
+            guard let self = self else { return }
+            self.presenter?.nextLevel()
+        }
     }
     
     @objc

@@ -79,16 +79,13 @@ extension CardView {
     }
     
     func flip(completion: ((Bool) -> Void)? = nil) {
-        UIView.transition(
-            with: self,
-            duration: 0.4,
-            options: [.transitionFlipFromLeft, .curveEaseInOut]) { [weak self] in
-                guard let self = self else { return }
-                self.changeState()
-            } completion: { isCompleted in
-                guard let completion = completion else { return }
-                completion(isCompleted)
-            }
+        UIView.transition(with: self, duration: 0.4, options: [.transitionFlipFromLeft, .curveEaseInOut]) { [weak self] in
+            guard let self = self else { return }
+            self.changeState()
+        } completion: { isCompleted in
+            guard let completion = completion else { return }
+            completion(isCompleted)
+        }
     }
     
     func shake(whih delay: CFTimeInterval = .zero) {
@@ -106,21 +103,21 @@ extension CardView {
         layer.add(animation, forKey: "shake")
     }
     
-    func match(whih delay: CFTimeInterval = .zero) {
+    func match(whih delay: CFTimeInterval = .zero, completion: ((Bool) -> Void)? = nil) {
         let duration: TimeInterval = 0.11
         let scale: CGFloat = 1.25
                 
-        UIView.animate(
-            withDuration: duration,
-            delay: 0,
-            options: [.curveEaseOut],
-            animations: {
-                self.transform = CGAffineTransform(scaleX: scale, y: scale)
-            },
-            completion: { _ in
-                UIView.animate(withDuration: duration) {
+        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut]) {
+            self.transform = CGAffineTransform(scaleX: scale, y: scale)
+        } completion: { isCompleted in
+            if isCompleted {
+                UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut]) {
                     self.transform = .identity
+                } completion: { isCompleted in
+                    guard let completion = completion else { return }
+                    completion(isCompleted)
                 }
-            })
+            }
+        }
     }
 }

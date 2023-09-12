@@ -44,6 +44,7 @@ final class MenuViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        menuView.gradient.animation()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

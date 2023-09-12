@@ -13,6 +13,7 @@ protocol PlayBoardPresentable: AnyObject {
     init(_ viewController: PlayBoardDisplayable, level: Level, router: Routable, emoji: Emoji)
     
     func play()
+    func nextLevel()
     func flip(index: Int)
     
     func goToMenu()
@@ -42,6 +43,13 @@ final class PlayBoardPresenter {
     private var cards: [String] = []
     private var upsideDownFirstIndex: Int? = nil
     private var upsideDownSecondIndex: Int? = nil
+    
+    
+    private func remove() {
+        upsideDownFirstIndex = nil
+        upsideDownSecondIndex = nil
+        cards.removeAll()
+    }
 }
 
 
@@ -49,9 +57,13 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     
     func play() {
         remove()
-        level = level.next()
         cards = emoji.makeSequence(for: level)
         viewController?.play(level: level, with: cards)
+    }
+    
+    func nextLevel() {
+        level = level.next()
+        play()
     }
     
     func flip(index: Int) {
@@ -77,13 +89,12 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                 upsideDownFirstIndex = nil
                 upsideDownSecondIndex = nil
                 
-                viewController?.flipCard(index: index, completion: { [weak self] _ in
+                viewController?.flipCard(index: index) { [weak self] _ in
                     guard let self = self else { return }
-                    self.viewController?.matchingCards(index: first, and: index)
-                })
-                
-                if viewController?.isGameOver() == true {
-                    print("GameOver")
+                    self.viewController?.matchingCards(index: first, and: index) { [weak self] _ in
+                        guard let self = self else { return }
+                        self.viewController?.isGameOver()
+                    }
                 }
             } else {
                 viewController?.flipCard(index: index, completion: { [weak self] _ in
@@ -97,15 +108,11 @@ extension PlayBoardPresenter: PlayBoardPresentable {
             upsideDownSecondIndex = nil
         }
     }
-    
-    
-    
-    private func remove() {
-        upsideDownFirstIndex = nil
-        upsideDownSecondIndex = nil
-        cards.removeAll()
-    }
-    
+
+}
+
+
+extension PlayBoardPresenter {
     
     func goToMenu() {
         router.popToRootVC()
