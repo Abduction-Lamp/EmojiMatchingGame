@@ -115,20 +115,17 @@ final class MenuView: UIView {
         ])
     }
     
-    func runGradientAnimation() {
-        let duration: CFTimeInterval = 5
-        
+    func runGradientAnimation(with duration: CFTimeInterval = 5) {
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration)
         CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .easeInEaseOut))
         CATransaction.setDisableActions(false)
         CATransaction.setCompletionBlock { [weak self] in
             guard let self = self else { return }
-            self.runGradientAnimation()
+            self.runGradientAnimation(with: CFTimeInterval.random(in: 2...7))
         }
         
         gradient.setRandomProperty()
         CATransaction.commit()
     }
 }
-
