@@ -17,6 +17,21 @@ final class GameOverView: UIView {
         return blur
     }()
     
+    private let winLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.baselineAdjustment = .alignCenters
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingTail
+        label.numberOfLines = 1
+        label.adjustsFontForContentSizeCategory = true
+        label.adjustsFontSizeToFitWidth = true
+        label.font = .systemFont(ofSize: 1000)
+        label.minimumScaleFactor = 0.02
+        label.text = "🥳"
+        return label
+    }()
+    
 //    private(set) var repeatButton: UIButton = {
 //        let img = UIImage(systemName: "arrow.counterclockwise")
 //        let largeSymbolStyle = UIImage.SymbolConfiguration(textStyle: .largeTitle)
@@ -77,22 +92,32 @@ final class GameOverView: UIView {
         layer.masksToBounds = true
         layer.cornerRadius = 20
         layer.opacity = 0
+        
         addSubview(blur)
+        addSubview(winLabel)
         addSubview(nextLevelButton)
         
+        let separator:CGFloat = 20
+        
         NSLayoutConstraint.activate([
+            winLabel.topAnchor.constraint(equalTo: topAnchor, constant: separator),
+            winLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: separator),
+            winLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -separator),
+            winLabel.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -separator),
             nextLevelButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nextLevelButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+            nextLevelButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -separator)
         ])
     }
 
     func show() {
-        nextLevelButton.isEnabled = true
+        nextLevelButton.isHidden = false
+        winLabel.isHidden = false
         layer.opacity = 1
     }
     
     func hide() {
-        nextLevelButton.isEnabled = false
+        nextLevelButton.isHidden = true
+        winLabel.isHidden = true
         layer.opacity = 0
     }
 }

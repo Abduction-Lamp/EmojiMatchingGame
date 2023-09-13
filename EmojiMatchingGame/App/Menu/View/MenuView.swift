@@ -10,13 +10,10 @@ import UIKit
 
 final class MenuView: UIView {
     
-    private(set) var gradient: CAGradientLayer = {
+    private let gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 1, y: 1)
-        gradient.locations = [0.0, 1.0] as [NSNumber]
-        gradient.colors = gradient.randomColors(for: 2)
         gradient.type = .axial
+        gradient.setRandomProperty()
         return gradient
     }()
     
@@ -98,14 +95,13 @@ final class MenuView: UIView {
         fatalError("⚠️ MenuView init(coder:) has not been implemented")
     }
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         gradient.frame = bounds
     }
     
-    
     private func configuration() {
+        contentMode = .redraw
         layer.addSublayer(gradient)
         
         addSubview(stack)
@@ -117,6 +113,22 @@ final class MenuView: UIView {
             stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
         ])
+    }
+    
+    func runGradientAnimation() {
+        let duration: CFTimeInterval = 5
+        
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(duration)
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .easeInEaseOut))
+        CATransaction.setDisableActions(false)
+        CATransaction.setCompletionBlock { [weak self] in
+            guard let self = self else { return }
+            self.runGradientAnimation()
+        }
+        
+        gradient.setRandomProperty()
+        CATransaction.commit()
     }
 }
 

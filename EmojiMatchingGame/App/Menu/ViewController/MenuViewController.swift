@@ -37,14 +37,18 @@ final class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuView.gradient.animation()
+        
         menuView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped(_:)), for: .touchUpInside)
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.menuView.runGradientAnimation()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        menuView.gradient.animation()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

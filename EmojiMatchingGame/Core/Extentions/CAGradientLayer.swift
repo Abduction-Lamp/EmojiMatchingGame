@@ -1,5 +1,5 @@
 //
-//  CAGradientLayer+Entitys.swift
+//  CAGradientLayer.swift
 //  EmojiMatchingGame
 //
 //  Created by Vladimir Lesnykh on 08.09.2023.
@@ -9,35 +9,18 @@ import UIKit
 
 extension CAGradientLayer {
     
-    var allowedSetColors: [UIColor] {
+    private var allowedSetColors: [UIColor] {
         [
-            .systemBlue,
-            .systemBrown,
-            .systemCyan,
-            .systemGreen,
-            .systemIndigo,
-            .systemMint,
-            .systemOrange,
-            .systemPink,
-            .systemPurple,
-            .systemRed,
-            .systemTeal,
-            .systemYellow,
-            
-            .red,
-            .green,
-            .blue,
-            .cyan,
-            .yellow,
+            .blue, .systemBlue, .systemIndigo,
+            .brown, .systemBrown,
+            .cyan, .systemCyan, .systemMint, .systemTeal,
+            .green, .systemGreen,
+            .purple, .systemPurple,
+            .red, .systemPink, .systemRed,
+            .yellow, .orange, .systemYellow, .systemOrange,
             .magenta,
-            .orange,
-            .purple,
-            .brown
         ]
     }
-}
-
-extension CAGradientLayer {
     
     /// Именнованные координаты некоторых точек пространства
     ///
@@ -52,7 +35,7 @@ extension CAGradientLayer {
     ///     (0, 0.5)                  (1, 0.5)                           left                                      right
     ///     (0, 1)      (0, 0.5)    (1, 1)                              bottomLeft      bottom        bottomRight
     ///
-    enum GradientScreenPoint {
+    private enum GradientScreenPoint {
         
         case topLeft,       top,        topRight
         case left,                      right
@@ -73,12 +56,10 @@ extension CAGradientLayer {
         
         //  Преобразует любой CGPoint в опорную точку по правилам округления
         init(_ point: CGPoint) {
-            
             let raw = (
                 point.x == 0.5 ? point.x : round(point.x),
                 point.y == 0.5 ? point.y : round(point.y)
             )
-            
             switch raw {
             case (...0, ...0): self = .topLeft
             case (0.5, ...0) : self = .top
@@ -95,45 +76,44 @@ extension CAGradientLayer {
     
     
     /// Направления распростронения градиента
-    enum GradientDirection: Int, CaseIterable {
+    private enum GradientDirection: Int, CaseIterable {
         typealias ScreenCoordinate = (start: CGPoint, end: CGPoint)
         
-        case topLeftBottomRight
-        case topBottom
-        case topRightBottomLeft
-        case rightLeft
-        case bottomRightTopLeft
-        case bottomTop
-        case bottomLeftTopRight
-        case leftRight
+        case topLeftToBottomRight
+        case topToBottom
+        case topRightToBottomLeft
+        case rightToLeft
+        case bottomRightToTopLeft
+        case bottomToTop
+        case bottomLeftToTopRight
+        case leftToRight
         
         var direction: ScreenCoordinate {
             switch self {
-            case .topLeftBottomRight:   return ScreenCoordinate(GradientScreenPoint.topLeft.point, GradientScreenPoint.bottomRight.point)
-            case .topBottom:            return ScreenCoordinate(GradientScreenPoint.top.point, GradientScreenPoint.bottom.point)
-            case .topRightBottomLeft:   return ScreenCoordinate(GradientScreenPoint.topRight.point, GradientScreenPoint.bottomLeft.point)
-            case .rightLeft:            return ScreenCoordinate(GradientScreenPoint.right.point, GradientScreenPoint.left.point)
-            case .bottomRightTopLeft:   return ScreenCoordinate(GradientScreenPoint.bottomRight.point, GradientScreenPoint.topLeft.point)
-            case .bottomTop:            return ScreenCoordinate(GradientScreenPoint.bottom.point, GradientScreenPoint.top.point)
-            case .bottomLeftTopRight:   return ScreenCoordinate(GradientScreenPoint.bottomLeft.point, GradientScreenPoint.topRight.point)
-            case .leftRight:            return ScreenCoordinate(GradientScreenPoint.left.point, GradientScreenPoint.right.point)
+            case .topLeftToBottomRight:   return ScreenCoordinate(GradientScreenPoint.topLeft.point, GradientScreenPoint.bottomRight.point)
+            case .topToBottom:            return ScreenCoordinate(GradientScreenPoint.top.point, GradientScreenPoint.bottom.point)
+            case .topRightToBottomLeft:   return ScreenCoordinate(GradientScreenPoint.topRight.point, GradientScreenPoint.bottomLeft.point)
+            case .rightToLeft:            return ScreenCoordinate(GradientScreenPoint.right.point, GradientScreenPoint.left.point)
+            case .bottomRightToTopLeft:   return ScreenCoordinate(GradientScreenPoint.bottomRight.point, GradientScreenPoint.topLeft.point)
+            case .bottomToTop:            return ScreenCoordinate(GradientScreenPoint.bottom.point, GradientScreenPoint.top.point)
+            case .bottomLeftToTopRight:   return ScreenCoordinate(GradientScreenPoint.bottomLeft.point, GradientScreenPoint.topRight.point)
+            case .leftToRight:            return ScreenCoordinate(GradientScreenPoint.left.point, GradientScreenPoint.right.point)
             }
         }
         
         init(start: GradientScreenPoint, end: GradientScreenPoint) {
             switch (start, end) {
-            case (.topLeft, .bottomRight):  self = .topLeftBottomRight
-            case (.top, .bottom):           self = .topBottom
-            case (.topRight, .bottomLeft):  self = .topRightBottomLeft
-            case (.right, .left):           self = .rightLeft
-            case (.bottomRight, .topLeft):  self = .bottomRightTopLeft
-            case (.bottom, .top):           self = .bottomTop
-            case (.bottomLeft, .topRight):  self = .bottomLeftTopRight
-            case (.left, .right):           self = .leftRight
-            default:                        self = .topBottom
+            case (.topLeft, .bottomRight):  self = .topLeftToBottomRight
+            case (.top, .bottom):           self = .topToBottom
+            case (.topRight, .bottomLeft):  self = .topRightToBottomLeft
+            case (.right, .left):           self = .rightToLeft
+            case (.bottomRight, .topLeft):  self = .bottomRightToTopLeft
+            case (.bottom, .top):           self = .bottomToTop
+            case (.bottomLeft, .topRight):  self = .bottomLeftToTopRight
+            case (.left, .right):           self = .leftToRight
+            default:                        self = .topToBottom
             }
         }
-        
         
         func new() -> GradientDirection {
             let maxCountRawValue = GradientDirection.allCases.count
@@ -152,5 +132,52 @@ extension CAGradientLayer {
             guard let newGradientDirection = GradientDirection(rawValue: newRawValue) else { return self }
             return newGradientDirection
         }
+    }
+}
+
+
+
+extension CAGradientLayer {
+        
+    private func randomColors(for number: Int?) -> [CGColor] {
+        guard let number = number, number > 0, number < allowedSetColors.count else { return [] }
+        var indexColor = (0 ..< allowedSetColors.count).map { $0 }
+        var output: [CGColor] = []
+        
+        for _ in 0 ..< number {
+            let index = indexColor.remove(at: .random(in: 0 ..< indexColor.count))
+            output.append(allowedSetColors[index].cgColor)
+        }
+        return output
+    }
+    
+    private func generateLocation(for number: Int?) -> [NSNumber] {
+        guard let number = number, number > 0, number < allowedSetColors.count else { return [] }
+        var output: [NSNumber] = []
+        output.append(0)
+        
+        let last = number - 1
+        let step: Float = 1 / Float(number)
+        var element: Float = step
+        
+        for _ in 1 ..< last {
+            output.append(element as NSNumber)
+            element += step
+        }
+        
+        output.append(1)
+        return output
+    }
+    
+    
+    func setRandomProperty() {
+        let newColors = randomColors(for: colors?.count ?? 2)
+        let newLocation = generateLocation(for: newColors.count)
+        let newDirection = GradientDirection(start: GradientScreenPoint(startPoint), end: GradientScreenPoint(endPoint)).new()
+        
+        colors = newColors
+        locations = newLocation
+        startPoint = newDirection.direction.start
+        endPoint = newDirection.direction.end
     }
 }
