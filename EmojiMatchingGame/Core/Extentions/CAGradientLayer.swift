@@ -153,19 +153,15 @@ extension CAGradientLayer {
     
     private func generateLocation(for number: Int?) -> [NSNumber] {
         guard let number = number, number > 0, number < allowedSetColors.count else { return [] }
+        
         var output: [NSNumber] = []
-        output.append(0)
+        let step: Float = 1 / Float(number - 1)
+        var element: Float = 0
         
-        let last = number - 1
-        let step: Float = 1 / Float(number)
-        var element: Float = step
-        
-        for _ in 1 ..< last {
+        for _ in 1 ... number {
             output.append(element as NSNumber)
             element += step
         }
-        
-        output.append(1)
         return output
     }
     
