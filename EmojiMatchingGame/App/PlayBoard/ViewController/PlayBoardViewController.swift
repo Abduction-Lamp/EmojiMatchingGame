@@ -81,6 +81,9 @@ extension PlayBoardViewController: PlayBoardDisplayable {
     func disableCards(index first: Int, and second: Int) {
         cards[first].tap.isEnabled = false
         cards[second].tap.isEnabled = false
+        
+//        view.isUserInteractionEnabled = false
+        
     }
     
     func shakingCards(index first: Int, and second: Int) {
@@ -99,7 +102,7 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         for card in cards {
             if card.tap.isEnabled { return }
         }
-        playBoardView.gameOverAnimatin()     
+        playBoardView.gameOverAnimatin()
     }
     
     
@@ -107,7 +110,7 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         cards.removeAll()
         sequence.forEach { emoji in
             let card = CardView()
-            card.emoji.text = emoji
+            card.setEmoji(emoji)
             card.tap.addTarget(self, action: #selector(cardTaps(_:)))
             cards.append(card)
         }
@@ -132,7 +135,7 @@ extension PlayBoardViewController {
     
     @objc
     private func cardTaps(_ sender: UITapGestureRecognizer) {
-        guard
+        guard 
             let card = sender.view as? CardView,
             let index = cards.firstIndex(of: card)
         else { return }

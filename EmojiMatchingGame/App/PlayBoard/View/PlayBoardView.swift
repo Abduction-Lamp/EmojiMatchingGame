@@ -21,7 +21,7 @@ final class PlayBoardView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 5
+        stack.spacing = 4
         return stack
     }()
     
@@ -78,8 +78,11 @@ final class PlayBoardView: UIView {
         addSubview(gameOverView)
         addSubview(backMenuButton)
         
-        let margins: CGFloat = max(max(layoutMargins.left, layoutMargins.right), max(layoutMargins.top, layoutMargins.bottom))
-        let width: CGFloat = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - margins
+        let margins: CGFloat = max(
+            max(directionalLayoutMargins.leading, directionalLayoutMargins.trailing),
+            max(directionalLayoutMargins.top, directionalLayoutMargins.bottom)
+        )
+        let width: CGFloat = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - margins - board.spacing
         
         NSLayoutConstraint.activate([
             gameOverView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
@@ -131,29 +134,31 @@ final class PlayBoardView: UIView {
         }
     }
     
+    func newGameAnimatin() {
+        UIView.animate(withDuration: 0.20, delay: 0, options: [.curveEaseInOut]) { [weak self] in
+            guard let self = self else { return }
+            self.board.transform = .identity
+        }
+    }
+    
     func gameOverAnimatin() {
-        UIView.animate(withDuration: 0.20, delay: 0.1, options: [.curveEaseInOut]) { [weak self] in
+        UIView.animate(withDuration: 0.20, delay: 0.3, options: [.curveEaseInOut]) { [weak self] in
             guard let self = self else { return }
             self.gameOverView.show()
             self.board.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        } completion: { _ in
+            self.gameOverView.firework()
         }
     }
     
     func nextLevelAnimatin(completion: ((Bool) -> Void)? = nil) {
         UIView.animate(withDuration: 0.20, delay: 0.1, options: [.curveEaseInOut]) { [weak self] in
             guard let self = self else { return }
-            self.board.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+            self.board.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
             self.gameOverView.hide()
         } completion: { isCompletion in
             guard let completion = completion else { return }
             completion(isCompletion)
-        }
-    }
-    
-    func newGameAnimatin() {
-        UIView.animate(withDuration: 0.20, delay: 0, options: [.curveEaseInOut]) { [weak self] in
-            guard let self = self else { return }
-            self.board.transform = .identity
         }
     }
 }

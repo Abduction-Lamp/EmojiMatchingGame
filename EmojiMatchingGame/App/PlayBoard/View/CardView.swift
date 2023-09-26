@@ -9,9 +9,10 @@ import UIKit
 
 final class CardView: UIView {
     
-    private(set) var emoji: UILabel = {
+    private let emoji: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = false
         label.baselineAdjustment = .alignCenters
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
@@ -21,6 +22,7 @@ final class CardView: UIView {
         label.font = .systemFont(ofSize: 500)
         label.minimumScaleFactor = 0.02
         label.isHidden = true
+        label.backgroundColor = .clear
         return label
     }()
     
@@ -35,7 +37,7 @@ final class CardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configuration()
-        
+
         print("\tVIEW:\t😈\tCard")
     }
     
@@ -54,11 +56,9 @@ final class CardView: UIView {
     
     
     private func configuration() {
-        layer.masksToBounds = true
-        layer.backgroundColor = UIColor.systemYellow.cgColor
-
-        addSubview(emoji)
+        backgroundColor = .systemYellow
         
+        addSubview(emoji)
         NSLayoutConstraint.activate([
             emoji.topAnchor.constraint(equalTo: topAnchor),
             emoji.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -78,8 +78,11 @@ extension CardView {
         emoji.isHidden = !emoji.isHidden
     }
     
+    
     func flip(completion: ((Bool) -> Void)? = nil) {
-        UIView.transition(with: self, duration: 0.4, options: [.transitionFlipFromLeft, .curveEaseInOut]) { [weak self] in
+        let duration: TimeInterval = 0.4
+        
+        UIView.transition(with: self, duration: duration, options: [.transitionFlipFromLeft, .curveEaseInOut]) { [weak self] in
             guard let self = self else { return }
             self.changeState()
         } completion: { isCompleted in
@@ -89,8 +92,8 @@ extension CardView {
     }
     
     func shake(whih delay: CFTimeInterval = .zero) {
+        let duration: CFTimeInterval = 0.06
         let shift: CGFloat = 7
-        let duration: CFTimeInterval = 0.05
         
         let animation = CABasicAnimation(keyPath: "position.x")
         animation.duration = duration
@@ -104,20 +107,28 @@ extension CardView {
     }
     
     func match(whih delay: CFTimeInterval = .zero, completion: ((Bool) -> Void)? = nil) {
-        let duration: TimeInterval = 0.11
+        let duration: TimeInterval = 0.10
         let scale: CGFloat = 1.25
-                
-        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut]) {
+
+        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut]) { [weak self] in
+            guard let self = self else { return }
             self.transform = CGAffineTransform(scaleX: scale, y: scale)
-        } completion: { isCompleted in
-            if isCompleted {
-                UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut]) {
+
+        } completion: { isFirstCompleted in
+            if isFirstCompleted {
+                UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut]) {
                     self.transform = .identity
-                } completion: { isCompleted in
-                    guard let completion = completion else { return }
-                    completion(isCompleted)
+                } completion: { isSecondCompleted in
+                    if isSecondCompleted {
+                        guard let completion = completion else { return }
+                        completion(isSecondCompleted)
+                    }
                 }
             }
         }
+    }
+    
+    func setEmoji(_ emoji: String) {
+        self.emoji.text = emoji
     }
 }

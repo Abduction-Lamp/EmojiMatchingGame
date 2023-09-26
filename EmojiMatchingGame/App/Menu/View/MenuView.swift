@@ -122,7 +122,7 @@ final class MenuView: UIView {
         CATransaction.setDisableActions(false)
         CATransaction.setCompletionBlock { [weak self] in
             guard let self = self else { return }
-            self.runGradientAnimation(with: CFTimeInterval.random(in: 2...7))
+            self.runGradientAnimation(with: CFTimeInterval.random(in: 2.5...6.5))
         }
         
         gradient.setRandomProperty()

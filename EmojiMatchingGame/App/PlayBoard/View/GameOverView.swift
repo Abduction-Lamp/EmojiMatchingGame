@@ -31,24 +31,7 @@ final class GameOverView: UIView {
         label.text = "🥳"
         return label
     }()
-    
-//    private(set) var repeatButton: UIButton = {
-//        let img = UIImage(systemName: "arrow.counterclockwise")
-//        let largeSymbolStyle = UIImage.SymbolConfiguration(textStyle: .largeTitle)
-//
-//        var config = UIButton.Configuration.tinted()
-//        config.image = img
-//        config.baseBackgroundColor = .black
-//        config.baseForegroundColor = .black
-//        config.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-//        config.preferredSymbolConfigurationForImage = largeSymbolStyle
-//
-//        let button = UIButton()
-//        button.configuration = config
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-    
+
     private(set) var nextLevelButton: UIButton = {
         let attributedText = NSAttributedString(
             string: "Следующий уровень",
@@ -68,6 +51,45 @@ final class GameOverView: UIView {
         return button
     }()
     
+    private lazy var fireworks: FireworksLayer = {
+        let fireworks = FireworksLayer()
+        fireworks.configureDefault()
+        fireworks.layout(by: winLabel.bounds)
+        fireworks.particles(with: makeFireworksParticles())
+        return fireworks
+    }()
+    
+    
+    private func makeFireworksParticles() -> [EmittedParticle] {
+        var particles: [EmittedParticle] = []
+        
+        let glowplug = UIImage(systemName: "glowplug")
+        let star     = UIImage(systemName: "star.fill")
+        let party    = UIImage(systemName: "party.popper")
+        
+        if let glowplug = glowplug {
+            particles.append(.image(glowplug, size: nil, color: .systemGreen, birthRate: 20))
+        }
+        if let star = star {
+            particles.append(.image(star, size: nil, color: .systemYellow, birthRate: 13))
+        }
+        if let party = party {
+            particles.append(.image(party, size: nil, color: .systemIndigo, birthRate: 13))
+        }
+        
+        let font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
+        particles.append(.text("Браво!", font: font, color: .systemPink, birthRate: 3))
+        particles.append(.text("🎊", font: font, color: nil, birthRate: 17))
+        particles.append(.text("🥳", font: font, color: nil, birthRate: 17))
+        particles.append(.text("🎉", font: font, color: nil, birthRate: 7))
+
+        particles.append(.shape(.circle, size: .init(width: 4, height: 4), color: .systemRed, birthRate: 40))
+        particles.append(.shape(.triangle, size: .init(width: 5, height: 5), color: .systemBlue, birthRate: 30))
+        
+        return particles
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configuration()
@@ -83,22 +105,21 @@ final class GameOverView: UIView {
         fatalError("⚠️ GameOverView init(coder:) has not been implemented")
     }
     
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         blur.frame = bounds
     }
     
     private func configuration() {
-        layer.masksToBounds = true
         layer.cornerRadius = 20
-        layer.opacity = 0
         
         addSubview(blur)
         addSubview(winLabel)
         addSubview(nextLevelButton)
         
         let separator:CGFloat = 20
-        
         NSLayoutConstraint.activate([
             winLabel.topAnchor.constraint(equalTo: topAnchor, constant: separator),
             winLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: separator),
@@ -119,5 +140,10 @@ final class GameOverView: UIView {
         nextLevelButton.isHidden = true
         winLabel.isHidden = true
         layer.opacity = 0
+    }
+    
+    func firework() {
+        winLabel.layer.addSublayer(fireworks)
+        fireworks.emit(duration: 2)
     }
 }
