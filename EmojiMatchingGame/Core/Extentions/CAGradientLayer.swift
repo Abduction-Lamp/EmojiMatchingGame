@@ -31,9 +31,9 @@ extension CAGradientLayer {
     /// от одной точке к другой будет меняться направление слоя градиента
     ///
     /// Координаты опорных точки:                   Именнованные значения опорных точки:
-    ///     (0, 0)      (0.5, 0)    (1, 0)                              topLeft             top             topRight
-    ///     (0, 0.5)                  (1, 0.5)                           left                                      right
-    ///     (0, 1)      (0, 0.5)    (1, 1)                              bottomLeft      bottom        bottomRight
+    ///   (0, 0)      (0.5, 0)    (1, 0)                              topLeft             top             topRight
+    ///   (0, 0.5)                  (1, 0.5)                           left                                      right
+    ///   (0, 1)      (0, 0.5)    (1, 1)                              bottomLeft      bottom        bottomRight
     ///
     private enum GradientScreenPoint {
         

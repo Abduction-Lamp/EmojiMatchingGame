@@ -53,7 +53,7 @@ final class GameOverView: UIView {
     
     private lazy var fireworks: FireworksLayer = {
         let layer = FireworksLayer()
-        layer.configureDefault()
+        layer.сonfiguration()
         layer.particles(with: makeFireworksParticles())
         return layer
     }()
@@ -104,13 +104,13 @@ final class GameOverView: UIView {
         fatalError("⚠️ GameOverView init(coder:) has not been implemented")
     }
     
-    
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         blur.frame = bounds
-        fireworks.layout(by: winLabel.bounds)
+
+        fireworks.layout(by: bounds, center: winLabel.center, radius: winLabel.bounds.height - 20)
     }
+    
     
     private func configuration() {
         layer.cornerRadius = 20
@@ -118,8 +118,8 @@ final class GameOverView: UIView {
         addSubview(blur)
         addSubview(winLabel)
         addSubview(nextLevelButton)
-        
-        winLabel.layer.addSublayer(fireworks)
+
+        layer.addSublayer(fireworks)
 
         let separator:CGFloat = 20
         NSLayoutConstraint.activate([
@@ -145,6 +145,24 @@ final class GameOverView: UIView {
     }
     
     func firework() {
-        fireworks.emit(duration: 2)
+        let duration: CFTimeInterval = 2
+        
+        let springAnimation = CASpringAnimation(keyPath: "transform.scale")
+        springAnimation.stiffness = 450
+        springAnimation.mass = 2
+        springAnimation.fromValue = 0.37
+        springAnimation.toValue = 1
+
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotationAnimation.fromValue = 0
+        rotationAnimation.toValue = Float.pi * 4
+
+        let group = CAAnimationGroup()
+        group.animations = [springAnimation, rotationAnimation]
+        group.duration = duration
+        group.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        
+        winLabel.layer.add(group, forKey: nil)
+        fireworks.emit(duration: duration)
     }
 }

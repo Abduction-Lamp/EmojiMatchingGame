@@ -7,6 +7,22 @@
 
 import UIKit
 
+// MARK: - Emitted Particle
+///
+/// Частицы из которых состоит салют
+///
+/// Реализованно три типо частиц:
+/// - shape - геометрические фигуры ( circle, square, triangle )
+/// - image - изображение
+/// - text - текст
+///
+/// У каждой частицы есть свой набор параметров, это позволяет разнообразить салют
+///
+/// - Parameters:
+///     - size (font): Задает размер частицы, для частиц в текстовом представлении задаеться font, внутрений механизм вычислит область занимаемую текстом
+///     - color: Цвет частицы, для текстового представления этот параметр опциональный, так как для эмоджи цвет можно не задовать
+///     - birthRate: Частота рождения частиц в секунду, по умолчанию birthRate = 37
+///
 enum EmittedParticle {
     
     enum Shape {
@@ -77,11 +93,12 @@ extension EmittedParticle {
 
     
     private func makeImageFromText(_ text: String, font: UIFont, color: UIColor?) -> UIImage {
+        // Получаем размер области занимаемую текстом
         let label = UILabel()
         label.font = font
         label.text = text
-        
         let size = label.intrinsicContentSize
+        
         var attributes: [NSAttributedString.Key : Any] = [ .font : font ]
         if let color = color { attributes[.foregroundColor] = color }
         

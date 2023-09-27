@@ -9,6 +9,7 @@ import UIKit
 
 extension UIImage {
     
+    // Функция меняет цвет изображения (например, системных изображений)
     func withColor(_ color: UIColor, size new: CGSize?) -> UIImage {
         var contentSize: CGSize = size
         if let new = new { contentSize = new }
