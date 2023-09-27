@@ -50,9 +50,6 @@ final class PlayBoardPresenter {
         upsideDownSecondIndex = nil
         cards.removeAll()
     }
-    
-    
-//    private var isLocked = false
 }
 
 
@@ -70,9 +67,6 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     }
     
     func flip(index: Int) {
-//        guard isLocked == false else { return }
-//        isLocked = true
-        
         if let first = upsideDownFirstIndex, let second = upsideDownSecondIndex {
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
@@ -82,10 +76,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         
         guard let first = upsideDownFirstIndex else {
             upsideDownFirstIndex = index
-            viewController?.flipCard(index: index) { [weak self] _ in
-                guard let self = self else { return }
-//                self.isLocked = false
-            }
+            viewController?.flipCard(index: index, completion: nil)
             return
         }
         
@@ -100,7 +91,6 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                 
                 viewController?.flipCard(index: index) { [weak self] _ in
                     guard let self = self else { return }
-//                    self.isLocked = false
                     self.viewController?.matchingCards(index: first, and: index) { [weak self] _ in
                         guard let self = self else { return }
                         self.viewController?.isGameOver()
@@ -110,15 +100,10 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                 viewController?.flipCard(index: index) { [weak self] _ in
                     guard let self = self else { return }
                     self.viewController?.shakingCards(index: first, and: index)
-//                    self.isLocked = false
                 }
             }
         } else {
             viewController?.flipCard(index: index, completion: nil)
-//            { [weak self] _ in
-//                guard let self = self else { return }
-//                self.isLocked = false
-//            }
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
         }

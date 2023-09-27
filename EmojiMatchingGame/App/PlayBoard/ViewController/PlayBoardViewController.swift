@@ -68,6 +68,17 @@ final class PlayBoardViewController: UIViewController {
 
 extension PlayBoardViewController: PlayBoardDisplayable {
         
+    private func newSetCards(_ sequence: [String]) {
+        cards.removeAll()
+        sequence.forEach { emoji in
+            let card = CardView()
+            card.setEmoji(emoji)
+            card.tap.addTarget(self, action: #selector(cardTaps(_:)))
+            cards.append(card)
+        }
+    }
+    
+    
     func play(level: Level, with sequence: [String]) {
         newSetCards(sequence)
         playBoardView.make(level: level, with: cards)
@@ -81,9 +92,6 @@ extension PlayBoardViewController: PlayBoardDisplayable {
     func disableCards(index first: Int, and second: Int) {
         cards[first].tap.isEnabled = false
         cards[second].tap.isEnabled = false
-        
-//        view.isUserInteractionEnabled = false
-        
     }
     
     func shakingCards(index first: Int, and second: Int) {
@@ -103,17 +111,6 @@ extension PlayBoardViewController: PlayBoardDisplayable {
             if card.tap.isEnabled { return }
         }
         playBoardView.gameOverAnimatin()
-    }
-    
-    
-    private func newSetCards(_ sequence: [String]) {
-        cards.removeAll()
-        sequence.forEach { emoji in
-            let card = CardView()
-            card.setEmoji(emoji)
-            card.tap.addTarget(self, action: #selector(cardTaps(_:)))
-            cards.append(card)
-        }
     }
 }
 

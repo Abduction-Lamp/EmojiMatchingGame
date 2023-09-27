@@ -9,13 +9,6 @@ import UIKit
 
 final class PlayBoardView: UIView {
     
-//    private let blur: UIVisualEffectView = {
-//        let blur = UIVisualEffectView()
-//        blur.effect = UIBlurEffect(style: .regular)
-//        blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        return blur
-//    }()
-    
     private let board: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +43,7 @@ final class PlayBoardView: UIView {
     }()
     
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configuration()
@@ -67,13 +61,13 @@ final class PlayBoardView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        blur.frame = bounds
     }
+    
+    
     
     private func configuration() {
         backgroundColor = .white
-
-//        addSubview(blur)
+        
         addSubview(board)
         addSubview(gameOverView)
         addSubview(backMenuButton)
@@ -99,6 +93,7 @@ final class PlayBoardView: UIView {
             backMenuButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
         ])
     }
+    
     
     private func remove() {
         board.arrangedSubviews.forEach { view in
@@ -156,9 +151,9 @@ final class PlayBoardView: UIView {
             guard let self = self else { return }
             self.board.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
             self.gameOverView.hide()
-        } completion: { isCompletion in
+        } completion: { isCompleted in
             guard let completion = completion else { return }
-            completion(isCompletion)
+            completion(isCompleted)
         }
     }
 }

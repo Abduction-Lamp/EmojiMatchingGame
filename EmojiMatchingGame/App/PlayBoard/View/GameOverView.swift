@@ -52,11 +52,10 @@ final class GameOverView: UIView {
     }()
     
     private lazy var fireworks: FireworksLayer = {
-        let fireworks = FireworksLayer()
-        fireworks.configureDefault()
-        fireworks.layout(by: winLabel.bounds)
-        fireworks.particles(with: makeFireworksParticles())
-        return fireworks
+        let layer = FireworksLayer()
+        layer.configureDefault()
+        layer.particles(with: makeFireworksParticles())
+        return layer
     }()
     
     
@@ -110,6 +109,7 @@ final class GameOverView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         blur.frame = bounds
+        fireworks.layout(by: winLabel.bounds)
     }
     
     private func configuration() {
@@ -119,6 +119,8 @@ final class GameOverView: UIView {
         addSubview(winLabel)
         addSubview(nextLevelButton)
         
+        winLabel.layer.addSublayer(fireworks)
+
         let separator:CGFloat = 20
         NSLayoutConstraint.activate([
             winLabel.topAnchor.constraint(equalTo: topAnchor, constant: separator),
@@ -143,7 +145,6 @@ final class GameOverView: UIView {
     }
     
     func firework() {
-        winLabel.layer.addSublayer(fireworks)
         fireworks.emit(duration: 2)
     }
 }

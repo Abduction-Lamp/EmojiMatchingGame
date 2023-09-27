@@ -62,7 +62,7 @@ final class FireworksLayer: CAEmitterLayer {
     }
 
     func emit(duration: CFTimeInterval = 1) {
-        beginTime = convertTime(CACurrentMediaTime(), to: nil)
+        beginTime = CACurrentMediaTime()
 
         let animation = CAKeyframeAnimation(keyPath: #keyPath(CAEmitterLayer.birthRate))
         animation.duration = duration
@@ -74,14 +74,12 @@ final class FireworksLayer: CAEmitterLayer {
         
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            let transition = CATransition()
-            transition.duration = self.lifetimeCell()
-            transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
-            transition.type = .fade
-            transition.isRemovedOnCompletion = false
-            transition.setValue(self, forKey: "birthRateAnimation")
-            transition.delegate = self
-            self.add(transition, forKey: nil)
+            let animationCompletionExpected = CABasicAnimation(keyPath: nil)
+            animationCompletionExpected.duration = self.lifetimeCell()
+            animationCompletionExpected.isRemovedOnCompletion = false
+            animationCompletionExpected.setValue(self, forKey: "birthRateAnimation")
+            animationCompletionExpected.delegate = self
+            self.add(animationCompletionExpected, forKey: nil)
         }
         self.add(animation, forKey: nil)
         CATransaction.commit()
@@ -102,7 +100,6 @@ extension FireworksLayer: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let layer = anim.value(forKey: "birthRateAnimation") as? FireworksLayer {
             layer.removeAllAnimations()
-            layer.removeFromSuperlayer()
         }
     }
 }
