@@ -26,7 +26,7 @@ final class GameOverView: UIView {
         label.numberOfLines = 1
         label.adjustsFontForContentSizeCategory = true
         label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 1000)
+        label.font = .systemFont(ofSize: 500)
         label.minimumScaleFactor = 0.02
         label.text = "🥳"
         return label
@@ -62,17 +62,13 @@ final class GameOverView: UIView {
     private func makeFireworksParticles() -> [EmittedParticle] {
         var particles: [EmittedParticle] = []
         
-        let glowplug = UIImage(systemName: "glowplug")
-        let star     = UIImage(systemName: "star.fill")
-        let party    = UIImage(systemName: "party.popper")
-        
-        if let glowplug = glowplug {
+        if let glowplug = UIImage(systemName: "glowplug") {
             particles.append(.image(glowplug, size: nil, color: .systemGreen, birthRate: 20))
         }
-        if let star = star {
+        if let star = UIImage(systemName: "star.fill") {
             particles.append(.image(star, size: nil, color: .systemYellow, birthRate: 13))
         }
-        if let party = party {
+        if let party = UIImage(systemName: "party.popper") {
             particles.append(.image(party, size: nil, color: .systemIndigo, birthRate: 13))
         }
         
@@ -82,7 +78,7 @@ final class GameOverView: UIView {
         particles.append(.text("🥳", font: font, color: nil, birthRate: 17))
         particles.append(.text("🎉", font: font, color: nil, birthRate: 7))
 
-        particles.append(.shape(.circle, size: .init(width: 4, height: 4), color: .systemRed, birthRate: 40))
+        particles.append(.shape(.circle, size: .init(width: 4, height: 4), color: .systemRed, birthRate: 45))
         particles.append(.shape(.triangle, size: .init(width: 5, height: 5), color: .systemBlue, birthRate: 30))
         
         return particles
@@ -108,12 +104,12 @@ final class GameOverView: UIView {
         super.layoutSubviews()
         blur.frame = bounds
 
-        fireworks.layout(by: bounds, center: winLabel.center, radius: winLabel.bounds.height - 20)
+        fireworks.layout(by: bounds, center: winLabel.center, radius: winLabel.bounds.height - layer.cornerRadius)
     }
     
     
     private func configuration() {
-        layer.cornerRadius = 20
+        layer.cornerRadius = 25
         
         addSubview(blur)
         addSubview(winLabel)
@@ -121,7 +117,7 @@ final class GameOverView: UIView {
 
         layer.addSublayer(fireworks)
 
-        let separator:CGFloat = 20
+        let separator: CGFloat = layer.cornerRadius
         NSLayoutConstraint.activate([
             winLabel.topAnchor.constraint(equalTo: topAnchor, constant: separator),
             winLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: separator),
@@ -130,6 +126,7 @@ final class GameOverView: UIView {
             nextLevelButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             nextLevelButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -separator)
         ])
+        
     }
 
     func show() {

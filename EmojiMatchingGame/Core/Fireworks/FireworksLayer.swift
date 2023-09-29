@@ -99,8 +99,8 @@ final class FireworksLayer: CAEmitterLayer {
         animation.duration = duration
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         animation.fillMode = .forwards
-        animation.values = [1, 1, 1, 0]         // birthRate CAEmitterLayer
-        animation.keyTimes = [0, 0.5, 0.99, 1]
+        animation.values    = [1, 1, 0.5, 0]    // birthRate CAEmitterLayer
+        animation.keyTimes  = [0, 0.6, 0.9, 1]
         animation.isRemovedOnCompletion = false
         
         CATransaction.begin()

@@ -12,14 +12,27 @@ final class PlayBoardView: UIView {
     private let board: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.layoutMargins = .init(top: 4, left: 4, bottom: 4, right: 4)
+        
+        stack.layer.masksToBounds = false
+        stack.layer.backgroundColor = UIColor.systemGray6.cgColor
+        stack.layer.opacity = 1
+        stack.layer.cornerRadius = 25
+        stack.layer.shadowColor = UIColor.systemGray.cgColor
+        stack.layer.shadowOpacity = 1
+        stack.layer.shadowRadius = 5
+        stack.layer.shadowOffset = .zero
+        
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 4
+
         return stack
     }()
     
     private(set) var backMenuButton: UIButton = {
-        let img = UIImage(systemName: "clear.fill")
+        let img = UIImage(systemName: "text.justify")
         let largeSymbolStyle = UIImage.SymbolConfiguration(textStyle: .largeTitle)
         
         var config = UIButton.Configuration.plain()
@@ -66,7 +79,7 @@ final class PlayBoardView: UIView {
     
     
     private func configuration() {
-        backgroundColor = .white
+        backgroundColor = .systemGray6
         
         addSubview(board)
         addSubview(gameOverView)

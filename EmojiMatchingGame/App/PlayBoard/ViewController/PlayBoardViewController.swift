@@ -131,11 +131,26 @@ extension PlayBoardViewController {
     }
     
     @objc
-    private func cardTaps(_ sender: UITapGestureRecognizer) {
-        guard 
+    private func cardTaps(_ sender: UILongPressGestureRecognizer) {
+        guard
             let card = sender.view as? CardView,
             let index = cards.firstIndex(of: card)
         else { return }
-        presenter?.flip(index: index)
+        
+        let location = sender.location(in: card)
+        let isInside: Bool = location.x > 0 && location.y > 0 && location.x < card.bounds.width && location.y < card.bounds.height
+        
+        switch sender.state {
+        case .began:
+            card.select(true)
+        case .changed:
+            if isInside { break }
+            card.select(false)
+            sender.state = .cancelled
+        case .ended:
+            card.select(false)
+            presenter?.flip(index: index)
+        default: break
+        }
     }
 }

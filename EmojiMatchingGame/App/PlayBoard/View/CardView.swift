@@ -12,7 +12,7 @@ final class CardView: UIView {
     private let emoji: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.clipsToBounds = false
+        label.clipsToBounds = true
         label.baselineAdjustment = .alignCenters
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
@@ -26,10 +26,9 @@ final class CardView: UIView {
         return label
     }()
     
-    private(set) lazy var tap: UITapGestureRecognizer = {
-        let tap = UITapGestureRecognizer()
-        tap.numberOfTouchesRequired = 1
-        tap.numberOfTapsRequired = 1
+    private(set) var tap: UILongPressGestureRecognizer = {
+        let tap = UILongPressGestureRecognizer()
+        tap.minimumPressDuration = 0
         return tap
     }()
     
@@ -56,6 +55,7 @@ final class CardView: UIView {
     
     
     private func configuration() {
+        clipsToBounds = false
         backgroundColor = .systemYellow
         
         addSubview(emoji)
@@ -125,5 +125,19 @@ extension CardView {
     
     func setEmoji(_ emoji: String) {
         self.emoji.text = emoji
+    }
+    
+    func select(_ isSelect: Bool) {
+        if isSelect {
+            layer.shadowColor = UIColor.systemGray.cgColor
+            layer.shadowOpacity = 0.8
+            layer.shadowRadius = 4
+            layer.shadowOffset = .zero
+        } else {
+            layer.shadowColor = nil
+            layer.shadowOpacity = 0
+            layer.shadowRadius = 0
+            layer.shadowOffset = .zero
+        }
     }
 }
