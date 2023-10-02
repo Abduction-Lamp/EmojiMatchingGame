@@ -74,6 +74,7 @@ final class PlayBoardView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        board.layer.shadowPath = UIBezierPath(roundedRect: board.bounds, cornerRadius: board.layer.cornerRadius).cgPath
     }
     
     

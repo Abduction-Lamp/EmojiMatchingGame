@@ -107,14 +107,14 @@ extension CardView {
     }
     
     func match(whih delay: CFTimeInterval = .zero, completion: ((Bool) -> Void)? = nil) {
-        let duration: TimeInterval = 0.10
-        let scale: CGFloat = 1.25
+//        let duration: TimeInterval = 0.15
+        let scale: CGFloat = 1.20
 
-        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut]) { [weak self] in
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut]) { [weak self] in
             guard let self = self else { return }
             self.transform = CGAffineTransform(scaleX: scale, y: scale)
         } completion: { _ in
-            UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut]) {
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.25, initialSpringVelocity: 0.7, options: [.curveEaseIn]) {
                 self.transform = .identity
             } completion: { isSecondAnimationCompleted in
                 guard let completion = completion else { return }
@@ -128,16 +128,18 @@ extension CardView {
     }
     
     func select(_ isSelect: Bool) {
-        if isSelect {
+        if isSelect, emoji.isHidden {
             layer.shadowColor = UIColor.systemGray.cgColor
             layer.shadowOpacity = 0.8
             layer.shadowRadius = 4
             layer.shadowOffset = .zero
+            layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
         } else {
             layer.shadowColor = nil
             layer.shadowOpacity = 0
             layer.shadowRadius = 0
             layer.shadowOffset = .zero
+            layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
         }
     }
 }
