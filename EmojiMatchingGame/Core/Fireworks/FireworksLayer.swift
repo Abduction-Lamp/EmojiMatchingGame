@@ -55,7 +55,7 @@ final class FireworksLayer: CAEmitterLayer {
             
             cell.birthRate = particle.birthRate ?? 37
             
-            cell.lifetime = 1.0
+            cell.lifetime = 1.1
             cell.lifetimeRange = 0.7
             
             cell.velocity = CGFloat(cell.birthRate * cell.lifetime) + 250
@@ -65,13 +65,13 @@ final class FireworksLayer: CAEmitterLayer {
             cell.spinRange = .pi
             
             cell.alphaRange = 0.9
-            cell.alphaSpeed = 0.1
+            cell.alphaSpeed = 1
             
             cell.scaleRange = 0.5
             cell.scale = 1.0 - cell.scaleRange
             cell.scaleSpeed = 0.2
             
-            cell.emissionLatitude = 1.1
+            cell.emissionLatitude = 0.9
             cell.emissionLongitude = 1.2
             
             cell.contents = particle.image.cgImage

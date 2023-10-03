@@ -107,14 +107,13 @@ extension CardView {
     }
     
     func match(whih delay: CFTimeInterval = .zero, completion: ((Bool) -> Void)? = nil) {
-//        let duration: TimeInterval = 0.15
-        let scale: CGFloat = 1.20
+        let scale: CGFloat = 1.25
 
         UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut]) { [weak self] in
             guard let self = self else { return }
             self.transform = CGAffineTransform(scaleX: scale, y: scale)
         } completion: { _ in
-            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.25, initialSpringVelocity: 0.7, options: [.curveEaseIn]) {
+            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.curveEaseIn]) {
                 self.transform = .identity
             } completion: { isSecondAnimationCompleted in
                 guard let completion = completion else { return }

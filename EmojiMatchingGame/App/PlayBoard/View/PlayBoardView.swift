@@ -20,8 +20,8 @@ final class PlayBoardView: UIView {
         stack.layer.opacity = 1
         stack.layer.cornerRadius = 25
         stack.layer.shadowColor = UIColor.systemGray.cgColor
-        stack.layer.shadowOpacity = 1
-        stack.layer.shadowRadius = 5
+        stack.layer.shadowOpacity = 0.7
+        stack.layer.shadowRadius = stack.layer.cornerRadius
         stack.layer.shadowOffset = .zero
         
         stack.axis = .vertical
