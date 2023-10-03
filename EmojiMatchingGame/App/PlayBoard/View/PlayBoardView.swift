@@ -69,7 +69,7 @@ final class PlayBoardView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("⚠️ PlayBoardView init(coder:) has not been implemented")
+        fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {

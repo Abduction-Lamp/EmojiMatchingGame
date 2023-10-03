@@ -45,7 +45,7 @@ final class CardView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("⚠️ CardView init(coder:) has not been implemented")
+        fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {

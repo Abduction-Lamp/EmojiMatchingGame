@@ -1,5 +1,5 @@
 //
-//  MenuView.swift
+//  MainMenuView.swift
 //  EmojiMatchingGame
 //
 //  Created by Vladimir Lesnykh on 30.08.2023.
@@ -7,9 +7,15 @@
 
 import UIKit
 
-
-final class MenuView: UIView {
+protocol GradientAnimatable: AnyObject {
     
+    func animate(with duration: CFTimeInterval)
+    func stop()
+}
+
+final class MainMenuView: UIView {
+    
+    private var isLocked = true
     private let gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.type = .axial
@@ -92,7 +98,7 @@ final class MenuView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("⚠️ MenuView init(coder:) has not been implemented")
+        fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
@@ -114,17 +120,32 @@ final class MenuView: UIView {
             stack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
         ])
     }
+}
+
+
+extension MainMenuView: GradientAnimatable {
     
-    func runGradientAnimation(with duration: CFTimeInterval = 5) {
+    func animate(with duration: CFTimeInterval = 5) {
+        if isLocked {
+            isLocked = false
+            transaction(with: duration)
+        }
+    }
+    
+    func stop() {
+        isLocked = true
+    }
+    
+    private func transaction(with duration: CFTimeInterval) {
+        guard isLocked == false else { return }
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration)
         CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .easeInEaseOut))
         CATransaction.setDisableActions(false)
-        CATransaction.setCompletionBlock { [weak self] in
-            guard let self = self else { return }
-            self.runGradientAnimation(with: CFTimeInterval.random(in: 2.5...6.5))
+        CATransaction.setCompletionBlock {
+            let randomTimeInterval = CFTimeInterval(Int.random(in: 3...7))
+            self.transaction(with: randomTimeInterval)
         }
-        
         gradient.setRandomProperty()
         CATransaction.commit()
     }

@@ -9,9 +9,9 @@ import UIKit
 
 final class Builder: Buildable {
     
-    func makeMenuFlow(router: Routable) -> UIViewController & MenuDisplayable {
-        let vc = MenuViewController()
-        let presenter = MenuPresenter(vc, router: router)
+    func makeMenuFlow(router: Routable) -> UIViewController & MainMenuDisplayable {
+        let vc = MainMenuViewController()
+        let presenter = MainMenuPresenter(vc, router: router)
         vc.presenter = presenter
         return vc
     }
@@ -34,5 +34,14 @@ final class Builder: Buildable {
     
     deinit {
         print("ASSEMBLY:\t♻️\tBuilder")
+    }
+    
+    
+    func makeSettingsFlow() -> UIViewController {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .blue
+        vc.modalTransitionStyle = .partialCurl
+        vc.modalPresentationStyle = .popover
+        return vc
     }
 }

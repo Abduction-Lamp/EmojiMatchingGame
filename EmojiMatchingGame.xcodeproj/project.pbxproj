@@ -16,10 +16,10 @@
 		4E5EB6E02AA622770074C7B5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6DF2AA622770074C7B5 /* Router.swift */; };
 		4E5EB6E22AA625F30074C7B5 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6E12AA625F30074C7B5 /* Buildable.swift */; };
 		4E5EB6E42AA6278D0074C7B5 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6E32AA6278D0074C7B5 /* Builder.swift */; };
-		4E5EB6E62AA636620074C7B5 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6E52AA636620074C7B5 /* MenuPresenter.swift */; };
+		4E5EB6E62AA636620074C7B5 /* MainMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6E52AA636620074C7B5 /* MainMenuPresenter.swift */; };
 		4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */; };
-		4E7FAB3C2A9F7A170020C771 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3B2A9F7A170020C771 /* MenuViewController.swift */; };
-		4E7FAB3E2A9F8B360020C771 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3D2A9F8B360020C771 /* MenuView.swift */; };
+		4E7FAB3C2A9F7A170020C771 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3B2A9F7A170020C771 /* MainMenuViewController.swift */; };
+		4E7FAB3E2A9F8B360020C771 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */; };
 		4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6072A55B75900E23388 /* PlayBoardView.swift */; };
 		4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6092A56EBCD00E23388 /* Level.swift */; };
 		4E98C57B2A5890040034522B /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E98C57A2A5890040034522B /* Emoji.swift */; };
@@ -42,10 +42,10 @@
 		4E5EB6DF2AA622770074C7B5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4E5EB6E12AA625F30074C7B5 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
 		4E5EB6E32AA6278D0074C7B5 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
-		4E5EB6E52AA636620074C7B5 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
+		4E5EB6E52AA636620074C7B5 /* MainMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuPresenter.swift; sourceTree = "<group>"; };
 		4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardPresenter.swift; sourceTree = "<group>"; };
-		4E7FAB3B2A9F7A170020C771 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		4E7FAB3D2A9F8B360020C771 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		4E7FAB3B2A9F7A170020C771 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		4E86D6072A55B75900E23388 /* PlayBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardView.swift; sourceTree = "<group>"; };
 		4E86D6092A56EBCD00E23388 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4E98C57A2A5890040034522B /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		4E7FAB362A9F797D0020C771 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				4E7FAB372A9F79AD0020C771 /* Menu */,
+				4E7FAB372A9F79AD0020C771 /* MainMenu */,
 				4E86D6042A55B6E800E23388 /* PlayBoard */,
 				4ED35E3D2A55B145004B54AC /* AppDelegate.swift */,
 				4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */,
@@ -152,20 +152,20 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		4E7FAB372A9F79AD0020C771 /* Menu */ = {
+		4E7FAB372A9F79AD0020C771 /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
 				4E7FAB382A9F79D50020C771 /* View */,
 				4E7FAB392A9F79DC0020C771 /* ViewController */,
 				4E7FAB3A2A9F79E40020C771 /* Presenter */,
 			);
-			path = Menu;
+			path = MainMenu;
 			sourceTree = "<group>";
 		};
 		4E7FAB382A9F79D50020C771 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4E7FAB3D2A9F8B360020C771 /* MenuView.swift */,
+				4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,7 +173,7 @@
 		4E7FAB392A9F79DC0020C771 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4E7FAB3B2A9F7A170020C771 /* MenuViewController.swift */,
+				4E7FAB3B2A9F7A170020C771 /* MainMenuViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -181,7 +181,7 @@
 		4E7FAB3A2A9F79E40020C771 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				4E5EB6E52AA636620074C7B5 /* MenuPresenter.swift */,
+				4E5EB6E52AA636620074C7B5 /* MainMenuPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -326,16 +326,16 @@
 			files = (
 				4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */,
 				4E343B0B2AC31DE300D169DD /* UIImage.swift in Sources */,
-				4E7FAB3E2A9F8B360020C771 /* MenuView.swift in Sources */,
+				4E7FAB3E2A9F8B360020C771 /* MainMenuView.swift in Sources */,
 				4E5EB6DE2AA620F90074C7B5 /* Routable.swift in Sources */,
 				4E5EB6E22AA625F30074C7B5 /* Buildable.swift in Sources */,
 				4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */,
 				4E98C57B2A5890040034522B /* Emoji.swift in Sources */,
-				4E7FAB3C2A9F7A170020C771 /* MenuViewController.swift in Sources */,
+				4E7FAB3C2A9F7A170020C771 /* MainMenuViewController.swift in Sources */,
 				4E4923AA2AAB4577002B65BC /* CAGradientLayer.swift in Sources */,
 				4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */,
 				4EE427032ABB3464003FCECD /* FireworksLayer.swift in Sources */,
-				4E5EB6E62AA636620074C7B5 /* MenuPresenter.swift in Sources */,
+				4E5EB6E62AA636620074C7B5 /* MainMenuPresenter.swift in Sources */,
 				4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */,
 				4E343B0D2AC3351900D169DD /* EmittedParticle.swift in Sources */,
 				4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */,

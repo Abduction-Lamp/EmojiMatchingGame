@@ -99,7 +99,7 @@ final class GameOverView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("⚠️ GameOverView init(coder:) has not been implemented")
+        fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {

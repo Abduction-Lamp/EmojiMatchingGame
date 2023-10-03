@@ -122,7 +122,7 @@ extension CAGradientLayer {
             var newRawValue = self.rawValue + Int.random(in: dispersion)
             
             if newRawValue < 0 {
-                newRawValue = maxCountRawValue + newRawValue
+                newRawValue = newRawValue + maxCountRawValue
             }
             
             if newRawValue >= maxCountRawValue {

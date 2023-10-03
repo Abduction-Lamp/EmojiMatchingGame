@@ -9,6 +9,6 @@ import UIKit
 
 protocol Buildable: AnyObject {
     
-    func makeMenuFlow(router: Routable) -> UIViewController & MenuDisplayable
+    func makeMenuFlow(router: Routable) -> UIViewController & MainMenuDisplayable
     func makePlayFlow(router: Routable) -> UIViewController & PlayBoardDisplayable
 }
