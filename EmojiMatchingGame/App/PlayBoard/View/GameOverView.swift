@@ -17,6 +17,12 @@ final class GameOverView: UIView {
         return blur
     }()
     
+    private var winEmoji: String {
+        let set: [String] = ["🥳", "🎊", "🎉", "🪅", "🏆"]
+        let index: Int = Int.random(in: 0 ..< set.count)
+        return set[index]
+    }
+    
     private let winLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -59,34 +65,6 @@ final class GameOverView: UIView {
     }()
     
     
-    private func makeFireworksParticles() -> [EmittedParticle] {
-        var particles: [EmittedParticle] = []
-        
-        if let glowplug = UIImage(systemName: "glowplug") {
-            particles.append(.image(glowplug, size: nil, color: .systemGreen, birthRate: 23))
-        }
-        if let star = UIImage(systemName: "star.fill") {
-            particles.append(.image(star, size: nil, color: .systemYellow, birthRate: 19))
-        }
-        if let party = UIImage(systemName: "party.popper") {
-            particles.append(.image(party, size: nil, color: .systemIndigo, birthRate: 13))
-        }
-        
-        let font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
-        particles.append(.text("Браво!", font: font, color: .systemPink, birthRate: 3))
-        particles.append(.text("🎊", font: font, color: nil, birthRate: 17))
-        particles.append(.text("🥳", font: font, color: nil, birthRate: 13))
-        particles.append(.text("🎉", font: font, color: nil, birthRate: 7))
-        particles.append(.text("🪅", font: font, color: nil, birthRate: 7))
-
-        particles.append(.shape(.circle, size: .init(width: 4, height: 4), color: .systemRed, birthRate: 50))
-        particles.append(.shape(.triangle, size: .init(width: 5, height: 5), color: .systemBlue, birthRate: 30))
-        particles.append(.shape(.square, size: .init(width: 5, height: 5), color: .systemPurple, birthRate: 20))
-        
-        return particles
-    }
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configuration()
@@ -111,14 +89,13 @@ final class GameOverView: UIView {
     
     
     private func configuration() {
-        layer.cornerRadius = 25
-        
         addSubview(blur)
         addSubview(winLabel)
         addSubview(nextLevelButton)
 
+        layer.cornerRadius = 25
         layer.addSublayer(fireworks)
-
+        
         let separator: CGFloat = layer.cornerRadius
         NSLayoutConstraint.activate([
             winLabel.topAnchor.constraint(equalTo: topAnchor, constant: separator),
@@ -130,8 +107,13 @@ final class GameOverView: UIView {
         ])
         
     }
+}
 
+
+extension GameOverView {
+    
     func show() {
+        winLabel.text = winEmoji
         nextLevelButton.isHidden = false
         winLabel.isHidden = false
         layer.opacity = 1
@@ -163,5 +145,35 @@ final class GameOverView: UIView {
         
         winLabel.layer.add(group, forKey: nil)
         fireworks.emit(duration: duration)
+    }
+    
+    private func makeFireworksParticles() -> [EmittedParticle] {
+        var particles: [EmittedParticle] = []
+        
+        if let glowplug = UIImage(systemName: "glowplug") {
+            particles.append(.image(glowplug, size: nil, color: .systemGreen, birthRate: 23))
+        }
+        if let star = UIImage(systemName: "star.fill") {
+            particles.append(.image(star, size: nil, color: .systemYellow, birthRate: 19))
+        }
+        if let party = UIImage(systemName: "party.popper") {
+            particles.append(.image(party, size: nil, color: .systemIndigo, birthRate: 13))
+        }
+        
+        let font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
+        particles.append(.text("Браво!", font: font, color: .systemPink, birthRate: 3))
+        particles.append(.text("🍬", font: font, color: nil, birthRate: 13))
+        particles.append(.text("🎊", font: font, color: nil, birthRate: 11))
+        particles.append(.text("🥳", font: font, color: nil, birthRate: 7))
+        particles.append(.text("🎉", font: font, color: nil, birthRate: 7))
+        particles.append(.text("🪅", font: font, color: nil, birthRate: 7))
+        particles.append(.text("🍭", font: font, color: nil, birthRate: 7))
+        particles.append(.text("🏆", font: font, color: nil, birthRate: 5))
+
+        particles.append(.shape(.circle, size: .init(width: 4, height: 4), color: .systemRed, birthRate: 50))
+        particles.append(.shape(.triangle, size: .init(width: 5, height: 5), color: .systemBlue, birthRate: 30))
+        particles.append(.shape(.square, size: .init(width: 5, height: 5), color: .systemPurple, birthRate: 20))
+        
+        return particles
     }
 }

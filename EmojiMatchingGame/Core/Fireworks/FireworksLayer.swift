@@ -55,10 +55,10 @@ final class FireworksLayer: CAEmitterLayer {
             
             cell.birthRate = particle.birthRate ?? 37
             
-            cell.lifetime = 1.1
+            cell.lifetime = 1.0
             cell.lifetimeRange = 0.7
             
-            cell.velocity = CGFloat(cell.birthRate * cell.lifetime) + 250
+            cell.velocity = CGFloat(cell.birthRate * (cell.lifetime + cell.lifetimeRange)) + 250
             cell.velocityRange = cell.velocity / 2
 
             cell.spin = .pi
@@ -69,7 +69,7 @@ final class FireworksLayer: CAEmitterLayer {
             
             cell.scaleRange = 0.5
             cell.scale = 1.0 - cell.scaleRange
-            cell.scaleSpeed = 0.2
+            cell.scaleSpeed = 0.3
             
             cell.emissionLatitude = 0.9
             cell.emissionLongitude = 1.2
@@ -99,8 +99,8 @@ final class FireworksLayer: CAEmitterLayer {
         animation.duration = duration
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         animation.fillMode = .forwards
-        animation.values    = [1, 1, 0.5, 0]    // birthRate CAEmitterLayer
-        animation.keyTimes  = [0, 0.6, 0.9, 1]
+        animation.values   = [1, 1, 0.5, 0]     // birthRate CAEmitterLayer
+        animation.keyTimes = [0, 0.6, 0.9, 1]
         animation.isRemovedOnCompletion = false
         
         CATransaction.begin()

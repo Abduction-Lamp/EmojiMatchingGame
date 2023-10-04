@@ -107,7 +107,6 @@ final class MainMenuView: UIView {
     }
     
     private func configuration() {
-        contentMode = .redraw
         layer.addSublayer(gradient)
         
         addSubview(stack)
@@ -116,8 +115,8 @@ final class MainMenuView: UIView {
         stack.addArrangedSubview(settingsButton)
         
         NSLayoutConstraint.activate([
-            stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            stack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            stack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stack.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }
 }
