@@ -14,6 +14,13 @@
 		4E343B0B2AC31DE300D169DD /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E343B0A2AC31DE300D169DD /* UIImage.swift */; };
 		4E343B0D2AC3351900D169DD /* EmittedParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E343B0C2AC3351900D169DD /* EmittedParticle.swift */; };
 		4E4923AA2AAB4577002B65BC /* CAGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4923A92AAB4577002B65BC /* CAGradientLayer.swift */; };
+		4E4EAC302AD03EB700AF5D35 /* MainMenuPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC2F2AD03EB700AF5D35 /* MainMenuPresentable.swift */; };
+		4E4EAC322AD03EDB00AF5D35 /* PlayBoardPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC312AD03EDB00AF5D35 /* PlayBoardPresentable.swift */; };
+		4E4EAC342AD0403B00AF5D35 /* MainMenuDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC332AD0403B00AF5D35 /* MainMenuDisplayable.swift */; };
+		4E4EAC362AD040CB00AF5D35 /* GradientAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC352AD040CB00AF5D35 /* GradientAnimatable.swift */; };
+		4E4EAC382AD0426100AF5D35 /* PlayBoardDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC372AD0426100AF5D35 /* PlayBoardDisplayable.swift */; };
+		4E4EAC3A2AD04C1D00AF5D35 /* GameOverPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC392AD04C1D00AF5D35 /* GameOverPresentable.swift */; };
+		4E4EAC3C2AD04C9F00AF5D35 /* GameOverDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC3B2AD04C9F00AF5D35 /* GameOverDisplayable.swift */; };
 		4E5EB6DE2AA620F90074C7B5 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6DD2AA620F90074C7B5 /* Routable.swift */; };
 		4E5EB6E02AA622770074C7B5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6DF2AA622770074C7B5 /* Router.swift */; };
 		4E5EB6E22AA625F30074C7B5 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6E12AA625F30074C7B5 /* Buildable.swift */; };
@@ -42,6 +49,13 @@
 		4E343B0A2AC31DE300D169DD /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		4E343B0C2AC3351900D169DD /* EmittedParticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmittedParticle.swift; sourceTree = "<group>"; };
 		4E4923A92AAB4577002B65BC /* CAGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAGradientLayer.swift; sourceTree = "<group>"; };
+		4E4EAC2F2AD03EB700AF5D35 /* MainMenuPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuPresentable.swift; sourceTree = "<group>"; };
+		4E4EAC312AD03EDB00AF5D35 /* PlayBoardPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardPresentable.swift; sourceTree = "<group>"; };
+		4E4EAC332AD0403B00AF5D35 /* MainMenuDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuDisplayable.swift; sourceTree = "<group>"; };
+		4E4EAC352AD040CB00AF5D35 /* GradientAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientAnimatable.swift; sourceTree = "<group>"; };
+		4E4EAC372AD0426100AF5D35 /* PlayBoardDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardDisplayable.swift; sourceTree = "<group>"; };
+		4E4EAC392AD04C1D00AF5D35 /* GameOverPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPresentable.swift; sourceTree = "<group>"; };
+		4E4EAC3B2AD04C9F00AF5D35 /* GameOverDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverDisplayable.swift; sourceTree = "<group>"; };
 		4E5EB6DD2AA620F90074C7B5 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		4E5EB6DF2AA622770074C7B5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4E5EB6E12AA625F30074C7B5 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
@@ -105,6 +119,7 @@
 		4E13C4072ACED85100F40235 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4E4EAC3B2AD04C9F00AF5D35 /* GameOverDisplayable.swift */,
 				4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */,
 			);
 			path = ViewController;
@@ -113,6 +128,7 @@
 		4E13C4082ACED85900F40235 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				4E4EAC392AD04C1D00AF5D35 /* GameOverPresentable.swift */,
 				4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */,
 			);
 			path = Presenter;
@@ -174,6 +190,7 @@
 		4E64AD8F2A602A5100A7E40C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				4E4EAC312AD03EDB00AF5D35 /* PlayBoardPresentable.swift */,
 				4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */,
 			);
 			path = Presenter;
@@ -204,6 +221,7 @@
 		4E7FAB382A9F79D50020C771 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E4EAC352AD040CB00AF5D35 /* GradientAnimatable.swift */,
 				4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */,
 			);
 			path = View;
@@ -212,6 +230,7 @@
 		4E7FAB392A9F79DC0020C771 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4E4EAC332AD0403B00AF5D35 /* MainMenuDisplayable.swift */,
 				4E7FAB3B2A9F7A170020C771 /* MainMenuViewController.swift */,
 			);
 			path = ViewController;
@@ -220,6 +239,7 @@
 		4E7FAB3A2A9F79E40020C771 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				4E4EAC2F2AD03EB700AF5D35 /* MainMenuPresentable.swift */,
 				4E5EB6E52AA636620074C7B5 /* MainMenuPresenter.swift */,
 			);
 			path = Presenter;
@@ -247,6 +267,7 @@
 		4E86D6062A55B73400E23388 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4E4EAC372AD0426100AF5D35 /* PlayBoardDisplayable.swift */,
 				4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */,
 			);
 			path = ViewController;
@@ -363,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */,
+				4E4EAC382AD0426100AF5D35 /* PlayBoardDisplayable.swift in Sources */,
 				4E343B0B2AC31DE300D169DD /* UIImage.swift in Sources */,
 				4E7FAB3E2A9F8B360020C771 /* MainMenuView.swift in Sources */,
 				4E5EB6DE2AA620F90074C7B5 /* Routable.swift in Sources */,
@@ -372,6 +394,8 @@
 				4E98C57B2A5890040034522B /* Emoji.swift in Sources */,
 				4E7FAB3C2A9F7A170020C771 /* MainMenuViewController.swift in Sources */,
 				4E4923AA2AAB4577002B65BC /* CAGradientLayer.swift in Sources */,
+				4E4EAC3A2AD04C1D00AF5D35 /* GameOverPresentable.swift in Sources */,
+				4E4EAC362AD040CB00AF5D35 /* GradientAnimatable.swift in Sources */,
 				4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */,
 				4EE427032ABB3464003FCECD /* FireworksLayer.swift in Sources */,
 				4E5EB6E62AA636620074C7B5 /* MainMenuPresenter.swift in Sources */,
@@ -379,8 +403,12 @@
 				4E343B0D2AC3351900D169DD /* EmittedParticle.swift in Sources */,
 				4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */,
 				4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */,
+				4E4EAC302AD03EB700AF5D35 /* MainMenuPresentable.swift in Sources */,
+				4E4EAC342AD0403B00AF5D35 /* MainMenuDisplayable.swift in Sources */,
+				4E4EAC322AD03EDB00AF5D35 /* PlayBoardPresentable.swift in Sources */,
 				4E5EB6E02AA622770074C7B5 /* Router.swift in Sources */,
 				4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */,
+				4E4EAC3C2AD04C9F00AF5D35 /* GameOverDisplayable.swift in Sources */,
 				4E13C40B2ACED8AC00F40235 /* GameOverViewController.swift in Sources */,
 				4EF61F5B2A5778DA00E79C74 /* CardView.swift in Sources */,
 				4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */,

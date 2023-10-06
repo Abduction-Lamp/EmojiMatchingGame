@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol GradientAnimatable: AnyObject {
-    
-    func animate(with duration: CFTimeInterval)
-    func stop()
-}
-
 final class MainMenuView: UIView {
     
     private var isLocked = true

@@ -7,22 +7,12 @@
 
 import Foundation
 
-protocol MainMenuPresentable: AnyObject {
-    
-    init(_ viewController: MainMenuDisplayable, router: Routable)
-
-    func newGame()
-    func settings()
-    func statistics()
-}
-
-
-final class MainMenuPresenter: MainMenuPresentable {
+final class MainMenuPresenter {
     
     private weak var viewController: MainMenuDisplayable?
-    private let router: Routable
+    private let router: MainMenuRoutable
     
-    init(_ viewController: MainMenuDisplayable, router: Routable) {
+    init(_ viewController: MainMenuDisplayable, router: MainMenuRoutable) {
         self.viewController = viewController
         self.router = router
         
@@ -32,16 +22,19 @@ final class MainMenuPresenter: MainMenuPresentable {
     deinit {
         print("PRESENTER:\t♻️\tMenu")
     }
+}
+
+extension  MainMenuPresenter: MainMenuPresentable {
     
     func newGame() {
-        router.pushNewGameVC()
+        router.goToNewGame()
     }
     
     func settings() {
-        router.pushNewGameVC()
+        router.goToSettings()
     }
     
     func statistics() {
-        router.pushNewGameVC()
+        router.goToStatictic()
     }
 }

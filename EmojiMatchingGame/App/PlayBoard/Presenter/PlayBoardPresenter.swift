@@ -7,27 +7,15 @@
 
 import Foundation
 
-
-protocol PlayBoardPresentable: AnyObject {
-    
-    init(_ viewController: PlayBoardDisplayable, level: Level, router: Routable, emoji: Emoji)
-    
-    func play()
-    func nextLevel()
-    func flip(index: Int)
-    
-    func goToMenu()
-}
-
-
 final class PlayBoardPresenter {
     
     private weak var viewController: PlayBoardDisplayable?
+    private let router: PlayBoardRoutable
+    
     private var level: Level
-    private let router: Routable
     private let emoji: Emoji
     
-    init(_ viewController: PlayBoardDisplayable, level: Level = .one, router: Routable, emoji: Emoji) {
+    init(_ viewController: PlayBoardDisplayable, router: PlayBoardRoutable, level: Level = .one, emoji: Emoji) {
         self.viewController = viewController
         self.level = level
         self.router = router
@@ -44,18 +32,6 @@ final class PlayBoardPresenter {
     private var remainingCards: Int = 0
     private var upsideDownFirstIndex: Int? = nil
     private var upsideDownSecondIndex: Int? = nil
-    
-    
-    private func remove() {
-        upsideDownFirstIndex = nil
-        upsideDownSecondIndex = nil
-        cards.removeAll()
-        remainingCards = 0
-    }
-    
-    private var isGameOver: Bool {
-        return remainingCards == 0
-    }
 }
 
 
@@ -81,8 +57,8 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         if let first = upsideDownFirstIndex, let second = upsideDownSecondIndex {
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
-            viewController?.flipCard(index: first, completion: nil)
-            viewController?.flipCard(index: second, completion: nil)
+            viewController?.flip(index: first, completion: nil)
+            viewController?.flip(index: second, completion: nil)
         }
         
         ///
@@ -90,7 +66,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         ///
         guard let first = upsideDownFirstIndex else {
             upsideDownFirstIndex = index
-            viewController?.flipCard(index: index, completion: nil)
+            viewController?.flip(index: index, completion: nil)
             return
         }
         
@@ -110,34 +86,46 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                 upsideDownFirstIndex = nil
                 upsideDownSecondIndex = nil
                 
-                viewController?.flipCard(index: index) { [weak self] _ in
+                viewController?.flip(index: index) { [weak self] _ in
                     guard let self = self else { return }
-                    self.viewController?.matchingCards(index: first, and: index) { [weak self] _ in
+                    self.viewController?.matching(index: first, and: index) { [weak self] _ in
                         guard let self = self else { return }
                         self.remainingCards -= 2
-                        if isGameOver {
-                            self.viewController?.isGameOver()
+                        if isGameOver { 
+                            self.router.goToGameOver()
                         }
                     }
                 }
             } else {
-                viewController?.flipCard(index: index) { [weak self] _ in
+                viewController?.flip(index: index) { [weak self] _ in
                     guard let self = self else { return }
-                    self.viewController?.shakingCards(index: first, and: index)
+                    self.viewController?.shaking(index: first, and: index)
                 }
             }
         } else {
-            viewController?.flipCard(index: index, completion: nil)
+            viewController?.flip(index: index, completion: nil)
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
         }
+    }
+    
+    
+    private func remove() {
+        upsideDownFirstIndex = nil
+        upsideDownSecondIndex = nil
+        cards.removeAll()
+        remainingCards = 0
+    }
+    
+    private var isGameOver: Bool {
+        return remainingCards == 0
     }
 }
 
 
 extension PlayBoardPresenter {
     
-    func goToMenu() {
-        router.popToRootVC()
+    func goBackMainMenu() {
+        router.goBackMainMenu()
     }
 }

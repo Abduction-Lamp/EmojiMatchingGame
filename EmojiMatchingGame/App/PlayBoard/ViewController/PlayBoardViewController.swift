@@ -7,22 +7,6 @@
 
 import UIKit
 
-
-protocol PlayBoardDisplayable: AnyObject {
-    
-    var presenter: PlayBoardPresentable? { get set }
-    
-    func play(level: Level, with sequence: [String])
-    
-    func flipCard(index: Int, completion: ((Bool) -> Void)?)
-    func shakingCards(index first: Int, and second: Int)
-    func matchingCards(index first: Int, and second: Int, completion: ((Bool) -> Void)?)
-    func disableCards(index first: Int, and second: Int)
-    
-    func isGameOver()
-}
-
-
 final class PlayBoardViewController: UIViewController {
 
     var presenter: PlayBoardPresentable?
@@ -67,12 +51,8 @@ final class PlayBoardViewController: UIViewController {
 extension PlayBoardViewController: PlayBoardDisplayable {
         
     func play(level: Level, with sequence: [String]) {
-        newSetCards(sequence)
+        makeNewSetCards(sequence)
         playBoardView.newGame(level: level, with: cards)
-    }
-    
-    func flipCard(index: Int, completion: ((Bool) -> Void)? = nil) {
-        cards[index].flip(completion: completion)
     }
     
     func disableCards(index first: Int, and second: Int) {
@@ -80,32 +60,24 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         cards[second].tap.isEnabled = false
     }
     
-    func shakingCards(index first: Int, and second: Int) {
+    func flip(index: Int, completion: ((Bool) -> Void)? = nil) {
+        cards[index].flip(completion: completion)
+    }
+    
+    func shaking(index first: Int, and second: Int) {
         cards[first].shake()
         cards[second].shake()
     }
     
-    func matchingCards(index first: Int, and second: Int, completion: ((Bool) -> Void)?) {
+    func matching(index first: Int, and second: Int, completion: ((Bool) -> Void)?) {
         cards[first].match()
-        cards[second].match { isCompletion in
-            completion?(isCompletion)
+        cards[second].match { isCompleted in
+            completion?(isCompleted)
         }
     }
     
-    func isGameOver() {
-        for card in cards {
-            if card.tap.isEnabled { return }
-        }
-        
-        
-        let vc = GameOverViewController()
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true)
-    }
     
-    
-    private func newSetCards(_ sequence: [String]) {
+    private func makeNewSetCards(_ sequence: [String]) {
         cards.removeAll()
         sequence.forEach { emoji in
             let card = CardView()
@@ -121,7 +93,7 @@ extension PlayBoardViewController {
 
     @objc
     private func backMenuButtonTapped(_ sender: UIButton) {
-        presenter?.goToMenu()
+        presenter?.goBackMainMenu()
     }
 
     @objc

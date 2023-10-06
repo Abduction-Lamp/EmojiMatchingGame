@@ -16,8 +16,16 @@ final class GameOverViewController: UIViewController {
         return view
     }
     
+    var presenter: GameOverPresentable?
+    
+    
     override func loadView() {
+        print("VC:\t\t\t😈\tGameOver (loadView)")
         view = GameOverView()
+    }
+    
+    deinit {
+        print("VC:\t\t\t♻️\tGameOver")
     }
     
     override func viewDidLoad() {
@@ -34,24 +42,12 @@ final class GameOverViewController: UIViewController {
     }
 }
 
-extension GameOverViewController {
+
+extension GameOverViewController: GameOverDisplayable {
     
     @objc
     private func nextLevelButtonTapped(_ sender: UIButton) {
-        if let navigationVC = presentingViewController as? UINavigationController,
-           let vc = navigationVC.topViewController as? PlayBoardViewController {
-            dismiss(animated: true) {
-                vc.presenter?.nextLevel()
-            }
-        } else {
-            if let vc = presentingViewController as? PlayBoardViewController {
-                dismiss(animated: true) {
-                    vc.presenter?.nextLevel()
-                }
-            } else {
-                dismiss(animated: true)
-            }
-        }
+        presenter?.nextLevel()
     }
     
     @objc

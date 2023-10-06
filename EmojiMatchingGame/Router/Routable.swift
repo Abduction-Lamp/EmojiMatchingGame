@@ -7,25 +7,32 @@
 
 import UIKit
 
-
 protocol BasicRoutable {
-    
     var navigation: UINavigationController { get set }
     var builder: Buildable { get set }
-}
-
-
-protocol Routable: BasicRoutable {
     
     init(navigation: UINavigationController, builder: Buildable)
-    
     func initVC()
-    
-    func pushNewGameVC()
-    
-    func popToMenuVC()
+}
 
+protocol MainMenuRoutable: BasicRoutable {
+    func goToNewGame()
+    func goToSettings()
+    func goToStatictic()
+    func goToAbout()
+}
+
+protocol PlayBoardRoutable: BasicRoutable {
+    func goToGameOver()
+    func goBackMainMenu()
+}
+
+protocol GameOverRoutable: BasicRoutable {
+    func goToNextLevel()
+    func goToRepeatLevel()
+}
+
+protocol Routable: BasicRoutable & MainMenuRoutable & PlayBoardRoutable & GameOverRoutable {
     func popVC()
     func popToRootVC()
 }
-

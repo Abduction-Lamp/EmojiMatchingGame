@@ -8,21 +8,27 @@
 import UIKit
 
 final class Builder: Buildable {
-    
-    func makeMenuFlow(router: Routable) -> UIViewController & MainMenuDisplayable {
+
+    func makeMainMenuFlow(router: MainMenuRoutable) -> UIViewController & MainMenuDisplayable {
         let vc = MainMenuViewController()
         let presenter = MainMenuPresenter(vc, router: router)
         vc.presenter = presenter
         return vc
     }
-    
-    func makePlayFlow(router: Routable) -> UIViewController & PlayBoardDisplayable {
+     
+    func makePlayBoardFlow(router: PlayBoardRoutable) -> UIViewController & PlayBoardDisplayable {
         let vc = PlayBoardViewController()
         let presenter = PlayBoardPresenter(vc, router: router, emoji: Emoji())
         vc.presenter = presenter
         return vc
     }
     
+    func makeGameOverFlow(router: GameOverRoutable) -> UIViewController & GameOverDisplayable {
+        let vc = GameOverViewController()
+        let presenter = GameOverPresenter(vc, router: router)
+        vc.presenter = presenter
+        return vc
+    }
     
     
     //
@@ -34,14 +40,5 @@ final class Builder: Buildable {
     
     deinit {
         print("ASSEMBLY:\t♻️\tBuilder")
-    }
-    
-    
-    func makeSettingsFlow() -> UIViewController {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .blue
-        vc.modalTransitionStyle = .partialCurl
-        vc.modalPresentationStyle = .popover
-        return vc
     }
 }

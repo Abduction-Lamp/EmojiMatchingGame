@@ -8,7 +8,7 @@
 import UIKit
 
 protocol Buildable: AnyObject {
-    
-    func makeMenuFlow(router: Routable) -> UIViewController & MainMenuDisplayable
-    func makePlayFlow(router: Routable) -> UIViewController & PlayBoardDisplayable
+    func makeMainMenuFlow (router: MainMenuRoutable)  -> UIViewController & MainMenuDisplayable
+    func makePlayBoardFlow(router: PlayBoardRoutable) -> UIViewController & PlayBoardDisplayable
+    func makeGameOverFlow (router: GameOverRoutable)  -> UIViewController & GameOverDisplayable
 }

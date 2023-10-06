@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol MainMenuDisplayable: AnyObject {
-    
-    var presenter: MainMenuPresentable? { get set }
-}
-
-
 final class MainMenuViewController: UIViewController {
     
     private var mainMenuView: MainMenuView {
@@ -24,8 +18,7 @@ final class MainMenuViewController: UIViewController {
     
     var presenter: MainMenuPresentable?
 
-    
-    
+
     override func loadView() {
         print("VC:\t\t\t😈\tMenu (loadView)")
         view = MainMenuView()
@@ -45,16 +38,19 @@ final class MainMenuViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         mainMenuView.animate()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        
         navigationController?.navigationBar.isHidden = false
         mainMenuView.stop()
     }
@@ -70,7 +66,6 @@ extension MainMenuViewController: MainMenuDisplayable {
     
     @objc
     private func settingsButtonTapped(_ sender: UIButton) {
-
         let vc = UIViewController()
         vc.view.backgroundColor = .systemGray6
         vc.modalTransitionStyle = .coverVertical
