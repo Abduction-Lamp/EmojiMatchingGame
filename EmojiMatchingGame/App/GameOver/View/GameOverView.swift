@@ -12,18 +12,22 @@ final class GameOverView: UIView {
     
     private let blur: UIVisualEffectView = {
         let blur = UIVisualEffectView()
-        blur.effect = UIBlurEffect(style: .light)
+        blur.effect = UIBlurEffect(style: .extraLight)
         blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return blur
     }()
     
+    private var quarter: CGFloat {
+        return min(bounds.width, bounds.height) / 4
+    }
+        
     private var winEmoji: String {
         let set: [String] = ["🥳", "🎊", "🎉", "🪅", "🏆"]
         let index: Int = Int.random(in: 0 ..< set.count)
         return set[index]
     }
     
-    private let winLabel: UILabel = {
+    private lazy var winLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.baselineAdjustment = .alignCenters
@@ -34,10 +38,22 @@ final class GameOverView: UIView {
         label.adjustsFontSizeToFitWidth = true
         label.font = .systemFont(ofSize: 500)
         label.minimumScaleFactor = 0.02
-        label.text = "🥳"
+        label.text = winEmoji
         return label
     }()
+    
+    private var winLabelWidthAnchor: NSLayoutConstraint = .init()
+    private var winLabelHeightAnchor: NSLayoutConstraint = .init()
+    private var winLabelCenterYAnchor: NSLayoutConstraint = .init()
 
+    private(set) var tapWinLabel: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        return tap
+    }()
+    
+    
     private(set) var nextLevelButton: UIButton = {
         let attributedText = NSAttributedString(
             string: "Следующий уровень",
@@ -56,6 +72,9 @@ final class GameOverView: UIView {
         button.setAttributedTitle(attributedText, for: .normal)
         return button
     }()
+    
+    private var nextLevelButtonCenterYAnchor: NSLayoutConstraint = .init()
+    
     
     private lazy var fireworks: FireworksLayer = {
         let layer = FireworksLayer()
@@ -82,11 +101,21 @@ final class GameOverView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         blur.frame = bounds
-
-        fireworks.layout(by: bounds, center: winLabel.center, radius: winLabel.bounds.height - layer.cornerRadius)
+        fireworks.layout(by: winLabel.frame)
     }
     
+    override func updateConstraints() {
+        super.updateConstraints()
+        
+        winLabelWidthAnchor.constant = quarter
+        winLabelHeightAnchor.constant = quarter
+        winLabelCenterYAnchor.constant = -quarter
+        
+        nextLevelButtonCenterYAnchor.constant = quarter
+    }
+
     
     private func configuration() {
         addSubview(blur)
@@ -96,41 +125,36 @@ final class GameOverView: UIView {
         layer.cornerRadius = 25
         layer.addSublayer(fireworks)
         
-        let separator: CGFloat = layer.cornerRadius
+        winLabelWidthAnchor = winLabel.widthAnchor.constraint(equalToConstant: quarter)
+        winLabelHeightAnchor = winLabel.heightAnchor.constraint(equalToConstant: quarter)
+        winLabelCenterYAnchor = winLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: -quarter)
+        
+        nextLevelButtonCenterYAnchor = nextLevelButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: quarter)
+        
         NSLayoutConstraint.activate([
-            winLabel.topAnchor.constraint(equalTo: topAnchor, constant: separator),
-            winLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: separator),
-            winLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -separator),
-            winLabel.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -separator),
+            winLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            winLabelCenterYAnchor,
+            winLabelWidthAnchor,
+            winLabelHeightAnchor,
+            
             nextLevelButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nextLevelButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -separator)
+            nextLevelButtonCenterYAnchor
         ])
         
+        winLabel.isUserInteractionEnabled = true
+        winLabel.addGestureRecognizer(tapWinLabel)
     }
 }
 
 
 extension GameOverView {
     
-    func show() {
-        winLabel.text = winEmoji
-        nextLevelButton.isHidden = false
-        winLabel.isHidden = false
-        layer.opacity = 1
-    }
-    
-    func hide() {
-        nextLevelButton.isHidden = true
-        winLabel.isHidden = true
-        layer.opacity = 0
-    }
-    
     func firework() {
         let duration: CFTimeInterval = 2
         
         let springAnimation = CASpringAnimation(keyPath: "transform.scale")
-        springAnimation.stiffness = 450
-        springAnimation.mass = 2
+        springAnimation.stiffness = 1000
+        springAnimation.mass = 5
         springAnimation.fromValue = 0.37
         springAnimation.toValue = 1
 

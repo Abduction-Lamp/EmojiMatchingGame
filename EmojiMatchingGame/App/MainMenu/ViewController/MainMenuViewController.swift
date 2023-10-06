@@ -43,8 +43,6 @@ final class MainMenuViewController: UIViewController {
         mainMenuView.statisticsButton.addTarget(self, action: #selector(statisticsButtonTapped(_:)), for: .touchUpInside)
     }
     
-
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true

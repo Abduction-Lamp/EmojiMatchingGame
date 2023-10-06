@@ -41,6 +41,7 @@ final class PlayBoardPresenter {
     }
     
     private var cards: [String] = []
+    private var remainingCards: Int = 0
     private var upsideDownFirstIndex: Int? = nil
     private var upsideDownSecondIndex: Int? = nil
     
@@ -49,6 +50,11 @@ final class PlayBoardPresenter {
         upsideDownFirstIndex = nil
         upsideDownSecondIndex = nil
         cards.removeAll()
+        remainingCards = 0
+    }
+    
+    private var isGameOver: Bool {
+        return remainingCards == 0
     }
 }
 
@@ -58,6 +64,8 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     func play() {
         remove()
         cards = emoji.makeSequence(for: level)
+        remainingCards = cards.count
+        
         viewController?.play(level: level, with: cards)
     }
     
@@ -67,6 +75,9 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     }
     
     func flip(index: Int) {
+        ///
+        /// Если уже две карты перевернуты, но не совпали, то переворачиваем их обратно (рубашкой вверх)
+        ///
         if let first = upsideDownFirstIndex, let second = upsideDownSecondIndex {
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
@@ -74,6 +85,9 @@ extension PlayBoardPresenter: PlayBoardPresentable {
             viewController?.flipCard(index: second, completion: nil)
         }
         
+        ///
+        /// Если нет перевернутых карт, то переворачиваем одну и на этом все
+        ///
         guard let first = upsideDownFirstIndex else {
             upsideDownFirstIndex = index
             viewController?.flipCard(index: index, completion: nil)
@@ -83,6 +97,13 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         upsideDownSecondIndex = index
         
         if first != index {
+            ///
+            /// Карты совпали:
+            ///     1 - Блокируем карты, чтобы во время анимации нельзя было с картами взаимодействовать
+            ///     2 - Анимация переворота карты
+            ///     3 - Анимация совпадения карты
+            ///     4 - Проверяем все окончание игры
+            ///
             if cards[first] == cards[index] {
                 viewController?.disableCards(index: first, and: index)
                 
@@ -93,7 +114,10 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                     guard let self = self else { return }
                     self.viewController?.matchingCards(index: first, and: index) { [weak self] _ in
                         guard let self = self else { return }
-                        self.viewController?.isGameOver()
+                        self.remainingCards -= 2
+                        if isGameOver {
+                            self.viewController?.isGameOver()
+                        }
                     }
                 }
             } else {
@@ -108,7 +132,6 @@ extension PlayBoardPresenter: PlayBoardPresentable {
             upsideDownSecondIndex = nil
         }
     }
-
 }
 
 

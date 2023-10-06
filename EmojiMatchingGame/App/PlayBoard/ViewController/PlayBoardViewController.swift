@@ -49,40 +49,26 @@ final class PlayBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
         playBoardView.backMenuButton.addTarget(self, action: #selector(backMenuButtonTapped(_:)), for: .touchUpInside)
-        playBoardView.gameOverView.nextLevelButton.addTarget(self, action: #selector(nextLevelButtonTapped(_:)), for: .touchUpInside)
         
         presenter?.play()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        playBoardView.setNeedsUpdateConstraints()
     }
 }
 
 
 extension PlayBoardViewController: PlayBoardDisplayable {
         
-    private func newSetCards(_ sequence: [String]) {
-        cards.removeAll()
-        sequence.forEach { emoji in
-            let card = CardView()
-            card.setEmoji(emoji)
-            card.tap.addTarget(self, action: #selector(cardTaps(_:)))
-            cards.append(card)
-        }
-    }
-    
-    
     func play(level: Level, with sequence: [String]) {
         newSetCards(sequence)
-        playBoardView.make(level: level, with: cards)
-        playBoardView.newGameAnimatin()
+        playBoardView.newGame(level: level, with: cards)
     }
     
     func flipCard(index: Int, completion: ((Bool) -> Void)? = nil) {
@@ -110,7 +96,23 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         for card in cards {
             if card.tap.isEnabled { return }
         }
-        playBoardView.gameOverAnimatin()
+        
+        
+        let vc = GameOverViewController()
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
+    }
+    
+    
+    private func newSetCards(_ sequence: [String]) {
+        cards.removeAll()
+        sequence.forEach { emoji in
+            let card = CardView()
+            card.setEmoji(emoji)
+            card.tap.addTarget(self, action: #selector(cardTaps(_:)))
+            cards.append(card)
+        }
     }
 }
 
@@ -121,15 +123,7 @@ extension PlayBoardViewController {
     private func backMenuButtonTapped(_ sender: UIButton) {
         presenter?.goToMenu()
     }
-    
-    @objc
-    private func nextLevelButtonTapped(_ sender: UIButton) {
-        playBoardView.nextLevelAnimatin() { [weak self]_ in
-            guard let self = self else { return }
-            self.presenter?.nextLevel()
-        }
-    }
-    
+
     @objc
     private func cardTaps(_ sender: UILongPressGestureRecognizer) {
         guard
@@ -150,7 +144,7 @@ extension PlayBoardViewController {
         case .ended:
             card.select(false)
             presenter?.flip(index: index)
-        default: break
+        default: card.select(false)
         }
     }
 }

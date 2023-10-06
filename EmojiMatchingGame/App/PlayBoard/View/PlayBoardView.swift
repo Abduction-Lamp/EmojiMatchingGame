@@ -21,15 +21,27 @@ final class PlayBoardView: UIView {
         stack.layer.cornerRadius = 25
         stack.layer.shadowColor = UIColor.systemGray.cgColor
         stack.layer.shadowOpacity = 0.7
-        stack.layer.shadowRadius = stack.layer.cornerRadius
+        stack.layer.shadowRadius = 10
         stack.layer.shadowOffset = .zero
         
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 4
-
+        
         return stack
     }()
+    
+    private var boardWidth: CGFloat {
+        if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
+            return UIScreen.main.bounds.height - safeAreaInsets.top - safeAreaInsets.bottom
+        } else {
+            return UIScreen.main.bounds.width - directionalLayoutMargins.leading
+        }
+    }
+    
+    private var boardWidthAnchor: NSLayoutConstraint = .init()
+    private var boardHeightAnchor: NSLayoutConstraint = .init()
+    
     
     private(set) var backMenuButton: UIButton = {
         let img = UIImage(systemName: "text.justify")
@@ -40,21 +52,12 @@ final class PlayBoardView: UIView {
         config.baseForegroundColor = .systemRed
         config.contentInsets = .init(top: 17, leading: 17, bottom: 17, trailing: 17)
         config.preferredSymbolConfigurationForImage = largeSymbolStyle
-
+        
         let button = UIButton()
         button.configuration = config
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    private(set) var gameOverView: GameOverView = {
-        let view = GameOverView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.isHidden = false
-        view.layer.opacity = 0
-        return view
-    }()
-    
     
     
     override init(frame: CGRect) {
@@ -72,40 +75,60 @@ final class PlayBoardView: UIView {
         fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
     
+    
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         board.layer.shadowPath = UIBezierPath(roundedRect: board.bounds, cornerRadius: board.layer.cornerRadius).cgPath
     }
     
+    override func updateConstraints() {
+        super.updateConstraints()
+        
+        let width = boardWidth
+        boardWidthAnchor.constant = width
+        boardHeightAnchor.constant = width
+    }
     
     
     private func configuration() {
         backgroundColor = .systemGray6
         
         addSubview(board)
-        addSubview(gameOverView)
         addSubview(backMenuButton)
         
-        let margins: CGFloat = max(
-            max(directionalLayoutMargins.leading, directionalLayoutMargins.trailing),
-            max(directionalLayoutMargins.top, directionalLayoutMargins.bottom)
-        )
-        let width: CGFloat = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - margins - board.spacing
+        boardWidthAnchor = board.widthAnchor.constraint(equalToConstant: boardWidth)
+        boardHeightAnchor = board.heightAnchor.constraint(equalToConstant: boardWidth)
         
         NSLayoutConstraint.activate([
-            gameOverView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            gameOverView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            gameOverView.widthAnchor.constraint(equalToConstant: width),
-            gameOverView.heightAnchor.constraint(equalToConstant: width),
-            
             board.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             board.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            board.widthAnchor.constraint(equalToConstant: width),
-            board.heightAnchor.constraint(equalToConstant: width),
+            boardWidthAnchor,
+            boardHeightAnchor,
             
             backMenuButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             backMenuButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
         ])
+    }
+}
+
+
+extension PlayBoardView {
+    
+    func newGame(level: Level, with cards: [CardView]) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut]) { [weak self] in
+            guard let self = self else { return }
+            board.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+            board.layer.opacity = 0
+        } completion: { _ in
+            self.make(level: level, with: cards)
+            
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                guard let self = self else { return }
+                self.board.transform = .identity
+                self.board.layer.opacity = 1
+            }
+        }
     }
     
     
@@ -120,7 +143,7 @@ final class PlayBoardView: UIView {
         }
     }
     
-    func make(level: Level, with cards: [CardView]) {
+    private func make(level: Level, with cards: [CardView]) {
         remove()
         
         if level.rawValue * level.rawValue == cards.count {
@@ -140,34 +163,6 @@ final class PlayBoardView: UIView {
                 }
                 board.addArrangedSubview(row)
             }
-        }
-    }
-    
-    func newGameAnimatin() {
-        UIView.animate(withDuration: 0.20, delay: 0, options: [.curveEaseInOut]) { [weak self] in
-            guard let self = self else { return }
-            self.board.transform = .identity
-        }
-    }
-    
-    func gameOverAnimatin() {
-        UIView.animate(withDuration: 0.20, delay: 0.3, options: [.curveEaseInOut]) { [weak self] in
-            guard let self = self else { return }
-            self.gameOverView.show()
-            self.board.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        } completion: { _ in
-            self.gameOverView.firework()
-        }
-    }
-    
-    func nextLevelAnimatin(completion: ((Bool) -> Void)? = nil) {
-        UIView.animate(withDuration: 0.20, delay: 0.1, options: [.curveEaseInOut]) { [weak self] in
-            guard let self = self else { return }
-            self.board.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
-            self.gameOverView.hide()
-        } completion: { isCompleted in
-            guard let completion = completion else { return }
-            completion(isCompleted)
         }
     }
 }

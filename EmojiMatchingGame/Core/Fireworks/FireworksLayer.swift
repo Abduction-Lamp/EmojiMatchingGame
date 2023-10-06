@@ -30,17 +30,17 @@ final class FireworksLayer: CAEmitterLayer {
         particles(with: contents)
     }
     
-    func layout(by bounds: CGRect, center: CGPoint? = nil, radius: CGFloat? = nil) {
-        frame = bounds
+    func layout(by frame: CGRect, center: CGPoint? = nil, radius: CGFloat? = nil) {
+        self.frame = CGRect(origin: .zero, size: frame.size)
         
-        var position = CGPoint(x: bounds.midX, y: bounds.midY)
+        var position = CGPoint(x: frame.midX, y: frame.midY)
         var size = CGSize.zero
 
         if let center = center { position = center }
         if let radius = radius {
             size = .init(width: radius, height: radius)
         } else {
-            let smallerSide = min(bounds.size.width, bounds.size.height)
+            let smallerSide = min(frame.size.width, frame.size.height)
             size = .init(width: smallerSide, height: smallerSide)
         }
         
