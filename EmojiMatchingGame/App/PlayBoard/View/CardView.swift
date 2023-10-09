@@ -113,7 +113,7 @@ extension CardView {
             guard let self = self else { return }
             self.transform = CGAffineTransform(scaleX: scale, y: scale)
         } completion: { _ in
-            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: [.curveEaseIn]) {
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.25, options: [.curveEaseIn]) {
                 self.transform = .identity
             } completion: { isSecondAnimationCompleted in
                 guard let completion = completion else { return }

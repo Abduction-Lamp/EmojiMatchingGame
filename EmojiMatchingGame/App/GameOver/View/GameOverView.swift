@@ -153,20 +153,22 @@ extension GameOverView {
         let duration: CFTimeInterval = 2
         
         let springAnimation = CASpringAnimation(keyPath: "transform.scale")
+        springAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         springAnimation.stiffness = 1000
         springAnimation.mass = 5
         springAnimation.fromValue = 0.37
         springAnimation.toValue = 1
 
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         rotationAnimation.fromValue = 0
-        rotationAnimation.toValue = Float.pi * 4
+        rotationAnimation.toValue = Float.pi * 6
 
         let group = CAAnimationGroup()
         group.animations = [springAnimation, rotationAnimation]
-        group.duration = duration
         group.timingFunction = CAMediaTimingFunction(name: .easeOut)
-        
+        group.duration = duration
+
         winLabel.layer.add(group, forKey: nil)
         fireworks.emit(duration: duration)
     }
