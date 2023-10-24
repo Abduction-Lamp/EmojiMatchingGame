@@ -90,7 +90,7 @@ extension Router {
         if let playVC = navigation.topViewController as? PlayBoardViewController {
             if let gameOverVC = playVC.presentedViewController {
                 gameOverVC.dismiss(animated: true) {
-                    playVC.presenter?.nextLevel()
+                    playVC.presenter?.play()
                 }
             } else {
                 errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")

@@ -11,7 +11,7 @@ final class PlayBoardViewController: UIViewController {
 
     var presenter: PlayBoardPresentable?
     
-    private var level: Level = .one
+    private let appearance: AppearanceStorageable
     private var cards: [CardView] = []
     
     private var playBoardView: PlayBoardView {
@@ -22,14 +22,26 @@ final class PlayBoardViewController: UIViewController {
     }
     
     
-    override func loadView() {
-        print("VC:\t\t\t😈\tPlayBoard (loadView)")
-        view = PlayBoardView()
+    init(appearance: AppearanceStorageable) {
+        self.appearance = appearance
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
     
     deinit {
         print("VC:\t\t\t♻️\tPlayBoard")
     }
+    
+    
+    override func loadView() {
+        print("VC:\t\t\t😈\tPlayBoard (loadView)")
+        view = PlayBoardView()
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +64,10 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         
     func play(level: Level, with sequence: [String]) {
         makeNewSetCards(sequence)
-        playBoardView.newGame(level: level, with: cards)
+        playBoardView.playNewGame(level: level, with: cards, animated: appearance.animated)
     }
     
-    func disableCards(index first: Int, and second: Int) {
+    func disable(index first: Int, and second: Int) {
         cards[first].tap.isEnabled = false
         cards[second].tap.isEnabled = false
     }
@@ -76,12 +88,11 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         }
     }
     
-    
     private func makeNewSetCards(_ sequence: [String]) {
         cards.removeAll()
         sequence.forEach { emoji in
-            let card = CardView()
-            card.setEmoji(emoji)
+            let card = CardView(frame: .zero, appearance: appearance)
+            card.setup(emoji: emoji)
             card.tap.addTarget(self, action: #selector(cardTaps(_:)))
             cards.append(card)
         }

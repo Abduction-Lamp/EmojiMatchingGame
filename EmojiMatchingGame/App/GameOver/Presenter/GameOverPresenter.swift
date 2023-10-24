@@ -11,10 +11,16 @@ final class GameOverPresenter: GameOverPresentable {
     
     private weak var viewController: GameOverDisplayable?
     private let router: GameOverRoutable
+    private let storage: Storage
     
-    init(_ viewController: GameOverDisplayable, router: GameOverRoutable) {
+    var doWithAnimation: Bool {
+        storage.appearance.animated
+    }
+    
+    init(_ viewController: GameOverDisplayable, router: GameOverRoutable, storage: Storage) {
         self.viewController = viewController
         self.router = router
+        self.storage = storage
         
         print("PRESENTER:\t😈\tGameOver")
     }
@@ -25,6 +31,7 @@ final class GameOverPresenter: GameOverPresentable {
     
     
     func nextLevel() {
+        storage.user.nextLevel()
         router.goToNextLevel()
     }
     

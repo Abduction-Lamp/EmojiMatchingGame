@@ -13,6 +13,8 @@
 		4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */; };
 		4E343B0B2AC31DE300D169DD /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E343B0A2AC31DE300D169DD /* UIImage.swift */; };
 		4E343B0D2AC3351900D169DD /* EmittedParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E343B0C2AC3351900D169DD /* EmittedParticle.swift */; };
+		4E433E782AE14D39004B4E98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E433E772AE14D39004B4E98 /* User.swift */; };
+		4E433E7A2AE15DDC004B4E98 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E433E792AE15DDC004B4E98 /* UIColor.swift */; };
 		4E4923AA2AAB4577002B65BC /* CAGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4923A92AAB4577002B65BC /* CAGradientLayer.swift */; };
 		4E4EAC302AD03EB700AF5D35 /* MainMenuPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC2F2AD03EB700AF5D35 /* MainMenuPresentable.swift */; };
 		4E4EAC322AD03EDB00AF5D35 /* PlayBoardPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC312AD03EDB00AF5D35 /* PlayBoardPresentable.swift */; };
@@ -37,7 +39,9 @@
 		4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */; };
 		4ED35E472A55B146004B54AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E462A55B146004B54AC /* Assets.xcassets */; };
 		4ED35E4A2A55B146004B54AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */; };
+		4EE21F762AE2DC8C00A71B6D /* Storageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE21F752AE2DC8C00A71B6D /* Storageable.swift */; };
 		4EE427032ABB3464003FCECD /* FireworksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE427022ABB3464003FCECD /* FireworksLayer.swift */; };
+		4EF3581D2AD426170058C2FB /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3581C2AD426170058C2FB /* Appearance.swift */; };
 		4EF61F5B2A5778DA00E79C74 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF61F5A2A5778DA00E79C74 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +52,8 @@
 		4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		4E343B0A2AC31DE300D169DD /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		4E343B0C2AC3351900D169DD /* EmittedParticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmittedParticle.swift; sourceTree = "<group>"; };
+		4E433E772AE14D39004B4E98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4E433E792AE15DDC004B4E98 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4E4923A92AAB4577002B65BC /* CAGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAGradientLayer.swift; sourceTree = "<group>"; };
 		4E4EAC2F2AD03EB700AF5D35 /* MainMenuPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuPresentable.swift; sourceTree = "<group>"; };
 		4E4EAC312AD03EDB00AF5D35 /* PlayBoardPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardPresentable.swift; sourceTree = "<group>"; };
@@ -74,7 +80,9 @@
 		4ED35E462A55B146004B54AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ED35E492A55B146004B54AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4ED35E4B2A55B146004B54AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EE21F752AE2DC8C00A71B6D /* Storageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storageable.swift; sourceTree = "<group>"; };
 		4EE427022ABB3464003FCECD /* FireworksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireworksLayer.swift; sourceTree = "<group>"; };
+		4EF3581C2AD426170058C2FB /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		4EF61F5A2A5778DA00E79C74 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +102,7 @@
 			children = (
 				4E98C57A2A5890040034522B /* Emoji.swift */,
 				4E027BBA2A5D8C43009CB092 /* Flag.swift */,
+				4EE21F752AE2DC8C00A71B6D /* Storageable.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -138,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				4E86D6092A56EBCD00E23388 /* Level.swift */,
+				4E433E772AE14D39004B4E98 /* User.swift */,
+				4EF3581C2AD426170058C2FB /* Appearance.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -145,8 +156,8 @@
 		4E17E23C2A66DF5200391454 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				4EE427012ABB344E003FCECD /* Fireworks */,
 				4E4923A62AAB4409002B65BC /* Extentions */,
+				4EE427012ABB344E003FCECD /* Fireworks */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -156,6 +167,7 @@
 			children = (
 				4E4923A92AAB4577002B65BC /* CAGradientLayer.swift */,
 				4E343B0A2AC31DE300D169DD /* UIImage.swift */,
+				4E433E792AE15DDC004B4E98 /* UIColor.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -202,6 +214,7 @@
 				4E7FAB372A9F79AD0020C771 /* MainMenu */,
 				4E86D6042A55B6E800E23388 /* PlayBoard */,
 				4E13C4052ACED83E00F40235 /* GameOver */,
+				4EF358182AD425CF0058C2FB /* Settings */,
 				4ED35E3D2A55B145004B54AC /* AppDelegate.swift */,
 				4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */,
 			);
@@ -313,6 +326,37 @@
 			path = Fireworks;
 			sourceTree = "<group>";
 		};
+		4EF358182AD425CF0058C2FB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4EF3581B2AD425FC0058C2FB /* View */,
+				4EF3581A2AD425EF0058C2FB /* ViewController */,
+				4EF358192AD425E10058C2FB /* Presenter */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4EF358192AD425E10058C2FB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4EF3581A2AD425EF0058C2FB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4EF3581B2AD425FC0058C2FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -404,15 +448,19 @@
 				4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */,
 				4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */,
 				4E4EAC302AD03EB700AF5D35 /* MainMenuPresentable.swift in Sources */,
+				4EF3581D2AD426170058C2FB /* Appearance.swift in Sources */,
+				4E433E7A2AE15DDC004B4E98 /* UIColor.swift in Sources */,
 				4E4EAC342AD0403B00AF5D35 /* MainMenuDisplayable.swift in Sources */,
 				4E4EAC322AD03EDB00AF5D35 /* PlayBoardPresentable.swift in Sources */,
 				4E5EB6E02AA622770074C7B5 /* Router.swift in Sources */,
 				4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */,
 				4E4EAC3C2AD04C9F00AF5D35 /* GameOverDisplayable.swift in Sources */,
 				4E13C40B2ACED8AC00F40235 /* GameOverViewController.swift in Sources */,
+				4EE21F762AE2DC8C00A71B6D /* Storageable.swift in Sources */,
 				4EF61F5B2A5778DA00E79C74 /* CardView.swift in Sources */,
 				4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */,
 				4E5EB6E42AA6278D0074C7B5 /* Builder.swift in Sources */,
+				4E433E782AE14D39004B4E98 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

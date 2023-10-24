@@ -117,7 +117,14 @@ final class PlayBoardView: UIView {
 
 extension PlayBoardView {
     
-    func newGame(level: Level, with cards: [CardView]) {
+    func playNewGame(level: Level, with cards: [CardView], animated: Bool) {
+        guard animated else {
+            board.layer.opacity = 0
+            make(level: level, with: cards)
+            board.layer.opacity = 1
+            return
+        }
+        
         UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut]) { [weak self] in
             guard let self = self else { return }
             board.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)

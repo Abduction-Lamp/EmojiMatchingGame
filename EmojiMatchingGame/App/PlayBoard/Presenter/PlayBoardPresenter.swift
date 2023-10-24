@@ -10,15 +10,15 @@ import Foundation
 final class PlayBoardPresenter {
     
     private weak var viewController: PlayBoardDisplayable?
-    private let router: PlayBoardRoutable
     
-    private var level: Level
+    private let router: PlayBoardRoutable
+    private let storage: Storage
     private let emoji: Emoji
     
-    init(_ viewController: PlayBoardDisplayable, router: PlayBoardRoutable, level: Level = .one, emoji: Emoji) {
+    init(_ viewController: PlayBoardDisplayable, router: PlayBoardRoutable, storage: Storage, emoji: Emoji) {
         self.viewController = viewController
-        self.level = level
         self.router = router
+        self.storage = storage
         self.emoji = emoji
         
         print("PRESENTER:\t😈\tPlayBoard")
@@ -39,17 +39,13 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     
     func play() {
         remove()
+        let level = storage.user.unlockLevel
         cards = emoji.makeSequence(for: level)
         remainingCards = cards.count
         
         viewController?.play(level: level, with: cards)
     }
-    
-    func nextLevel() {
-        level = level.next()
-        play()
-    }
-    
+
     func flip(index: Int) {
         ///
         /// Если уже две карты перевернуты, но не совпали, то переворачиваем их обратно (рубашкой вверх)
@@ -81,7 +77,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
             ///     4 - Проверяем все окончание игры
             ///
             if cards[first] == cards[index] {
-                viewController?.disableCards(index: first, and: index)
+                viewController?.disable(index: first, and: index)
                 
                 upsideDownFirstIndex = nil
                 upsideDownSecondIndex = nil

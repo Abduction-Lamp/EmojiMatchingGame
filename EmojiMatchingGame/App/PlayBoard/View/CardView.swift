@@ -32,11 +32,14 @@ final class CardView: UIView {
         return tap
     }()
     
-        
-    override init(frame: CGRect) {
+    private let appearance: AppearanceStorageable
+    
+    
+    init(frame: CGRect, appearance: AppearanceStorageable) {
+        self.appearance = appearance
         super.init(frame: frame)
+        
         configuration()
-
         print("\tVIEW:\t😈\tCard")
     }
     
@@ -53,10 +56,9 @@ final class CardView: UIView {
         layer.cornerRadius = bounds.height/4
     }
     
-    
     private func configuration() {
         clipsToBounds = false
-        backgroundColor = .systemYellow
+        backgroundColor = appearance.color
         
         addSubview(emoji)
         NSLayoutConstraint.activate([
@@ -71,58 +73,11 @@ final class CardView: UIView {
 }
 
 
+// MARK: - User Actions
+//
 extension CardView {
     
-    private func changeState() {
-        backgroundColor = emoji.isHidden ? .clear : .systemYellow
-        emoji.isHidden = !emoji.isHidden
-    }
-    
-    
-    func flip(completion: ((Bool) -> Void)? = nil) {
-        let duration: TimeInterval = 0.4
-        
-        UIView.transition(with: self, duration: duration, options: [.transitionFlipFromLeft, .curveEaseInOut]) { [weak self] in
-            guard let self = self else { return }
-            self.changeState()
-        } completion: { isCompleted in
-            guard let completion = completion else { return }
-            completion(isCompleted)
-        }
-    }
-    
-    func shake(whih delay: CFTimeInterval = .zero) {
-        let duration: CFTimeInterval = 0.06
-        let shift: CGFloat = 7
-        
-        let animation = CABasicAnimation(keyPath: "position.x")
-        animation.duration = duration
-        animation.timeOffset = delay
-        animation.repeatCount = 5
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        animation.fromValue = center.x - shift
-        animation.toValue = center.x + shift
-        
-        layer.add(animation, forKey: "shake")
-    }
-    
-    func match(whih delay: CFTimeInterval = .zero, completion: ((Bool) -> Void)? = nil) {
-        let scale: CGFloat = 1.25
-
-        UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseOut]) { [weak self] in
-            guard let self = self else { return }
-            self.transform = CGAffineTransform(scaleX: scale, y: scale)
-        } completion: { _ in
-            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.25, options: [.curveEaseIn]) {
-                self.transform = .identity
-            } completion: { isSecondAnimationCompleted in
-                guard let completion = completion else { return }
-                completion(isSecondAnimationCompleted)
-            }
-        }
-    }
-    
-    func setEmoji(_ emoji: String) {
+    func setup(emoji: String) {
         self.emoji.text = emoji
     }
     
@@ -139,6 +94,73 @@ extension CardView {
             layer.shadowRadius = 0
             layer.shadowOffset = .zero
             layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
+        }
+    }
+}
+
+
+// MARK: - Card Actions And Animation
+//
+extension CardView {
+    
+    private func changeState() {
+        backgroundColor = emoji.isHidden ? .clear : appearance.color
+        emoji.isHidden = !emoji.isHidden
+    }
+    
+    func flip(completion: ((Bool) -> Void)? = nil) {
+        guard appearance.animated else {
+            changeState()
+            completion?(true)
+            return
+        }
+        
+        let duration: TimeInterval = 0.4
+        
+        UIView.transition(with: self, duration: duration, options: [.transitionFlipFromLeft, .curveEaseInOut]) { [weak self] in
+            guard let self = self else { return }
+            self.changeState()
+        } completion: { isCompleted in
+            guard let completion = completion else { return }
+            completion(isCompleted)
+        }
+    }
+    
+    func shake(whih delay: CFTimeInterval = .zero) {
+        guard appearance.animated else { return }
+        
+        let duration: CFTimeInterval = 0.06
+        let shift: CGFloat = 7
+        
+        let animation = CABasicAnimation(keyPath: "position.x")
+        animation.duration = duration
+        animation.timeOffset = delay
+        animation.repeatCount = 5
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.fromValue = center.x - shift
+        animation.toValue = center.x + shift
+        
+        layer.add(animation, forKey: "shake")
+    }
+    
+    func match(whih delay: CFTimeInterval = .zero, completion: ((Bool) -> Void)? = nil) {
+        guard appearance.animated else {
+            completion?(true)
+            return
+        }
+        
+        let scale: CGFloat = 1.25
+        
+        UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseOut]) { [weak self] in
+            guard let self = self else { return }
+            self.transform = CGAffineTransform(scaleX: scale, y: scale)
+        } completion: { _ in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.25, options: [.curveEaseIn]) {
+                self.transform = .identity
+            } completion: { isSecondAnimationCompleted in
+                guard let completion = completion else { return }
+                completion(isSecondAnimationCompleted)
+            }
         }
     }
 }

@@ -38,6 +38,7 @@ final class GameOverViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        guard let animation = presenter?.doWithAnimation, animation else { return }
         gameOverView.firework()
     }
 }
@@ -52,6 +53,7 @@ extension GameOverViewController: GameOverDisplayable {
     
     @objc
     private func winLabelTaps(_ sender: UITapGestureRecognizer) {
+        guard let animation = presenter?.doWithAnimation, animation else { return }
         switch sender.state {
         case .ended: gameOverView.firework()
         default: break
