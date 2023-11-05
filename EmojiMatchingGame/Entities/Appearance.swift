@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreHaptics
 
 final class Appearance {
     
@@ -13,15 +14,22 @@ final class Appearance {
     
     private let defaults = UserDefaults.standard
     
-    private var _color:     UIColor
-    private var _haptics:   Bool
+    private var _color:    UIColor
+    private var _haptics:  Bool
     private var _animated: Bool
     
+    private var _isSupportsHaptics: Bool
+    
     private init() {
-        _color     = .systemYellow
-        _haptics   = true
-        _animated = false
+        _color    = Design.Default.appearance.color
+        _haptics  = Design.Default.appearance.haptics
+        _animated = Design.Default.appearance.animated
+        
+        let capabilities = CHHapticEngine.capabilitiesForHardware()
+        _isSupportsHaptics = capabilities.supportsHaptics
     }
+    
+    internal var subscribers: [WeakSubscriber] = []
 }
 
 
@@ -34,14 +42,20 @@ extension Appearance: AppearanceStorageable {
     }
     
     
+    var isSupportsHaptics: Bool {
+        _isSupportsHaptics
+    }
+    
     var color: UIColor {
         get {
             _color
         }
         set {
+            guard newValue != _color else { return }
             let key = UserDefaultsKeys.color
             _color = newValue
             defaults.setValue(newValue.hex, forKey: key.rawValue)
+            notify()
         }
     }
     
@@ -50,9 +64,11 @@ extension Appearance: AppearanceStorageable {
             _haptics
         }
         set {
+            guard newValue != _haptics else { return }
             let key = UserDefaultsKeys.haptics
             _haptics = newValue
             defaults.setValue(newValue, forKey: key.rawValue)
+            notify()
         }
     }
     
@@ -61,9 +77,11 @@ extension Appearance: AppearanceStorageable {
             _animated
         }
         set {
+            guard newValue != _animated else { return }
             let key = UserDefaultsKeys.animation
             _animated = newValue
             defaults.setValue(newValue, forKey: key.rawValue)
+            notify()
         }
     }
     
@@ -74,8 +92,8 @@ extension Appearance: AppearanceStorageable {
             switch key {
             case .color:
                 if let hex = defaults.value(forKey: key.rawValue) as? String,
-                   let savedColor = UIColor(hex: hex) {
-                    _color = savedColor
+                   let saved = UIColor(hex: hex) {
+                    _color = saved
                     print("\t✅ Color: hex > \(hex), rgba > \(_color)")
                 }
             case .haptics:
@@ -91,5 +109,33 @@ extension Appearance: AppearanceStorageable {
             }
         }
         print("APPEARANCE:\t🙈 Fetch > Stop")
+    }
+    
+    func clear() {
+        UserDefaultsKeys.allCases.forEach { key in
+            defaults.setValue(nil, forKey: key.rawValue)
+        }
+        _color    = Design.Default.appearance.color
+        _haptics  = Design.Default.appearance.haptics
+        _animated = Design.Default.appearance.animated
+        
+        notify()
+    }
+}
+
+extension Appearance {
+    
+    func register(_ subscriber: Subscriber) {
+        if subscribers.contains(where: { $0.wrapped === subscriber }) { return }
+        let wrapped = WeakSubscriber(subscriber)
+        subscribers.append(wrapped)
+    }
+    
+    func unsubscribe(_ subscriber: any Subscriber) {
+        subscribers.removeAll(where: { $0.wrapped === subscriber })
+    }
+    
+    func notify() {
+        subscribers.forEach { $0.wrapped?.update() }
     }
 }

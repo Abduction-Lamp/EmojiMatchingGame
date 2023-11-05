@@ -10,13 +10,18 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var router: Routable?
+    private var router: Routable?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let navigation = UINavigationController()
-        router = Router(navigation: navigation, builder: Builder())
+        
+        let user: UserStorageable = User.shared
+        let appearance: AppearanceStorageable = Appearance.shared
+        let builder: Buildable = Builder(storage: (user, appearance))
+        
+        router = Router(navigation: navigation, builder: builder)
         router?.initVC()
         
         window = UIWindow(windowScene: windowScene)

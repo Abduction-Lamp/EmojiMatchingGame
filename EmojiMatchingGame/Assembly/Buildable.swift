@@ -11,4 +11,5 @@ protocol Buildable: AnyObject {
     func makeMainMenuFlow (router: MainMenuRoutable)  -> UIViewController & MainMenuDisplayable
     func makePlayBoardFlow(router: PlayBoardRoutable) -> UIViewController & PlayBoardDisplayable
     func makeGameOverFlow (router: GameOverRoutable)  -> UIViewController & GameOverDisplayable
+    func makeSettingsFlow ()  -> UIViewController & SettingsDisplayable
 }

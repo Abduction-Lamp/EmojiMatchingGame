@@ -10,7 +10,7 @@ import UIKit
 final class Router: Routable {
     
     var navigation: UINavigationController
-    var builder: Buildable
+    private var builder: Buildable
     
     init(navigation: UINavigationController, builder: Buildable) {
         self.navigation = navigation
@@ -52,7 +52,14 @@ extension Router {
     }
     
     func goToSettings() {
-        
+        if let mainMenuVC = navigation.topViewController as? MainMenuViewController {
+            let settingsVC = builder.makeSettingsFlow()
+            settingsVC.modalTransitionStyle = .coverVertical
+            settingsVC.modalPresentationStyle = .formSheet
+            mainMenuVC.present(settingsVC, animated: true)
+        } else {
+            errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
+        }
     }
     
     func goToStatictic() {
@@ -93,7 +100,7 @@ extension Router {
                     playVC.presenter?.play()
                 }
             } else {
-                errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
+                errorCase("⚠️ [Navigation ERROR]: Presented ViewController is not what was expected")
             }
         } else {
             errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
@@ -107,7 +114,7 @@ extension Router {
                     playVC.presenter?.play()
                 }
             } else {
-                errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
+                errorCase("⚠️ [Navigation ERROR]: Presented ViewController is not what was expected")
             }
         } else {
             errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")

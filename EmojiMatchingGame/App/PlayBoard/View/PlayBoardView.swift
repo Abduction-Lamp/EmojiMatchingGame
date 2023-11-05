@@ -64,7 +64,7 @@ final class PlayBoardView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configuration()
+        configure()
         
         print("\tVIEW:\t😈\tPlayBoard")
     }
@@ -93,7 +93,7 @@ final class PlayBoardView: UIView {
     }
     
     
-    private func configuration() {
+    private func configure() {
         backgroundColor = .systemGray6
         
         addSubview(board)

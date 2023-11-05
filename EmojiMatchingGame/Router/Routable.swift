@@ -9,7 +9,6 @@ import UIKit
 
 protocol BasicRoutable {
     var navigation: UINavigationController { get set }
-    var builder: Buildable { get set }
     
     init(navigation: UINavigationController, builder: Buildable)
     func initVC()

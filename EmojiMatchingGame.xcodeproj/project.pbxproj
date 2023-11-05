@@ -16,6 +16,7 @@
 		4E433E782AE14D39004B4E98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E433E772AE14D39004B4E98 /* User.swift */; };
 		4E433E7A2AE15DDC004B4E98 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E433E792AE15DDC004B4E98 /* UIColor.swift */; };
 		4E4923AA2AAB4577002B65BC /* CAGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4923A92AAB4577002B65BC /* CAGradientLayer.swift */; };
+		4E4AB0322AF52B1100A94328 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AB0312AF52B1100A94328 /* Observer.swift */; };
 		4E4EAC302AD03EB700AF5D35 /* MainMenuPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC2F2AD03EB700AF5D35 /* MainMenuPresentable.swift */; };
 		4E4EAC322AD03EDB00AF5D35 /* PlayBoardPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC312AD03EDB00AF5D35 /* PlayBoardPresentable.swift */; };
 		4E4EAC342AD0403B00AF5D35 /* MainMenuDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4EAC332AD0403B00AF5D35 /* MainMenuDisplayable.swift */; };
@@ -29,6 +30,12 @@
 		4E5EB6E42AA6278D0074C7B5 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6E32AA6278D0074C7B5 /* Builder.swift */; };
 		4E5EB6E62AA636620074C7B5 /* MainMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EB6E52AA636620074C7B5 /* MainMenuPresenter.swift */; };
 		4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */; };
+		4E73BB152AF25BE1004EDEC0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E73BB142AF25BE1004EDEC0 /* UIFont.swift */; };
+		4E73BB172AF2901A004EDEC0 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E73BB162AF2901A004EDEC0 /* SettingsPresenter.swift */; };
+		4E73BB192AF29035004EDEC0 /* SettingsPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E73BB182AF29035004EDEC0 /* SettingsPresentable.swift */; };
+		4E73BB1B2AF2908F004EDEC0 /* SettingsDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E73BB1A2AF2908F004EDEC0 /* SettingsDisplayable.swift */; };
+		4E777D9D2AE7F83700C6F716 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E777D9C2AE7F83700C6F716 /* SettingsViewController.swift */; };
+		4E777D9F2AE7F8F800C6F716 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E777D9E2AE7F8F800C6F716 /* SettingsView.swift */; };
 		4E7FAB3C2A9F7A170020C771 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3B2A9F7A170020C771 /* MainMenuViewController.swift */; };
 		4E7FAB3E2A9F8B360020C771 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */; };
 		4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6072A55B75900E23388 /* PlayBoardView.swift */; };
@@ -39,8 +46,10 @@
 		4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */; };
 		4ED35E472A55B146004B54AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E462A55B146004B54AC /* Assets.xcassets */; };
 		4ED35E4A2A55B146004B54AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */; };
+		4EDB4A172AF12D7000FE32D8 /* SlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB4A162AF12D7000FE32D8 /* SlotView.swift */; };
 		4EE21F762AE2DC8C00A71B6D /* Storageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE21F752AE2DC8C00A71B6D /* Storageable.swift */; };
 		4EE427032ABB3464003FCECD /* FireworksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE427022ABB3464003FCECD /* FireworksLayer.swift */; };
+		4EEA8FE52AF1C0EB00839577 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA8FE42AF1C0EB00839577 /* Design.swift */; };
 		4EF3581D2AD426170058C2FB /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3581C2AD426170058C2FB /* Appearance.swift */; };
 		4EF61F5B2A5778DA00E79C74 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF61F5A2A5778DA00E79C74 /* CardView.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +64,7 @@
 		4E433E772AE14D39004B4E98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4E433E792AE15DDC004B4E98 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4E4923A92AAB4577002B65BC /* CAGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAGradientLayer.swift; sourceTree = "<group>"; };
+		4E4AB0312AF52B1100A94328 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		4E4EAC2F2AD03EB700AF5D35 /* MainMenuPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuPresentable.swift; sourceTree = "<group>"; };
 		4E4EAC312AD03EDB00AF5D35 /* PlayBoardPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardPresentable.swift; sourceTree = "<group>"; };
 		4E4EAC332AD0403B00AF5D35 /* MainMenuDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuDisplayable.swift; sourceTree = "<group>"; };
@@ -68,6 +78,12 @@
 		4E5EB6E32AA6278D0074C7B5 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		4E5EB6E52AA636620074C7B5 /* MainMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuPresenter.swift; sourceTree = "<group>"; };
 		4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardPresenter.swift; sourceTree = "<group>"; };
+		4E73BB142AF25BE1004EDEC0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		4E73BB162AF2901A004EDEC0 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		4E73BB182AF29035004EDEC0 /* SettingsPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresentable.swift; sourceTree = "<group>"; };
+		4E73BB1A2AF2908F004EDEC0 /* SettingsDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDisplayable.swift; sourceTree = "<group>"; };
+		4E777D9C2AE7F83700C6F716 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4E777D9E2AE7F8F800C6F716 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4E7FAB3B2A9F7A170020C771 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		4E86D6072A55B75900E23388 /* PlayBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardView.swift; sourceTree = "<group>"; };
@@ -80,8 +96,10 @@
 		4ED35E462A55B146004B54AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ED35E492A55B146004B54AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4ED35E4B2A55B146004B54AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EDB4A162AF12D7000FE32D8 /* SlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotView.swift; sourceTree = "<group>"; };
 		4EE21F752AE2DC8C00A71B6D /* Storageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storageable.swift; sourceTree = "<group>"; };
 		4EE427022ABB3464003FCECD /* FireworksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireworksLayer.swift; sourceTree = "<group>"; };
+		4EEA8FE42AF1C0EB00839577 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		4EF3581C2AD426170058C2FB /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		4EF61F5A2A5778DA00E79C74 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +174,8 @@
 		4E17E23C2A66DF5200391454 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4E4AB02F2AF52AE600A94328 /* Observer */,
+				4EEA8FE32AF1C07F00839577 /* Design */,
 				4E4923A62AAB4409002B65BC /* Extentions */,
 				4EE427012ABB344E003FCECD /* Fireworks */,
 			);
@@ -168,8 +188,17 @@
 				4E4923A92AAB4577002B65BC /* CAGradientLayer.swift */,
 				4E343B0A2AC31DE300D169DD /* UIImage.swift */,
 				4E433E792AE15DDC004B4E98 /* UIColor.swift */,
+				4E73BB142AF25BE1004EDEC0 /* UIFont.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		4E4AB02F2AF52AE600A94328 /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				4E4AB0312AF52B1100A94328 /* Observer.swift */,
+			);
+			path = Observer;
 			sourceTree = "<group>";
 		};
 		4E5EB6DA2AA61E280074C7B5 /* Router */ = {
@@ -326,6 +355,14 @@
 			path = Fireworks;
 			sourceTree = "<group>";
 		};
+		4EEA8FE32AF1C07F00839577 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				4EEA8FE42AF1C0EB00839577 /* Design.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
 		4EF358182AD425CF0058C2FB /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +376,8 @@
 		4EF358192AD425E10058C2FB /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				4E73BB182AF29035004EDEC0 /* SettingsPresentable.swift */,
+				4E73BB162AF2901A004EDEC0 /* SettingsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -346,6 +385,8 @@
 		4EF3581A2AD425EF0058C2FB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4E73BB1A2AF2908F004EDEC0 /* SettingsDisplayable.swift */,
+				4E777D9C2AE7F83700C6F716 /* SettingsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -353,6 +394,8 @@
 		4EF3581B2AD425FC0058C2FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4EDB4A162AF12D7000FE32D8 /* SlotView.swift */,
+				4E777D9E2AE7F8F800C6F716 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -429,9 +472,12 @@
 			files = (
 				4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */,
 				4E4EAC382AD0426100AF5D35 /* PlayBoardDisplayable.swift in Sources */,
+				4E4AB0322AF52B1100A94328 /* Observer.swift in Sources */,
 				4E343B0B2AC31DE300D169DD /* UIImage.swift in Sources */,
 				4E7FAB3E2A9F8B360020C771 /* MainMenuView.swift in Sources */,
+				4E73BB192AF29035004EDEC0 /* SettingsPresentable.swift in Sources */,
 				4E5EB6DE2AA620F90074C7B5 /* Routable.swift in Sources */,
+				4EEA8FE52AF1C0EB00839577 /* Design.swift in Sources */,
 				4E5EB6E22AA625F30074C7B5 /* Buildable.swift in Sources */,
 				4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */,
 				4E13C40D2ACEE1E600F40235 /* GameOverPresenter.swift in Sources */,
@@ -445,11 +491,16 @@
 				4E5EB6E62AA636620074C7B5 /* MainMenuPresenter.swift in Sources */,
 				4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */,
 				4E343B0D2AC3351900D169DD /* EmittedParticle.swift in Sources */,
+				4E73BB172AF2901A004EDEC0 /* SettingsPresenter.swift in Sources */,
 				4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */,
 				4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */,
+				4EDB4A172AF12D7000FE32D8 /* SlotView.swift in Sources */,
 				4E4EAC302AD03EB700AF5D35 /* MainMenuPresentable.swift in Sources */,
+				4E777D9F2AE7F8F800C6F716 /* SettingsView.swift in Sources */,
 				4EF3581D2AD426170058C2FB /* Appearance.swift in Sources */,
+				4E73BB1B2AF2908F004EDEC0 /* SettingsDisplayable.swift in Sources */,
 				4E433E7A2AE15DDC004B4E98 /* UIColor.swift in Sources */,
+				4E777D9D2AE7F83700C6F716 /* SettingsViewController.swift in Sources */,
 				4E4EAC342AD0403B00AF5D35 /* MainMenuDisplayable.swift in Sources */,
 				4E4EAC322AD03EDB00AF5D35 /* PlayBoardPresentable.swift in Sources */,
 				4E5EB6E02AA622770074C7B5 /* Router.swift in Sources */,
@@ -458,6 +509,7 @@
 				4E13C40B2ACED8AC00F40235 /* GameOverViewController.swift in Sources */,
 				4EE21F762AE2DC8C00A71B6D /* Storageable.swift in Sources */,
 				4EF61F5B2A5778DA00E79C74 /* CardView.swift in Sources */,
+				4E73BB152AF25BE1004EDEC0 /* UIFont.swift in Sources */,
 				4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */,
 				4E5EB6E42AA6278D0074C7B5 /* Builder.swift in Sources */,
 				4E433E782AE14D39004B4E98 /* User.swift in Sources */,

@@ -9,26 +9,27 @@ import UIKit
 
 final class MainMenuView: UIView {
     
-    private var isLocked = true
     private let gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.type = .axial
         gradient.setRandomProperty()
         return gradient
     }()
+    private var isLocked = true
+    
     
     private let stack: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = Design.Spacing.menu.spacing
         return stack
     }()
     
     private(set) var newGameButton: UIButton = {
         let attributedText = NSAttributedString(
             string: "Новая игра",
-            attributes: [.font: UIFont.boldSystemFont(ofSize: 27)]
+            attributes: [.font: Design.Typography.menu.font]
         )
         
         var config = UIButton.Configuration.tinted()
@@ -46,7 +47,7 @@ final class MainMenuView: UIView {
     private(set) var statisticsButton: UIButton = {
         let attributedText = NSAttributedString(
             string: "Статистика",
-            attributes: [.font: UIFont.boldSystemFont(ofSize: 27)]
+            attributes: [.font: Design.Typography.menu.font]
         )
         
         var config = UIButton.Configuration.tinted()
@@ -64,7 +65,7 @@ final class MainMenuView: UIView {
     private(set) var settingsButton: UIButton = {
         let attributedText = NSAttributedString(
             string: "Настройки",
-            attributes: [.font: UIFont.boldSystemFont(ofSize: 27)]
+            attributes: [.font: Design.Typography.menu.font]
         )
         
         var config = UIButton.Configuration.tinted()
@@ -82,7 +83,7 @@ final class MainMenuView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configuration()
+        configure()
         
         print("\tVIEW:\t😈\tMenu")
     }
@@ -100,7 +101,7 @@ final class MainMenuView: UIView {
         gradient.frame = bounds
     }
     
-    private func configuration() {
+    private func configure() {
         layer.addSublayer(gradient)
         
         addSubview(stack)

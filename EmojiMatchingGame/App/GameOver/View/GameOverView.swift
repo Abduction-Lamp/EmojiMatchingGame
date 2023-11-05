@@ -86,7 +86,7 @@ final class GameOverView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configuration()
+        configure()
         
         print("\tVIEW:\t😈\tGameOverView")
     }
@@ -117,7 +117,7 @@ final class GameOverView: UIView {
     }
 
     
-    private func configuration() {
+    private func configure() {
         addSubview(blur)
         addSubview(winLabel)
         addSubview(nextLevelButton)

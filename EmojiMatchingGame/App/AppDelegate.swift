@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let hapticCapability = CHHapticEngine.capabilitiesForHardware()
-        isSupportsHaptics = hapticCapability.supportsHaptics
-        
+        let capabilities = CHHapticEngine.capabilitiesForHardware()
+        isSupportsHaptics = capabilities.supportsHaptics
+
         return true
     }
 

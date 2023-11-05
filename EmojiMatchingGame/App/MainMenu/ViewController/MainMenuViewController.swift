@@ -18,7 +18,6 @@ final class MainMenuViewController: UIViewController {
     
     var presenter: MainMenuPresentable?
 
-
     override func loadView() {
         print("VC:\t\t\t😈\tMenu (loadView)")
         view = MainMenuView()
@@ -44,14 +43,20 @@ final class MainMenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard let presenter = self.presenter else { return }
         
-        mainMenuView.animate()
+        presenter.viewDidAppear()
+        if !presenter.isAnimationLocked {
+            mainMenuView.animate()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         navigationController?.navigationBar.isHidden = false
+        
+        presenter?.viewDidDisappear()
         mainMenuView.stop()
     }
 }
@@ -66,24 +71,19 @@ extension MainMenuViewController: MainMenuDisplayable {
     
     @objc
     private func settingsButtonTapped(_ sender: UIButton) {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemGray6
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .formSheet
-        
-        mainMenuView.animate()
-        present(vc, animated: true)
+        presenter?.settings()
     }
     
     @objc
     private func statisticsButtonTapped(_ sender: UIButton) {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemGray6
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .formSheet
-        vc.preferredContentSize = .init(width: 100, height: 50)
-        
-        mainMenuView.stop()
-        present(vc, animated: true)
+    }
+    
+    func update() {
+        guard let presenter = self.presenter else { return }
+        if presenter.isAnimationLocked {
+            mainMenuView.stop()
+        } else {
+            mainMenuView.animate()
+        }
     }
 }

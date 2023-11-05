@@ -39,7 +39,7 @@ final class CardView: UIView {
         self.appearance = appearance
         super.init(frame: frame)
         
-        configuration()
+        configure()
         print("\tVIEW:\t😈\tCard")
     }
     
@@ -56,7 +56,7 @@ final class CardView: UIView {
         layer.cornerRadius = bounds.height/4
     }
     
-    private func configuration() {
+    private func configure() {
         clipsToBounds = false
         backgroundColor = appearance.color
         

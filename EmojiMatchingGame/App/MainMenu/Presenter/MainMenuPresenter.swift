@@ -11,12 +11,15 @@ final class MainMenuPresenter {
     
     private weak var viewController: MainMenuDisplayable?
     private let router: MainMenuRoutable
+    private let appearance: AppearanceStorageable
     
-    init(_ viewController: MainMenuDisplayable, router: MainMenuRoutable) {
+    init(_ viewController: MainMenuDisplayable, router: MainMenuRoutable, appearance: AppearanceStorageable) {
         self.viewController = viewController
         self.router = router
+        self.appearance = appearance
         
-        print("PRESENTER:\t😈\tMenu")
+        let memoryAddress = Unmanaged.passUnretained(self).toOpaque()
+        print("PRESENTER:\t😈\tMenu > \(memoryAddress)")
     }
     
     deinit {
@@ -24,17 +27,38 @@ final class MainMenuPresenter {
     }
 }
 
-extension  MainMenuPresenter: MainMenuPresentable {
+
+extension MainMenuPresenter: MainMenuPresentable {
+    
+    var isAnimationLocked: Bool {
+        !appearance.animated
+    }
     
     func newGame() {
         router.goToNewGame()
+    }
+        
+    func statistics() {
+        router.goToStatictic()
     }
     
     func settings() {
         router.goToSettings()
     }
+}
+
+
+extension MainMenuPresenter: Subscriber {
     
-    func statistics() {
-        router.goToStatictic()
+    func update() {
+        viewController?.update()
+    }
+    
+    func viewDidAppear() {
+        appearance.register(self)
+    }
+    
+    func viewDidDisappear() {
+        appearance.unsubscribe(self)
     }
 }

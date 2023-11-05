@@ -9,11 +9,11 @@ import UIKit
 
 final class Builder: Buildable {
     
-    let storage: Storage = (user: User.shared, appearance: Appearance.shared)
+    let storage: Storage
     
     func makeMainMenuFlow(router: MainMenuRoutable) -> UIViewController & MainMenuDisplayable {
         let vc = MainMenuViewController()
-        let presenter = MainMenuPresenter(vc, router: router)
+        let presenter = MainMenuPresenter(vc, router: router, appearance: storage.appearance)
         vc.presenter = presenter
         return vc
     }
@@ -33,14 +33,23 @@ final class Builder: Buildable {
         return vc
     }
     
+    func makeSettingsFlow() -> UIViewController & SettingsDisplayable {
+        let vc = SettingsViewController()
+        let presenter = SettingsPresenter(vc, appearance: storage.appearance)
+        vc.presenter = presenter
+        return vc
+    }
+    
     
     //
     // TODO: - Logging info
     //
-    init() {
+    init(storage: Storage) {
         print("ASSEMBLY:\t😈\tBuilder")
-        storage.user.fetch()
-        storage.appearance.fetch()
+        
+        self.storage = storage
+        self.storage.user.fetch()
+        self.storage.appearance.fetch()
     }
     
     deinit {

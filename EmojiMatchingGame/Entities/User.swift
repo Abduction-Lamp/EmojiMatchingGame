@@ -95,4 +95,13 @@ extension User: UserStorageable {
     func nextLevel() {
         unlockLevel = unlockLevel.next()
     }
+    
+    func clear() {
+        UserDefaultsKeys.allCases.forEach { key in
+            defaults.setValue(nil, forKey: key.rawValue)
+        }
+        _unlockLevel = .one
+        _startLevel  = .one
+        _bestTime    = [:]
+    }
 }

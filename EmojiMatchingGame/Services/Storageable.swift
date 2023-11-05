@@ -9,6 +9,7 @@ import UIKit
 
 protocol Storageable: AnyObject {
     func fetch()
+    func clear()
 }
 
 
@@ -20,11 +21,13 @@ protocol UserStorageable: Storageable {
     func nextLevel()
 }
 
-protocol AppearanceStorageable: Storageable {
+protocol AppearanceStorageable: Storageable, Observer {
     
     var color:    UIColor { get set }
     var haptics:  Bool    { get set }
     var animated: Bool    { get set }
+    
+    var isSupportsHaptics: Bool { get }
 }
 
 

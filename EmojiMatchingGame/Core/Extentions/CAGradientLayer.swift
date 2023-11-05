@@ -43,14 +43,14 @@ extension CAGradientLayer {
         
         var point: CGPoint {
             switch self {
-            case .topLeft:      return CGPoint(x: 0,   y: 0)
-            case .top:          return CGPoint(x: 0.5, y: 0)
-            case .topRight:     return CGPoint(x: 1,   y: 0)
-            case .left:         return CGPoint(x: 0,   y: 0.5)
-            case .right:        return CGPoint(x: 1,   y: 0.5)
-            case .bottomLeft:   return CGPoint(x: 0,   y: 1)
-            case .bottom:       return CGPoint(x: 0.5, y: 1)
-            case .bottomRight:  return CGPoint(x: 1,   y: 1)
+            case .topLeft:     CGPoint(x: 0,   y: 0)
+            case .top:         CGPoint(x: 0.5, y: 0)
+            case .topRight:    CGPoint(x: 1,   y: 0)
+            case .left:        CGPoint(x: 0,   y: 0.5)
+            case .right:       CGPoint(x: 1,   y: 0.5)
+            case .bottomLeft:  CGPoint(x: 0,   y: 1)
+            case .bottom:      CGPoint(x: 0.5, y: 1)
+            case .bottomRight: CGPoint(x: 1,   y: 1)
             }
         }
         
@@ -90,28 +90,28 @@ extension CAGradientLayer {
         
         var direction: ScreenCoordinate {
             switch self {
-            case .topLeftToBottomRight:   return ScreenCoordinate(GradientScreenPoint.topLeft.point, GradientScreenPoint.bottomRight.point)
-            case .topToBottom:            return ScreenCoordinate(GradientScreenPoint.top.point, GradientScreenPoint.bottom.point)
-            case .topRightToBottomLeft:   return ScreenCoordinate(GradientScreenPoint.topRight.point, GradientScreenPoint.bottomLeft.point)
-            case .rightToLeft:            return ScreenCoordinate(GradientScreenPoint.right.point, GradientScreenPoint.left.point)
-            case .bottomRightToTopLeft:   return ScreenCoordinate(GradientScreenPoint.bottomRight.point, GradientScreenPoint.topLeft.point)
-            case .bottomToTop:            return ScreenCoordinate(GradientScreenPoint.bottom.point, GradientScreenPoint.top.point)
-            case .bottomLeftToTopRight:   return ScreenCoordinate(GradientScreenPoint.bottomLeft.point, GradientScreenPoint.topRight.point)
-            case .leftToRight:            return ScreenCoordinate(GradientScreenPoint.left.point, GradientScreenPoint.right.point)
+            case .topLeftToBottomRight: ScreenCoordinate(GradientScreenPoint.topLeft.point, GradientScreenPoint.bottomRight.point)
+            case .topToBottom:          ScreenCoordinate(GradientScreenPoint.top.point, GradientScreenPoint.bottom.point)
+            case .topRightToBottomLeft: ScreenCoordinate(GradientScreenPoint.topRight.point, GradientScreenPoint.bottomLeft.point)
+            case .rightToLeft:          ScreenCoordinate(GradientScreenPoint.right.point, GradientScreenPoint.left.point)
+            case .bottomRightToTopLeft: ScreenCoordinate(GradientScreenPoint.bottomRight.point, GradientScreenPoint.topLeft.point)
+            case .bottomToTop:          ScreenCoordinate(GradientScreenPoint.bottom.point, GradientScreenPoint.top.point)
+            case .bottomLeftToTopRight: ScreenCoordinate(GradientScreenPoint.bottomLeft.point, GradientScreenPoint.topRight.point)
+            case .leftToRight:          ScreenCoordinate(GradientScreenPoint.left.point, GradientScreenPoint.right.point)
             }
         }
         
         init(start: GradientScreenPoint, end: GradientScreenPoint) {
             switch (start, end) {
-            case (.topLeft, .bottomRight):  self = .topLeftToBottomRight
-            case (.top, .bottom):           self = .topToBottom
-            case (.topRight, .bottomLeft):  self = .topRightToBottomLeft
-            case (.right, .left):           self = .rightToLeft
-            case (.bottomRight, .topLeft):  self = .bottomRightToTopLeft
-            case (.bottom, .top):           self = .bottomToTop
-            case (.bottomLeft, .topRight):  self = .bottomLeftToTopRight
-            case (.left, .right):           self = .leftToRight
-            default:                        self = .topToBottom
+            case (.topLeft, .bottomRight): self = .topLeftToBottomRight
+            case (.top, .bottom):          self = .topToBottom
+            case (.topRight, .bottomLeft): self = .topRightToBottomLeft
+            case (.right, .left):          self = .rightToLeft
+            case (.bottomRight, .topLeft): self = .bottomRightToTopLeft
+            case (.bottom, .top):          self = .bottomToTop
+            case (.bottomLeft, .topRight): self = .bottomLeftToTopRight
+            case (.left, .right):          self = .leftToRight
+            default:                       self = .topToBottom
             }
         }
         
@@ -134,7 +134,6 @@ extension CAGradientLayer {
         }
     }
 }
-
 
 
 extension CAGradientLayer {

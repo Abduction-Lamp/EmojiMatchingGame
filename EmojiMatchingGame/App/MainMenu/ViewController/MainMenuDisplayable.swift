@@ -10,4 +10,6 @@ import Foundation
 protocol MainMenuDisplayable: AnyObject {
     
     var presenter: MainMenuPresentable? { get set }
+    
+    func update() 
 }
