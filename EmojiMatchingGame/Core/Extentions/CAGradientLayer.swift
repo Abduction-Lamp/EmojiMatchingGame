@@ -9,16 +9,12 @@ import UIKit
 
 extension CAGradientLayer {
     
-    private var allowedSetColors: [UIColor] {
+    private var allowedSetColors: [[UIColor]] {
         [
-            .blue, .systemBlue, .systemIndigo,
-            .brown, .systemBrown,
-            .cyan, .systemCyan, .systemMint, .systemTeal,
-            .green, .systemGreen,
-            .purple, .systemPurple,
-            .red, .systemPink, .systemRed,
-            .yellow, .orange, .systemYellow, .systemOrange,
-            .magenta,
+            [.blue, .systemBlue, .systemIndigo, .cyan, .systemCyan, .systemMint, .systemTeal],
+            [.brown, .systemBrown, .yellow, .orange, .systemYellow, .systemOrange],
+            [.green, .systemGreen],
+            [.purple, .systemPurple, .red, .systemPink, .systemRed, .magenta]
         ]
     }
     
@@ -138,16 +134,28 @@ extension CAGradientLayer {
 
 extension CAGradientLayer {
         
-    private func randomColors(for number: Int?) -> [CGColor] {
+    private func randomAllowedColors(for number: Int?) -> [CGColor] {
         guard let number = number, number > 0, number < allowedSetColors.count else { return [] }
-        var indexColor = (0 ..< allowedSetColors.count).map { $0 }
+        var indexSetColors = (0 ..< allowedSetColors.count).map { $0 }
         var output: [CGColor] = []
         
         for _ in 0 ..< number {
-            let index = indexColor.remove(at: .random(in: 0 ..< indexColor.count))
-            output.append(allowedSetColors[index].cgColor)
+            let indexSet = indexSetColors.remove(at: .random(in: 0 ..< indexSetColors.count))
+            let index = Int.random(in: 0 ..< allowedSetColors[indexSet].count)
+            output.append(allowedSetColors[indexSet][index].cgColor)
+//            let index = indexColor.remove(at: .random(in: 0 ..< indexColor.count))
+//            output.append(allowedSetColors[index].cgColor)
         }
         return output
+    }
+    
+    private func randomColors() -> [CGColor] {
+        var set: [CGColor] = []
+        let count: Int = colors?.count ?? 2
+        for _ in 0 ..< count {
+            set.append(UIColor.random().cgColor)
+        }
+        return set
     }
     
     private func generateLocation(for number: Int?) -> [NSNumber] {
@@ -166,7 +174,8 @@ extension CAGradientLayer {
     
     
     func setRandomProperty() {
-        let newColors = randomColors(for: colors?.count ?? 2)
+//        let newColors = randomColors()
+        let newColors = randomAllowedColors(for: colors?.count ?? 2)
         let newLocation = generateLocation(for: newColors.count)
         let newDirection = GradientDirection(start: GradientScreenPoint(startPoint), end: GradientScreenPoint(endPoint)).new()
         

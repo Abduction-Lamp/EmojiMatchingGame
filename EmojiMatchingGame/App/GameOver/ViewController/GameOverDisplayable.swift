@@ -10,4 +10,5 @@ import Foundation
 protocol GameOverDisplayable: AnyObject { 
     
     var presenter: GameOverPresentable? { get set }
+    var finishMode: Bool { get set }
 }

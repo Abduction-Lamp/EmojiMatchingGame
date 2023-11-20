@@ -30,10 +30,6 @@ final class MainMenuPresenter {
 
 extension MainMenuPresenter: MainMenuPresentable {
     
-    var isAnimationLocked: Bool {
-        !appearance.animated
-    }
-    
     func newGame() {
         router.goToNewGame()
     }
@@ -47,15 +43,15 @@ extension MainMenuPresenter: MainMenuPresentable {
     }
 }
 
-
 extension MainMenuPresenter: Subscriber {
     
     func update() {
-        viewController?.update()
+        viewController?.update(animated: appearance.animated)
     }
     
     func viewDidAppear() {
         appearance.register(self)
+        viewController?.update(animated: appearance.animated)
     }
     
     func viewDidDisappear() {

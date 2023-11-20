@@ -10,8 +10,6 @@ import UIKit
 final class PlayBoardViewController: UIViewController {
 
     var presenter: PlayBoardPresentable?
-    
-    private let appearance: AppearanceStorageable
     private var cards: [CardView] = []
     
     private var playBoardView: PlayBoardView {
@@ -21,21 +19,9 @@ final class PlayBoardViewController: UIViewController {
         return view
     }
     
-    
-    init(appearance: AppearanceStorageable) {
-        self.appearance = appearance
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
-    }
-    
     deinit {
         print("VC:\t\t\t♻️\tPlayBoard")
     }
-    
     
     override func loadView() {
         print("VC:\t\t\t😈\tPlayBoard (loadView)")
@@ -47,9 +33,11 @@ final class PlayBoardViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(true, animated: false)
-        playBoardView.backMenuButton.addTarget(self, action: #selector(backMenuButtonTapped(_:)), for: .touchUpInside)
         
-        presenter?.play()
+        playBoardView.backButton.addTarget(self, action: #selector(backMenuButtonTapped(_:)), for: .touchUpInside)
+        playBoardView.levelSegmentedControl.addTarget(self, action: #selector(lavelDidChange(_:)), for: .valueChanged)
+        
+        presenter?.viewDidLoad()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -61,10 +49,18 @@ final class PlayBoardViewController: UIViewController {
 
 
 extension PlayBoardViewController: PlayBoardDisplayable {
-        
-    func play(level: Level, with sequence: [String]) {
-        makeNewSetCards(sequence)
-        playBoardView.playNewGame(level: level, with: cards, animated: appearance.animated)
+
+    func play(level: Sizeable, with sequence: [String], and color: UIColor, animated flag: Bool) {
+        makeNewSetCards(sequence, color: color)
+        playBoardView.playNewGame(level: level, with: cards, animated: flag)
+    }
+    
+    func setupLevelMenu(unlock: Indexable) {
+        playBoardView.setupLevelMenu(unlock: unlock)
+    }
+    
+    func selectLevelMenu(level: Indexable) {
+        playBoardView.selectLevelMenu(level: level)
     }
     
     func disable(index first: Int, and second: Int) {
@@ -72,27 +68,27 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         cards[second].tap.isEnabled = false
     }
     
-    func flip(index: Int, completion: ((Bool) -> Void)? = nil) {
-        cards[index].flip(completion: completion)
+    func flip(index: Int, animated flag: Bool, completion: ((Bool) -> Void)? = nil) {
+        cards[index].flip(animated: flag, completion: completion)
     }
     
-    func shaking(index first: Int, and second: Int) {
-        cards[first].shake()
-        cards[second].shake()
+    func shaking(index first: Int, and second: Int, animated flag: Bool) {
+        cards[first].shake(animated: flag)
+        cards[second].shake(animated: flag)
     }
     
-    func matching(index first: Int, and second: Int, completion: ((Bool) -> Void)?) {
-        cards[first].match()
-        cards[second].match { isCompleted in
+    func matching(index first: Int, and second: Int, animated flag: Bool, completion: ((Bool) -> Void)?) {
+        cards[first].match(animated: flag)
+        cards[second].match(animated: flag) { isCompleted in
             completion?(isCompleted)
         }
     }
     
-    private func makeNewSetCards(_ sequence: [String]) {
+    private func makeNewSetCards(_ sequence: [String], color: UIColor) {
         cards.removeAll()
         sequence.forEach { emoji in
-            let card = CardView(frame: .zero, appearance: appearance)
-            card.setup(emoji: emoji)
+            let card = CardView()
+            card.setup(emoji: emoji, color: color)
             card.tap.addTarget(self, action: #selector(cardTaps(_:)))
             cards.append(card)
         }
@@ -129,5 +125,11 @@ extension PlayBoardViewController {
             presenter?.flip(index: index)
         default: card.select(false)
         }
+    }
+    
+    @objc
+    private func lavelDidChange(_ sender: UISegmentedControl) {
+        let level = sender.selectedSegmentIndex
+        presenter?.play(mode: .index(level))
     }
 }

@@ -15,10 +15,10 @@ protocol Storageable: AnyObject {
 
 protocol UserStorageable: Storageable {
     
-    var unlockLevel: Level { get set }
-    var startLevel:  Level { get set }
+    var unlockLevel: Levelable { get set }
+    var startLevel:  Levelable { get set }
     
-    func nextLevel()
+    func unlock()
 }
 
 protocol AppearanceStorageable: Storageable, Observer {

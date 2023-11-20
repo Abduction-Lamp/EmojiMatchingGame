@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 final class PlayBoardView: UIView {
     
     private let board: UIStackView = {
@@ -23,7 +21,7 @@ final class PlayBoardView: UIView {
         stack.layer.cornerRadius = 25
         stack.layer.shadowColor = UIColor.systemGray.cgColor
         stack.layer.shadowOpacity = 0.7
-        stack.layer.shadowRadius = 10
+        stack.layer.shadowRadius = 7
         stack.layer.shadowOffset = .zero
         
         stack.axis = .vertical
@@ -32,35 +30,13 @@ final class PlayBoardView: UIView {
         
         return stack
     }()
-    
-    private var boardWidth: CGFloat {
-        if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
-            return UIScreen.main.bounds.height - safeAreaInsets.top - safeAreaInsets.bottom
-        } else {
-            return UIScreen.main.bounds.width - directionalLayoutMargins.leading
-        }
-    }
-    
+
     private var boardWidthAnchor: NSLayoutConstraint = .init()
     private var boardHeightAnchor: NSLayoutConstraint = .init()
     
-    
-    private(set) var backMenuButton: UIButton = {
-        let img = UIImage(systemName: "text.justify")
-        let largeSymbolStyle = UIImage.SymbolConfiguration(textStyle: .largeTitle)
-        
-        var config = UIButton.Configuration.plain()
-        config.image = img
-        config.baseForegroundColor = .systemRed
-        config.contentInsets = .init(top: 17, leading: 17, bottom: 17, trailing: 17)
-        config.preferredSymbolConfigurationForImage = largeSymbolStyle
-        
-        let button = UIButton()
-        button.configuration = config
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
+    private(set) var backButton: UIButton = BackButton()
+    private(set) var levelSegmentedControl: UISegmentedControl & LevelSegmentedCustomizable = LevelSegmentedControl()
+    private(set) var soundVolumeButton: any UIButton & SoundVolumeButtonCustomizable = SoundVolumeButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,14 +58,12 @@ final class PlayBoardView: UIView {
         super.layoutSubviews()
         
         board.layer.shadowPath = UIBezierPath(roundedRect: board.bounds, cornerRadius: board.layer.cornerRadius).cgPath
+        levelSegmentedControl.layer.shadowPath = UIBezierPath(roundedRect: levelSegmentedControl.bounds, cornerRadius: levelSegmentedControl.layer.cornerRadius).cgPath
     }
     
     override func updateConstraints() {
+        updateConstraints(for: Design.PseudoUserInterfaceSizeClass.current)
         super.updateConstraints()
-        
-        let width = boardWidth
-        boardWidthAnchor.constant = width
-        boardHeightAnchor.constant = width
     }
     
     
@@ -97,27 +71,60 @@ final class PlayBoardView: UIView {
         backgroundColor = .systemGray6
         
         addSubview(board)
-        addSubview(backMenuButton)
+        addSubview(backButton)
+        addSubview(levelSegmentedControl)
+        addSubview(soundVolumeButton)
         
-        boardWidthAnchor = board.widthAnchor.constraint(equalToConstant: boardWidth)
-        boardHeightAnchor = board.heightAnchor.constraint(equalToConstant: boardWidth)
+        boardWidthAnchor = board.widthAnchor.constraint(equalToConstant: 0)
+        boardHeightAnchor = board.heightAnchor.constraint(equalToConstant: 0)
         
+        updateConstraints(for: Design.PseudoUserInterfaceSizeClass.current)
+
         NSLayoutConstraint.activate([
             board.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             board.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             boardWidthAnchor,
             boardHeightAnchor,
             
-            backMenuButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            backMenuButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+            backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            backButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+
+            levelSegmentedControl.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            levelSegmentedControl.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            levelSegmentedControl.heightAnchor.constraint(equalToConstant: 50),
+            
+            soundVolumeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            soundVolumeButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor)
         ])
+    }
+    
+    private func updateConstraints(for sizeClass: Design.PseudoUserInterfaceSizeClass) {
+        let width: CGFloat
+        
+        switch sizeClass {
+        case .compact:
+            width = (UIScreen.main.bounds.width - directionalLayoutMargins.leading)
+            levelSegmentedControl.isHidden = false
+        case .regular:
+            width = (UIScreen.main.bounds.height - safeAreaInsets.top - safeAreaInsets.bottom)
+            levelSegmentedControl.isHidden = true
+        }
+        boardWidthAnchor.constant = width
+        boardHeightAnchor.constant = width
     }
 }
 
-
-extension PlayBoardView {
+extension PlayBoardView: PlayBoardViewDisplayable {
     
-    func playNewGame(level: Level, with cards: [CardView], animated: Bool) {
+    func setupLevelMenu(unlock: Indexable) {
+        levelSegmentedControl.unlock(unlock)
+    }
+    
+    func selectLevelMenu(level: Indexable) {
+        levelSegmentedControl.select(level)
+    }
+    
+    func playNewGame(level: Sizeable, with cards: [CardView], animated: Bool) {
         guard animated else {
             board.layer.opacity = 0
             make(level: level, with: cards)
@@ -140,7 +147,6 @@ extension PlayBoardView {
         }
     }
     
-    
     private func remove() {
         board.arrangedSubviews.forEach { view in
             if let row = view as? UIStackView {
@@ -152,19 +158,19 @@ extension PlayBoardView {
         }
     }
     
-    private func make(level: Level, with cards: [CardView]) {
+    private func make(level: Sizeable, with cards: [CardView]) {
         remove()
         
-        if level.rawValue * level.rawValue == cards.count {
+        if level.size * level.size == cards.count {
             var index = 0
-            for _ in 0 ..< level.rawValue {
+            for _ in 0 ..< level.size {
                 let row = UIStackView()
                 row.translatesAutoresizingMaskIntoConstraints = false
                 row.axis = .horizontal
                 row.distribution = .fillEqually
                 row.spacing = board.spacing
                 
-                for _ in 0 ..< level.rawValue {
+                for _ in 0 ..< level.size {
                     if index < cards.count {
                         row.addArrangedSubview(cards[index])
                         index += 1

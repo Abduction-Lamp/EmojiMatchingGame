@@ -10,8 +10,6 @@ import Foundation
 protocol MainMenuPresentable: AnyObject {
     
     init(_ viewController: MainMenuDisplayable, router: MainMenuRoutable, appearance: AppearanceStorageable)
-
-    var isAnimationLocked: Bool { get }
     
     func viewDidAppear()
     func viewDidDisappear()

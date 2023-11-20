@@ -17,6 +17,7 @@ final class GameOverViewController: UIViewController {
     }
     
     var presenter: GameOverPresentable?
+    var finishMode = true
     
     
     override func loadView() {
@@ -31,14 +32,23 @@ final class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gameOverView.replayLevelButton.addTarget(self, action: #selector(replayLevelButtonTapped(_:)), for: .touchUpInside)
         gameOverView.nextLevelButton.addTarget(self, action: #selector(nextLevelButtonTapped(_:)), for: .touchUpInside)
         gameOverView.tapWinLabel.addTarget(self, action: #selector(winLabelTaps(_:)))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if finishMode {
+            gameOverView.setupFinishMode()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        guard let animation = presenter?.doWithAnimation, animation else { return }
+        guard let animated = presenter?.animated, animated else { return }
         gameOverView.firework()
     }
 }
@@ -47,13 +57,18 @@ final class GameOverViewController: UIViewController {
 extension GameOverViewController: GameOverDisplayable {
     
     @objc
+    private func replayLevelButtonTapped(_  sender: UIButton) {
+        presenter?.replay()
+    }
+    
+    @objc
     private func nextLevelButtonTapped(_ sender: UIButton) {
-        presenter?.nextLevel()
+        presenter?.next()
     }
     
     @objc
     private func winLabelTaps(_ sender: UITapGestureRecognizer) {
-        guard let animation = presenter?.doWithAnimation, animation else { return }
+        guard let animated = presenter?.animated, animated else { return }
         switch sender.state {
         case .ended: gameOverView.firework()
         default: break

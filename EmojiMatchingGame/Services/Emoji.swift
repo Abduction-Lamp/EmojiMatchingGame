@@ -11,7 +11,7 @@ import Foundation
 protocol EmojiGeneratable {
     
     init(flag service: FlagGeneratable)
-    func makeSequence(for level: Level) -> [String]
+    func makeSequence(for level: Sizeable) -> [String]
 }
 
 
@@ -190,14 +190,14 @@ final class Emoji: EmojiGeneratable {
     private let VS16 = "\u{FE0F}"
     
     
-    func makeSequence(for level: Level) -> [String] {
+    func makeSequence(for level: Sizeable) -> [String] {
         ///
         /// Создаем массив из всех эмоджи; из него будем достовать случайным образом эмоджи,
         /// чтобы эмоджи не повторялисль, будем удалять его из массива.
         ///
         var emojiArray: [Int] = []
         unicodeEmojiList.forEach { emojiArray.append(contentsOf: $0) }
-        guard level.rawValue < emojiArray.count else { return [] }
+        guard level.size < emojiArray.count else { return [] }
         ///
         /// Создаем два массива один будет соответствовать игровому полю,
         /// в него будем складывать (два раза), на случайные позиции, выбранный эмоджи.
@@ -207,8 +207,8 @@ final class Emoji: EmojiGeneratable {
         ///
         /// Так как игового поле - это квадрат со стороной level, то количество яцеек в квадрате = level^2
         ///
-        var sequence = Array(repeating: "", count: (level.rawValue * level.rawValue))
-        var sequenceIndexArray: [Int] = (0 ..< (level.rawValue * level.rawValue)).map { $0 }
+        var sequence = Array(repeating: "", count: (level.size * level.size))
+        var sequenceIndexArray: [Int] = (0 ..< sequence.count).map { $0 }
         ///
         /// Уменьшаем число итераций в двое так как один и тот же эмоджи ставиться на две случайных позиции
         ///

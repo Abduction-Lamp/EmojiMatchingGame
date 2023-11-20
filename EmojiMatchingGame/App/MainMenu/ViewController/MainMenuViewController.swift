@@ -46,9 +46,6 @@ final class MainMenuViewController: UIViewController {
         guard let presenter = self.presenter else { return }
         
         presenter.viewDidAppear()
-        if !presenter.isAnimationLocked {
-            mainMenuView.animate()
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -78,12 +75,7 @@ extension MainMenuViewController: MainMenuDisplayable {
     private func statisticsButtonTapped(_ sender: UIButton) {
     }
     
-    func update() {
-        guard let presenter = self.presenter else { return }
-        if presenter.isAnimationLocked {
-            mainMenuView.stop()
-        } else {
-            mainMenuView.animate()
-        }
+    func update(animated: Bool) {
+        animated ? mainMenuView.animate() : mainMenuView.stop()
     }
 }

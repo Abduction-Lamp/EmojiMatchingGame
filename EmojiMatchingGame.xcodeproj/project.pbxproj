@@ -11,6 +11,8 @@
 		4E13C40B2ACED8AC00F40235 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */; };
 		4E13C40D2ACEE1E600F40235 /* GameOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */; };
 		4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */; };
+		4E31F43D2AFD3C45005EA317 /* SoundVolumeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31F43C2AFD3C45005EA317 /* SoundVolumeButton.swift */; };
+		4E31F4402AFD3F3C005EA317 /* LevelSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31F43F2AFD3F3C005EA317 /* LevelSegmentedControl.swift */; };
 		4E343B0B2AC31DE300D169DD /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E343B0A2AC31DE300D169DD /* UIImage.swift */; };
 		4E343B0D2AC3351900D169DD /* EmittedParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E343B0C2AC3351900D169DD /* EmittedParticle.swift */; };
 		4E433E782AE14D39004B4E98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E433E772AE14D39004B4E98 /* User.swift */; };
@@ -36,11 +38,13 @@
 		4E73BB1B2AF2908F004EDEC0 /* SettingsDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E73BB1A2AF2908F004EDEC0 /* SettingsDisplayable.swift */; };
 		4E777D9D2AE7F83700C6F716 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E777D9C2AE7F83700C6F716 /* SettingsViewController.swift */; };
 		4E777D9F2AE7F8F800C6F716 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E777D9E2AE7F8F800C6F716 /* SettingsView.swift */; };
+		4E7BF6B62AFABBE100FFDF0A /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BF6B52AFABBE100FFDF0A /* BackButton.swift */; };
 		4E7FAB3C2A9F7A170020C771 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3B2A9F7A170020C771 /* MainMenuViewController.swift */; };
 		4E7FAB3E2A9F8B360020C771 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */; };
 		4E86D6082A55B75900E23388 /* PlayBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6072A55B75900E23388 /* PlayBoardView.swift */; };
 		4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6092A56EBCD00E23388 /* Level.swift */; };
 		4E98C57B2A5890040034522B /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E98C57A2A5890040034522B /* Emoji.swift */; };
+		4EC574F82B02626800295E57 /* PlayBoardViewDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */; };
 		4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E3D2A55B145004B54AC /* AppDelegate.swift */; };
 		4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */; };
 		4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */; };
@@ -59,6 +63,8 @@
 		4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPresenter.swift; sourceTree = "<group>"; };
 		4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		4E31F43C2AFD3C45005EA317 /* SoundVolumeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundVolumeButton.swift; sourceTree = "<group>"; };
+		4E31F43F2AFD3F3C005EA317 /* LevelSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSegmentedControl.swift; sourceTree = "<group>"; };
 		4E343B0A2AC31DE300D169DD /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		4E343B0C2AC3351900D169DD /* EmittedParticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmittedParticle.swift; sourceTree = "<group>"; };
 		4E433E772AE14D39004B4E98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -84,11 +90,13 @@
 		4E73BB1A2AF2908F004EDEC0 /* SettingsDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDisplayable.swift; sourceTree = "<group>"; };
 		4E777D9C2AE7F83700C6F716 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4E777D9E2AE7F8F800C6F716 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4E7BF6B52AFABBE100FFDF0A /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		4E7FAB3B2A9F7A170020C771 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		4E86D6072A55B75900E23388 /* PlayBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardView.swift; sourceTree = "<group>"; };
 		4E86D6092A56EBCD00E23388 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4E98C57A2A5890040034522B /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardViewDisplayable.swift; sourceTree = "<group>"; };
 		4ED35E3A2A55B145004B54AC /* EmojiMatchingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiMatchingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED35E3D2A55B145004B54AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +190,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		4E31F43E2AFD3EE3005EA317 /* SegmentedControlConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				4E31F43F2AFD3F3C005EA317 /* LevelSegmentedControl.swift */,
+			);
+			path = SegmentedControlConfiguration;
+			sourceTree = "<group>";
+		};
 		4E4923A62AAB4409002B65BC /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +251,15 @@
 				4E64AD912A602AF200A7E40C /* PlayBoardPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4E7BF6B42AFABB6C00FFDF0A /* ButtonConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				4E7BF6B52AFABBE100FFDF0A /* BackButton.swift */,
+				4E31F43C2AFD3C45005EA317 /* SoundVolumeButton.swift */,
+			);
+			path = ButtonConfiguration;
 			sourceTree = "<group>";
 		};
 		4E7FAB362A9F797D0020C771 /* App */ = {
@@ -300,8 +325,8 @@
 		4E86D6052A55B71200E23388 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4EF61F5A2A5778DA00E79C74 /* CardView.swift */,
-				4E86D6072A55B75900E23388 /* PlayBoardView.swift */,
+				4EC574F62B02623900295E57 /* CardView */,
+				4EC574F52B02622100295E57 /* PlayBoardView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +338,25 @@
 				4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4EC574F52B02622100295E57 /* PlayBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				4E31F43E2AFD3EE3005EA317 /* SegmentedControlConfiguration */,
+				4E7BF6B42AFABB6C00FFDF0A /* ButtonConfiguration */,
+				4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */,
+				4E86D6072A55B75900E23388 /* PlayBoardView.swift */,
+			);
+			path = PlayBoardView;
+			sourceTree = "<group>";
+		};
+		4EC574F62B02623900295E57 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				4EF61F5A2A5778DA00E79C74 /* CardView.swift */,
+			);
+			path = CardView;
 			sourceTree = "<group>";
 		};
 		4ED35E312A55B145004B54AC = {
@@ -483,17 +527,21 @@
 				4E13C40D2ACEE1E600F40235 /* GameOverPresenter.swift in Sources */,
 				4E98C57B2A5890040034522B /* Emoji.swift in Sources */,
 				4E7FAB3C2A9F7A170020C771 /* MainMenuViewController.swift in Sources */,
+				4E31F4402AFD3F3C005EA317 /* LevelSegmentedControl.swift in Sources */,
 				4E4923AA2AAB4577002B65BC /* CAGradientLayer.swift in Sources */,
 				4E4EAC3A2AD04C1D00AF5D35 /* GameOverPresentable.swift in Sources */,
 				4E4EAC362AD040CB00AF5D35 /* GradientAnimatable.swift in Sources */,
 				4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */,
 				4EE427032ABB3464003FCECD /* FireworksLayer.swift in Sources */,
+				4E31F43D2AFD3C45005EA317 /* SoundVolumeButton.swift in Sources */,
 				4E5EB6E62AA636620074C7B5 /* MainMenuPresenter.swift in Sources */,
 				4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */,
 				4E343B0D2AC3351900D169DD /* EmittedParticle.swift in Sources */,
 				4E73BB172AF2901A004EDEC0 /* SettingsPresenter.swift in Sources */,
 				4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */,
 				4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */,
+				4E7BF6B62AFABBE100FFDF0A /* BackButton.swift in Sources */,
+				4EC574F82B02626800295E57 /* PlayBoardViewDisplayable.swift in Sources */,
 				4EDB4A172AF12D7000FE32D8 /* SlotView.swift in Sources */,
 				4E4EAC302AD03EB700AF5D35 /* MainMenuPresentable.swift in Sources */,
 				4E777D9F2AE7F8F800C6F716 /* SettingsView.swift in Sources */,
@@ -581,7 +629,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -636,7 +684,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

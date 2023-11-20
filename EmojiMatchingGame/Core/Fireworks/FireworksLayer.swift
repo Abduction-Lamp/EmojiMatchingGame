@@ -80,7 +80,7 @@ final class FireworksLayer: CAEmitterLayer {
         }
     }
 
-    /** Функция испуска частиц  */
+    /** Функция испускающая частиц  */
     
     /* Задача этой функции испускать частицы в течении заданного времяни (duration),
      * а так же дать дожить последней испущенной частицы, согласно ее времяни жизни (параметр lifetime в CAEmitterCell)
@@ -108,7 +108,7 @@ final class FireworksLayer: CAEmitterLayer {
             let animationCompletionExpected = CABasicAnimation(keyPath: nil)
             animationCompletionExpected.duration = self.lifetimeCell()
             animationCompletionExpected.isRemovedOnCompletion = false
-            animationCompletionExpected.setValue(self, forKey: "birthRateAnimation")
+            animationCompletionExpected.setValue(self, forKey: "FireworksLayer.BirthRateAnimation")
             animationCompletionExpected.delegate = self
             self.add(animationCompletionExpected, forKey: nil)
         }
@@ -130,7 +130,7 @@ final class FireworksLayer: CAEmitterLayer {
 extension FireworksLayer: CAAnimationDelegate {
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if let layer = anim.value(forKey: "birthRateAnimation") as? FireworksLayer {
+        if let layer = anim.value(forKey: "FireworksLayer.BirthRateAnimation") as? FireworksLayer {
             layer.removeAllAnimations()
         }
     }

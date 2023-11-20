@@ -9,6 +9,7 @@ import UIKit
 
 
 protocol SettingsViewSetupable: AnyObject {
+    
     var delegate: SettingsViewDelegate? { get set }
     
     func setupColor(_ color: UIColor) -> Bool
@@ -30,7 +31,7 @@ final class SettingsView: UIView {
     
     private let blur: UIVisualEffectView = {
         let blur = UIVisualEffectView()
-        blur.effect = UIBlurEffect(style: .extraLight)
+        blur.effect = UIBlurEffect(style: .systemThickMaterial)
         blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return blur
     }()
@@ -49,7 +50,7 @@ final class SettingsView: UIView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = Design.Spacing.settings.spacing
+        stack.spacing = Design.Padding.item.spacing
         return stack
     }()
     
@@ -169,7 +170,7 @@ final class SettingsView: UIView {
         stack.addArrangedSubview(soundSlotView)
         stack.addArrangedSubview(soundVolumeSlider)
         
-        let padding = Design.Padding.title.padding
+        let padding = Design.Padding.title.spacing
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             title.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),

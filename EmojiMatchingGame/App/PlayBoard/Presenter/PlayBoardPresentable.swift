@@ -7,16 +7,24 @@
 
 import Foundation
 
+enum LevelGameMode {
+    case current
+    case next
+    case index(Int)
+}
+
 protocol PlayBoardPresentable: AnyObject {
     
     init(
         _ viewController: PlayBoardDisplayable,
         router:           PlayBoardRoutable,
         storage:          Storage,
-        emoji:            Emoji
+        emoji:            EmojiGeneratable
     )
     
-    func play()
+    func viewDidLoad()
+    
+    func play(mode: LevelGameMode)
     func flip(index: Int)
     
     func goBackMainMenu()

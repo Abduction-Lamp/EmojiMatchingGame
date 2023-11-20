@@ -36,9 +36,9 @@ final class Appearance {
 extension Appearance: AppearanceStorageable {
     
     enum UserDefaultsKeys: String, CaseIterable {
-        case color     = "Appearance.Color"
-        case haptics   = "Appearance.Haptics"
-        case animation = "Appearance.Animation"
+        case color     = "EmojiMatching.Storage.Appearance.Color"
+        case haptics   = "EmojiMatching.Storage.Appearance.Haptics"
+        case animation = "EmojiMatching.Storage.Appearance.Animation"
     }
     
     

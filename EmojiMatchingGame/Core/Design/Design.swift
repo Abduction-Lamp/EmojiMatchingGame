@@ -10,11 +10,32 @@ import UIKit
 
 // MARK: - Design Default
 //
-enum Design {
+public enum Design {
     
-    enum Default {
+    // MARK: Platform
+    public enum Platform: Int, Equatable {
+        case iOS15 = 15, iOS16, iOS17
+        
+        static var this: Platform {
+            if #available(iOS 17, *) { return .iOS17 }
+            if #available(iOS 16, *) { return .iOS16 }
+            if #available(iOS 15, *) { return .iOS15 }
+        }
+    }
+    
+    // MARK: Default
+    public enum Default {
         static var appearance: (color: UIColor, haptics: Bool, animated: Bool) {
             (color: .systemYellow, haptics: true, animated: true)
+        }
+    }
+    
+    // MARK: Size Class
+    public enum PseudoUserInterfaceSizeClass {
+        case compact, regular
+
+        static var current: PseudoUserInterfaceSizeClass {
+            (UIScreen.main.bounds.width < UIScreen.main.bounds.height) ? .compact : .regular
         }
     }
 }
@@ -24,14 +45,12 @@ enum Design {
 //
 extension Design {
     
-    enum Typography {
-        case menu
-        case title
-        case item
+    public enum Typography {
+        case menu, title, item
         
         var font: UIFont {
             switch self {
-            case .menu:  UIFont.boldSystemFont(ofSize: UIFont.TextStyle.title1.size)
+            case .menu:  UIFont.systemFont(ofSize: UIFont.TextStyle.title1.size).bold(on: true)
             case .title: UIFont.monospacedDigitSystemFont(forTextStyle: .largeTitle, weight: .light)
             case .item:  UIFont.monospacedDigitSystemFont(forTextStyle: .title1, weight: .thin)
             }
@@ -40,34 +59,29 @@ extension Design {
 }
 
 
-// MARK: - Spacing
+// MARK: - Padding, Spacing & Content Insets
 //
 extension Design {
     
-    enum Spacing {
-        case menu
-        case settings
+    public enum Padding {
+        case menu, title, item
         
         var spacing: CGFloat {
             switch self {
-            case .menu:     UIFont.TextStyle.caption2.size
-            case .settings: UIFont.TextStyle.title1.size
+            case .menu:  UIFont.TextStyle.caption2.size
+            case .title: UIFont.TextStyle.largeTitle.size
+            case .item:  UIFont.TextStyle.title1.size
             }
         }
     }
-}
-
-
-// MARK: - Padding
-//
-extension Design {
     
-    enum Padding {
-        case title
+    public enum EdgeInsets {
+        case menu, navigation
         
-        var padding: CGFloat {
+        var edge: NSDirectionalEdgeInsets {
             switch self {
-            case .title: UIFont.TextStyle.largeTitle.size
+            case .menu:       NSDirectionalEdgeInsets(top: 20, leading: 75, bottom: 20, trailing: 75)
+            case .navigation: NSDirectionalEdgeInsets(top: 17, leading: 17, bottom: 17, trailing: 17)
             }
         }
     }

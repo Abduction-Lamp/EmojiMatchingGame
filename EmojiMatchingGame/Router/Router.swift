@@ -74,11 +74,12 @@ extension Router {
 // MARK: - Play Board Flow
 extension Router {
     
-    func goToGameOver() {
+    func goToGameOver(isFinalLevel: Bool) {
         if let playVC = navigation.topViewController as? PlayBoardViewController {
             let gameOverVC = builder.makeGameOverFlow(router: self)
             gameOverVC.modalTransitionStyle = .coverVertical
             gameOverVC.modalPresentationStyle = .overFullScreen
+            gameOverVC.finishMode = isFinalLevel
             playVC.present(gameOverVC, animated: true)
         } else {
             errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
@@ -97,7 +98,7 @@ extension Router {
         if let playVC = navigation.topViewController as? PlayBoardViewController {
             if let gameOverVC = playVC.presentedViewController {
                 gameOverVC.dismiss(animated: true) {
-                    playVC.presenter?.play()
+                    playVC.presenter?.play(mode: .next)
                 }
             } else {
                 errorCase("⚠️ [Navigation ERROR]: Presented ViewController is not what was expected")
@@ -111,7 +112,7 @@ extension Router {
         if let playVC = navigation.topViewController as? PlayBoardViewController {
             if let gameOverVC = playVC.presentedViewController {
                 gameOverVC.dismiss(animated: true) {
-                    playVC.presenter?.play()
+                    playVC.presenter?.play(mode: .current)
                 }
             } else {
                 errorCase("⚠️ [Navigation ERROR]: Presented ViewController is not what was expected")

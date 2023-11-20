@@ -22,7 +22,7 @@ final class MainMenuView: UIView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = Design.Spacing.menu.spacing
+        stack.spacing = Design.Padding.menu.spacing
         return stack
     }()
     
@@ -35,7 +35,7 @@ final class MainMenuView: UIView {
         var config = UIButton.Configuration.tinted()
         config.baseBackgroundColor = .white
         config.baseForegroundColor = .white
-        config.contentInsets = .init(top: 20, leading: 75, bottom: 20, trailing: 75)
+        config.contentInsets = Design.EdgeInsets.menu.edge
         config.buttonSize = .mini
         
         let button = UIButton()
@@ -53,7 +53,7 @@ final class MainMenuView: UIView {
         var config = UIButton.Configuration.tinted()
         config.baseBackgroundColor = .white
         config.baseForegroundColor = .white
-        config.contentInsets = .init(top: 20, leading: 75, bottom: 20, trailing: 75)
+        config.contentInsets = Design.EdgeInsets.menu.edge
         config.buttonSize = .mini
         
         let button = UIButton()
@@ -71,7 +71,7 @@ final class MainMenuView: UIView {
         var config = UIButton.Configuration.tinted()
         config.baseBackgroundColor = .white
         config.baseForegroundColor = .white
-        config.contentInsets = .init(top: 20, leading: 75, bottom: 20, trailing: 75)
+        config.contentInsets = Design.EdgeInsets.menu.edge
         config.buttonSize = .mini
         
         let button = UIButton()

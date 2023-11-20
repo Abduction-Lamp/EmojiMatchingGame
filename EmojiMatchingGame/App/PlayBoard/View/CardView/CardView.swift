@@ -32,11 +32,10 @@ final class CardView: UIView {
         return tap
     }()
     
-    private let appearance: AppearanceStorageable
+    private var color: UIColor = .clear
     
     
-    init(frame: CGRect, appearance: AppearanceStorageable) {
-        self.appearance = appearance
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
         configure()
@@ -58,7 +57,6 @@ final class CardView: UIView {
     
     private func configure() {
         clipsToBounds = false
-        backgroundColor = appearance.color
         
         addSubview(emoji)
         NSLayoutConstraint.activate([
@@ -77,14 +75,16 @@ final class CardView: UIView {
 //
 extension CardView {
     
-    func setup(emoji: String) {
+    func setup(emoji: String, color: UIColor) {
+        backgroundColor = color
+        self.color = color
         self.emoji.text = emoji
     }
     
     func select(_ isSelect: Bool) {
         if isSelect, emoji.isHidden {
             layer.shadowColor = UIColor.systemGray.cgColor
-            layer.shadowOpacity = 0.8
+            layer.shadowOpacity = 1
             layer.shadowRadius = 4
             layer.shadowOffset = .zero
             layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
@@ -104,30 +104,28 @@ extension CardView {
 extension CardView {
     
     private func changeState() {
-        backgroundColor = emoji.isHidden ? .clear : appearance.color
+        backgroundColor = emoji.isHidden ? .clear : color
         emoji.isHidden = !emoji.isHidden
     }
     
-    func flip(completion: ((Bool) -> Void)? = nil) {
-        guard appearance.animated else {
+    func flip(animated flag: Bool, completion: ((Bool) -> Void)? = nil) {
+        if flag {
+            let duration: TimeInterval = 0.4
+            UIView.transition(with: self, duration: duration, options: [.transitionFlipFromLeft, .curveEaseInOut]) { [weak self] in
+                guard let self = self else { return }
+                self.changeState()
+            } completion: { isCompleted in
+                guard let completion = completion else { return }
+                completion(isCompleted)
+            }
+        } else {
             changeState()
             completion?(true)
-            return
-        }
-        
-        let duration: TimeInterval = 0.4
-        
-        UIView.transition(with: self, duration: duration, options: [.transitionFlipFromLeft, .curveEaseInOut]) { [weak self] in
-            guard let self = self else { return }
-            self.changeState()
-        } completion: { isCompleted in
-            guard let completion = completion else { return }
-            completion(isCompleted)
         }
     }
     
-    func shake(whih delay: CFTimeInterval = .zero) {
-        guard appearance.animated else { return }
+    func shake(animated flag: Bool, whih delay: CFTimeInterval = .zero) {
+        guard flag else { return }
         
         let duration: CFTimeInterval = 0.06
         let shift: CGFloat = 7
@@ -143,8 +141,8 @@ extension CardView {
         layer.add(animation, forKey: "shake")
     }
     
-    func match(whih delay: CFTimeInterval = .zero, completion: ((Bool) -> Void)? = nil) {
-        guard appearance.animated else {
+    func match(animated flag: Bool, whih delay: CFTimeInterval = .zero, completion: ((Bool) -> Void)? = nil) {
+        guard flag else {
             completion?(true)
             return
         }

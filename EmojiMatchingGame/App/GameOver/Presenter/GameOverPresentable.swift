@@ -9,10 +9,10 @@ import Foundation
 
 protocol GameOverPresentable {
     
-    var doWithAnimation: Bool { get }
+    var animated: Bool { get }
     
-    init(_ viewController: GameOverDisplayable, router: GameOverRoutable, storage: Storage)
+    init(_ viewController: GameOverDisplayable, router: GameOverRoutable, animated: Bool)
     
-    func nextLevel()
-    func repeatLevel()
+    func next()
+    func replay()
 }

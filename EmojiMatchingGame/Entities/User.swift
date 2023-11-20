@@ -13,13 +13,13 @@ final class User {
     
     private let defaults = UserDefaults.standard
 
-    private var _unlockLevel: Level
-    private var _startLevel:  Level
-    private var _bestTime:    [Level: TimeInterval]
+    private var _unlockLevel: Levelable
+    private var _startLevel:  Levelable
+    private var _bestTime:    [String: TimeInterval]
     
     private init() {
-        _unlockLevel = .one
-        _startLevel  = .one
+        _unlockLevel = Level.one
+        _startLevel  = Level.one
         _bestTime    = [:]
     }
 }
@@ -28,34 +28,33 @@ final class User {
 extension User: UserStorageable {
     
     enum UserDefaultsKeys: String, CaseIterable {
-        case unlockLevel = "User.UnlockLevel"
-        case startLevel  = "User.StartLevel"
-        case bestTime    = "User.BestTime"
+        case unlockLevel = "EmojiMatching.Storage.User.UnlockLevel"
+        case startLevel  = "EmojiMatching.Storage.User.StartLevel"
+        case bestTime    = "EmojiMatching.Storage.User.BestTime"
     }
     
-    var unlockLevel: Level {
+    var unlockLevel: Levelable {
         get {
             _unlockLevel
         }
         set {
-            if newValue.rawValue > _unlockLevel.rawValue {
+            if newValue.index > _unlockLevel.index {
                 let key = UserDefaultsKeys.unlockLevel
                 _unlockLevel = newValue
-                defaults.setValue(newValue.rawValue, forKey: key.rawValue)
+                defaults.setValue(newValue.index, forKey: key.rawValue)
             }
         }
     }
 
-    var startLevel: Level {
+    var startLevel: Levelable {
         get {
             _startLevel
         }
         set {
-            if newValue.rawValue <= _unlockLevel.rawValue,
-               newValue.rawValue != _startLevel.rawValue {
+            if newValue.index <= _unlockLevel.index, newValue.index != _startLevel.index {
                 let key = UserDefaultsKeys.startLevel
                 _startLevel = newValue
-                defaults.setValue(newValue.rawValue, forKey: key.rawValue)
+                defaults.setValue(newValue.index, forKey: key.rawValue)
             }
         }
     }
@@ -77,11 +76,10 @@ extension User: UserStorageable {
             case .unlockLevel:
                 if let level = defaults.value(forKey: key.rawValue) as? Int {
                     _unlockLevel = Level(rawValue: level) ?? _unlockLevel
-                    print("\t✅ Unlock Level: \(_unlockLevel) (\(_unlockLevel.rawValue))")
+                    print("\t✅ Unlock Level: \(_unlockLevel))")
                 }
             case .startLevel:
-                if let level = defaults.value(forKey: key.rawValue) as? Int,
-                   level <= _unlockLevel.rawValue {
+                if let level = defaults.value(forKey: key.rawValue) as? Int, level <= _unlockLevel.index {
                     _startLevel = Level(rawValue: level) ?? _startLevel
                     print("\t✅ Start Level: \(_startLevel)")
                 }
@@ -91,8 +89,8 @@ extension User: UserStorageable {
         }
         print("USER:\t\t🙈 Fetch > Stop")
     }
-    
-    func nextLevel() {
+
+    func unlock() {
         unlockLevel = unlockLevel.next()
     }
     
@@ -100,8 +98,8 @@ extension User: UserStorageable {
         UserDefaultsKeys.allCases.forEach { key in
             defaults.setValue(nil, forKey: key.rawValue)
         }
-        _unlockLevel = .one
-        _startLevel  = .one
+        _unlockLevel = Level.one
+        _startLevel  = Level.one
         _bestTime    = [:]
     }
 }

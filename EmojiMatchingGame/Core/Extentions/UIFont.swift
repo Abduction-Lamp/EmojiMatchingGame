@@ -19,6 +19,32 @@ extension UIFont {
     var height: CGFloat {
         lineHeight.rounded(.up)
     }
+    
+    func italic(on: Bool) -> UIFont {
+        var traits = fontDescriptor.symbolicTraits
+        if on {
+            traits.insert(.traitItalic)
+        } else {
+            traits.remove(.traitItalic)
+        }
+        if let descriptor = fontDescriptor.withSymbolicTraits(traits) {
+            return UIFont(descriptor: descriptor, size: 0)
+        }
+        return self
+    }
+    
+    func bold(on: Bool) -> UIFont {
+        var traits = fontDescriptor.symbolicTraits
+        if on {
+            traits.insert(.traitBold)
+        } else {
+            traits.remove(.traitBold)
+        }
+        if let descriptor = fontDescriptor.withSymbolicTraits(traits) {
+            return UIFont(descriptor: descriptor, size: 0)
+        }
+        return self
+    }
 }
 
 extension UIFont.TextStyle {

@@ -5,9 +5,9 @@
 //  Created by Vladimir Lesnykh on 06.10.2023.
 //
 
-import Foundation
+import UIKit
 
-protocol GradientAnimatable: AnyObject {
+protocol GradientAnimatable: AnyObject where Self: UIView {
     
     func animate(with duration: CFTimeInterval)
     func stop()
