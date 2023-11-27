@@ -26,9 +26,17 @@ final class Builder: Buildable {
         return vc
     }
     
-    func makeGameOverFlow(router: GameOverRoutable) -> UIViewController & GameOverDisplayable {
+    func makeGameOverFlow(router: GameOverRoutable,
+                           time: TimeInterval?,
+                           taps: UInt,
+                           isFinalLevel: Bool) -> UIViewController & GameOverDisplayable {
         let vc = GameOverViewController()
-        let presenter = GameOverPresenter(vc, router: router, animated: storage.appearance.animated)
+        let presenter = GameOverPresenter(vc,
+                                          router: router,
+                                          animated: storage.appearance.animated,
+                                          time: time,
+                                          taps: taps,
+                                          isFinalLevel: isFinalLevel)
         vc.presenter = presenter
         return vc
     }
@@ -39,6 +47,14 @@ final class Builder: Buildable {
         vc.presenter = presenter
         return vc
     }
+    
+    func makeStatisticsFlow() -> UIViewController & StatisticsDisplayable {
+        let vc = StatisticsViewController()
+        let presenter = StatisticsPresenter(vc, user: storage.user)
+        vc.presenter = presenter
+        return vc
+    }
+    
     
     
     //

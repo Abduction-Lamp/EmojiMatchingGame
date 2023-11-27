@@ -54,7 +54,7 @@ final class GameOverView: UIView {
 
     
     // MARK: Time Label
-    private let timeLabel: UILabel = {
+    private let infoLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.baselineAdjustment = .alignCenters
@@ -64,10 +64,10 @@ final class GameOverView: UIView {
         label.adjustsFontForContentSizeCategory = true
         label.adjustsFontSizeToFitWidth = true
         label.font = Design.Typography.title.font
-        label.text = "⏱️\n3:22"
+        label.text = "⏱️\n"
         return label
     }()
-    private var timeLabelCenterYAnchor: NSLayoutConstraint = .init()
+    private var infoLabelCenterYAnchor: NSLayoutConstraint = .init()
     
     
     // MARK: Buttons
@@ -80,7 +80,6 @@ final class GameOverView: UIView {
         config.contentInsets = Design.EdgeInsets.menu.edge
         config.buttonSize = .mini
         config.image = img
-//        config.imagePlacement = .trailing
         config.preferredSymbolConfigurationForImage = .init(textStyle: .largeTitle)
         
         let button = UIButton()
@@ -100,7 +99,6 @@ final class GameOverView: UIView {
         config.contentInsets = Design.EdgeInsets.menu.edge
         config.buttonSize = .mini
         config.image = img
-//        config.imagePlacement = .leading
         config.preferredSymbolConfigurationForImage = .init(textStyle: .largeTitle)
         
         let button = UIButton()
@@ -150,7 +148,7 @@ final class GameOverView: UIView {
         winLabelHeightAnchor.constant = quarter
         winLabelCenterYAnchor.constant = -quarter
         
-        timeLabelCenterYAnchor.constant = 0.5 * quarter
+        infoLabelCenterYAnchor.constant = 0.5 * quarter
         nextLevelButtonCenterYAnchor.constant = 1.5 * quarter
     }
 
@@ -158,9 +156,9 @@ final class GameOverView: UIView {
     private func configure() {
         addSubview(blur)
         addSubview(winLabel)
-        addSubview(timeLabel)
-        addSubview(nextLevelButton)
+        addSubview(infoLabel)
         addSubview(replayLevelButton)
+        addSubview(nextLevelButton)
 
         layer.addSublayer(fireworks)
         
@@ -168,7 +166,7 @@ final class GameOverView: UIView {
         winLabelHeightAnchor = winLabel.heightAnchor.constraint(equalToConstant: quarter)
         winLabelCenterYAnchor = winLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: -quarter)
         
-        timeLabelCenterYAnchor = timeLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 0.5 * quarter)
+        infoLabelCenterYAnchor = infoLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 0.5 * quarter)
         nextLevelButtonCenterYAnchor = nextLevelButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 1.5 * quarter)
         
         NSLayoutConstraint.activate([
@@ -177,9 +175,9 @@ final class GameOverView: UIView {
             winLabelWidthAnchor,
             winLabelHeightAnchor,
             
-            timeLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            timeLabel.heightAnchor.constraint(equalToConstant: timeLabel.font.height * 2),
-            timeLabelCenterYAnchor,
+            infoLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            infoLabel.heightAnchor.constraint(equalToConstant: infoLabel.font.height * 2),
+            infoLabelCenterYAnchor,
             
             replayLevelButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: -Design.Padding.menu.spacing),
             replayLevelButton.centerYAnchor.constraint(equalTo: nextLevelButton.centerYAnchor),
@@ -252,7 +250,8 @@ extension GameOverView {
         return particles
     }
     
-    func setupFinishMode() {
-        nextLevelButton.isEnabled = false   
+    func setup(time: String, taps: String, isFinishMode: Bool) {
+        infoLabel.text = "⏱️\n" + time
+        nextLevelButton.isEnabled = !isFinishMode
     }
 }

@@ -173,9 +173,7 @@ final class SettingsView: UIView {
         let padding = Design.Padding.title.spacing
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
-            title.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            title.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            title.heightAnchor.constraint(equalToConstant: title.font.height),
+            title.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             
             stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),

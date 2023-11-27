@@ -15,7 +15,6 @@ protocol LevelSegmentedCustomizable where Self: UISegmentedControl {
 }
 
 
-
 final class LevelSegmentedControl: UISegmentedControl {
     
     override init(frame: CGRect) {

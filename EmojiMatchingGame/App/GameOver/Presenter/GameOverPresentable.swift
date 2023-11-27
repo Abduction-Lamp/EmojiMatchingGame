@@ -11,7 +11,16 @@ protocol GameOverPresentable {
     
     var animated: Bool { get }
     
-    init(_ viewController: GameOverDisplayable, router: GameOverRoutable, animated: Bool)
+    init(
+        _ viewController: GameOverDisplayable,
+         router:          GameOverRoutable,
+         animated:        Bool,
+         time:            TimeInterval?,
+         taps:            UInt,
+         isFinalLevel:    Bool
+    )
+    
+    func viewWillAppear()
     
     func next()
     func replay()

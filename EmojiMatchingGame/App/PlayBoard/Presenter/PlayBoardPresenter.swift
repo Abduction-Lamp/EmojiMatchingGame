@@ -36,6 +36,9 @@ final class PlayBoardPresenter {
     private var remainingCards: Int = 0
     private var upsideDownFirstIndex: Int? = nil
     private var upsideDownSecondIndex: Int? = nil
+    
+    private var startTime: Date? = nil
+    private var taps: UInt = 0
 }
 
 
@@ -71,6 +74,8 @@ extension PlayBoardPresenter: PlayBoardPresentable {
 
 
     func flip(index: Int) {
+        if startTime == nil { startTime = Date.now }
+        taps += 1
         ///
         /// Если уже две карты перевернуты, но не совпали, то переворачиваем их обратно (рубашкой вверх)
         ///
@@ -111,25 +116,17 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                     self.viewController?.matching(index: first, and: index, animated: storage.appearance.animated) { [weak self] _ in
                         guard let self = self else { return }
                         self.remainingCards -= 2
-                        if isGameOver {
-                            if level.index == storage.user.unlockLevel.index {
-                                storage.user.unlock()
-                                viewController?.setupLevelMenu(unlock: storage.user.unlockLevel)
-                            }
-                            if let last = Level.allCases.last,
-                               last.index == level.index {
-                                self.router.goToGameOver(isFinalLevel: true)
-                            } else {
-                                self.router.goToGameOver(isFinalLevel: false)
-                            }
-                            
+                        if self.isGameOver {
+                            let time = self.saveResult()
+                            self.unlock()
+                            self.router.goToGameOver(time: time, taps: self.taps, isFinalLevel: self.isFinalLevel)
                         }
                     }
                 }
             } else {
                 viewController?.flip(index: index, animated: storage.appearance.animated) { [weak self] _ in
                     guard let self = self else { return }
-                    self.viewController?.shaking(index: first, and: index, animated: storage.appearance.animated)
+                    self.viewController?.shaking(index: first, and: index, animated: self.storage.appearance.animated)
                 }
             }
         } else {
@@ -141,14 +138,37 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     
     
     private func remove() {
+        startTime = nil
         upsideDownFirstIndex = nil
         upsideDownSecondIndex = nil
         cards.removeAll()
         remainingCards = 0
+        taps = 0
+    }
+    
+    private func saveResult() -> TimeInterval? {
+        guard let start = startTime else { return nil }
+        let time = Date.now.timeIntervalSince(start)
+        storage.user.setBestResult(for: level, result: .init(time: time, taps: taps))
+        return time
+    }
+    
+    private func unlock() {
+        if level.index == storage.user.unlockLevel.index {
+            storage.user.unlock()
+            viewController?.setupLevelMenu(unlock: storage.user.unlockLevel)
+        }
     }
     
     private var isGameOver: Bool {
         return remainingCards == 0
+    }
+    
+    private var isFinalLevel: Bool {
+        if let last = Level.allCases.last, last.index == level.index {
+            return true
+        }
+        return false
     }
 }
 

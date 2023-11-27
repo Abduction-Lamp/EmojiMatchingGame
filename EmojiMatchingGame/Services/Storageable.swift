@@ -13,10 +13,14 @@ protocol Storageable: AnyObject {
 }
 
 
-protocol UserStorageable: Storageable {
+protocol UserStorageable: Storageable, CustomStringConvertible {
     
     var unlockLevel: Levelable { get set }
     var startLevel:  Levelable { get set }
+   
+    var bestResults: [String: User.BestResult] { get }
+    func getBestResult(for level: Levelable) -> User.BestResult?
+    func setBestResult(for level: Levelable, result: User.BestResult)
     
     func unlock()
 }
@@ -31,4 +35,4 @@ protocol AppearanceStorageable: Storageable, Observer {
 }
 
 
-typealias Storage = (user: UserStorageable, appearance: AppearanceStorageable)
+typealias Storage = (user: any UserStorageable, appearance: AppearanceStorageable)

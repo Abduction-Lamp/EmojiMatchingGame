@@ -63,7 +63,14 @@ extension Router {
     }
     
     func goToStatictic() {
-        
+        if let mainMenuVC = navigation.topViewController as? MainMenuViewController {
+            let staticticsVC = builder.makeStatisticsFlow()
+            staticticsVC.modalTransitionStyle = .coverVertical
+            staticticsVC.modalPresentationStyle = .formSheet
+            mainMenuVC.present(staticticsVC, animated: true)
+        } else {
+            errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
+        }
     }
     
     func goToAbout() {
@@ -74,12 +81,11 @@ extension Router {
 // MARK: - Play Board Flow
 extension Router {
     
-    func goToGameOver(isFinalLevel: Bool) {
+    func goToGameOver(time: TimeInterval?, taps: UInt, isFinalLevel: Bool) {
         if let playVC = navigation.topViewController as? PlayBoardViewController {
-            let gameOverVC = builder.makeGameOverFlow(router: self)
+            let gameOverVC = builder.makeGameOverFlow(router: self, time: time, taps: taps, isFinalLevel: isFinalLevel)
             gameOverVC.modalTransitionStyle = .coverVertical
             gameOverVC.modalPresentationStyle = .overFullScreen
-            gameOverVC.finishMode = isFinalLevel
             playVC.present(gameOverVC, animated: true)
         } else {
             errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")

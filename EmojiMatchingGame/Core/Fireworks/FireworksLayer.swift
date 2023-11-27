@@ -64,6 +64,17 @@ final class FireworksLayer: CAEmitterLayer {
             cell.spin = .pi
             cell.spinRange = .pi
             
+            switch particle {
+            case .shape(_, size: _, color: _, birthRate: _):
+                cell.redRange   = 1.0
+                cell.greenRange = 1.0
+                cell.blueRange  = 1.0
+                cell.redSpeed   = 0.0
+                cell.greenSpeed = 0.0
+                cell.blueSpeed  = 0.0
+            default: break
+            }
+
             cell.alphaRange = 0.9
             cell.alphaSpeed = 1
             

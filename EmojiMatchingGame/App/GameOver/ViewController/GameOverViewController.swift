@@ -40,9 +40,7 @@ final class GameOverViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if finishMode {
-            gameOverView.setupFinishMode()
-        }
+        presenter?.viewWillAppear()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +48,10 @@ final class GameOverViewController: UIViewController {
         
         guard let animated = presenter?.animated, animated else { return }
         gameOverView.firework()
+    }
+    
+    func setup(time: String, taps: String, isFinishMode: Bool) {
+        gameOverView.setup(time: time, taps: taps, isFinishMode: isFinishMode)
     }
 }
 

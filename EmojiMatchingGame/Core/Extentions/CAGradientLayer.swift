@@ -174,8 +174,8 @@ extension CAGradientLayer {
     
     
     func setRandomProperty() {
-//        let newColors = randomColors()
-        let newColors = randomAllowedColors(for: colors?.count ?? 2)
+        let newColors = randomColors()
+//        let newColors = randomAllowedColors(for: colors?.count ?? 2)
         let newLocation = generateLocation(for: newColors.count)
         let newDirection = GradientDirection(start: GradientScreenPoint(startPoint), end: GradientScreenPoint(endPoint)).new()
         

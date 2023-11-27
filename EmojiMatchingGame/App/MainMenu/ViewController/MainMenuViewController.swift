@@ -73,6 +73,7 @@ extension MainMenuViewController: MainMenuDisplayable {
     
     @objc
     private func statisticsButtonTapped(_ sender: UIButton) {
+        presenter?.statistics()
     }
     
     func update(animated: Bool) {

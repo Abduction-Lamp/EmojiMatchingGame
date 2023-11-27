@@ -151,8 +151,10 @@ extension PlayBoardView: PlayBoardViewDisplayable {
         board.arrangedSubviews.forEach { view in
             if let row = view as? UIStackView {
                 row.arrangedSubviews.forEach { cell in
+                    row.removeArrangedSubview(cell)
                     cell.removeFromSuperview()
                 }
+                board.removeArrangedSubview(row)
                 row.removeFromSuperview()
             }
         }

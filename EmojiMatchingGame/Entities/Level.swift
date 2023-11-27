@@ -15,7 +15,7 @@ protocol Sizeable {
     var size: Int { get }
 }
 
-protocol Levelable: Indexable, Sizeable {
+protocol Levelable: Indexable, Sizeable, CustomStringConvertible {
     init?(rawValue: Int)
     
     func next() -> Levelable
@@ -59,7 +59,7 @@ enum Level: CaseIterable, Levelable {
         }
     }
     
-    func next() -> Levelable {
+    func next() -> any Levelable {
         switch self {
         case .one:        return Self.two
         case .two:        return Self.three
@@ -70,7 +70,8 @@ enum Level: CaseIterable, Levelable {
     }
 }
 
-extension Level: CustomStringConvertible {
+// CustomStringConvertible
+extension Level {
     
     var description: String {
         switch self {

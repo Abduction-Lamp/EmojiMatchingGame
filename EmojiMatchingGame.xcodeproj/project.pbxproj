@@ -51,6 +51,13 @@
 		4ED35E472A55B146004B54AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E462A55B146004B54AC /* Assets.xcassets */; };
 		4ED35E4A2A55B146004B54AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */; };
 		4EDB4A172AF12D7000FE32D8 /* SlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB4A162AF12D7000FE32D8 /* SlotView.swift */; };
+		4EDC61322B14AEBE0069AB50 /* StatisticsViewSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC61312B14AEBE0069AB50 /* StatisticsViewSetupable.swift */; };
+		4EE0EA062B0F8A55008BDC72 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0EA052B0F8A55008BDC72 /* StatisticsView.swift */; };
+		4EE0EA082B0F8ED6008BDC72 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0EA072B0F8ED6008BDC72 /* StatisticsViewController.swift */; };
+		4EE0EA0A2B0F901C008BDC72 /* StatisticsDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0EA092B0F901C008BDC72 /* StatisticsDisplayable.swift */; };
+		4EE0EA0C2B0F9074008BDC72 /* StatisticsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0EA0B2B0F9074008BDC72 /* StatisticsPresenter.swift */; };
+		4EE0EA0E2B0F90AD008BDC72 /* StatisticsPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0EA0D2B0F90AD008BDC72 /* StatisticsPresentable.swift */; };
+		4EE0EA102B0FA568008BDC72 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0EA0F2B0FA568008BDC72 /* TimeInterval.swift */; };
 		4EE21F762AE2DC8C00A71B6D /* Storageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE21F752AE2DC8C00A71B6D /* Storageable.swift */; };
 		4EE427032ABB3464003FCECD /* FireworksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE427022ABB3464003FCECD /* FireworksLayer.swift */; };
 		4EEA8FE52AF1C0EB00839577 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA8FE42AF1C0EB00839577 /* Design.swift */; };
@@ -105,6 +112,13 @@
 		4ED35E492A55B146004B54AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4ED35E4B2A55B146004B54AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EDB4A162AF12D7000FE32D8 /* SlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotView.swift; sourceTree = "<group>"; };
+		4EDC61312B14AEBE0069AB50 /* StatisticsViewSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewSetupable.swift; sourceTree = "<group>"; };
+		4EE0EA052B0F8A55008BDC72 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		4EE0EA072B0F8ED6008BDC72 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		4EE0EA092B0F901C008BDC72 /* StatisticsDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDisplayable.swift; sourceTree = "<group>"; };
+		4EE0EA0B2B0F9074008BDC72 /* StatisticsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPresenter.swift; sourceTree = "<group>"; };
+		4EE0EA0D2B0F90AD008BDC72 /* StatisticsPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPresentable.swift; sourceTree = "<group>"; };
+		4EE0EA0F2B0FA568008BDC72 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		4EE21F752AE2DC8C00A71B6D /* Storageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storageable.swift; sourceTree = "<group>"; };
 		4EE427022ABB3464003FCECD /* FireworksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireworksLayer.swift; sourceTree = "<group>"; };
 		4EEA8FE42AF1C0EB00839577 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
@@ -205,6 +219,7 @@
 				4E343B0A2AC31DE300D169DD /* UIImage.swift */,
 				4E433E792AE15DDC004B4E98 /* UIColor.swift */,
 				4E73BB142AF25BE1004EDEC0 /* UIFont.swift */,
+				4EE0EA0F2B0FA568008BDC72 /* TimeInterval.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -269,6 +284,7 @@
 				4E86D6042A55B6E800E23388 /* PlayBoard */,
 				4E13C4052ACED83E00F40235 /* GameOver */,
 				4EF358182AD425CF0058C2FB /* Settings */,
+				4EE0EA012B0F89D7008BDC72 /* Statistics */,
 				4ED35E3D2A55B145004B54AC /* AppDelegate.swift */,
 				4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */,
 			);
@@ -388,6 +404,43 @@
 				4ED35E4B2A55B146004B54AC /* Info.plist */,
 			);
 			path = EmojiMatchingGame;
+			sourceTree = "<group>";
+		};
+		4EE0EA012B0F89D7008BDC72 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				4EE0EA042B0F8A2D008BDC72 /* View */,
+				4EE0EA032B0F8A24008BDC72 /* ViewController */,
+				4EE0EA022B0F8A1B008BDC72 /* Presenter */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		4EE0EA022B0F8A1B008BDC72 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4EE0EA0D2B0F90AD008BDC72 /* StatisticsPresentable.swift */,
+				4EE0EA0B2B0F9074008BDC72 /* StatisticsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4EE0EA032B0F8A24008BDC72 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4EE0EA092B0F901C008BDC72 /* StatisticsDisplayable.swift */,
+				4EE0EA072B0F8ED6008BDC72 /* StatisticsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4EE0EA042B0F8A2D008BDC72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4EDC61312B14AEBE0069AB50 /* StatisticsViewSetupable.swift */,
+				4EE0EA052B0F8A55008BDC72 /* StatisticsView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4EE427012ABB344E003FCECD /* Fireworks */ = {
@@ -527,8 +580,10 @@
 				4E13C40D2ACEE1E600F40235 /* GameOverPresenter.swift in Sources */,
 				4E98C57B2A5890040034522B /* Emoji.swift in Sources */,
 				4E7FAB3C2A9F7A170020C771 /* MainMenuViewController.swift in Sources */,
+				4EE0EA082B0F8ED6008BDC72 /* StatisticsViewController.swift in Sources */,
 				4E31F4402AFD3F3C005EA317 /* LevelSegmentedControl.swift in Sources */,
 				4E4923AA2AAB4577002B65BC /* CAGradientLayer.swift in Sources */,
+				4EE0EA102B0FA568008BDC72 /* TimeInterval.swift in Sources */,
 				4E4EAC3A2AD04C1D00AF5D35 /* GameOverPresentable.swift in Sources */,
 				4E4EAC362AD040CB00AF5D35 /* GradientAnimatable.swift in Sources */,
 				4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */,
@@ -536,21 +591,26 @@
 				4E31F43D2AFD3C45005EA317 /* SoundVolumeButton.swift in Sources */,
 				4E5EB6E62AA636620074C7B5 /* MainMenuPresenter.swift in Sources */,
 				4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */,
+				4EE0EA0A2B0F901C008BDC72 /* StatisticsDisplayable.swift in Sources */,
 				4E343B0D2AC3351900D169DD /* EmittedParticle.swift in Sources */,
 				4E73BB172AF2901A004EDEC0 /* SettingsPresenter.swift in Sources */,
+				4EE0EA0C2B0F9074008BDC72 /* StatisticsPresenter.swift in Sources */,
 				4E64AD922A602AF200A7E40C /* PlayBoardPresenter.swift in Sources */,
 				4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */,
 				4E7BF6B62AFABBE100FFDF0A /* BackButton.swift in Sources */,
 				4EC574F82B02626800295E57 /* PlayBoardViewDisplayable.swift in Sources */,
 				4EDB4A172AF12D7000FE32D8 /* SlotView.swift in Sources */,
+				4EDC61322B14AEBE0069AB50 /* StatisticsViewSetupable.swift in Sources */,
 				4E4EAC302AD03EB700AF5D35 /* MainMenuPresentable.swift in Sources */,
 				4E777D9F2AE7F8F800C6F716 /* SettingsView.swift in Sources */,
+				4EE0EA0E2B0F90AD008BDC72 /* StatisticsPresentable.swift in Sources */,
 				4EF3581D2AD426170058C2FB /* Appearance.swift in Sources */,
 				4E73BB1B2AF2908F004EDEC0 /* SettingsDisplayable.swift in Sources */,
 				4E433E7A2AE15DDC004B4E98 /* UIColor.swift in Sources */,
 				4E777D9D2AE7F83700C6F716 /* SettingsViewController.swift in Sources */,
 				4E4EAC342AD0403B00AF5D35 /* MainMenuDisplayable.swift in Sources */,
 				4E4EAC322AD03EDB00AF5D35 /* PlayBoardPresentable.swift in Sources */,
+				4EE0EA062B0F8A55008BDC72 /* StatisticsView.swift in Sources */,
 				4E5EB6E02AA622770074C7B5 /* Router.swift in Sources */,
 				4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */,
 				4E4EAC3C2AD04C9F00AF5D35 /* GameOverDisplayable.swift in Sources */,

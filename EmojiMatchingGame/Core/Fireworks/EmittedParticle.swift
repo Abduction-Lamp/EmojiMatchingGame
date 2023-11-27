@@ -31,9 +31,9 @@ enum EmittedParticle {
         case triangle
     }
     
-    case shape (Shape,   size: CGSize,  color: UIColor,  birthRate: Float?)
-    case image (UIImage, size: CGSize?, color: UIColor,  birthRate: Float?)
-    case text  (String,  font: UIFont,  color: UIColor?, birthRate: Float?)
+    case shape(Shape,   size: CGSize,  color: UIColor,  birthRate: Float?)
+    case image(UIImage, size: CGSize?, color: UIColor,  birthRate: Float?)
+    case text (String,  font: UIFont,  color: UIColor?, birthRate: Float?)
 }
 
 
