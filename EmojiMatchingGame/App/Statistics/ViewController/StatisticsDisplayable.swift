@@ -11,5 +11,5 @@ protocol StatisticsDisplayable: AnyObject {
     
     var presenter: StatisticsPresentable? { get set }
     
-    func setup(level: String?, isLock: Bool, time: String?, taps: String?)
+    func display(level: String?, isLock: Bool, time: String?, taps: String?)
 }

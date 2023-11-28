@@ -42,7 +42,7 @@ final class StatisticsViewController: UIViewController {
 
 extension StatisticsViewController: StatisticsDisplayable {
 
-    func setup(level: String?, isLock: Bool, time: String?, taps: String?) {
+    func display(level: String?, isLock: Bool, time: String?, taps: String?) {
         var image: UIImage?
         if var name = level {
             var color: UIColor = .systemGreen

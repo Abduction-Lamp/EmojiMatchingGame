@@ -7,26 +7,6 @@
 
 import UIKit
 
-
-protocol SettingsViewSetupable: AnyObject {
-    
-    var delegate: SettingsViewDelegate? { get set }
-    
-    func setupColor(_ color: UIColor) -> Bool
-    func setupAnimation(_ isAnimation: Bool) -> Bool
-    func setupHaptic(_ isHaptic: Bool) -> Bool
-    func setupHapticEnabled(_ isEnabled: Bool) -> Bool
-    func setupSoundVolume(_ value: Float) -> Bool
-}
-
-protocol SettingsViewDelegate: AnyObject {
-    
-    func colorDidChanged(_ new: UIColor)
-    func animationToggleSwitched(_ isOn: Bool)
-    func hapticToggleSwitched(_ isOn: Bool)
-}
-
-
 final class SettingsView: UIView {
     
     private let blur: UIVisualEffectView = {
@@ -132,6 +112,17 @@ final class SettingsView: UIView {
     
     private lazy var soundVolumeSlider = UISlider()
     
+    private let reset: UIButton = {
+        var config = UIButton.Configuration.plain()
+        config.title = "Сброс"
+        let button = UIButton(configuration: config)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private var resetCenterXAnchor: NSLayoutConstraint = .init()
+    
+    
     
     // MARK: SettingsView Delegate
     weak var delegate: SettingsViewDelegate?
@@ -156,6 +147,7 @@ final class SettingsView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         blur.frame = bounds
+        resetCenterXAnchor.constant = bounds.width/3
     }
     
     
@@ -163,6 +155,7 @@ final class SettingsView: UIView {
         addSubview(blur)
         addSubview(title)
         addSubview(stack)
+        addSubview(reset)
         
         stack.addArrangedSubview(colorSlotView)
         stack.addArrangedSubview(animationSlotView)
@@ -171,6 +164,8 @@ final class SettingsView: UIView {
         stack.addArrangedSubview(soundVolumeSlider)
         
         let padding = Design.Padding.title.spacing
+        resetCenterXAnchor = reset.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 0)
+        
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             title.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
@@ -178,8 +173,14 @@ final class SettingsView: UIView {
             stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding)
+            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            
+//            reset.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            resetCenterXAnchor,
+            reset.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
+        
+        reset.addTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
     }
 }
 
@@ -215,7 +216,7 @@ extension SettingsView: SettingsViewSetupable {
     }
     
     func setupSoundVolume(_ value: Float) -> Bool {
-        guard let image = soundSlotView.trailing as? UIImageView else { return false }
+        guard soundSlotView.trailing is UIImageView else { return false }
         soundVolumeSlider.value = value
         return true
     }
@@ -232,5 +233,10 @@ extension SettingsView {
     @objc
     private func hapticToggleSwitched(_ sender: UISwitch) {
         delegate?.hapticToggleSwitched(sender.isOn)
+    }
+    
+    @objc
+    private func resetTapped(_ sender: UIButton) {
+        delegate?.resetTapped()
     }
 }

@@ -76,7 +76,7 @@ extension MainMenuViewController: MainMenuDisplayable {
         presenter?.statistics()
     }
     
-    func update(animated: Bool) {
+    func display(animated: Bool) {
         animated ? mainMenuView.animate() : mainMenuView.stop()
     }
 }

@@ -15,22 +15,25 @@ final class SettingsPresenter: SettingsPresentable {
     init(_ viewController: SettingsDisplayable, appearance: AppearanceStorageable) {
         self.viewController = viewController
         self.appearance = appearance
-        
+        self.appearance.register(self)
         print("PRESENTER:\t😈\tSettings")
     }
     
     deinit {
+        appearance.unsubscribe(self)
         print("PRESENTER:\t♻️\tSettings")
     }
     
-    
-    func fetch() {
-        appearance.fetch()
-        
+    private func display() {
         viewController?.displayColor(appearance.color)
         viewController?.displayAnimation(appearance.animated)
         viewController?.displayHaptics(appearance.isSupportsHaptics ? appearance.haptics : false)
         viewController?.displayHapticsSupports(appearance.isSupportsHaptics)
+    }
+    
+    func fetch() {
+        appearance.fetch()
+        display()
     }
     
     func update(color: UIColor) {
@@ -43,5 +46,17 @@ final class SettingsPresenter: SettingsPresentable {
     
     func update(isHaptics: Bool) {
         appearance.haptics = isHaptics
+    }
+    
+    func reset() {
+        appearance.clear()
+    }
+}
+
+
+extension SettingsPresenter: Subscriber {
+    
+    func update() {
+        display()
     }
 }

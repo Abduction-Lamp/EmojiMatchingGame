@@ -42,6 +42,9 @@ final class StatisticsView: UIView {
         return button
     }()
     
+    private var resetCenterXAnchor: NSLayoutConstraint = .init()
+
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,6 +65,7 @@ final class StatisticsView: UIView {
         super.layoutSubviews()
         
         blur.frame = bounds
+        resetCenterXAnchor.constant = bounds.width/3
     }
     
     private func configure() {
@@ -71,16 +75,19 @@ final class StatisticsView: UIView {
         addSubview(reset)
         
         let padding = Design.Padding.title.spacing
+
+        resetCenterXAnchor = reset.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 0)
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             title.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             
             stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             
-            reset.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+           // reset.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            resetCenterXAnchor,
             reset.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
     }
@@ -98,7 +105,6 @@ extension StatisticsView: StatisticsViewSetupable {
         item.axis = .horizontal
         item.alignment = .fill
         item.distribution = .fillEqually
-        item.spacing = Design.Padding.item.spacing
         
         let levelImageView = UIImageView()
         levelImageView.contentMode = .scaleAspectFit

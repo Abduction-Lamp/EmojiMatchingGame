@@ -29,7 +29,7 @@ final class SettingsViewController: UIViewController {
         settingsView.delegate = self
         presenter?.fetch()
     }
-        
+    
     deinit {
         print("VC:\t\t\t♻️\tSettings ")
     }
@@ -72,5 +72,27 @@ extension SettingsViewController: SettingsViewDelegate {
     
     func colorDidChanged(_ new: UIColor) {
         presenter?.update(color: new)
+    }
+    
+    func resetTapped() {
+        let titleAlertController = NSLocalizedString("Вы действительно хотити сбросить все настройки игры?", comment: "Titel")
+        let cancelAlertTitleButton = NSLocalizedString("Отмена", comment: "Cancel")
+        let resetAlertTitleButton = NSLocalizedString("Сбросить найстройки", comment: "Delete")
+        
+        let alert = UIAlertController(title: titleAlertController, message: nil, preferredStyle: .alert)
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = settingsView
+            popoverController.sourceRect = CGRect(origin: settingsView.center, size: .zero)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        let cancelAction = UIAlertAction(title: cancelAlertTitleButton, style: .cancel, handler: nil)
+        let resetAction = UIAlertAction(title: resetAlertTitleButton, style: .destructive) { _ in
+            self.presenter?.reset()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(resetAction)
+        
+        present(alert, animated: true, completion: nil)
     }
 }

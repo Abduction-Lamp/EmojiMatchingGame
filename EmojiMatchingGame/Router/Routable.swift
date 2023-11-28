@@ -15,23 +15,23 @@ protocol BasicRoutable {
 }
 
 protocol MainMenuRoutable: BasicRoutable {
-    func goToNewGame()
-    func goToSettings()
-    func goToStatictic()
-    func goToAbout()
+    func goToNewGame(animated: Bool)
+    func goToSettings(animated: Bool)
+    func goToStatictic(animated: Bool)
+    func goToAbout(animated: Bool)
 }
 
 protocol PlayBoardRoutable: BasicRoutable {
-    func goToGameOver(time: TimeInterval?, taps: UInt, isFinalLevel: Bool)
-    func goBackMainMenu()
+    func goToGameOver(time: TimeInterval?, taps: UInt, isFinalLevel: Bool, animated: Bool)
+    func goBackMainMenu(animated: Bool)
 }
 
 protocol GameOverRoutable: BasicRoutable {
-    func goToNextLevel()
-    func goToRepeatLevel()
+    func goToNextLevel(animated: Bool)
+    func goToRepeatLevel(animated: Bool)
 }
 
 protocol Routable: BasicRoutable & MainMenuRoutable & PlayBoardRoutable & GameOverRoutable {
-    func popVC()
-    func popToRootVC()
+    func popVC(animated: Bool)
+    func popToRootVC(animated: Bool)
 }

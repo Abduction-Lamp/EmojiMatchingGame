@@ -11,5 +11,5 @@ protocol MainMenuDisplayable: AnyObject {
     
     var presenter: MainMenuPresentable? { get set }
     
-    func update(animated: Bool) 
+    func display(animated: Bool) 
 }

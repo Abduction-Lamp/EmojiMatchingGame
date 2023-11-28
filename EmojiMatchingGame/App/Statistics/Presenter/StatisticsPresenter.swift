@@ -32,7 +32,7 @@ final class StatisticsPresenter: StatisticsPresentable {
                 taps = result.taps.description
             }
             let lock = user.unlockLevel.index < level.index
-            viewController?.setup(level: (1 + level.index).description, isLock: lock, time: time, taps: taps)
+            viewController?.display(level: (1 + level.index).description, isLock: lock, time: time, taps: taps)
         }
     }
     

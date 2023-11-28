@@ -28,52 +28,52 @@ final class Router: Routable {
         navigation.viewControllers = [rootVC]
     }
     
-    func popVC() {
-        navigation.popViewController(animated: true)
+    func popVC(animated: Bool) {
+        navigation.popViewController(animated: animated)
     }
     
-    func popToRootVC() {
-        navigation.popToRootViewController(animated: true)
+    func popToRootVC(animated: Bool) {
+        navigation.popToRootViewController(animated: animated)
     }
     
     private func errorCase(_ msgLog: String) {
         // FIXME: -- Добавить Alert
         print(msgLog)
-        popToRootVC()
+        popToRootVC(animated: false)
     }
 }
 
 // MARK: - Main Menu Flow
 extension Router {
     
-    func goToNewGame() {
+    func goToNewGame(animated: Bool) {
         let playVC = builder.makePlayBoardFlow(router: self)
-        navigation.pushViewController(playVC, animated: true)
+        navigation.pushViewController(playVC, animated: animated)
     }
     
-    func goToSettings() {
+    func goToSettings(animated: Bool) {
         if let mainMenuVC = navigation.topViewController as? MainMenuViewController {
             let settingsVC = builder.makeSettingsFlow()
             settingsVC.modalTransitionStyle = .coverVertical
             settingsVC.modalPresentationStyle = .formSheet
-            mainMenuVC.present(settingsVC, animated: true)
+            mainMenuVC.present(settingsVC, animated: animated)
         } else {
             errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
         }
     }
     
-    func goToStatictic() {
+    func goToStatictic(animated: Bool) {
         if let mainMenuVC = navigation.topViewController as? MainMenuViewController {
             let staticticsVC = builder.makeStatisticsFlow()
             staticticsVC.modalTransitionStyle = .coverVertical
             staticticsVC.modalPresentationStyle = .formSheet
-            mainMenuVC.present(staticticsVC, animated: true)
+            mainMenuVC.present(staticticsVC, animated: animated)
         } else {
             errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
         }
     }
     
-    func goToAbout() {
+    func goToAbout(animated: Bool) {
         
     }
 }
@@ -81,29 +81,29 @@ extension Router {
 // MARK: - Play Board Flow
 extension Router {
     
-    func goToGameOver(time: TimeInterval?, taps: UInt, isFinalLevel: Bool) {
+    func goToGameOver(time: TimeInterval?, taps: UInt, isFinalLevel: Bool, animated: Bool) {
         if let playVC = navigation.topViewController as? PlayBoardViewController {
             let gameOverVC = builder.makeGameOverFlow(router: self, time: time, taps: taps, isFinalLevel: isFinalLevel)
             gameOverVC.modalTransitionStyle = .coverVertical
             gameOverVC.modalPresentationStyle = .overFullScreen
-            playVC.present(gameOverVC, animated: true)
+            playVC.present(gameOverVC, animated: animated)
         } else {
             errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
         }
     }
     
-    func goBackMainMenu() {
-        popVC()
+    func goBackMainMenu(animated: Bool) {
+        popVC(animated: animated)
     }
 }
 
 // MARK: - Game Over Flow
 extension Router {
     
-    func goToNextLevel() {
+    func goToNextLevel(animated: Bool) {
         if let playVC = navigation.topViewController as? PlayBoardViewController {
             if let gameOverVC = playVC.presentedViewController {
-                gameOverVC.dismiss(animated: true) {
+                gameOverVC.dismiss(animated: animated) {
                     playVC.presenter?.play(mode: .next)
                 }
             } else {
@@ -114,10 +114,10 @@ extension Router {
         }
     }
     
-    func goToRepeatLevel() {
+    func goToRepeatLevel(animated: Bool) {
         if let playVC = navigation.topViewController as? PlayBoardViewController {
             if let gameOverVC = playVC.presentedViewController {
-                gameOverVC.dismiss(animated: true) {
+                gameOverVC.dismiss(animated: animated) {
                     playVC.presenter?.play(mode: .current)
                 }
             } else {

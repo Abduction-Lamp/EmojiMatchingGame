@@ -31,27 +31,27 @@ final class MainMenuPresenter {
 extension MainMenuPresenter: MainMenuPresentable {
     
     func newGame() {
-        router.goToNewGame()
+        router.goToNewGame(animated: appearance.animated)
     }
         
     func statistics() {
-        router.goToStatictic()
+        router.goToStatictic(animated: appearance.animated)
     }
     
     func settings() {
-        router.goToSettings()
+        router.goToSettings(animated: appearance.animated)
     }
 }
 
 extension MainMenuPresenter: Subscriber {
     
     func update() {
-        viewController?.update(animated: appearance.animated)
+        viewController?.display(animated: appearance.animated)
     }
     
     func viewDidAppear() {
         appearance.register(self)
-        viewController?.update(animated: appearance.animated)
+        viewController?.display(animated: appearance.animated)
     }
     
     func viewDidDisappear() {

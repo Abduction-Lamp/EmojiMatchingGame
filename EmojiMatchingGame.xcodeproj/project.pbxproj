@@ -52,6 +52,7 @@
 		4ED35E4A2A55B146004B54AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */; };
 		4EDB4A172AF12D7000FE32D8 /* SlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB4A162AF12D7000FE32D8 /* SlotView.swift */; };
 		4EDC61322B14AEBE0069AB50 /* StatisticsViewSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC61312B14AEBE0069AB50 /* StatisticsViewSetupable.swift */; };
+		4EDC61342B14DE700069AB50 /* SettingsViewSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC61332B14DE700069AB50 /* SettingsViewSetupable.swift */; };
 		4EE0EA062B0F8A55008BDC72 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0EA052B0F8A55008BDC72 /* StatisticsView.swift */; };
 		4EE0EA082B0F8ED6008BDC72 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0EA072B0F8ED6008BDC72 /* StatisticsViewController.swift */; };
 		4EE0EA0A2B0F901C008BDC72 /* StatisticsDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE0EA092B0F901C008BDC72 /* StatisticsDisplayable.swift */; };
@@ -113,6 +114,7 @@
 		4ED35E4B2A55B146004B54AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EDB4A162AF12D7000FE32D8 /* SlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotView.swift; sourceTree = "<group>"; };
 		4EDC61312B14AEBE0069AB50 /* StatisticsViewSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewSetupable.swift; sourceTree = "<group>"; };
+		4EDC61332B14DE700069AB50 /* SettingsViewSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewSetupable.swift; sourceTree = "<group>"; };
 		4EE0EA052B0F8A55008BDC72 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		4EE0EA072B0F8ED6008BDC72 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		4EE0EA092B0F901C008BDC72 /* StatisticsDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDisplayable.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 		4EF3581B2AD425FC0058C2FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4EDC61332B14DE700069AB50 /* SettingsViewSetupable.swift */,
 				4EDB4A162AF12D7000FE32D8 /* SlotView.swift */,
 				4E777D9E2AE7F8F800C6F716 /* SettingsView.swift */,
 			);
@@ -584,6 +587,7 @@
 				4E31F4402AFD3F3C005EA317 /* LevelSegmentedControl.swift in Sources */,
 				4E4923AA2AAB4577002B65BC /* CAGradientLayer.swift in Sources */,
 				4EE0EA102B0FA568008BDC72 /* TimeInterval.swift in Sources */,
+				4EDC61342B14DE700069AB50 /* SettingsViewSetupable.swift in Sources */,
 				4E4EAC3A2AD04C1D00AF5D35 /* GameOverPresentable.swift in Sources */,
 				4E4EAC362AD040CB00AF5D35 /* GradientAnimatable.swift in Sources */,
 				4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */,

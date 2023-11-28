@@ -43,14 +43,14 @@ final class GameOverPresenter: GameOverPresentable {
     
     func viewWillAppear() {
         let timeString = time?.toString() ?? ""
-        viewController?.setup(time: timeString, taps: taps.description, isFinishMode: isFinalLevel)
+        viewController?.display(time: timeString, taps: taps.description, isFinishMode: isFinalLevel)
     }
     
     func next() {
-        router.goToNextLevel()
+        router.goToNextLevel(animated: animated)
     }
     
     func replay() {
-        router.goToRepeatLevel()
+        router.goToRepeatLevel(animated: animated)
     }
 }

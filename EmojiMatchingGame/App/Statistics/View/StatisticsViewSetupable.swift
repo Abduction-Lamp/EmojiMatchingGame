@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol StatisticsViewSetupable where Self: UIView {
+protocol StatisticsViewSetupable: AnyObject where Self: UIView {
 
     func setup(level: UIImage?, time: String?, taps: String?, font: UIFont)
     func clean()

@@ -76,14 +76,16 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     func flip(index: Int) {
         if startTime == nil { startTime = Date.now }
         taps += 1
+        
+        let animated = storage.appearance.animated
         ///
         /// Если уже две карты перевернуты, но не совпали, то переворачиваем их обратно (рубашкой вверх)
         ///
         if let first = upsideDownFirstIndex, let second = upsideDownSecondIndex {
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
-            viewController?.flip(index: first, animated: storage.appearance.animated, completion: nil)
-            viewController?.flip(index: second, animated: storage.appearance.animated, completion: nil)
+            viewController?.flip(index: first, animated: animated, completion: nil)
+            viewController?.flip(index: second, animated: animated, completion: nil)
         }
         
         ///
@@ -91,7 +93,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         ///
         guard let first = upsideDownFirstIndex else {
             upsideDownFirstIndex = index
-            viewController?.flip(index: index, animated: storage.appearance.animated, completion: nil)
+            viewController?.flip(index: index, animated: animated, completion: nil)
             return
         }
         
@@ -111,26 +113,26 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                 upsideDownFirstIndex = nil
                 upsideDownSecondIndex = nil
                 
-                viewController?.flip(index: index, animated: storage.appearance.animated) { [weak self] _ in
+                viewController?.flip(index: index, animated: animated) { [weak self] _ in
                     guard let self = self else { return }
-                    self.viewController?.matching(index: first, and: index, animated: storage.appearance.animated) { [weak self] _ in
+                    self.viewController?.matching(index: first, and: index, animated: animated) { [weak self] _ in
                         guard let self = self else { return }
                         self.remainingCards -= 2
                         if self.isGameOver {
                             let time = self.saveResult()
                             self.unlock()
-                            self.router.goToGameOver(time: time, taps: self.taps, isFinalLevel: self.isFinalLevel)
+                            self.router.goToGameOver(time: time, taps: self.taps, isFinalLevel: self.isFinalLevel, animated: animated)
                         }
                     }
                 }
             } else {
                 viewController?.flip(index: index, animated: storage.appearance.animated) { [weak self] _ in
                     guard let self = self else { return }
-                    self.viewController?.shaking(index: first, and: index, animated: self.storage.appearance.animated)
+                    self.viewController?.shaking(index: first, and: index, animated: animated)
                 }
             }
         } else {
-            viewController?.flip(index: index, animated: storage.appearance.animated, completion: nil)
+            viewController?.flip(index: index, animated: animated, completion: nil)
             upsideDownFirstIndex = nil
             upsideDownSecondIndex = nil
         }
@@ -176,6 +178,6 @@ extension PlayBoardPresenter: PlayBoardPresentable {
 extension PlayBoardPresenter {
     
     func goBackMainMenu() {
-        router.goBackMainMenu()
+        router.goBackMainMenu(animated: storage.appearance.animated)
     }
 }
