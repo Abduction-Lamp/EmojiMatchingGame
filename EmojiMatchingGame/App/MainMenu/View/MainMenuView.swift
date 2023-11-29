@@ -9,14 +9,13 @@ import UIKit
 
 final class MainMenuView: UIView {
     
+    private var isLocked = true
     private let gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.type = .axial
         gradient.setRandomProperty()
         return gradient
     }()
-    private var isLocked = true
-    
     
     private let stack: UIStackView = {
         let stack = UIStackView()
@@ -26,59 +25,13 @@ final class MainMenuView: UIView {
         return stack
     }()
     
-    private(set) var newGameButton: UIButton = {
-        let attributedText = NSAttributedString(
-            string: "Новая игра",
-            attributes: [.font: Design.Typography.menu.font]
-        )
-        
-        var config = UIButton.Configuration.tinted()
-        config.baseBackgroundColor = .white
-        config.baseForegroundColor = .white
-        config.contentInsets = Design.EdgeInsets.menu.edge
-        config.buttonSize = .mini
-        
-        let button = UIButton()
-        button.configuration = config
-        button.setAttributedTitle(attributedText, for: .normal)
-        return button
-    }()
-    
-    private(set) var statisticsButton: UIButton = {
-        let attributedText = NSAttributedString(
-            string: "Статистика",
-            attributes: [.font: Design.Typography.menu.font]
-        )
-        
-        var config = UIButton.Configuration.tinted()
-        config.baseBackgroundColor = .white
-        config.baseForegroundColor = .white
-        config.contentInsets = Design.EdgeInsets.menu.edge
-        config.buttonSize = .mini
-        
-        let button = UIButton()
-        button.configuration = config
-        button.setAttributedTitle(attributedText, for: .normal)
-        return button
-    }()
-    
-    private(set) var settingsButton: UIButton = {
-        let attributedText = NSAttributedString(
-            string: "Настройки",
-            attributes: [.font: Design.Typography.menu.font]
-        )
-        
-        var config = UIButton.Configuration.tinted()
-        config.baseBackgroundColor = .white
-        config.baseForegroundColor = .white
-        config.contentInsets = Design.EdgeInsets.menu.edge
-        config.buttonSize = .mini
-        
-        let button = UIButton()
-        button.configuration = config
-        button.setAttributedTitle(attributedText, for: .normal)
-        return button
-    }()
+    private let newGame:    UIButton = makeButton("Новая игра")
+    private let statistics: UIButton = makeButton("Статистика")
+    private let settings:   UIButton = makeButton("Настройки")
+
+    var newGameAction:    ((_: UIButton) -> Void)?
+    var statisticsAction: ((_: UIButton) -> Void)?
+    var settingsAction:   ((_: UIButton) -> Void)?
     
     
     override init(frame: CGRect) {
@@ -105,17 +58,41 @@ final class MainMenuView: UIView {
         layer.addSublayer(gradient)
         
         addSubview(stack)
-        stack.addArrangedSubview(newGameButton)
-        stack.addArrangedSubview(statisticsButton)
-        stack.addArrangedSubview(settingsButton)
+        stack.addArrangedSubview(newGame)
+        stack.addArrangedSubview(statistics)
+        stack.addArrangedSubview(settings)
         
         NSLayoutConstraint.activate([
             stack.centerXAnchor.constraint(equalTo: centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
+        
+        newGame.addTarget(self, action: #selector(newGameTapped(_:)), for: .touchUpInside)
+        statistics.addTarget(self, action: #selector(statisticsTapped(_:)), for: .touchUpInside)
+        settings.addTarget(self, action: #selector(settingsTapped(_:)), for: .touchUpInside)
     }
 }
 
+extension MainMenuView {
+    
+    static private func makeButton(_ title: String) -> UIButton {
+        let attributedText = NSAttributedString(
+            string: title,
+            attributes: [.font: Design.Typography.font(.menu)]
+        )
+        
+        var config = UIButton.Configuration.tinted()
+        config.baseBackgroundColor = .white
+        config.baseForegroundColor = .white
+        config.contentInsets = Design.EdgeInsets.menu.edge
+        config.buttonSize = .mini
+        
+        let button = UIButton()
+        button.configuration = config
+        button.setAttributedTitle(attributedText, for: .normal)
+        return button
+    }
+}
 
 extension MainMenuView: GradientAnimatable {
     
@@ -142,5 +119,23 @@ extension MainMenuView: GradientAnimatable {
         }
         gradient.setRandomProperty()
         CATransaction.commit()
+    }
+}
+
+extension MainMenuView: MainMenuSetupable {
+    
+    @objc
+    private func newGameTapped(_ sender: UIButton) {
+        newGameAction?(sender)
+    }
+    
+    @objc
+    private func statisticsTapped(_ sender: UIButton) {
+        statisticsAction?(sender)
+    }
+    
+    @objc
+    private func settingsTapped(_ sender: UIButton) {
+        settingsAction?(sender)
     }
 }

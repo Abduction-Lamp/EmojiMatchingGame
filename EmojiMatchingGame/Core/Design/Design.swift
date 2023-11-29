@@ -48,8 +48,8 @@ extension Design {
     public enum Typography {
         case menu, title, item
         
-        var font: UIFont {
-            switch self {
+        static func font(_ flow: Typography) -> UIFont {
+            switch flow {
             case .menu:  UIFont.systemFont(ofSize: UIFont.TextStyle.title1.size).bold(on: true)
             case .title: UIFont.monospacedDigitSystemFont(forTextStyle: .largeTitle, weight: .light)
             case .item:  UIFont.monospacedDigitSystemFont(forTextStyle: .title1, weight: .thin)

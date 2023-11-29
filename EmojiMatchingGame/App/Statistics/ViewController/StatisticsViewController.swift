@@ -30,7 +30,7 @@ final class StatisticsViewController: UIViewController {
         statisticsView.resetAddTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
         
         // Titel Tabel Best Results
-        statisticsView.setup(level: nil, time: "⏱️", taps: "👇", font: Design.Typography.title.font)
+        statisticsView.setup(level: nil, time: "⏱️", taps: "👇", font: Design.Typography.font(.title))
         presenter?.fetch()
     }
     
@@ -51,7 +51,7 @@ extension StatisticsViewController: StatisticsDisplayable {
                 name = isLock ? "lock" : name
             }
             image = UIImage(systemName: "\(name).circle")
-            image = image?.applyingSymbolConfiguration(.init(font: Design.Typography.title.font))
+            image = image?.applyingSymbolConfiguration(.init(font: Design.Typography.font(.title)))
             image = image?.withColor(color, size: nil)
             image?.accessibilityLabel = "Level \(name)"
         }

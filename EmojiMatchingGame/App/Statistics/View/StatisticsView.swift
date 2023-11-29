@@ -20,7 +20,7 @@ final class StatisticsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.font = Design.Typography.title.font
+        label.font = Design.Typography.font(.title)
         label.textAlignment = .center
         label.text = "Результаты"
         return label
@@ -35,16 +35,14 @@ final class StatisticsView: UIView {
     }()
     
     private let reset: UIButton = {
-        var config = UIButton.Configuration.plain()
-        config.title = "Сброс"
-        let button = UIButton(configuration: config)
+        let button = UIButton(configuration: .plain())
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration?.title = "Сброс"
         return button
     }()
     
     private var resetCenterXAnchor: NSLayoutConstraint = .init()
 
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,7 +74,7 @@ final class StatisticsView: UIView {
         
         let padding = Design.Padding.title.spacing
 
-        resetCenterXAnchor = reset.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 0)
+        resetCenterXAnchor = reset.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             title.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
@@ -86,7 +84,6 @@ final class StatisticsView: UIView {
             stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             
-           // reset.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             resetCenterXAnchor,
             reset.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
@@ -97,9 +94,9 @@ final class StatisticsView: UIView {
 extension StatisticsView: StatisticsViewSetupable {
     
     func setup(level: UIImage? = nil,
-               time:  String? = nil,
-               taps:  String? = nil,
-               font:  UIFont  = Design.Typography.item.font) {
+               time:  String?  = nil,
+               taps:  String?  = nil,
+               font:  UIFont   = Design.Typography.font(.item)) {
         
         let item = UIStackView()
         item.axis = .horizontal

@@ -70,8 +70,17 @@ extension SettingsViewController: SettingsViewDelegate {
         presenter?.update(isHaptics: isOn)
     }
     
-    func colorDidChanged(_ new: UIColor) {
-        presenter?.update(color: new)
+    func colorButtonTapped(_ sender: UIButton) {
+        guard let current = sender.configuration?.baseBackgroundColor else { return }
+        
+        let colorPicker = UIColorPickerViewController()
+        colorPicker.modalPresentationStyle = .automatic
+        colorPicker.title = "Цвет рубашки"
+        colorPicker.selectedColor = current
+        colorPicker.supportsAlpha = false
+        colorPicker.delegate = self
+        
+        present(colorPicker, animated: true)
     }
     
     func resetTapped() {
@@ -95,4 +104,16 @@ extension SettingsViewController: SettingsViewDelegate {
         
         present(alert, animated: true, completion: nil)
     }
+}
+
+
+extension SettingsViewController: UIColorPickerViewControllerDelegate {
+    
+    func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
+        guard !continuously else { return }
+        print(color)
+        presenter?.update(color: color)
+    }
+
+//    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) { }
 }

@@ -18,7 +18,7 @@ protocol StatisticsViewSetupable: AnyObject where Self: UIView {
 
 extension StatisticsViewSetupable {
     
-    func setup(level: UIImage?, time: String?, taps: String?, font: UIFont = Design.Typography.item.font) {
+    func setup(level: UIImage?, time: String?, taps: String?, font: UIFont = Design.Typography.font(.item)) {
         setup(level: level, time: time, taps: taps, font: font)
     }
 }

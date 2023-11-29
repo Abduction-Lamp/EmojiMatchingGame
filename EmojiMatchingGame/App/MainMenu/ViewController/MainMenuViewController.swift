@@ -9,8 +9,8 @@ import UIKit
 
 final class MainMenuViewController: UIViewController {
     
-    private var mainMenuView: MainMenuView {
-        guard let view = self.view as? MainMenuView else {
+    private var mainMenuView: UIView & MainMenuSetupable & GradientAnimatable {
+        guard let view = self.view as? (UIView & MainMenuSetupable & GradientAnimatable) else {
             return MainMenuView(frame: self.view.frame)
         }
         return view
@@ -30,9 +30,9 @@ final class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainMenuView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped(_:)), for: .touchUpInside)
-        mainMenuView.settingsButton.addTarget(self, action: #selector(settingsButtonTapped(_:)), for: .touchUpInside)
-        mainMenuView.statisticsButton.addTarget(self, action: #selector(statisticsButtonTapped(_:)), for: .touchUpInside)
+        mainMenuView.newGameAction = newGameButtonTapped
+        mainMenuView.settingsAction = settingsButtonTapped
+        mainMenuView.statisticsAction = statisticsButtonTapped
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +43,8 @@ final class MainMenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard let presenter = self.presenter else { return }
         
+        guard let presenter = self.presenter else { return }
         presenter.viewDidAppear()
     }
     
@@ -61,22 +61,19 @@ final class MainMenuViewController: UIViewController {
 
 extension MainMenuViewController: MainMenuDisplayable {
     
-    @objc
     private func newGameButtonTapped(_ sender: UIButton) {
         presenter?.newGame()
     }
     
-    @objc
     private func settingsButtonTapped(_ sender: UIButton) {
         presenter?.settings()
     }
     
-    @objc
     private func statisticsButtonTapped(_ sender: UIButton) {
         presenter?.statistics()
     }
     
     func display(animated: Bool) {
-        animated ? mainMenuView.animate() : mainMenuView.stop()
+        animated ? mainMenuView.animate(with: 5) : mainMenuView.stop()
     }
 }

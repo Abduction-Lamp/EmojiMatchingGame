@@ -95,7 +95,7 @@ extension User: UserStorageable {
             case .unlockLevel:
                 if let level = defaults.value(forKey: key.rawValue) as? Int {
                     _unlockLevel = Level(rawValue: level) ?? _unlockLevel
-                    print("\t✅ Unlock Level: \(_unlockLevel))")
+                    print("\t✅ Unlock Level: \(_unlockLevel)")
                 }
             case .startLevel:
                 if let level = defaults.value(forKey: key.rawValue) as? Int, level <= _unlockLevel.index {

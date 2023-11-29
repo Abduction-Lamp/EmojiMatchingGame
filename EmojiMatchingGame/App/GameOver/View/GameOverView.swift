@@ -63,7 +63,7 @@ final class GameOverView: UIView {
         label.numberOfLines = 2
         label.adjustsFontForContentSizeCategory = true
         label.adjustsFontSizeToFitWidth = true
-        label.font = Design.Typography.title.font
+        label.font = Design.Typography.font(.title)
         label.text = "⏱️\n"
         return label
     }()

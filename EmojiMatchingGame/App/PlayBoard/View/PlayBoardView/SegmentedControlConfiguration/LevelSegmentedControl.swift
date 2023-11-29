@@ -59,7 +59,7 @@ final class LevelSegmentedControl: UISegmentedControl {
     private func setup() {
         Level.allCases.forEach { level in
             let index = level.index
-            let lock = UIImage(systemName: "lock")?.applyingSymbolConfiguration(.init(font: Design.Typography.title.font))
+            let lock = UIImage(systemName: "lock")?.applyingSymbolConfiguration(.init(font: Design.Typography.font(.title)))
             lock?.accessibilityLabel = "Level \(index + 1)"
             insertSegment(with: lock, at: index, animated: false)
             setEnabled(false, forSegmentAt: index)
@@ -81,7 +81,7 @@ extension LevelSegmentedControl: LevelSegmentedCustomizable {
     func unlock(_ level: Indexable) {
         (0...level.index).forEach { indexSegment in
             guard !isEnabledForSegment(at: indexSegment) else { return }
-            let image = UIImage(systemName: "\(indexSegment + 1).circle")?.applyingSymbolConfiguration(.init(font: Design.Typography.title.font))
+            let image = UIImage(systemName: "\(indexSegment + 1).circle")?.applyingSymbolConfiguration(.init(font: Design.Typography.font(.title)))
             image?.accessibilityLabel = "Level \(indexSegment + 1)"
             setImage(image, forSegmentAt: indexSegment)
             setEnabled(true, forSegmentAt: indexSegment)

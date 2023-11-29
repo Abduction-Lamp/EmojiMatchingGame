@@ -9,8 +9,9 @@ import Foundation
 
 extension TimeInterval {
     
-    //  hour:minute:second,(with milliseconds)
-    //
+    /// Вернет строку
+    /// [hour] : [minute] : second , milliseconds
+    ///
     public func toString() -> String {
         let fornatter = DateComponentsFormatter()
         fornatter.allowedUnits = [.hour, .minute, .second]

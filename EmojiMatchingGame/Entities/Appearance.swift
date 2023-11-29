@@ -51,11 +51,13 @@ extension Appearance: AppearanceStorageable {
             _color
         }
         set {
+            print(newValue)
+            
             guard newValue != _color else { return }
-            let key = UserDefaultsKeys.color
             _color = newValue
-            defaults.setValue(newValue.hex, forKey: key.rawValue)
             notify()
+            let key = UserDefaultsKeys.color
+            defaults.setValue(newValue.hex, forKey: key.rawValue)
         }
     }
     
@@ -65,10 +67,10 @@ extension Appearance: AppearanceStorageable {
         }
         set {
             guard newValue != _haptics else { return }
-            let key = UserDefaultsKeys.haptics
             _haptics = newValue
-            defaults.setValue(newValue, forKey: key.rawValue)
             notify()
+            let key = UserDefaultsKeys.haptics
+            defaults.setValue(newValue, forKey: key.rawValue)
         }
     }
     
@@ -78,10 +80,10 @@ extension Appearance: AppearanceStorageable {
         }
         set {
             guard newValue != _animated else { return }
-            let key = UserDefaultsKeys.animation
             _animated = newValue
-            defaults.setValue(newValue, forKey: key.rawValue)
             notify()
+            let key = UserDefaultsKeys.animation
+            defaults.setValue(newValue, forKey: key.rawValue)
         }
     }
     

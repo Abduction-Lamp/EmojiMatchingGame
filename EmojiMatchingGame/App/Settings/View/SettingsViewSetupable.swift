@@ -20,7 +20,7 @@ protocol SettingsViewSetupable: AnyObject where Self: UIView {
 
 protocol SettingsViewDelegate: AnyObject {
     
-    func colorDidChanged(_ new: UIColor)
+    func colorButtonTapped(_ sender: UIButton)
     func animationToggleSwitched(_ isOn: Bool)
     func hapticToggleSwitched(_ isOn: Bool)
     func resetTapped()

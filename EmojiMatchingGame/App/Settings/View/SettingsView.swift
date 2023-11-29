@@ -20,7 +20,7 @@ final class SettingsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.font = Design.Typography.title.font
+        label.font = Design.Typography.font(.title)
         label.textAlignment = .center
         label.text = "Настройки"
         return label
@@ -34,37 +34,32 @@ final class SettingsView: UIView {
         return stack
     }()
     
+    // Стандартная ширина UISwitch, этот размер будет использоваться для размера trailing элемента в SlotView
+    // Так как UISwitch в текущем дизайне самый широкий элемент из элементов размещенных в trailing
+    // Что позволяет нам сделать все элементы в trailing одинакового размера
+    private let width = UISwitch().bounds.width
+    
     private lazy var colorSlotView = SlotView(
         body: {
             let label = UILabel()
-            label.font = Design.Typography.item.font
+            label.font = Design.Typography.font(.item)
             label.adjustsFontForContentSizeCategory = true
             label.text = "Цвет рубашки"
             return label
         }(),
         trailing: {
-            let size = Design.Typography.item.font.height
-            let control = UIColorWell()
-            control.title = "Цвет рубашки"
-            control.supportsAlpha = false
-            control.widthAnchor.constraint(equalToConstant: size).isActive = true
-            control.heightAnchor.constraint(equalToConstant: size).isActive = true
-            control.addAction(colorWellAction, for: .valueChanged)
-            return control
+            let button = UIButton(configuration: .filled())
+            button.widthAnchor.constraint(equalToConstant: width).isActive = true
+            button.heightAnchor.constraint(equalToConstant: width).isActive = true
+            button.addTarget(self, action: #selector(colorButtonTapped(_:)), for: .touchUpInside)
+            return button
         }()
     )
-    
-    private lazy var colorWellAction = UIAction { action in
-        guard let control = action.sender as? UIColorWell,
-              let selectedColor = control.selectedColor
-        else { return }
-        self.delegate?.colorDidChanged(selectedColor)
-    }
     
     private lazy var animationSlotView = SlotView(
         body: {
             let label = UILabel()
-            label.font = Design.Typography.item.font
+            label.font = Design.Typography.font(.item)
             label.adjustsFontForContentSizeCategory = true
             label.text = "Анимация"
             return label
@@ -79,7 +74,7 @@ final class SettingsView: UIView {
     private lazy var hapticSlotView = SlotView(
         body: {
             let label = UILabel()
-            label.font = Design.Typography.item.font
+            label.font = Design.Typography.font(.item)
             label.adjustsFontForContentSizeCategory = true
             label.text = "Тактильная обратная связь"
             return label
@@ -94,15 +89,16 @@ final class SettingsView: UIView {
     private lazy var soundSlotView = SlotView(
         body: {
             let label = UILabel()
-            label.font = Design.Typography.item.font
+            label.font = Design.Typography.font(.item)
             label.adjustsFontForContentSizeCategory = true
             label.text = "Громкость звука"
             return label
         }(),
         trailing: {
-            let size = Design.Typography.item.font.height
+            let size = Design.Typography.font(.title).height
+            let imgge = UIImage(systemName: "speaker.wave.3.fill")
             let imageView = UIImageView()
-            imageView.image = UIImage(systemName: "speaker.wave.3.fill")
+            imageView.image = imgge
             imageView.contentMode = .scaleAspectFill
             imageView.widthAnchor.constraint(equalToConstant: size).isActive = true
             imageView.heightAnchor.constraint(equalToConstant: size).isActive = true
@@ -112,16 +108,13 @@ final class SettingsView: UIView {
     
     private lazy var soundVolumeSlider = UISlider()
     
-    private let reset: UIButton = {
-        var config = UIButton.Configuration.plain()
-        config.title = "Сброс"
-        let button = UIButton(configuration: config)
+    private lazy var reset: UIButton = {
+        let button = UIButton(configuration: .plain())
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
+        button.configuration?.title = "Сброс"
         return button
     }()
-    
-    private var resetCenterXAnchor: NSLayoutConstraint = .init()
-    
     
     
     // MARK: SettingsView Delegate
@@ -143,11 +136,9 @@ final class SettingsView: UIView {
         print("\tVIEW:\t♻️\tSettings")
     }
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         blur.frame = bounds
-        resetCenterXAnchor.constant = bounds.width/3
     }
     
     
@@ -164,8 +155,6 @@ final class SettingsView: UIView {
         stack.addArrangedSubview(soundVolumeSlider)
         
         let padding = Design.Padding.title.spacing
-        resetCenterXAnchor = reset.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 0)
-        
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             title.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
@@ -175,12 +164,9 @@ final class SettingsView: UIView {
             stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
             stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             
-//            reset.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            resetCenterXAnchor,
+            reset.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             reset.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
-        
-        reset.addTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
     }
 }
 
@@ -188,8 +174,8 @@ final class SettingsView: UIView {
 extension SettingsView: SettingsViewSetupable {
     
     func setupColor(_ color: UIColor) -> Bool {
-        guard let control = colorSlotView.trailing as? UIColorWell else { return false }
-        control.selectedColor = color
+        guard let control = colorSlotView.trailing as? UIButton else { return false }
+        control.configuration?.baseBackgroundColor = color
         return true
     }
     
@@ -224,6 +210,11 @@ extension SettingsView: SettingsViewSetupable {
 
 
 extension SettingsView {
+    
+    @objc
+    private func colorButtonTapped(_ sender: UIButton) {
+        self.delegate?.colorButtonTapped(sender)
+    }
     
     @objc
     private func animationToggleSwitched(_ sender: UISwitch) {

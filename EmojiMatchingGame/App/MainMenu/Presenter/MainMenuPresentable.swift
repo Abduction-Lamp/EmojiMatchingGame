@@ -14,7 +14,6 @@ protocol MainMenuPresentable: AnyObject {
     func viewDidAppear()
     func viewDidDisappear()
     
-    
     func newGame()
     func settings()
     func statistics()
