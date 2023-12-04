@@ -11,7 +11,7 @@ final class CardView: UIView {
     
     private let emoji: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
         label.baselineAdjustment = .alignCenters
         label.textAlignment = .center
@@ -39,11 +39,12 @@ final class CardView: UIView {
         super.init(frame: frame)
         
         configure()
-        print("\tVIEW:\t😈\tCard")
+        
+//        print("\tVIEW\t😈\tCard")
     }
     
     deinit {
-        print("\tVIEW:\t♻️\tCard")
+//        print("\tVIEW\t♻️\tCard")
     }
     
     required init?(coder: NSCoder) {
@@ -53,19 +54,12 @@ final class CardView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.height/4
+        emoji.frame = bounds
     }
     
     private func configure() {
         clipsToBounds = false
-        
         addSubview(emoji)
-        NSLayoutConstraint.activate([
-            emoji.topAnchor.constraint(equalTo: topAnchor),
-            emoji.leadingAnchor.constraint(equalTo: leadingAnchor),
-            emoji.trailingAnchor.constraint(equalTo: trailingAnchor),
-            emoji.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-        
         addGestureRecognizer(tap)
     }
 }
@@ -146,9 +140,7 @@ extension CardView {
             completion?(true)
             return
         }
-        
         let scale: CGFloat = 1.25
-        
         UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseOut]) { [weak self] in
             guard let self = self else { return }
             self.transform = CGAffineTransform(scaleX: scale, y: scale)

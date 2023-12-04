@@ -19,11 +19,11 @@ final class MainMenuPresenter {
         self.appearance = appearance
         
         let memoryAddress = Unmanaged.passUnretained(self).toOpaque()
-        print("PRESENTER:\t😈\tMenu > \(memoryAddress)")
+        print("PRESENTER\t😈\tMenu > \(memoryAddress)")
     }
     
     deinit {
-        print("PRESENTER:\t♻️\tMenu")
+        print("PRESENTER\t♻️\tMenu")
     }
 }
 

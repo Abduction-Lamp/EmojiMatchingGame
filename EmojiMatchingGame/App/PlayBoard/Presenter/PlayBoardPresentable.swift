@@ -15,6 +15,8 @@ enum LevelGameMode {
 
 protocol PlayBoardPresentable: AnyObject {
     
+    var level: Levelable { get }
+    
     init(
         _ viewController: PlayBoardDisplayable,
         router:           PlayBoardRoutable,

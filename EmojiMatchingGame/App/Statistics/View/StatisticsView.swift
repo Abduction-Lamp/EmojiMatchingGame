@@ -48,7 +48,7 @@ final class StatisticsView: UIView {
         super.init(frame: frame)
         
         configure()
-        print("\tVIEW:\t😈\tStatistics")
+        print("\tVIEW\t😈\tStatistics")
     }
     
     required init?(coder: NSCoder) {
@@ -56,7 +56,7 @@ final class StatisticsView: UIView {
     }
     
     deinit {
-        print("\tVIEW:\t♻️\tStatistics")
+        print("\tVIEW\t♻️\tStatistics")
     }
     
     override func layoutSubviews() {

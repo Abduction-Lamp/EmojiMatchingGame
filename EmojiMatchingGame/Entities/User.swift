@@ -41,6 +41,7 @@ extension User: UserStorageable {
     var unlockLevel: any Levelable {
         get {
             _unlockLevel
+//            Level.six
         }
         set {
             if newValue.index > _unlockLevel.index {
@@ -89,7 +90,7 @@ extension User: UserStorageable {
     }
     
     func fetch() {
-        print("USER:\t\t🐒 Fetch > Start")
+        print("USER\t\t🤗\tFetch > Start")
         UserDefaultsKeys.allCases.forEach { key in
             switch key {
             case .unlockLevel:
@@ -114,7 +115,7 @@ extension User: UserStorageable {
                 }
             }
         }
-        print("USER:\t\t🙈 Fetch > Stop")
+        print("USER\t\t🤗\tFetch > Stop")
     }
 
     func unlock() {

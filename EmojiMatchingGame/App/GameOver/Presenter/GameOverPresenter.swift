@@ -34,11 +34,11 @@ final class GameOverPresenter: GameOverPresentable {
         self.taps = taps
         self.isFinalLevel = isFinalLevel
         
-        print("PRESENTER:\t😈\tGameOver")
+        print("PRESENTER\t😈\tGameOver")
     }
     
     deinit {
-        print("PRESENTER:\t♻️\tGameOver")
+        print("PRESENTER\t♻️\tGameOver")
     }
     
     func viewWillAppear() {

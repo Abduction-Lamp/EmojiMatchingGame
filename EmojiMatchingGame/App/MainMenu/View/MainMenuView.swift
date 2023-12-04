@@ -38,11 +38,11 @@ final class MainMenuView: UIView {
         super.init(frame: frame)
         configure()
         
-        print("\tVIEW:\t😈\tMenu")
+        print("\tVIEW\t😈\tMenu")
     }
     
     deinit {
-        print("\tVIEW:\t♻️\tMenu")
+        print("\tVIEW\t♻️\tMenu")
     }
     
     required init?(coder: NSCoder) {

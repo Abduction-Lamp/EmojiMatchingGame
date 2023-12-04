@@ -20,7 +20,7 @@ final class StatisticsViewController: UIViewController {
     
     
     override func loadView() {
-        print("VC:\t\t\t😈\tStatistics (loadView)")
+        print("VC\t\t\t😈\tStatistics (loadView)")
         view = StatisticsView()
     }
     
@@ -35,7 +35,7 @@ final class StatisticsViewController: UIViewController {
     }
     
     deinit {
-        print("VC:\t\t\t♻️\tStatistics ")
+        print("VC\t\t\t♻️\tStatistics ")
     }
 }
 

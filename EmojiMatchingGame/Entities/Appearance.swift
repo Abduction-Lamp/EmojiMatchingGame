@@ -89,7 +89,7 @@ extension Appearance: AppearanceStorageable {
     
     
     func fetch() {
-        print("APPEARANCE:\t🐒 Fetch > Start")
+        print("APPEARANCE\t🎨\tFetch > Start")
         UserDefaultsKeys.allCases.forEach { key in
             switch key {
             case .color:
@@ -110,7 +110,7 @@ extension Appearance: AppearanceStorageable {
                 }
             }
         }
-        print("APPEARANCE:\t🙈 Fetch > Stop")
+        print("APPEARANCE\t🎨\tFetch > Stop")
     }
     
     func clear() {

@@ -12,7 +12,13 @@ protocol PlayBoardViewDisplayable {
     func setupLevelMenu(unlock: Indexable)
     func selectLevelMenu(level: Indexable)
     
-    func playNewGame(level: Sizeable, with cards: [CardView], animated: Bool)
+    func play(level: Sizeable, with cards: [CardView], animated: Bool)
+    func clean(animated: Bool, completion: (() -> Void)?)
 }
 
-extension PlayBoardViewDisplayable where Self: UIView {}
+extension PlayBoardViewDisplayable where Self: UIView {
+    
+//    func clean(animated: Bool, completion: (() -> Void)? = nil) {
+//        clean(animated: animated, completion: completion)
+//    }
+}

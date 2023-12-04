@@ -122,10 +122,10 @@ final class Flag: FlagGeneratable {
     // TODO: - Logging info
     //
     init() {
-        print("SERVICE:\t😈\tFlag")
+        print("SERVICE\t\t😈\tFlag")
     }
     
     deinit {
-        print("SERVICE:\t♻️\tFlag")
+        print("SERVICE\t\t♻️\tFlag")
     }
 }

@@ -19,7 +19,7 @@ final class SettingsViewController: UIViewController {
     var presenter: SettingsPresentable?
 
     override func loadView() {
-        print("VC:\t\t\t😈\tSettings (loadView)")
+        print("VC\t\t\t😈\tSettings (loadView)")
         view = SettingsView()
     }
     
@@ -31,7 +31,7 @@ final class SettingsViewController: UIViewController {
     }
     
     deinit {
-        print("VC:\t\t\t♻️\tSettings ")
+        print("VC\t\t\t♻️\tSettings ")
     }
 }
 

@@ -44,14 +44,7 @@ final class LevelSegmentedControl: UISegmentedControl {
         setTitleTextAttributes([.foregroundColor: color.selected], for: .selected)
         setTitleTextAttributes([.foregroundColor: color.normal],   for: .normal)
         setTitleTextAttributes([.foregroundColor: color.disabled], for: .disabled)
-        
 
-        
-//        let image = UIImage(named: "TransparentBackground")
-//        setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
-//        setBackgroundImage(image, for: .selected, barMetrics: .default)
-//        setBackgroundImage(UIImage(), for: .disabled, barMetrics: .default)
-        
         setup()
         shadow(isEnabled: true)
     }

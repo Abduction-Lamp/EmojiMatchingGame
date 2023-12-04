@@ -16,11 +16,11 @@ final class Router: Routable {
         self.navigation = navigation
         self.builder = builder
         
-        print("ROUTER:\t\t😈\tRouter")
+        print("ROUTER\t\t😈\tRouter")
     }
     
     deinit {
-        print("ROUTER:\t\t♻️\tRouter")
+        print("ROUTER\t\t♻️\tRouter")
     }
     
     func initVC() {

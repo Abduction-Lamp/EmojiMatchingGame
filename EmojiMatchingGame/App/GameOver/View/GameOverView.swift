@@ -41,8 +41,8 @@ final class GameOverView: UIView {
         label.text = winEmoji
         return label
     }()
-    private var winLabelWidthAnchor: NSLayoutConstraint = .init()
-    private var winLabelHeightAnchor: NSLayoutConstraint = .init()
+    private var winLabelWidthAnchor:   NSLayoutConstraint = .init()
+    private var winLabelHeightAnchor:  NSLayoutConstraint = .init()
     private var winLabelCenterYAnchor: NSLayoutConstraint = .init()
 
     private(set) var tapWinLabel: UITapGestureRecognizer = {
@@ -123,11 +123,11 @@ final class GameOverView: UIView {
         super.init(frame: frame)
         configure()
         
-        print("\tVIEW:\t😈\tGameOverView")
+        print("\tVIEW\t😈\tGameOverView")
     }
     
     deinit {
-        print("\tVIEW:\t♻️\tGameOverView")
+        print("\tVIEW\t♻️\tGameOverView")
     }
     
     required init?(coder: NSCoder) {

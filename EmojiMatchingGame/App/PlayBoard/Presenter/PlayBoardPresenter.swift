@@ -15,7 +15,7 @@ final class PlayBoardPresenter {
     private let storage: Storage
     private let emoji: EmojiGeneratable
     
-    private var level: Levelable
+    var level: Levelable
     
     init(_ viewController: PlayBoardDisplayable, router: PlayBoardRoutable, storage: Storage, emoji: EmojiGeneratable) {
         self.viewController = viewController
@@ -25,11 +25,11 @@ final class PlayBoardPresenter {
         
         level = storage.user.startLevel
         
-        print("PRESENTER:\t😈\tPlayBoard")
+        print("PRESENTER\t😈\tPlayBoard")
     }
     
     deinit {
-        print("PRESENTER:\t♻️\tPlayBoard")
+        print("PRESENTER\t♻️\tPlayBoard")
     }
     
     private var cards: [String] = []
@@ -43,16 +43,16 @@ final class PlayBoardPresenter {
 
 
 extension PlayBoardPresenter: PlayBoardPresentable {
-        
+    
     func viewDidLoad() {
         viewController?.setupLevelMenu(unlock: storage.user.unlockLevel)
         play(mode: .current)
     }
     
     func play(mode: LevelGameMode) {
-        
         switch mode {
-        case .current: break
+        case .current: 
+            break
         case .next:
             if level.index < storage.user.unlockLevel.index {
                 level = level.next()
@@ -63,6 +63,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
             }
         }
         
+   
         remove()
         viewController?.selectLevelMenu(level: level)
         

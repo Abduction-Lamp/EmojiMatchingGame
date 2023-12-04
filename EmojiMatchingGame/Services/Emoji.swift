@@ -174,11 +174,11 @@ final class Emoji: EmojiGeneratable {
     init(flag service: FlagGeneratable = Flag()) {
         flag = service
         
-        print("SERVICE:\t😈\tEmoji")
+        print("SERVICE\t\t😈\tEmoji")
     }
     
     deinit {
-        print("SERVICE:\t♻️\tEmoji")
+        print("SERVICE\t\t♻️\tEmoji")
     }
     
     

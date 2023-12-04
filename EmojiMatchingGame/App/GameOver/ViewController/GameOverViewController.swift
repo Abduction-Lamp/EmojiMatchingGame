@@ -21,12 +21,12 @@ final class GameOverViewController: UIViewController {
     
     
     override func loadView() {
-        print("VC:\t\t\t😈\tGameOver (loadView)")
+        print("VC\t\t\t😈\tGameOver (loadView)")
         view = GameOverView()
     }
     
     deinit {
-        print("VC:\t\t\t♻️\tGameOver")
+        print("VC\t\t\t♻️\tGameOver")
     }
     
     override func viewDidLoad() {

@@ -113,6 +113,9 @@ final class SettingsView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
         button.configuration?.title = "Сброс"
+//        button.configuration?.image = UIImage(systemName: "gobackward")
+//        button.configuration?.imagePlacement = .trailing
+//        button.configuration?.imagePadding = 6
         return button
     }()
     
@@ -125,7 +128,7 @@ final class SettingsView: UIView {
         super.init(frame: frame)
         
         configure()
-        print("\tVIEW:\t😈\tSettings")
+        print("\tVIEW\t😈\tSettings")
     }
     
     required init?(coder: NSCoder) {
@@ -133,7 +136,7 @@ final class SettingsView: UIView {
     }
     
     deinit {
-        print("\tVIEW:\t♻️\tSettings")
+        print("\tVIEW\t♻️\tSettings")
     }
     
     override func layoutSubviews() {

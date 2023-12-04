@@ -61,7 +61,7 @@ final class Builder: Buildable {
     // TODO: - Logging info
     //
     init(storage: Storage, emoji: EmojiGeneratable) {
-        print("ASSEMBLY:\t😈\tBuilder")
+        print("ASSEMBLY\t😈\tBuilder")
         
         self.emoji = emoji
         self.storage = storage
@@ -70,6 +70,6 @@ final class Builder: Buildable {
     }
     
     deinit {
-        print("ASSEMBLY:\t♻️\tBuilder")
+        print("ASSEMBLY\t♻️\tBuilder")
     }
 }

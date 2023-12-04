@@ -16,11 +16,11 @@ final class StatisticsPresenter: StatisticsPresentable {
         self.viewController = viewController
         self.user = user
         
-        print("PRESENTER:\t😈\tStatistics")
+        print("PRESENTER\t😈\tStatistics")
     }
     
     deinit {
-        print("PRESENTER:\t♻️\tStatistics")
+        print("PRESENTER\t♻️\tStatistics")
     }
     
     func fetch() {
