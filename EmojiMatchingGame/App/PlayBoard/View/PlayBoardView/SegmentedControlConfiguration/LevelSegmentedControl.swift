@@ -32,6 +32,7 @@ final class LevelSegmentedControl: UISegmentedControl {
     }
     
     private func configure() {
+        isUserInteractionEnabled = false
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemBackground
         

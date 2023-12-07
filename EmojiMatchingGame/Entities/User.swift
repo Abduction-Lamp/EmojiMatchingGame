@@ -9,9 +9,15 @@ import Foundation
 
 final class User {
     
-    struct BestResult: Codable {
+    struct BestResult: Codable, Comparable {
         let time: TimeInterval
         let taps: UInt
+        
+        static func < (lhs: User.BestResult, rhs: User.BestResult) -> Bool {
+            if lhs.time < rhs.time {  return true }
+            if lhs.time == rhs.time && lhs.taps < rhs.taps { return true }
+            return false
+        }
     }
     
     static let shared = User()
@@ -74,10 +80,10 @@ extension User: UserStorageable {
     }
     
     func setBestResult(for level: Levelable, result: BestResult) {
-        if let best = _bestResults[level.description] {
-            guard best.time >= result.time else { return }
-            if best.time == result.time && best.taps > result.taps { return }
-        }
+        if let best = _bestResults[level.description], best < result { return }
+//            guard best.time >= result.time else { return }
+//            if best.time == result.time && best.taps > result.taps { return }
+//        }
         _bestResults[level.description] = result
         
         switch archive(_bestResults) {

@@ -11,5 +11,5 @@ protocol GameOverDisplayable: AnyObject {
     
     var presenter: GameOverPresentable? { get set }
     
-    func display(time: String, taps: String, isFinishMode: Bool)
+    func display(time: String, taps: String, isBest: Bool, isFinishMode: Bool)
 }

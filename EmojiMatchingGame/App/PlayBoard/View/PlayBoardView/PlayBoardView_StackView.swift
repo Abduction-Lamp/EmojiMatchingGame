@@ -12,18 +12,11 @@ final class PlayBoardView_StackView: UIView {
     private let board: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.backgroundColor = .systemGray6
         stack.isLayoutMarginsRelativeArrangement = true
         stack.layoutMargins = .init(top: 4, left: 4, bottom: 4, right: 4)
         
         stack.layer.masksToBounds = false
-        stack.layer.backgroundColor = UIColor.systemGray6.cgColor
-        stack.layer.opacity = 1
-        stack.layer.cornerRadius = 25
-        stack.layer.shadowColor = UIColor.systemGray.cgColor
-        stack.layer.shadowOpacity = 0.7
-        stack.layer.shadowRadius = 7
-        stack.layer.shadowOffset = .zero
+        stack.layer.opacity = 0
         
         stack.axis = .vertical
         stack.distribution = .fillEqually
@@ -58,9 +51,10 @@ final class PlayBoardView_StackView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        board.layer.shadowPath = UIBezierPath(roundedRect: board.bounds, cornerRadius: board.layer.cornerRadius).cgPath
-        levelSegmentedControl.layer.shadowPath = UIBezierPath(roundedRect: levelSegmentedControl.bounds, 
-                                                              cornerRadius: levelSegmentedControl.layer.cornerRadius).cgPath
+        let path = UIBezierPath(roundedRect: levelSegmentedControl.bounds, cornerRadius: levelSegmentedControl.layer.cornerRadius).cgPath
+        levelSegmentedControl.layer.shadowPath = path
+        
+        
     }
     
     override func updateConstraints() {
@@ -130,21 +124,20 @@ extension PlayBoardView_StackView: PlayBoardViewDisplayable {
     
     func clean(animated: Bool, completion: (() -> Void)? = nil) {
         levelSegmentedControl.isUserInteractionEnabled = false
+        
         guard animated else {
-            board.isHidden = true
+            board.layer.opacity = 0
             remove()
-            levelSegmentedControl.isUserInteractionEnabled = true
             completion?()
             return
         }
-        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut]) { [weak self] in
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut]) { [weak self] in
             guard let self = self else { return }
-//            self.board.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
             self.board.transform = CGAffineTransform(scaleX: -0.001, y: -0.001)
             self.board.layer.opacity = 0
-        } completion: { _ in
+        } completion: { [weak self] _ in
+            guard let self = self else { return }
             self.remove()
-            self.levelSegmentedControl.isUserInteractionEnabled = true
             completion?()
         }
     }
@@ -153,14 +146,17 @@ extension PlayBoardView_StackView: PlayBoardViewDisplayable {
         make(level: level, with: cards)
         
         guard animated else {
-            board.transform = .identity
-            board.isHidden = false
+            board.layer.opacity = 1
+            levelSegmentedControl.isUserInteractionEnabled = true
             return
         }
-        UIView.animate(withDuration: 0.2) { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
             self.board.transform = .identity
             self.board.layer.opacity = 1
+        } completion: { [weak self] _ in
+            guard let self = self else { return }
+            self.levelSegmentedControl.isUserInteractionEnabled = true
         }
     }
     

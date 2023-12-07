@@ -120,9 +120,13 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                         guard let self = self else { return }
                         self.remainingCards -= 2
                         if self.isGameOver {
-                            let time = self.saveResult()
+                            let result = self.saveResult()
                             self.unlock()
-                            self.router.goToGameOver(time: time, taps: self.taps, isFinalLevel: self.isFinalLevel, animated: animated)
+                            self.router.goToGameOver(time: result?.result.time,
+                                                     taps: result?.result.taps ?? self.taps,
+                                                     isBest: result?.isBest ?? false,
+                                                     isFinalLevel: self.isFinalLevel,
+                                                     animated: animated)
                         }
                     }
                 }
@@ -149,11 +153,16 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         taps = 0
     }
     
-    private func saveResult() -> TimeInterval? {
+    private func saveResult() -> (result: User.BestResult, isBest: Bool)? {
         guard let start = startTime else { return nil }
         let time = Date.now.timeIntervalSince(start)
-        storage.user.setBestResult(for: level, result: .init(time: time, taps: taps))
-        return time
+        let result = User.BestResult.init(time: time, taps: taps)
+        var isBest = true
+        if let best = storage.user.getBestResult(for: level) {
+            isBest = result < best
+        }
+        storage.user.setBestResult(for: level, result: result)
+        return (result: result, isBest: isBest)
     }
     
     private func unlock() {

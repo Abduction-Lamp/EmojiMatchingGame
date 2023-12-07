@@ -50,8 +50,8 @@ final class GameOverViewController: UIViewController {
         gameOverView.firework()
     }
     
-    func display(time: String, taps: String, isFinishMode: Bool) {
-        gameOverView.setup(time: time, taps: taps, isFinishMode: isFinishMode)
+    func display(time: String, taps: String, isBest: Bool, isFinishMode: Bool) {
+        gameOverView.setup(time: time, taps: taps, isBest: isBest, isFinishMode: isFinishMode)
     }
 }
 

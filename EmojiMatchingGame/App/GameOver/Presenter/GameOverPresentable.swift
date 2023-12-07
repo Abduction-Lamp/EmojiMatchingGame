@@ -17,6 +17,7 @@ protocol GameOverPresentable {
          animated:        Bool,
          time:            TimeInterval?,
          taps:            UInt,
+         isBest:          Bool,
          isFinalLevel:    Bool
     )
     

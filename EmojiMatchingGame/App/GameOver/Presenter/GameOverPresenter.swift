@@ -16,6 +16,7 @@ final class GameOverPresenter: GameOverPresentable {
     
     private let time: TimeInterval?
     private let taps: UInt
+    private let isBest: Bool
     private let isFinalLevel: Bool
     
     
@@ -24,6 +25,7 @@ final class GameOverPresenter: GameOverPresentable {
          animated:         Bool,
          time:             TimeInterval?,
          taps:             UInt,
+         isBest:           Bool,
          isFinalLevel:     Bool) {
         
         self.viewController = viewController
@@ -32,6 +34,7 @@ final class GameOverPresenter: GameOverPresentable {
         
         self.time = time
         self.taps = taps
+        self.isBest = isBest
         self.isFinalLevel = isFinalLevel
         
         print("PRESENTER\t😈\tGameOver")
@@ -43,7 +46,7 @@ final class GameOverPresenter: GameOverPresentable {
     
     func viewWillAppear() {
         let timeString = time?.toString() ?? ""
-        viewController?.display(time: timeString, taps: taps.description, isFinishMode: isFinalLevel)
+        viewController?.display(time: timeString, taps: taps.description, isBest: isBest, isFinishMode: isFinalLevel)
     }
     
     func next() {

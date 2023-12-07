@@ -27,15 +27,17 @@ final class Builder: Buildable {
     }
     
     func makeGameOverFlow(router: GameOverRoutable,
-                           time: TimeInterval?,
-                           taps: UInt,
-                           isFinalLevel: Bool) -> UIViewController & GameOverDisplayable {
+                          time: TimeInterval?,
+                          taps: UInt,
+                          isBest: Bool,
+                          isFinalLevel: Bool) -> UIViewController & GameOverDisplayable {
         let vc = GameOverViewController()
         let presenter = GameOverPresenter(vc,
                                           router: router,
                                           animated: storage.appearance.animated,
                                           time: time,
                                           taps: taps,
+                                          isBest: isBest,
                                           isFinalLevel: isFinalLevel)
         vc.presenter = presenter
         return vc

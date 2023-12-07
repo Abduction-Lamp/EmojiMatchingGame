@@ -26,6 +26,9 @@ final class GameOverView: UIView {
         return set[index]
     }
     
+    private var isBest: Bool = false
+    
+    
     // MARK: Emoji Win Label
     private lazy var winLabel: UILabel = {
         let label = UILabel()
@@ -216,6 +219,10 @@ extension GameOverView {
 
         winLabel.layer.add(group, forKey: nil)
         fireworks.emit(duration: duration)
+        
+        if isBest {
+            infoLabel.layer.add(springAnimation, forKey: nil)
+        }
     }
     
     private func makeFireworksParticles() -> [EmittedParticle] {
@@ -250,7 +257,8 @@ extension GameOverView {
         return particles
     }
     
-    func setup(time: String, taps: String, isFinishMode: Bool) {
+    func setup(time: String, taps: String, isBest: Bool, isFinishMode: Bool) {
+        self.isBest = isBest
         infoLabel.text = "⏱️\n" + time
         nextLevelButton.isEnabled = !isFinishMode
     }

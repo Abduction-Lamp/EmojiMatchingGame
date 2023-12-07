@@ -22,7 +22,7 @@ protocol MainMenuRoutable: BasicRoutable {
 }
 
 protocol PlayBoardRoutable: BasicRoutable {
-    func goToGameOver(time: TimeInterval?, taps: UInt, isFinalLevel: Bool, animated: Bool)
+    func goToGameOver(time: TimeInterval?, taps: UInt, isBest: Bool, isFinalLevel: Bool, animated: Bool)
     func goBackMainMenu(animated: Bool)
 }
 

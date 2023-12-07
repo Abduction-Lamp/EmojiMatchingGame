@@ -81,9 +81,9 @@ extension Router {
 // MARK: - Play Board Flow
 extension Router {
     
-    func goToGameOver(time: TimeInterval?, taps: UInt, isFinalLevel: Bool, animated: Bool) {
+    func goToGameOver(time: TimeInterval?, taps: UInt, isBest: Bool, isFinalLevel: Bool, animated: Bool) {
         if let playVC = navigation.topViewController as? PlayBoardViewController {
-            let gameOverVC = builder.makeGameOverFlow(router: self, time: time, taps: taps, isFinalLevel: isFinalLevel)
+            let gameOverVC = builder.makeGameOverFlow(router: self, time: time, taps: taps, isBest: isBest, isFinalLevel: isFinalLevel)
             gameOverVC.modalTransitionStyle = .coverVertical
             gameOverVC.modalPresentationStyle = .overFullScreen
             playVC.present(gameOverVC, animated: animated)

@@ -82,8 +82,8 @@ extension MainMenuView {
         )
         
         var config = UIButton.Configuration.tinted()
-        config.baseBackgroundColor = .white
-        config.baseForegroundColor = .white
+        config.baseBackgroundColor = .systemGray6
+        config.baseForegroundColor = .systemGray6
         config.contentInsets = Design.EdgeInsets.menu.edge
         config.buttonSize = .mini
         
