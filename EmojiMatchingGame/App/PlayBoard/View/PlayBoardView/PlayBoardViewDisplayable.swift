@@ -16,9 +16,18 @@ protocol PlayBoardViewDisplayable {
     func clean(animated: Bool, completion: (() -> Void)?)
 }
 
-extension PlayBoardViewDisplayable where Self: UIView {
+extension PlayBoardViewDisplayable where Self: UIView { }
+
+
+protocol PlayBoardViewDisplayableDetails {
     
-//    func clean(animated: Bool, completion: (() -> Void)? = nil) {
-//        clean(animated: animated, completion: completion)
-//    }
+    func shiftLevelMenu()
+    func hiddenLevelMenu()
+    func showLevelMenu()
+    
+    func hiddenButtons()
+    func showButtons()
+    
+    func hiddenBoard()
+    func showBoard()
 }

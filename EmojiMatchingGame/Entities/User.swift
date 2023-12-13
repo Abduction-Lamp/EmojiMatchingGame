@@ -14,8 +14,8 @@ final class User {
         let taps: UInt
         
         static func < (lhs: User.BestResult, rhs: User.BestResult) -> Bool {
-            if lhs.time < rhs.time {  return true }
-            if lhs.time == rhs.time && lhs.taps < rhs.taps { return true }
+            if (lhs.time < rhs.time) { return true }
+            if (lhs.time == rhs.time) && (lhs.taps < rhs.taps) { return true }
             return false
         }
     }
@@ -81,9 +81,6 @@ extension User: UserStorageable {
     
     func setBestResult(for level: Levelable, result: BestResult) {
         if let best = _bestResults[level.description], best < result { return }
-//            guard best.time >= result.time else { return }
-//            if best.time == result.time && best.taps > result.taps { return }
-//        }
         _bestResults[level.description] = result
         
         switch archive(_bestResults) {
@@ -161,19 +158,5 @@ extension User {
         } catch {
             return .failure(error)
         }
-    }
-}
-
-// CustomStringConvertible
-extension User {
-    
-    var description: String {
-        """
-        Start:\t\(_startLevel.description)
-        Unlock:\t\(_unlockLevel.description)
-        Bests: [\(_bestResults.count)]
-        \t\(_bestResults.keys)
-        \t\(_bestResults.values)
-        """
     }
 }

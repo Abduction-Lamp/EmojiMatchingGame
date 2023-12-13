@@ -24,7 +24,7 @@ extension UIColor {
         return a
     }
     
-    
+
     convenience init?(hex: String, alpha: CGFloat = 1.0) {
         var pure = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
@@ -75,7 +75,6 @@ extension UIColor {
         self.init(red: r, green: g, blue: b, alpha: a)
     }
 }
-
 
 
 extension UIColor {

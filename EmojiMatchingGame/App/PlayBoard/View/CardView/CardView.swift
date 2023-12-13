@@ -11,7 +11,6 @@ final class CardView: UIView {
     
     private let emoji: UILabel = {
         let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
         label.baselineAdjustment = .alignCenters
         label.textAlignment = .center

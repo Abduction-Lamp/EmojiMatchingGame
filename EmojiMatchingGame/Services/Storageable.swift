@@ -13,7 +13,7 @@ protocol Storageable: AnyObject {
 }
 
 
-protocol UserStorageable: Storageable, CustomStringConvertible {
+protocol UserStorageable: Storageable {
     
     var unlockLevel: Levelable { get set }
     var startLevel:  Levelable { get set }

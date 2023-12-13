@@ -35,31 +35,27 @@ final class PlayBoardViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         playBoardView.backButton.addTarget(self, action: #selector(backMenuButtonTapped(_:)), for: .touchUpInside)
-        playBoardView.levelSegmentedControl.addTarget(self, action: #selector(lavelDidChange(_:)), for: .valueChanged)
+        playBoardView.levelMenu.addTarget(self, action: #selector(lavelDidChange(_:)), for: .valueChanged)
         
         presenter?.viewDidLoad()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
         playBoardView.setNeedsUpdateConstraints()
         
-        coordinator.animate { [weak self] context in
-            guard let self = self else { return }
-            let shift = playBoardView.levelSegmentedControl.frame.maxY
-            switch Design.PseudoUserInterfaceSizeClass.current {
-            case .regular: playBoardView.levelSegmentedControl.transform = CGAffineTransform(translationX: 0, y: -shift)
-            case .compact: break
+        if size.width < size.height {
+            coordinator.animate { _ in } completion: { [weak self] context in
+                guard let self = self else { return }
+                UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.85, options: [.curveEaseOut]) {
+                    self.playBoardView.showLevelMenu()
+                }
             }
-        } completion: { [weak self] context in
-            guard let self = self else { return }
-            switch Design.PseudoUserInterfaceSizeClass.current {
-            case .regular: break
-            case .compact: playBoardView.levelSegmentedControl.transform = .identity
-            }
+        } else {
+            playBoardView.hiddenLevelMenu()
         }
     }
+    
     
 //    //  MARK:   ManualLayout
 //    //
@@ -77,7 +73,6 @@ extension PlayBoardViewController: PlayBoardDisplayable {
     func play(level: Sizeable, with sequence: [String], and color: UIColor, animated flag: Bool) {
         playBoardView.clean(animated: flag) { [weak self] in
             guard let self = self else { return }
-            
 //            //  MARK: ManualLayout
 //            self.cards.forEach { $0.removeFromSuperview() }
 //            //

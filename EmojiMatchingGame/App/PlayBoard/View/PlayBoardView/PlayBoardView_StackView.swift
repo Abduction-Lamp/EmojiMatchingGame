@@ -24,15 +24,16 @@ final class PlayBoardView_StackView: UIView {
         
         return stack
     }()
-
     private var boardWidthAnchor: NSLayoutConstraint = .init()
     private var boardHeightAnchor: NSLayoutConstraint = .init()
     
+    private(set) var levelMenu: UISegmentedControl & LevelSegmentedCustomizable = LevelSegmentedControl()
+    private var levelMenuYAnchor: NSLayoutConstraint = .init()
+    
     private(set) var backButton: UIButton = BackButton()
-    private(set) var levelSegmentedControl: UISegmentedControl & LevelSegmentedCustomizable = LevelSegmentedControl()
     private(set) var soundVolumeButton: any UIButton & SoundVolumeButtonCustomizable = SoundVolumeButton()
-    
-    
+
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -51,10 +52,8 @@ final class PlayBoardView_StackView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let path = UIBezierPath(roundedRect: levelSegmentedControl.bounds, cornerRadius: levelSegmentedControl.layer.cornerRadius).cgPath
-        levelSegmentedControl.layer.shadowPath = path
-        
-        
+        let path = UIBezierPath(roundedRect: levelMenu.bounds, cornerRadius: levelMenu.layer.cornerRadius).cgPath
+        levelMenu.layer.shadowPath = path
     }
     
     override func updateConstraints() {
@@ -68,11 +67,13 @@ final class PlayBoardView_StackView: UIView {
         
         addSubview(board)
         addSubview(backButton)
-        addSubview(levelSegmentedControl)
+        addSubview(levelMenu)
         addSubview(soundVolumeButton)
         
         boardWidthAnchor = board.widthAnchor.constraint(equalToConstant: 0)
         boardHeightAnchor = board.heightAnchor.constraint(equalToConstant: 0)
+        
+        levelMenuYAnchor = levelMenu.centerYAnchor.constraint(equalTo: backButton.centerYAnchor, constant: 0)
         
         NSLayoutConstraint.activate([
             board.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
@@ -83,21 +84,17 @@ final class PlayBoardView_StackView: UIView {
             backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             backButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
 
-            levelSegmentedControl.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            levelSegmentedControl.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-            levelSegmentedControl.heightAnchor.constraint(equalToConstant: 50),
+            levelMenu.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            levelMenuYAnchor,
+            levelMenu.heightAnchor.constraint(equalToConstant: 50),
             
             soundVolumeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             soundVolumeButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor)
         ])
-        
-        let sizeClass = Design.PseudoUserInterfaceSizeClass.current
-        updateConstraints(for: sizeClass)
 
-        switch sizeClass {
-        case .compact: levelSegmentedControl.transform = .identity
-        case .regular: levelSegmentedControl.transform = CGAffineTransform(translationX: 0, y: -100)
-        }
+        let current = Design.PseudoUserInterfaceSizeClass.current
+        updateConstraints(for: .current)
+        current == .compact ? showLevelMenu() : hiddenLevelMenu()
     }
     
     private func updateConstraints(for sizeClass: Design.PseudoUserInterfaceSizeClass) {
@@ -112,29 +109,69 @@ final class PlayBoardView_StackView: UIView {
     }
 }
 
-extension PlayBoardView_StackView: PlayBoardViewDisplayable {
 
+extension PlayBoardView_StackView: PlayBoardViewDisplayableDetails {
+    
+    func shiftLevelMenu() {
+        levelMenuYAnchor.constant = self.levelMenu.frame.height
+        layoutIfNeeded()
+    }
+    
+    func hiddenLevelMenu() {
+        levelMenuYAnchor.constant = -200
+        layoutIfNeeded()
+    }
+    
+    func showLevelMenu() {
+        levelMenuYAnchor.constant = 0
+        layoutIfNeeded()
+    }
+    
+    func hiddenButtons() {
+        backButton.transform = CGAffineTransform.init(translationX: -250, y: 0)
+        soundVolumeButton.transform = CGAffineTransform.init(translationX: 250, y: 0)
+    }
+    
+    func showButtons() {
+        backButton.transform = .identity
+        soundVolumeButton.transform = .identity
+    }
+    
+    func hiddenBoard() {
+        self.board.transform = CGAffineTransform(scaleX: -0.001, y: -0.001)
+        self.board.layer.opacity = 0
+    }
+    
+    func showBoard() {
+        self.board.transform = .identity
+        self.board.layer.opacity = 1
+    }
+    
+    
     func setupLevelMenu(unlock: Indexable) {
-        levelSegmentedControl.unlock(unlock)
+        levelMenu.unlock(unlock)
     }
     
     func selectLevelMenu(level: Indexable) {
-        levelSegmentedControl.select(level)
+        levelMenu.select(level)
     }
-    
+}
+
+
+extension PlayBoardView_StackView: PlayBoardViewDisplayable {
+
     func clean(animated: Bool, completion: (() -> Void)? = nil) {
-        levelSegmentedControl.isUserInteractionEnabled = false
-        
+        levelMenu.isUserInteractionEnabled = false
         guard animated else {
             board.layer.opacity = 0
             remove()
             completion?()
             return
         }
+        
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut]) { [weak self] in
             guard let self = self else { return }
-            self.board.transform = CGAffineTransform(scaleX: -0.001, y: -0.001)
-            self.board.layer.opacity = 0
+            self.hiddenBoard()
         } completion: { [weak self] _ in
             guard let self = self else { return }
             self.remove()
@@ -144,19 +181,17 @@ extension PlayBoardView_StackView: PlayBoardViewDisplayable {
     
     func play(level: Sizeable, with cards: [CardView], animated: Bool) {
         make(level: level, with: cards)
-        
         guard animated else {
             board.layer.opacity = 1
-            levelSegmentedControl.isUserInteractionEnabled = true
+            levelMenu.isUserInteractionEnabled = true
             return
         }
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
-            self.board.transform = .identity
-            self.board.layer.opacity = 1
+            self.showBoard()
         } completion: { [weak self] _ in
             guard let self = self else { return }
-            self.levelSegmentedControl.isUserInteractionEnabled = true
+            self.levelMenu.isUserInteractionEnabled = true
         }
     }
     
