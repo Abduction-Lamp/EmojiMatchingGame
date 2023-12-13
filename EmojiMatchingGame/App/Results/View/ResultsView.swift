@@ -1,5 +1,5 @@
 //
-//  StatisticsView.swift
+//  ResultsView.swift
 //  EmojiMatchingGame
 //
 //  Created by Vladimir Lesnykh on 23.11.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StatisticsView: UIView {
+final class ResultsView: UIView {
     
     private let blur: UIVisualEffectView = {
         let blur = UIVisualEffectView()
@@ -48,7 +48,7 @@ final class StatisticsView: UIView {
         super.init(frame: frame)
         
         configure()
-        print("\tVIEW\t😈\tStatistics")
+        print("\tVIEW\t😈\tResults")
     }
     
     required init?(coder: NSCoder) {
@@ -56,7 +56,7 @@ final class StatisticsView: UIView {
     }
     
     deinit {
-        print("\tVIEW\t♻️\tStatistics")
+        print("\tVIEW\t♻️\tResults")
     }
     
     override func layoutSubviews() {
@@ -91,7 +91,7 @@ final class StatisticsView: UIView {
 }
  
 
-extension StatisticsView: StatisticsViewSetupable {
+extension ResultsView: ResultsViewSetupable {
     
     func setup(level: UIImage? = nil,
                time:  String?  = nil,

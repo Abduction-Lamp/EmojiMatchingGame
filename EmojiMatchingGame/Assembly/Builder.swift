@@ -50,9 +50,9 @@ final class Builder: Buildable {
         return vc
     }
     
-    func makeStatisticsFlow() -> UIViewController & StatisticsDisplayable {
-        let vc = StatisticsViewController()
-        let presenter = StatisticsPresenter(vc, user: storage.user)
+    func makeResultsFlow() -> UIViewController & ResultsDisplayable {
+        let vc = ResultsViewController()
+        let presenter = ResultsPresenter(vc, user: storage.user)
         vc.presenter = presenter
         return vc
     }

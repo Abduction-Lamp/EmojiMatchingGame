@@ -62,12 +62,12 @@ extension Router {
         }
     }
     
-    func goToStatictic(animated: Bool) {
+    func goToResults(animated: Bool) {
         if let mainMenuVC = navigation.topViewController as? MainMenuViewController {
-            let staticticsVC = builder.makeStatisticsFlow()
-            staticticsVC.modalTransitionStyle = .coverVertical
-            staticticsVC.modalPresentationStyle = .formSheet
-            mainMenuVC.present(staticticsVC, animated: animated)
+            let resultsVC = builder.makeResultsFlow()
+            resultsVC.modalTransitionStyle = .coverVertical
+            resultsVC.modalPresentationStyle = .formSheet
+            mainMenuVC.present(resultsVC, animated: animated)
         } else {
             errorCase("⚠️ [Navigation ERROR]: Top ViewController is not what was expected")
         }

@@ -17,7 +17,7 @@ protocol BasicRoutable {
 protocol MainMenuRoutable: BasicRoutable {
     func goToNewGame(animated: Bool)
     func goToSettings(animated: Bool)
-    func goToStatictic(animated: Bool)
+    func goToResults(animated: Bool)
     func goToAbout(animated: Bool)
 }
 

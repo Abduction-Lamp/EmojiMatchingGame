@@ -35,7 +35,7 @@ extension MainMenuPresenter: MainMenuPresentable {
     }
         
     func statistics() {
-        router.goToStatictic(animated: appearance.animated)
+        router.goToResults(animated: appearance.animated)
     }
     
     func settings() {

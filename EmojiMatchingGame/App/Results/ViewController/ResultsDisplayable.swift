@@ -1,5 +1,5 @@
 //
-//  StatisticsDisplayable.swift
+//  ResultsDisplayable.swift
 //  EmojiMatchingGame
 //
 //  Created by Vladimir Lesnykh on 23.11.2023.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-protocol StatisticsDisplayable: AnyObject {
+protocol ResultsDisplayable: AnyObject {
     
-    var presenter: StatisticsPresentable? { get set }
+    var presenter: ResultsPresentable? { get set }
     
     func display(level: String?, isLock: Bool, time: String?, taps: String?)
 }

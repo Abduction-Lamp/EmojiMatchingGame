@@ -1,5 +1,5 @@
 //
-//  StatisticsPresenter.swift
+//  ResultsPresenter.swift
 //  EmojiMatchingGame
 //
 //  Created by Vladimir Lesnykh on 23.11.2023.
@@ -7,20 +7,20 @@
 
 import Foundation
 
-final class StatisticsPresenter: StatisticsPresentable {
+final class ResultsPresenter: ResultsPresentable {
     
-    private weak var viewController: StatisticsDisplayable?
+    private weak var viewController: ResultsDisplayable?
     private let user: UserStorageable
     
-    init(_ viewController: StatisticsDisplayable, user: UserStorageable) {
+    init(_ viewController: ResultsDisplayable, user: UserStorageable) {
         self.viewController = viewController
         self.user = user
         
-        print("PRESENTER\t😈\tStatistics")
+        print("PRESENTER\t😈\tResults")
     }
     
     deinit {
-        print("PRESENTER\t♻️\tStatistics")
+        print("PRESENTER\t♻️\tResults")
     }
     
     func fetch() {

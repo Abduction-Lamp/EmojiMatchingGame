@@ -1,5 +1,5 @@
 //
-//  StatisticsViewController.swift
+//  ResultsViewController.swift
 //  EmojiMatchingGame
 //
 //  Created by Vladimir Lesnykh on 23.11.2023.
@@ -7,40 +7,40 @@
 
 import UIKit
 
-final class StatisticsViewController: UIViewController {
+final class ResultsViewController: UIViewController {
     
-    private var statisticsView: UIView & StatisticsViewSetupable {
-        guard let view = self.view as? (UIView & StatisticsViewSetupable) else {
-            return StatisticsView()
+    private var resultsView: UIView & ResultsViewSetupable {
+        guard let view = self.view as? (UIView & ResultsViewSetupable) else {
+            return ResultsView()
         }
         return view
     }
     
-    var presenter: StatisticsPresentable?
+    var presenter: ResultsPresentable?
     
     
     override func loadView() {
-        print("VC\t\t\t😈\tStatistics (loadView)")
-        view = StatisticsView()
+        print("VC\t\t\t😈\tResults (loadView)")
+        view = ResultsView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        statisticsView.resetAddTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
+        resultsView.resetAddTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
         
         // Titel Tabel Best Results
-        statisticsView.setup(level: nil, time: "⏱️", taps: "👇", font: Design.Typography.font(.title))
+        resultsView.setup(level: nil, time: "⏱️", taps: "👇", font: Design.Typography.font(.title))
         presenter?.fetch()
     }
     
     deinit {
-        print("VC\t\t\t♻️\tStatistics ")
+        print("VC\t\t\t♻️\tResults")
     }
 }
 
 
-extension StatisticsViewController: StatisticsDisplayable {
+extension ResultsViewController: ResultsDisplayable {
 
     func display(level: String?, isLock: Bool, time: String?, taps: String?) {
         var image: UIImage?
@@ -55,7 +55,7 @@ extension StatisticsViewController: StatisticsDisplayable {
             image = image?.withColor(color, size: nil)
             image?.accessibilityLabel = "Level \(name)"
         }
-        statisticsView.setup(level: image, time: time, taps: taps)
+        resultsView.setup(level: image, time: time, taps: taps)
     }
     
     @objc
@@ -68,13 +68,13 @@ extension StatisticsViewController: StatisticsDisplayable {
         alert.addAction(UIAlertAction(title: cancel, style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: delete, style: .destructive, handler: { [weak self] _ in
             guard let self = self else { return }
-            self.statisticsView.clean()
+            self.resultsView.clean()
             self.presenter?.reset()
         }))
         
         if let popoverController = alert.popoverPresentationController {
-            popoverController.sourceView = statisticsView
-            popoverController.sourceRect = CGRect(origin: statisticsView.center, size: .zero)
+            popoverController.sourceView = resultsView
+            popoverController.sourceRect = CGRect(origin: resultsView.center, size: .zero)
             popoverController.permittedArrowDirections = []
         }
         

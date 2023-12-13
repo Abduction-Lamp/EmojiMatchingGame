@@ -26,7 +26,7 @@ final class MainMenuView: UIView {
     }()
     
     private let newGame:    UIButton = makeButton("Новая игра")
-    private let statistics: UIButton = makeButton("Статистика")
+    private let statistics: UIButton = makeButton("Результаты")
     private let settings:   UIButton = makeButton("Настройки")
 
     var newGameAction:    ((_: UIButton) -> Void)?
