@@ -30,11 +30,15 @@
 
 ## Демонстрация
 
-[Вставьте ссылку или GIF с кратким демонстрационным видео игры или скриншотами]
+<img src="Screenshots/1.png" alt="Главное меню" width="30%" height="30%">
+<img src="Screenshots/2.png" alt="Игра" width="30%" height="30%">
+<img src="Screenshots/3.png" alt="Салют" width="30%" height="30%">
+<img src="Screenshots/4.png" alt="Результаты" width="30%" height="30%">
+<img src="Screenshots/5.png" alt="Настройки" width="30%" height="30%">
 
 ## Анимация победы
 
-После завершения игры вас ждет красивая анимация салюта. Наслаждайтесь своим успехом!
+<img src="Screenshots/flow.gif" alt="flow">
 
 ## Планы на будущее
 
