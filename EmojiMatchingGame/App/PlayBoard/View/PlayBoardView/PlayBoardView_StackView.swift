@@ -17,6 +17,7 @@ final class PlayBoardView_StackView: UIView {
         
         stack.layer.masksToBounds = false
         stack.layer.opacity = 0
+        stack.layer.allowsEdgeAntialiasing = true
         
         stack.axis = .vertical
         stack.distribution = .fillEqually

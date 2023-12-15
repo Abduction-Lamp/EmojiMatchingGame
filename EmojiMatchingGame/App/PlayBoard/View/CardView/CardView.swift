@@ -57,6 +57,7 @@ final class CardView: UIView {
     }
     
     private func configure() {
+        layer.allowsEdgeAntialiasing = true
         clipsToBounds = false
         addSubview(emoji)
         addGestureRecognizer(tap)
@@ -90,7 +91,6 @@ extension CardView {
         }
     }
 }
-
 
 // MARK: - Card Actions And Animation
 //

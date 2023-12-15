@@ -10,7 +10,6 @@
 		4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E027BBA2A5D8C43009CB092 /* Flag.swift */; };
 		4E13C40B2ACED8AC00F40235 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */; };
 		4E13C40D2ACEE1E600F40235 /* GameOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */; };
-		4E22CF8D2B163B5F00044EBD /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22CF8C2B163B5F00044EBD /* StringConstants.swift */; };
 		4E22CF8F2B16499900044EBD /* MainMenuSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22CF8E2B16499900044EBD /* MainMenuSetupable.swift */; };
 		4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */; };
 		4E31F43D2AFD3C45005EA317 /* SoundVolumeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31F43C2AFD3C45005EA317 /* SoundVolumeButton.swift */; };
@@ -77,7 +76,6 @@
 		4E027BBA2A5D8C43009CB092 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
 		4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPresenter.swift; sourceTree = "<group>"; };
-		4E22CF8C2B163B5F00044EBD /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		4E22CF8E2B16499900044EBD /* MainMenuSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuSetupable.swift; sourceTree = "<group>"; };
 		4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		4E31F43C2AFD3C45005EA317 /* SoundVolumeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundVolumeButton.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 				4E98C57A2A5890040034522B /* Emoji.swift */,
 				4E027BBA2A5D8C43009CB092 /* Flag.swift */,
 				4EE21F752AE2DC8C00A71B6D /* Storageable.swift */,
-				4E22CF8C2B163B5F00044EBD /* StringConstants.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -664,7 +661,6 @@
 				4EE21F762AE2DC8C00A71B6D /* Storageable.swift in Sources */,
 				4EF61F5B2A5778DA00E79C74 /* CardView.swift in Sources */,
 				4E73BB152AF25BE1004EDEC0 /* UIFont.swift in Sources */,
-				4E22CF8D2B163B5F00044EBD /* StringConstants.swift in Sources */,
 				4E339FFF2B1BA05B00D362E0 /* TimeMeter.swift in Sources */,
 				4E86D6082A55B75900E23388 /* PlayBoardView_StackView.swift in Sources */,
 				4E5EB6E42AA6278D0074C7B5 /* Builder.swift in Sources */,
