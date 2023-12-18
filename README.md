@@ -18,7 +18,7 @@
 
 Пока что игра не добавлена в AppStore, но вы сможите запустить ее у себя в симуляторе
 
-1. Клонируйте репозиторий: `git clone https://github.com/ваш_профиль/ваш_проект.git`
+1. Клонируйте репозиторий: `git clone hhttps://github.com/Abduction-Lamp/EmojiMatchingGame`
 2. Откройте проект: `EmojiMatchingGame.xcodeproj`
 3. Выберите симулятор `iPad` с установленной версией `iOS 15` или новее
 4. Запустите проект: Нажмите кнопку "Run" в Xcode или используйте горячие клавиши Cmd + R.
@@ -30,11 +30,12 @@
 
 ## Демонстрация
 
-<img src="Screenshots/1.png" alt="Главное меню" width="30%" height="30%">
-<img src="Screenshots/2.png" alt="Игра" width="30%" height="30%">
-<img src="Screenshots/3.png" alt="Салют" width="30%" height="30%">
-<img src="Screenshots/4.png" alt="Результаты" width="30%" height="30%">
-<img src="Screenshots/5.png" alt="Настройки" width="30%" height="30%">
+|Главное меню|Ход игры|Анимация победы|
+|:-:|:-:|:-:|
+|<img src="Screenshots/1.png" alt="Игра">|<img src="Screenshots/2.png" alt="Игра">|<img src="Screenshots/3.png" alt="Салют">|
+|**Результаты**|**Настройки**||
+|<img src="Screenshots/4.png" alt="Результаты">| <img src="Screenshots/5.png" alt="Настройки">|  |
+
 
 ## Анимация победы
 
