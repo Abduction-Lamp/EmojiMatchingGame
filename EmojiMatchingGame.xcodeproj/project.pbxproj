@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E027BBA2A5D8C43009CB092 /* Flag.swift */; };
+		4E06780E2B309EB200493EA2 /* TimeIntervalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06780D2B309EB200493EA2 /* TimeIntervalTests.swift */; };
 		4E13C40B2ACED8AC00F40235 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */; };
 		4E13C40D2ACEE1E600F40235 /* GameOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */; };
 		4E22CF8F2B16499900044EBD /* MainMenuSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22CF8E2B16499900044EBD /* MainMenuSetupable.swift */; };
@@ -45,6 +46,12 @@
 		4E7FAB3E2A9F8B360020C771 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */; };
 		4E86D6082A55B75900E23388 /* PlayBoardView_StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6072A55B75900E23388 /* PlayBoardView_StackView.swift */; };
 		4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86D6092A56EBCD00E23388 /* Level.swift */; };
+		4E87BEA92B310040000EEF32 /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87BEA82B310040000EEF32 /* UIColorTests.swift */; };
+		4E87BEAB2B31A814000EEF32 /* UIFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87BEAA2B31A814000EEF32 /* UIFontTests.swift */; };
+		4E87BEAD2B31AEF4000EEF32 /* UIImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87BEAC2B31AEF4000EEF32 /* UIImageTests.swift */; };
+		4E87BEB22B31BACF000EEF32 /* LevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87BEB12B31BACF000EEF32 /* LevelTests.swift */; };
+		4E87BEB52B31C1F5000EEF32 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87BEB42B31C1F5000EEF32 /* UserTests.swift */; };
+		4E87BEB82B31D8E0000EEF32 /* AppearanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87BEB72B31D8E0000EEF32 /* AppearanceTests.swift */; };
 		4E98C57B2A5890040034522B /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E98C57A2A5890040034522B /* Emoji.swift */; };
 		4EB867BE2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB867BD2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift */; };
 		4EC574F82B02626800295E57 /* PlayBoardViewDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */; };
@@ -72,8 +79,20 @@
 		4EF61F5B2A5778DA00E79C74 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF61F5A2A5778DA00E79C74 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4E0678062B309DA300493EA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4ED35E322A55B145004B54AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4ED35E392A55B145004B54AC;
+			remoteInfo = EmojiMatchingGame;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4E027BBA2A5D8C43009CB092 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		4E0678022B309DA300493EA2 /* EmojiMatchingGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiMatchingGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E06780D2B309EB200493EA2 /* TimeIntervalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalTests.swift; sourceTree = "<group>"; };
 		4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPresenter.swift; sourceTree = "<group>"; };
 		4E22CF8E2B16499900044EBD /* MainMenuSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuSetupable.swift; sourceTree = "<group>"; };
@@ -111,6 +130,12 @@
 		4E7FAB3D2A9F8B360020C771 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		4E86D6072A55B75900E23388 /* PlayBoardView_StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardView_StackView.swift; sourceTree = "<group>"; };
 		4E86D6092A56EBCD00E23388 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		4E87BEA82B310040000EEF32 /* UIColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
+		4E87BEAA2B31A814000EEF32 /* UIFontTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontTests.swift; sourceTree = "<group>"; };
+		4E87BEAC2B31AEF4000EEF32 /* UIImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageTests.swift; sourceTree = "<group>"; };
+		4E87BEB12B31BACF000EEF32 /* LevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTests.swift; sourceTree = "<group>"; };
+		4E87BEB42B31C1F5000EEF32 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		4E87BEB72B31D8E0000EEF32 /* AppearanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceTests.swift; sourceTree = "<group>"; };
 		4E98C57A2A5890040034522B /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		4EB867BD2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardViewDisplayable.swift; sourceTree = "<group>"; };
@@ -141,6 +166,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4E0677FF2B309DA300493EA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4ED35E372A55B145004B54AC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -159,6 +191,34 @@
 				4EE21F752AE2DC8C00A71B6D /* Storageable.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		4E0678032B309DA300493EA2 /* EmojiMatchingGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				4E87BEB02B31BAB9000EEF32 /* Entities */,
+				4E06780B2B309E6800493EA2 /* Core */,
+			);
+			path = EmojiMatchingGameTests;
+			sourceTree = "<group>";
+		};
+		4E06780B2B309E6800493EA2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4E06780C2B309E7A00493EA2 /* Extentions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4E06780C2B309E7A00493EA2 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				4E87BEAC2B31AEF4000EEF32 /* UIImageTests.swift */,
+				4E87BEA82B310040000EEF32 /* UIColorTests.swift */,
+				4E06780D2B309EB200493EA2 /* TimeIntervalTests.swift */,
+				4E87BEAA2B31A814000EEF32 /* UIFontTests.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 		4E13C4052ACED83E00F40235 /* GameOver */ = {
@@ -381,6 +441,16 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		4E87BEB02B31BAB9000EEF32 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4E87BEB12B31BACF000EEF32 /* LevelTests.swift */,
+				4E87BEB42B31C1F5000EEF32 /* UserTests.swift */,
+				4E87BEB72B31D8E0000EEF32 /* AppearanceTests.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		4EC574F52B02622100295E57 /* PlayBoardView */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED35E3C2A55B145004B54AC /* EmojiMatchingGame */,
+				4E0678032B309DA300493EA2 /* EmojiMatchingGameTests */,
 				4ED35E3B2A55B145004B54AC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -413,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED35E3A2A55B145004B54AC /* EmojiMatchingGame.app */,
+				4E0678022B309DA300493EA2 /* EmojiMatchingGameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -537,6 +609,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4E0678012B309DA300493EA2 /* EmojiMatchingGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E06780A2B309DA300493EA2 /* Build configuration list for PBXNativeTarget "EmojiMatchingGameTests" */;
+			buildPhases = (
+				4E0677FE2B309DA300493EA2 /* Sources */,
+				4E0677FF2B309DA300493EA2 /* Frameworks */,
+				4E0678002B309DA300493EA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E0678072B309DA300493EA2 /* PBXTargetDependency */,
+			);
+			name = EmojiMatchingGameTests;
+			productName = EmojiMatchingGameTests;
+			productReference = 4E0678022B309DA300493EA2 /* EmojiMatchingGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4ED35E392A55B145004B54AC /* EmojiMatchingGame */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4ED35E4E2A55B146004B54AC /* Build configuration list for PBXNativeTarget "EmojiMatchingGame" */;
@@ -561,9 +651,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
+					4E0678012B309DA300493EA2 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 4ED35E392A55B145004B54AC;
+					};
 					4ED35E392A55B145004B54AC = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -583,11 +677,19 @@
 			projectRoot = "";
 			targets = (
 				4ED35E392A55B145004B54AC /* EmojiMatchingGame */,
+				4E0678012B309DA300493EA2 /* EmojiMatchingGameTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4E0678002B309DA300493EA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4ED35E382A55B145004B54AC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -600,6 +702,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4E0677FE2B309DA300493EA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E87BEB52B31C1F5000EEF32 /* UserTests.swift in Sources */,
+				4E87BEB82B31D8E0000EEF32 /* AppearanceTests.swift in Sources */,
+				4E87BEAB2B31A814000EEF32 /* UIFontTests.swift in Sources */,
+				4E87BEAD2B31AEF4000EEF32 /* UIImageTests.swift in Sources */,
+				4E06780E2B309EB200493EA2 /* TimeIntervalTests.swift in Sources */,
+				4E87BEB22B31BACF000EEF32 /* LevelTests.swift in Sources */,
+				4E87BEA92B310040000EEF32 /* UIColorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4ED35E362A55B145004B54AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -670,6 +786,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4E0678072B309DA300493EA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4ED35E392A55B145004B54AC /* EmojiMatchingGame */;
+			targetProxy = 4E0678062B309DA300493EA2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -682,6 +806,55 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4E0678082B309DA300493EA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8532FW2M88;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Vladimir.Lesnykh.EmojiMatchingGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiMatchingGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmojiMatchingGame";
+			};
+			name = Debug;
+		};
+		4E0678092B309DA300493EA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8532FW2M88;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Vladimir.Lesnykh.EmojiMatchingGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiMatchingGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmojiMatchingGame";
+			};
+			name = Release;
+		};
 		4ED35E4C2A55B146004B54AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -873,6 +1046,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4E06780A2B309DA300493EA2 /* Build configuration list for PBXNativeTarget "EmojiMatchingGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E0678082B309DA300493EA2 /* Debug */,
+				4E0678092B309DA300493EA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4ED35E352A55B145004B54AC /* Build configuration list for PBXProject "EmojiMatchingGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

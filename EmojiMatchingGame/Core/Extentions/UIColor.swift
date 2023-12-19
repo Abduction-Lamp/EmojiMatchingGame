@@ -25,7 +25,7 @@ extension UIColor {
     }
     
 
-    convenience init?(hex: String, alpha: CGFloat = 1.0) {
+    public convenience init?(hex: String, alpha: CGFloat = 1.0) {
         var pure = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if pure.hasPrefix("#") {
@@ -64,7 +64,7 @@ extension UIColor {
     }
     
     
-    convenience init?(hex: Int, alpha: CGFloat = 1.0) {
+    public convenience init?(hex: Int, alpha: CGFloat = 1.0) {
         guard hex >= 0x000000, hex <= 0xFFFFFF else { return nil }
         
         let r: CGFloat = CGFloat((hex >> 16) & 0xFF) / 255          // red component

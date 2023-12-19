@@ -143,8 +143,6 @@ extension CAGradientLayer {
             let indexSet = indexSetColors.remove(at: .random(in: 0 ..< indexSetColors.count))
             let index = Int.random(in: 0 ..< allowedSetColors[indexSet].count)
             output.append(allowedSetColors[indexSet][index].cgColor)
-//            let index = indexColor.remove(at: .random(in: 0 ..< indexColor.count))
-//            output.append(allowedSetColors[index].cgColor)
         }
         return output
     }
