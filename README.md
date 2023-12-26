@@ -33,13 +33,9 @@
 |Главное меню|Ход игры|Анимация победы|
 |:-:|:-:|:-:|
 |<img src="Screenshots/1.png" alt="Игра">|<img src="Screenshots/2.png" alt="Игра">|<img src="Screenshots/3.png" alt="Салют">|
-|**Результаты**|**Настройки**||
-|<img src="Screenshots/4.png" alt="Результаты">| <img src="Screenshots/5.png" alt="Настройки">|  |
+|**Результаты**|**Настройки**|**Анимация победы**|
+|<img src="Screenshots/4.png" alt="Результаты">|<img src="Screenshots/5.png" alt="Настройки">|<img src="Screenshots/flow.gif" alt="flow">|
 
-
-## Анимация победы
-
-<img src="Screenshots/flow.gif" alt="flow">
 
 ## Планы на будущее
 
