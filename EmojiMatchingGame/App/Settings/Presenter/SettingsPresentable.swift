@@ -14,6 +14,5 @@ protocol SettingsPresentable: AnyObject {
     func fetch()
     func update(color: UIColor)
     func update(isAnimation: Bool)
-    func update(isHaptics: Bool)
     func reset()
 }

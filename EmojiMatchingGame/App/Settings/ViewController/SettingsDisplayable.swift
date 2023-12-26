@@ -13,7 +13,5 @@ protocol SettingsDisplayable: AnyObject {
     
     func displayColor(_ color: UIColor)
     func displayAnimation(_ isAnimation: Bool)
-    func displayHaptics(_ isHaptics: Bool)
-    func displayHapticsSupports(_ isSupports: Bool)
     func displaySoundVolume(_ value: Float)
 }

@@ -45,14 +45,6 @@ extension SettingsViewController: SettingsDisplayable {
     func displayAnimation(_ isAnimation: Bool) {
         let _ = settingsView.setupAnimation(isAnimation)
     }
-    
-    func displayHaptics(_ isHaptic: Bool) {
-        let _ = settingsView.setupHaptic(isHaptic)
-    }
-    
-    func displayHapticsSupports(_ isSupports: Bool) {
-        let _ = settingsView.setupHapticEnabled(isSupports)
-    }
 
     func displaySoundVolume(_ value: Float) {
         let _ = settingsView.setupSoundVolume(value)
@@ -64,10 +56,6 @@ extension SettingsViewController: SettingsViewDelegate {
     
     func animationToggleSwitched(_ isOn: Bool) {
         presenter?.update(isAnimation: isOn)
-    }
-    
-    func hapticToggleSwitched(_ isOn: Bool) {
-        presenter?.update(isHaptics: isOn)
     }
     
     func colorButtonTapped(_ sender: UIButton) {

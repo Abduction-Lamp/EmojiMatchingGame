@@ -11,13 +11,7 @@ import CoreHaptics
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var isSupportsHaptics: Bool = false
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        let capabilities = CHHapticEngine.capabilitiesForHardware()
-        isSupportsHaptics = capabilities.supportsHaptics
-
         return true
     }
 

@@ -71,21 +71,6 @@ final class SettingsView: UIView {
         }()
     )
     
-    private lazy var hapticSlotView = SlotView(
-        body: {
-            let label = UILabel()
-            label.font = Design.Typography.font(.item)
-            label.adjustsFontForContentSizeCategory = true
-            label.text = "Тактильная обратная связь"
-            return label
-        }(),
-        trailing: {
-            let toggle = UISwitch()
-            toggle.addTarget(self, action: #selector(hapticToggleSwitched(_:)), for: .touchUpInside)
-            return toggle
-        }()
-    )
-    
     private lazy var soundSlotView = SlotView(
         body: {
             let label = UILabel()
@@ -153,7 +138,6 @@ final class SettingsView: UIView {
         
         stack.addArrangedSubview(colorSlotView)
         stack.addArrangedSubview(animationSlotView)
-        stack.addArrangedSubview(hapticSlotView)
         stack.addArrangedSubview(soundSlotView)
         stack.addArrangedSubview(soundVolumeSlider)
         
@@ -188,22 +172,6 @@ extension SettingsView: SettingsViewSetupable {
         return true
     }
     
-    func setupHaptic(_ isHaptic: Bool) -> Bool {
-        guard let control = hapticSlotView.trailing as? UISwitch else { return false }
-        control.setOn(isHaptic, animated: false)
-        return true
-    }
-    
-    func setupHapticEnabled(_ isEnabled: Bool) -> Bool {
-        guard 
-            let label = hapticSlotView.body as? UILabel,
-            let control = hapticSlotView.trailing as? UISwitch
-        else { return false }
-        label.isEnabled = isEnabled
-        control.isEnabled = isEnabled
-        return true
-    }
-    
     func setupSoundVolume(_ value: Float) -> Bool {
         guard soundSlotView.trailing is UIImageView else { return false }
         soundVolumeSlider.value = value
@@ -222,11 +190,6 @@ extension SettingsView {
     @objc
     private func animationToggleSwitched(_ sender: UISwitch) {
         delegate?.animationToggleSwitched(sender.isOn)
-    }
-    
-    @objc
-    private func hapticToggleSwitched(_ sender: UISwitch) {
-        delegate?.hapticToggleSwitched(sender.isOn)
     }
     
     @objc

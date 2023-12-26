@@ -27,8 +27,6 @@ final class SettingsPresenter: SettingsPresentable {
     private func display() {
         viewController?.displayColor(appearance.color)
         viewController?.displayAnimation(appearance.animated)
-        viewController?.displayHaptics(appearance.isSupportsHaptics ? appearance.haptics : false)
-        viewController?.displayHapticsSupports(appearance.isSupportsHaptics)
     }
     
     func fetch() {
@@ -42,10 +40,6 @@ final class SettingsPresenter: SettingsPresentable {
     
     func update(isAnimation: Bool) {
         appearance.animated = isAnimation
-    }
-    
-    func update(isHaptics: Bool) {
-        appearance.haptics = isHaptics
     }
     
     func reset() {
