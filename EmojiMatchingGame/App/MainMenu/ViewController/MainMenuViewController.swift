@@ -46,11 +46,6 @@ final class MainMenuViewController: UIViewController {
         
         guard let presenter = self.presenter else { return }
         presenter.viewDidAppear()
-        
-        let size = CGSize(width: UIScreen.main.bounds.width,
-                          height: UIScreen.main.bounds.height)
-        
-        print(size)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
