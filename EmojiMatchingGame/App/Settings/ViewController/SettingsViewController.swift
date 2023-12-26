@@ -102,6 +102,4 @@ extension SettingsViewController: UIColorPickerViewControllerDelegate {
         print(color)
         presenter?.update(color: color)
     }
-
-//    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) { }
 }
