@@ -22,7 +22,7 @@ final class ResultsView: UIView {
         label.adjustsFontForContentSizeCategory = true
         label.font = Design.Typography.font(.title)
         label.textAlignment = .center
-        label.text = "Результаты"
+        label.text = String(localized: "Results")
         return label
     }()
     
@@ -37,7 +37,7 @@ final class ResultsView: UIView {
     private let reset: UIButton = {
         let button = UIButton(configuration: .plain())
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.configuration?.title = "Сброс"
+        button.configuration?.title = String(localized: "Reset")
         return button
     }()
     

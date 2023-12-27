@@ -239,7 +239,7 @@ extension GameOverView {
         }
         
         let font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
-        particles.append(.text("Браво!", font: font, color: .systemRed, birthRate: 3))
+        particles.append(.text(String(localized: "Particle"), font: font, color: .systemRed, birthRate: 3))
         particles.append(.text("🍬", font: font, color: nil, birthRate: 17))
         particles.append(.text("🦄", font: font, color: nil, birthRate: 11))
         particles.append(.text("🎊", font: font, color: nil, birthRate: 11))

@@ -22,7 +22,7 @@ final class SettingsView: UIView {
         label.adjustsFontForContentSizeCategory = true
         label.font = Design.Typography.font(.title)
         label.textAlignment = .center
-        label.text = "Настройки"
+        label.text = String(localized: "Settings")
         return label
     }()
     
@@ -44,7 +44,7 @@ final class SettingsView: UIView {
             let label = UILabel()
             label.font = Design.Typography.font(.item)
             label.adjustsFontForContentSizeCategory = true
-            label.text = "Цвет рубашки"
+            label.text = String(localized: "Settings.Color")
             return label
         }(),
         trailing: {
@@ -61,7 +61,7 @@ final class SettingsView: UIView {
             let label = UILabel()
             label.font = Design.Typography.font(.item)
             label.adjustsFontForContentSizeCategory = true
-            label.text = "Анимация"
+            label.text = String(localized: "Settings.Animation")
             return label
         }(),
         trailing: {
@@ -76,7 +76,7 @@ final class SettingsView: UIView {
             let label = UILabel()
             label.font = Design.Typography.font(.item)
             label.adjustsFontForContentSizeCategory = true
-            label.text = "Громкость звука"
+            label.text = String(localized: "Settings.Sound")
             return label
         }(),
         trailing: {
@@ -97,10 +97,7 @@ final class SettingsView: UIView {
         let button = UIButton(configuration: .plain())
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
-        button.configuration?.title = "Сброс"
-//        button.configuration?.image = UIImage(systemName: "gobackward")
-//        button.configuration?.imagePlacement = .trailing
-//        button.configuration?.imagePadding = 6
+        button.configuration?.title = String(localized: "Reset")
         return button
     }()
     

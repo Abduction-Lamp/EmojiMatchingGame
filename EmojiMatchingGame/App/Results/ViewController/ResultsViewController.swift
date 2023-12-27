@@ -60,9 +60,12 @@ extension ResultsViewController: ResultsDisplayable {
     
     @objc
     private func resetTapped(_ sender: UIButton) {
-        let title = NSLocalizedString("Вы действительно хотити сбросить все результаты игры?", comment: "Titel")
-        let cancel = NSLocalizedString("Отмена", comment: "Cancel")
-        let delete = NSLocalizedString("Удалить результаты", comment: "Delete")
+        
+        
+        
+        let title = String(localized: "Alert.Results.Reset.Title")
+        let cancel = String(localized: "Alert.Cancel")
+        let delete = String(localized: "Alert.Settings.Reset")
         
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: cancel, style: .cancel, handler: nil))

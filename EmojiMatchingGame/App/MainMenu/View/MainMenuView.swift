@@ -24,10 +24,10 @@ final class MainMenuView: UIView {
         stack.spacing = Design.Padding.menu.spacing
         return stack
     }()
-    
-    private let newGame:    UIButton = makeButton("Новая игра")
-    private let statistics: UIButton = makeButton("Результаты")
-    private let settings:   UIButton = makeButton("Настройки")
+
+    private let newGame:  UIButton = makeButton(String(localized: "New Game"))
+    private let results:  UIButton = makeButton(String(localized: "Results"))
+    private let settings: UIButton = makeButton(String(localized: "Settings"))
 
     var newGameAction:    ((_: UIButton) -> Void)?
     var statisticsAction: ((_: UIButton) -> Void)?
@@ -59,7 +59,7 @@ final class MainMenuView: UIView {
         
         addSubview(stack)
         stack.addArrangedSubview(newGame)
-        stack.addArrangedSubview(statistics)
+        stack.addArrangedSubview(results)
         stack.addArrangedSubview(settings)
         
         NSLayoutConstraint.activate([
@@ -68,7 +68,7 @@ final class MainMenuView: UIView {
         ])
         
         newGame.addTarget(self, action: #selector(newGameTapped(_:)), for: .touchUpInside)
-        statistics.addTarget(self, action: #selector(statisticsTapped(_:)), for: .touchUpInside)
+        results.addTarget(self, action: #selector(statisticsTapped(_:)), for: .touchUpInside)
         settings.addTarget(self, action: #selector(settingsTapped(_:)), for: .touchUpInside)
     }
 }

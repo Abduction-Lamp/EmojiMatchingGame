@@ -63,7 +63,7 @@ extension SettingsViewController: SettingsViewDelegate {
         
         let colorPicker = UIColorPickerViewController()
         colorPicker.modalPresentationStyle = .automatic
-        colorPicker.title = "Цвет рубашки"
+        colorPicker.title = String(localized: "Settings.Color")
         colorPicker.selectedColor = current
         colorPicker.supportsAlpha = false
         colorPicker.delegate = self
@@ -72,9 +72,9 @@ extension SettingsViewController: SettingsViewDelegate {
     }
     
     func resetTapped() {
-        let titleAlertController = NSLocalizedString("Вы действительно хотити сбросить все настройки игры?", comment: "Titel")
-        let cancelAlertTitleButton = NSLocalizedString("Отмена", comment: "Cancel")
-        let resetAlertTitleButton = NSLocalizedString("Сбросить найстройки", comment: "Delete")
+        let titleAlertController   = String(localized: "Alert.Settings.Reset.Title")
+        let cancelAlertTitleButton = String(localized: "Alert.Cancel")
+        let resetAlertTitleButton  = String(localized: "Alert.Settings.Reset")
         
         let alert = UIAlertController(title: titleAlertController, message: nil, preferredStyle: .alert)
         if let popoverController = alert.popoverPresentationController {
@@ -99,7 +99,6 @@ extension SettingsViewController: UIColorPickerViewControllerDelegate {
     
     func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
         guard !continuously else { return }
-        print(color)
         presenter?.update(color: color)
     }
 }
