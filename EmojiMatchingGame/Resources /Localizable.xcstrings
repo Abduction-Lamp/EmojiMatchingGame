@@ -4,15 +4,27 @@
     "Alert.Cancel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stornieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancel"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Cancelar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Annuler"
           }
         },
@@ -33,15 +45,27 @@
     "Alert.Results.Reset" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ergebnisse löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete results"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Eliminar resultados"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Supprimer les résultats"
           }
         },
@@ -62,15 +86,27 @@
     "Alert.Results.Reset.Title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchten Sie wirklich alle Ergebnisse des Spiels zurücksetzen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Do you really want to reset all the results of the game?"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "¿Realmente quieres restablecer todos los resultados del juego?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Voulez-vous vraiment réinitialiser tous les résultats du jeu?"
           }
         },
@@ -91,15 +127,27 @@
     "Alert.Settings.Reset" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen zurücksetzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset settings"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Restablecer la configuración"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Réinitialiser les paramètres"
           }
         },
@@ -120,15 +168,27 @@
     "Alert.Settings.Reset.Title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchten Sie wirklich alle Spieleinstellungen zurücksetzen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Do you really want to reset all the game settings?"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "¿Realmente quieres restablecer todas las configuraciones del juego?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Voulez-vous vraiment réinitialiser tous les paramètres du jeu?"
           }
         },
@@ -150,15 +210,27 @@
       "comment" : "Главное меню - Новая игра",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neues Spiel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "New game"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Nuevo juego"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Nouveau jeu"
           }
         },
@@ -180,15 +252,27 @@
       "comment" : "Частичка салюта",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wunderschön!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Congratulations!"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "¡Felicitaciones!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Bravo!"
           }
         },
@@ -210,15 +294,27 @@
       "comment" : "Сброс",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurücksetzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Restablecer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Réinitialiser"
           }
         },
@@ -240,15 +336,27 @@
       "comment" : "Главное меню - Результаты",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchergebnisse"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Results"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Resultados"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Résultats"
           }
         },
@@ -270,15 +378,27 @@
       "comment" : "Главное меню - Настройки",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Ajustes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Paramètres"
           }
         },
@@ -300,15 +420,27 @@
       "comment" : "Настройки - Анимация",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animation"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Animation"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Animación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Animation"
           }
         },
@@ -330,15 +462,27 @@
       "comment" : "Настройки - Цвет рубашки",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farbe des Kartenhemdes"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Color of card shirt"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Color de la camisa de la tarjeta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Couleur de la chemise de carte"
           }
         },
@@ -360,15 +504,27 @@
       "comment" : "Настройка - Громкость звука",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lautstärke"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sound volume"
           }
         },
-        "fr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "Volumen del sonido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Volume sonore"
           }
         },
