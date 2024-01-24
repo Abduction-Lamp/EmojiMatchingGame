@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 protocol Storageable: AnyObject {
     func fetch()
     func clear()
@@ -25,13 +26,20 @@ protocol UserStorageable: Storageable {
     func unlock()
 }
 
-protocol AppearanceStorageable: Storageable, Observer {
+
+protocol AppearanceStorageable: Storageable, AudioAppearanceProtocol, Observer {
     
     var color:    UIColor { get set }
-    var haptics:  Bool    { get set }
     var animated: Bool    { get set }
     
-    var isSupportsHaptics: Bool { get }
+    var sound:  Bool      { get set }
+    var volume: Float     { get set }
+}
+
+protocol AudioAppearanceProtocol: AnyObject {
+
+    var sound:  Bool  { get }
+    var volume: Float { get }
 }
 
 

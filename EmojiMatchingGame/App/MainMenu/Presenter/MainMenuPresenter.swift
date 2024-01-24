@@ -12,7 +12,7 @@ final class MainMenuPresenter {
     private weak var viewController: MainMenuDisplayable?
     private let router: MainMenuRoutable
     private let appearance: AppearanceStorageable
-    
+
     init(_ viewController: MainMenuDisplayable, router: MainMenuRoutable, appearance: AppearanceStorageable) {
         self.viewController = viewController
         self.router = router

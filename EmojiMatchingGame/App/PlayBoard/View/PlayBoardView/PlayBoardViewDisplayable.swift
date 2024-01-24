@@ -11,7 +11,7 @@ protocol PlayBoardViewDisplayable {
     
     func setupLevelMenu(unlock: Indexable)
     func selectLevelMenu(level: Indexable)
-    
+
     func play(level: Sizeable, with cards: [CardView], animated: Bool)
     func clean(animated: Bool, completion: (() -> Void)?)
 }

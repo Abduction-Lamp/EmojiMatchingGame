@@ -29,7 +29,7 @@ final class SoundVolumeButton: UIButton, SoundVolumeButtonCustomizable {
             if #available(iOS 16, *) {
                 systemName = _iOS16ImageName
             } else {
-                systemName = _iOS13ImageName
+                systemName = _iOS14ImageName
             }
             return UIImage(systemName: systemName)
         }
@@ -44,13 +44,13 @@ final class SoundVolumeButton: UIButton, SoundVolumeButtonCustomizable {
             }
         }
         
-        private var _iOS13ImageName: String {
+        private var _iOS14ImageName: String {
             switch self {
             case .disabled: return "speaker.slash.circle.fill"
             case .quiet:    return "speaker.circle.fill"
-            case .medium:   return "speaker.wave.1.circle.fill"
+            case .medium:   return "speaker.circle.fill"
             case .loud:     return "speaker.wave.2.circle.fill"
-            case .veryLoud: return "speaker.wave.3.circle.fill"
+            case .veryLoud: return "speaker.wave.2.circle.fill"
             }
         }
     }
@@ -77,18 +77,18 @@ final class SoundVolumeButton: UIButton, SoundVolumeButtonCustomizable {
         fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
     
-    func setup(value: SoundVolume) {
+    public func setup(value: SoundVolume) {
         configuration?.image = value.image
     }
     
-    func setup(value: Float) {
+    public func setup(value: Float) {
         switch value {
-        case -.infinity ... 0:  setup(value: .disabled)
-        case 0 ..< 0.15:        setup(value: .quiet)
-        case 0.15 ..< 0.4:      setup(value: .medium)
-        case 0.4 ..< 0.7:       setup(value: .loud)
-        case 0.7 ... .infinity: setup(value: .veryLoud)
-        default:                break
+        case 0                  : setup(value: .disabled)
+        case .ulpOfOne ..< 0.15 : setup(value: .quiet)
+        case 0.15      ..< 0.45 : setup(value: .medium)
+        case 0.45      ..< 0.7  : setup(value: .loud)
+        case 0.7       ... 1    : setup(value: .veryLoud)
+        default                 : break
         }
     }
 }

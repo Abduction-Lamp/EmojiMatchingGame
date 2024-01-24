@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreHaptics
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

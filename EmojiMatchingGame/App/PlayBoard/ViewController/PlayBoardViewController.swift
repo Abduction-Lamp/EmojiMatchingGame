@@ -35,6 +35,7 @@ final class PlayBoardViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         playBoardView.backButton.addTarget(self, action: #selector(backMenuButtonTapped(_:)), for: .touchUpInside)
+        playBoardView.soundVolumeButton.addTarget(self, action: #selector(soundButtonTapped(_:)), for: .touchUpInside)
         playBoardView.levelMenu.addTarget(self, action: #selector(lavelDidChange(_:)), for: .valueChanged)
         
         presenter?.viewDidLoad()
@@ -87,6 +88,10 @@ extension PlayBoardViewController: PlayBoardDisplayable {
     
     func selectLevelMenu(level: Indexable) {
         playBoardView.selectLevelMenu(level: level)
+    }
+    
+    func setupSoundButton(volume: Float) {
+        playBoardView.soundVolumeButton.setup(value: volume)
     }
     
     func disable(index first: Int, and second: Int) {
@@ -158,5 +163,10 @@ extension PlayBoardViewController {
     private func lavelDidChange(_ sender: UISegmentedControl) {
         let level = sender.selectedSegmentIndex
         presenter?.play(mode: .index(level))
+    }
+    
+    @objc
+    private func soundButtonTapped(_ sender: UIButton) {
+        presenter?.sound()
     }
 }

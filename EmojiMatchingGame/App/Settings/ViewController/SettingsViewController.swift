@@ -46,17 +46,13 @@ extension SettingsViewController: SettingsDisplayable {
         let _ = settingsView.setupAnimation(isAnimation)
     }
 
-    func displaySoundVolume(_ value: Float) {
-        let _ = settingsView.setupSoundVolume(value)
+    func displaySoundVolume(_ isOn: Bool, volume: Float) {
+        let _ = settingsView.setupSoundVolume(isOn, volume: volume)
     }
 }
 
 
 extension SettingsViewController: SettingsViewDelegate {
-    
-    func animationToggleSwitched(_ isOn: Bool) {
-        presenter?.update(isAnimation: isOn)
-    }
     
     func colorButtonTapped(_ sender: UIButton) {
         guard let current = sender.configuration?.baseBackgroundColor else { return }
@@ -69,6 +65,18 @@ extension SettingsViewController: SettingsViewDelegate {
         colorPicker.delegate = self
         
         present(colorPicker, animated: true)
+    }
+    
+    func animationToggleSwitched(_ isOn: Bool) {
+        presenter?.update(isAnimation: isOn)
+    }
+    
+    func soundToggleSwitched(_ isOn: Bool) {
+        presenter?.update(isSoundOn: isOn)
+    }
+    
+    func volumeSliderChanged(_ volume: Float) {
+        presenter?.update(volume: volume)
     }
     
     func resetTapped() {

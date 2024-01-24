@@ -80,23 +80,31 @@ final class SettingsView: UIView {
             return label
         }(),
         trailing: {
-            let size = Design.Typography.font(.title).height
-            let imgge = UIImage(systemName: "speaker.wave.3.fill")
-            let imageView = UIImageView()
-            imageView.image = imgge
-            imageView.contentMode = .scaleAspectFill
-            imageView.widthAnchor.constraint(equalToConstant: size).isActive = true
-            imageView.heightAnchor.constraint(equalToConstant: size).isActive = true
-            return imageView
+            let toggle = UISwitch()
+            toggle.addTarget(self, action: #selector(soundToggleSwitched(_:)), for: .touchUpInside)
+            return toggle
+//            let size = Design.Typography.font(.title).height
+//            let imgge = UIImage(systemName: "speaker.wave.3.fill")
+//            let imageView = UIImageView()
+//            imageView.image = imgge
+//            imageView.contentMode = .scaleAspectFill
+//            imageView.widthAnchor.constraint(equalToConstant: size).isActive = true
+//            imageView.heightAnchor.constraint(equalToConstant: size).isActive = true
+//            return imageView
         }()
     )
     
-    private lazy var soundVolumeSlider = UISlider()
+    private var soundVolumeSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.isContinuous = false
+        return slider
+    }()
     
-    private lazy var reset: UIButton = {
+    private var reset: UIButton = {
         let button = UIButton(configuration: .plain())
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
         button.configuration?.title = String(localized: "Reset")
         return button
     }()
@@ -151,6 +159,9 @@ final class SettingsView: UIView {
             reset.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             reset.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
+        
+        soundVolumeSlider.addTarget(self, action: #selector(volumeSlidercChanged), for: .valueChanged)
+        reset.addTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
     }
 }
 
@@ -169,9 +180,16 @@ extension SettingsView: SettingsViewSetupable {
         return true
     }
     
-    func setupSoundVolume(_ value: Float) -> Bool {
-        guard soundSlotView.trailing is UIImageView else { return false }
-        soundVolumeSlider.value = value
+    func setupSoundVolume(_ isOn: Bool, volume: Float) -> Bool {
+        guard let control = soundSlotView.trailing as? UISwitch else { return false }
+        control.setOn(isOn, animated: false)
+        if isOn {
+            soundVolumeSlider.isHidden = false
+            soundVolumeSlider.value = (0.0 ... 1.0).contains(volume) ? volume : 1.0
+        } else {
+            soundVolumeSlider.isHidden = true
+            soundVolumeSlider.value = (0.0 ... 1.0).contains(volume) ? volume : 0.0
+        }
         return true
     }
 }
@@ -187,6 +205,17 @@ extension SettingsView {
     @objc
     private func animationToggleSwitched(_ sender: UISwitch) {
         delegate?.animationToggleSwitched(sender.isOn)
+    }
+    
+    @objc
+    private func soundToggleSwitched(_ sender: UISwitch) {
+        delegate?.soundToggleSwitched(sender.isOn)
+    }
+    
+    @objc
+    private func volumeSlidercChanged(_ sender: UISlider) {
+        print(sender.value)
+        delegate?.volumeSliderChanged(sender.value)
     }
     
     @objc

@@ -13,5 +13,5 @@ protocol SettingsDisplayable: AnyObject {
     
     func displayColor(_ color: UIColor)
     func displayAnimation(_ isAnimation: Bool)
-    func displaySoundVolume(_ value: Float)
+    func displaySoundVolume(_ isOn: Bool, volume: Float)
 }

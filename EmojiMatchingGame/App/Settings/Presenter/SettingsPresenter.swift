@@ -11,9 +11,11 @@ final class SettingsPresenter: SettingsPresentable {
     
     private weak var viewController: SettingsDisplayable?
     private let appearance: AppearanceStorageable
+    private let audio: Audible
     
-    init(_ viewController: SettingsDisplayable, appearance: AppearanceStorageable) {
+    init(_ viewController: SettingsDisplayable, appearance: AppearanceStorageable, audio: Audible) {
         self.viewController = viewController
+        self.audio = audio
         self.appearance = appearance
         self.appearance.register(self)
         print("PRESENTER\t😈\tSettings")
@@ -27,6 +29,7 @@ final class SettingsPresenter: SettingsPresentable {
     private func display() {
         viewController?.displayColor(appearance.color)
         viewController?.displayAnimation(appearance.animated)
+        viewController?.displaySoundVolume(appearance.sound, volume: appearance.volume)
     }
     
     func fetch() {
@@ -40,6 +43,18 @@ final class SettingsPresenter: SettingsPresentable {
     
     func update(isAnimation: Bool) {
         appearance.animated = isAnimation
+    }
+    
+    func update(isSoundOn: Bool) {
+        appearance.sound = isSoundOn
+        if isSoundOn {
+            audio.play(.navigation)
+        }
+    }
+    
+    func update(volume: Float) {
+        appearance.volume = volume
+        audio.play(.navigation)
     }
     
     func reset() {

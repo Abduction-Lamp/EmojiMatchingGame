@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreHaptics
 
 final class Appearance {
     
@@ -15,18 +14,15 @@ final class Appearance {
     private let defaults = UserDefaults.standard
     
     private var _color:    UIColor
-    private var _haptics:  Bool
     private var _animated: Bool
-    
-    private var _isSupportsHaptics: Bool
+    private var _sound:    Bool
+    private var _volume:   Float
     
     private init() {
         _color    = Design.Default.appearance.color
-        _haptics  = Design.Default.appearance.haptics
         _animated = Design.Default.appearance.animated
-        
-        let capabilities = CHHapticEngine.capabilitiesForHardware()
-        _isSupportsHaptics = capabilities.supportsHaptics
+        _sound    = Design.Default.appearance.sound
+        _volume   = Design.Default.appearance.volume
     }
     
     internal var subscribers: [WeakSubscriber] = []
@@ -37,13 +33,9 @@ extension Appearance: AppearanceStorageable {
     
     enum UserDefaultsKeys: String, CaseIterable {
         case color     = "EmojiMatching.Storage.Appearance.Color"
-        case haptics   = "EmojiMatching.Storage.Appearance.Haptics"
         case animation = "EmojiMatching.Storage.Appearance.Animation"
-    }
-    
-    
-    var isSupportsHaptics: Bool {
-        _isSupportsHaptics
+        case sound     = "EmojiMatching.Storage.Appearance.Sound"
+        case volume    = "EmojiMatching.Storage.Appearance.Volume"
     }
     
     var color: UIColor {
@@ -61,19 +53,6 @@ extension Appearance: AppearanceStorageable {
         }
     }
     
-    var haptics: Bool {
-        get {
-            _haptics
-        }
-        set {
-            guard newValue != _haptics else { return }
-            _haptics = newValue
-            notify()
-            let key = UserDefaultsKeys.haptics
-            defaults.setValue(newValue, forKey: key.rawValue)
-        }
-    }
-    
     var animated: Bool {
         get {
             _animated
@@ -83,6 +62,32 @@ extension Appearance: AppearanceStorageable {
             _animated = newValue
             notify()
             let key = UserDefaultsKeys.animation
+            defaults.setValue(newValue, forKey: key.rawValue)
+        }
+    }
+    
+    var sound: Bool {
+        get {
+            _sound
+        }
+        set {
+            guard newValue != _sound else { return }
+            _sound = newValue
+            notify()
+            let key = UserDefaultsKeys.sound
+            defaults.setValue(newValue, forKey: key.rawValue)
+        }
+    }
+    
+    var volume: Float {
+        get {
+            _volume
+        }
+        set {
+            guard newValue != _volume, (0.0 ... 1.0).contains(newValue) else { return }
+            _volume = newValue
+            notify()
+            let key = UserDefaultsKeys.volume
             defaults.setValue(newValue, forKey: key.rawValue)
         }
     }
@@ -98,15 +103,20 @@ extension Appearance: AppearanceStorageable {
                     _color = saved
                     print("\t✅ Color: hex > \(hex), rgba > \(_color)")
                 }
-            case .haptics:
-                if let saved = defaults.value(forKey: key.rawValue) as? Bool {
-                    _haptics = saved
-                    print("\t✅ Haptics: \(_haptics)")
-                }
             case .animation:
                 if let saved = defaults.value(forKey: key.rawValue) as? Bool {
                     _animated = saved
                     print("\t✅ Animation: \(_animated)")
+                }
+            case .sound:
+                if let saved = defaults.value(forKey: key.rawValue) as? Bool {
+                    _sound = saved
+                    print("\t✅ Sound: \(_sound)")
+                }
+            case .volume:
+                if let saved = defaults.value(forKey: key.rawValue) as? Float, (0.0 ... 1.0).contains(saved) {
+                    _volume = saved
+                    print("\t✅ Volume: \(_volume)")
                 }
             }
         }
@@ -117,9 +127,11 @@ extension Appearance: AppearanceStorageable {
         UserDefaultsKeys.allCases.forEach { key in
             defaults.setValue(nil, forKey: key.rawValue)
         }
+        
         _color    = Design.Default.appearance.color
-        _haptics  = Design.Default.appearance.haptics
         _animated = Design.Default.appearance.animated
+        _sound    = Design.Default.appearance.sound
+        _volume   = Design.Default.appearance.volume
         
         notify()
     }

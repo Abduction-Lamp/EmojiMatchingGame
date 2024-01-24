@@ -14,6 +14,7 @@ protocol PlayBoardDisplayable: AnyObject {
     func play(level: Sizeable, with sequence: [String], and color: UIColor, animated flag: Bool)
     func setupLevelMenu(unlock: Indexable)
     func selectLevelMenu(level: Indexable)
+    func setupSoundButton(volume: Float)
     
     func disable(index first: Int, and second: Int)
     func flip(index: Int,  animated flag: Bool, completion: ((Bool) -> Void)?)

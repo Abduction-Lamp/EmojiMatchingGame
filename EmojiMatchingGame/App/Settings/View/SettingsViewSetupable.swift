@@ -13,12 +13,14 @@ protocol SettingsViewSetupable: AnyObject where Self: UIView {
     
     func setupColor(_ color: UIColor) -> Bool
     func setupAnimation(_ isAnimation: Bool) -> Bool
-    func setupSoundVolume(_ value: Float) -> Bool
+    func setupSoundVolume(_ isOn: Bool, volume: Float) -> Bool
 }
 
 protocol SettingsViewDelegate: AnyObject {
     
     func colorButtonTapped(_ sender: UIButton)
     func animationToggleSwitched(_ isOn: Bool)
+    func soundToggleSwitched(_ isOn: Bool)
+    func volumeSliderChanged(_ volume: Float)
     func resetTapped()
 }

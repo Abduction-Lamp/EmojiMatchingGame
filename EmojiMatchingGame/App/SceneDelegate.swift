@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let emoji = Emoji()
         let user: any UserStorageable = User.shared
         let appearance: AppearanceStorageable = Appearance.shared
-        let builder: Buildable = Builder(storage: (user, appearance), emoji: emoji)
+        let audio = AudioPlayer(appearance)
+        let builder: Buildable = Builder(storage: (user, appearance), emoji: emoji, audio: audio)
         
         router = Router(navigation: navigation, builder: builder)
         router?.initVC()

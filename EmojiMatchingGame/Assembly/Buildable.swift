@@ -8,6 +8,8 @@
 import UIKit
 
 protocol Buildable: AnyObject {
+    init(storage: Storage, emoji: EmojiGeneratable, audio: Audible)
+    
     func makeMainMenuFlow(router: MainMenuRoutable) -> UIViewController & MainMenuDisplayable
     func makePlayBoardFlow(router: PlayBoardRoutable) -> UIViewController & PlayBoardDisplayable
     func makeGameOverFlow(router: GameOverRoutable, time: TimeInterval?, taps: UInt, isBest: Bool, isFinalLevel: Bool) -> UIViewController & GameOverDisplayable

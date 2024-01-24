@@ -11,6 +11,7 @@ final class Builder: Buildable {
     
     let storage: Storage
     let emoji: EmojiGeneratable
+    let audio: Audible
     
     func makeMainMenuFlow(router: MainMenuRoutable) -> UIViewController & MainMenuDisplayable {
         let vc = MainMenuViewController()
@@ -21,7 +22,7 @@ final class Builder: Buildable {
      
     func makePlayBoardFlow(router: PlayBoardRoutable) -> UIViewController & PlayBoardDisplayable {
         let vc = PlayBoardViewController()
-        let presenter = PlayBoardPresenter(vc, router: router, storage: storage, emoji: emoji)
+        let presenter = PlayBoardPresenter(vc, router: router, storage: storage, emoji: emoji, audio: audio)
         vc.presenter = presenter
         return vc
     }
@@ -45,7 +46,7 @@ final class Builder: Buildable {
     
     func makeSettingsFlow() -> UIViewController & SettingsDisplayable {
         let vc = SettingsViewController()
-        let presenter = SettingsPresenter(vc, appearance: storage.appearance)
+        let presenter = SettingsPresenter(vc, appearance: storage.appearance, audio: audio)
         vc.presenter = presenter
         return vc
     }
@@ -62,13 +63,14 @@ final class Builder: Buildable {
     //
     // TODO: - Logging info
     //
-    init(storage: Storage, emoji: EmojiGeneratable) {
-        print("ASSEMBLY\t😈\tBuilder")
+    init(storage: Storage, emoji: EmojiGeneratable, audio: Audible) {
+        print("ASSEMBLY\t👷‍♂️\tBuilder")
         
         self.emoji = emoji
         self.storage = storage
         self.storage.user.fetch()
         self.storage.appearance.fetch()
+        self.audio = audio
     }
     
     deinit {

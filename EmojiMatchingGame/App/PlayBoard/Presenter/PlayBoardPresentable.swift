@@ -21,7 +21,8 @@ protocol PlayBoardPresentable: AnyObject {
         _ viewController: PlayBoardDisplayable,
         router:           PlayBoardRoutable,
         storage:          Storage,
-        emoji:            EmojiGeneratable
+        emoji:            EmojiGeneratable,
+        audio:            Audible
     )
     
     func viewDidLoad()
@@ -29,5 +30,6 @@ protocol PlayBoardPresentable: AnyObject {
     func play(mode: LevelGameMode)
     func flip(index: Int)
     
+    func sound()
     func goBackMainMenu()
 }

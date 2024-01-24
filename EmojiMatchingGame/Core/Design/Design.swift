@@ -25,8 +25,8 @@ public enum Design {
     
     // MARK: Default
     public enum Default {
-        static var appearance: (color: UIColor, haptics: Bool, animated: Bool) {
-            (color: .systemYellow, haptics: true, animated: true)
+        static var appearance: (color: UIColor, animated: Bool, sound: Bool, volume: Float) {
+            (color: .systemYellow, animated: true, sound: true, volume: 1.0)
         }
     }
     

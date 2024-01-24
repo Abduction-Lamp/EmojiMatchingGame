@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 final class PlayBoardPresenter {
     
@@ -14,14 +15,16 @@ final class PlayBoardPresenter {
     private let router: PlayBoardRoutable
     private let storage: Storage
     private let emoji: EmojiGeneratable
+    private let audio: Audible
     
     var level: Levelable
     
-    init(_ viewController: PlayBoardDisplayable, router: PlayBoardRoutable, storage: Storage, emoji: EmojiGeneratable) {
+    init(_ viewController: PlayBoardDisplayable, router: PlayBoardRoutable, storage: Storage, emoji: EmojiGeneratable, audio: Audible) {
         self.viewController = viewController
         self.router = router
         self.storage = storage
         self.emoji = emoji
+        self.audio = audio
         
         level = storage.user.startLevel
         
@@ -46,6 +49,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     
     func viewDidLoad() {
         viewController?.setupLevelMenu(unlock: storage.user.unlockLevel)
+        viewController?.setupSoundButton(volume: storage.appearance.sound ? storage.appearance.volume : 0.0)
         play(mode: .current)
     }
     
@@ -63,7 +67,6 @@ extension PlayBoardPresenter: PlayBoardPresentable {
             }
         }
         
-   
         remove()
         viewController?.selectLevelMenu(level: level)
         
@@ -75,6 +78,8 @@ extension PlayBoardPresenter: PlayBoardPresentable {
 
 
     func flip(index: Int) {
+        audio.play(.flip)
+        
         if startTime == nil { startTime = Date.now }
         taps += 1
         
@@ -188,6 +193,13 @@ extension PlayBoardPresenter: PlayBoardPresentable {
 extension PlayBoardPresenter {
     
     func goBackMainMenu() {
+        audio.play(.navigation)
         router.goBackMainMenu(animated: storage.appearance.animated)
+    }
+    
+    func sound() {
+        storage.appearance.sound = !storage.appearance.sound
+        viewController?.setupSoundButton(volume: storage.appearance.sound ? storage.appearance.volume : 0.0)
+        audio.play(.navigation)
     }
 }
