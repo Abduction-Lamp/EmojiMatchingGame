@@ -214,7 +214,6 @@ extension SettingsView {
     
     @objc
     private func volumeSlidercChanged(_ sender: UISlider) {
-        print(sender.value)
         delegate?.volumeSliderChanged(sender.value)
     }
     
