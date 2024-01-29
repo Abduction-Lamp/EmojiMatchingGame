@@ -54,7 +54,7 @@ final class Builder: Buildable {
     
     func makeResultsFlow() -> UIViewController & ResultsDisplayable {
         let vc = ResultsViewController()
-        let presenter = ResultsPresenter(vc, user: storage.user)
+        let presenter = ResultsPresenter(vc, audio: audio, storage: storage)
         vc.presenter = presenter
         return vc
     }

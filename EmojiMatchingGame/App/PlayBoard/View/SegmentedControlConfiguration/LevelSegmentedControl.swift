@@ -75,7 +75,8 @@ extension LevelSegmentedControl: LevelSegmentedCustomizable {
     func unlock(_ level: Indexable) {
         (0...level.index).forEach { indexSegment in
             guard !isEnabledForSegment(at: indexSegment) else { return }
-            let image = UIImage(systemName: "\(indexSegment + 1).circle")?.applyingSymbolConfiguration(.init(font: Design.Typography.font(.title)))
+            let configuration: UIImage.SymbolConfiguration = .init(font: Design.Typography.font(.title))
+            let image = UIImage(systemName: "\(indexSegment + 1).circle")?.applyingSymbolConfiguration(configuration)
             image?.accessibilityLabel = "Level \(indexSegment + 1)"
             setImage(image, forSegmentAt: indexSegment)
             setEnabled(true, forSegmentAt: indexSegment)

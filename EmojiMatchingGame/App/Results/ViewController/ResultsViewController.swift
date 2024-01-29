@@ -34,6 +34,16 @@ final class ResultsViewController: UIViewController {
         presenter?.fetch()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.soundGenerationToViewWillAppear()
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag, completion: completion)
+        presenter?.soundGenerationToDismiss()
+    }
+    
     deinit {
         print("VC\t\t\t♻️\tResults")
     }

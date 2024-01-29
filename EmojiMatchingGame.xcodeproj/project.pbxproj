@@ -12,6 +12,7 @@
 		4E13C40B2ACED8AC00F40235 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */; };
 		4E13C40D2ACEE1E600F40235 /* GameOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */; };
 		4E13EF9C2B67C9EC0000B29E /* PlayBoardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13EF9B2B67C9EC0000B29E /* PlayBoardViewDelegate.swift */; };
+		4E13EF9E2B67F56D0000B29E /* CardAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13EF9D2B67F56D0000B29E /* CardAnimatable.swift */; };
 		4E15FCDC2B5405C00037A70F /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15FCDB2B5405C00037A70F /* Audio.swift */; };
 		4E22CF8F2B16499900044EBD /* MainMenuSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22CF8E2B16499900044EBD /* MainMenuSetupable.swift */; };
 		4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */; };
@@ -118,6 +119,7 @@
 		4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPresenter.swift; sourceTree = "<group>"; };
 		4E13EF9B2B67C9EC0000B29E /* PlayBoardViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardViewDelegate.swift; sourceTree = "<group>"; };
+		4E13EF9D2B67F56D0000B29E /* CardAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAnimatable.swift; sourceTree = "<group>"; };
 		4E15FCDB2B5405C00037A70F /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		4E22CF8E2B16499900044EBD /* MainMenuSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuSetupable.swift; sourceTree = "<group>"; };
 		4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
@@ -509,6 +511,8 @@
 			isa = PBXGroup;
 			children = (
 				4EC574F62B02623900295E57 /* CardView */,
+				4E31F43E2AFD3EE3005EA317 /* SegmentedControlConfiguration */,
+				4E7BF6B42AFABB6C00FFDF0A /* ButtonConfiguration */,
 				4EC574F52B02622100295E57 /* PlayBoardView */,
 			);
 			path = View;
@@ -545,8 +549,6 @@
 		4EC574F52B02622100295E57 /* PlayBoardView */ = {
 			isa = PBXGroup;
 			children = (
-				4E31F43E2AFD3EE3005EA317 /* SegmentedControlConfiguration */,
-				4E7BF6B42AFABB6C00FFDF0A /* ButtonConfiguration */,
 				4E13EF9B2B67C9EC0000B29E /* PlayBoardViewDelegate.swift */,
 				4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */,
 				4E86D6072A55B75900E23388 /* PlayBoardView_StackView.swift */,
@@ -558,6 +560,7 @@
 		4EC574F62B02623900295E57 /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				4E13EF9D2B67F56D0000B29E /* CardAnimatable.swift */,
 				4EF61F5A2A5778DA00E79C74 /* CardView.swift */,
 			);
 			path = CardView;
@@ -745,7 +748,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					4E0678012B309DA300493EA2 = {
 						CreatedOnToolsVersion = 15.1;
@@ -891,6 +894,7 @@
 				4E15FCDC2B5405C00037A70F /* Audio.swift in Sources */,
 				4E5EB6E02AA622770074C7B5 /* Router.swift in Sources */,
 				4E86D60A2A56EBCD00E23388 /* Level.swift in Sources */,
+				4E13EF9E2B67F56D0000B29E /* CardAnimatable.swift in Sources */,
 				4E4EAC3C2AD04C9F00AF5D35 /* GameOverDisplayable.swift in Sources */,
 				4E13C40B2ACED8AC00F40235 /* GameOverViewController.swift in Sources */,
 				4EE21F762AE2DC8C00A71B6D /* Storageable.swift in Sources */,
@@ -935,6 +939,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 8532FW2M88;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -962,6 +967,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 8532FW2M88;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;

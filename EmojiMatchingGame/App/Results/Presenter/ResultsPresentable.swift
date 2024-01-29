@@ -9,8 +9,11 @@ import Foundation
 
 protocol ResultsPresentable: AnyObject {
     
-    init(_ viewController: ResultsDisplayable, user: UserStorageable)
+    init(_ viewController: ResultsDisplayable, audio: Audible, storage: Storage)
     
     func fetch()
     func reset()
+    
+    func soundGenerationToViewWillAppear()
+    func soundGenerationToDismiss()
 }

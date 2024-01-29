@@ -11,7 +11,7 @@ final class SettingsPresenter: SettingsPresentable {
     
     private weak var viewController: SettingsDisplayable?
     private let appearance: AppearanceStorageable
-    private let audio: Audible
+    private weak var audio: Audible?
     
     init(_ viewController: SettingsDisplayable, appearance: AppearanceStorageable, audio: Audible) {
         self.viewController = viewController
@@ -48,13 +48,13 @@ final class SettingsPresenter: SettingsPresentable {
     func update(isSoundOn: Bool) {
         appearance.sound = isSoundOn
         if isSoundOn {
-            audio.play(.menu2)
+            audio?.play(.menu2)
         }
     }
     
     func update(volume: Float) {
         appearance.volume = volume
-        audio.play(.menu2)
+        audio?.play(.menu2)
     }
     
     func reset() {
@@ -63,7 +63,13 @@ final class SettingsPresenter: SettingsPresentable {
     
     func soundGenerationToDismiss() {
         if appearance.sound {
-            audio.play(.navigation2)
+            audio?.play(.flip1)
+        }
+    }
+    
+    func soundGenerationToViewWillAppear() {
+        if appearance.sound {
+            audio?.play(.flip1)
         }
     }
 }

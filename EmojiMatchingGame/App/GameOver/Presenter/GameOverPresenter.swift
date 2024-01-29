@@ -53,12 +53,12 @@ final class GameOverPresenter: GameOverPresentable {
     }
     
     func next() {
-        audio?.play(.menu1)
+        audio?.play(.flip1)
         router.goToNextLevel(animated: animated)
     }
     
     func replay() {
-        audio?.play(.menu1)
+        audio?.play(.flip1)
         router.goToRepeatLevel(animated: animated)
     }
     

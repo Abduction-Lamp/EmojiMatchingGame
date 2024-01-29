@@ -30,6 +30,11 @@ final class SettingsViewController: UIViewController {
         presenter?.fetch()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.soundGenerationToViewWillAppear()
+    }
+    
     deinit {
         print("VC\t\t\t♻️\tSettings ")
     }

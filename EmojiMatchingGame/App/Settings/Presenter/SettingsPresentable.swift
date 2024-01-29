@@ -18,5 +18,6 @@ protocol SettingsPresentable: AnyObject {
     func update(volume: Float)
     func reset()
     
+    func soundGenerationToViewWillAppear()
     func soundGenerationToDismiss()
 }

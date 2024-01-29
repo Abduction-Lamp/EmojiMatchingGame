@@ -8,57 +8,11 @@
 import Foundation
 import AVFoundation
 
+
 protocol Audible: AnyObject {
     func play(_ scenario: GameAudioScenario)
     func stop()
 }
-//
-//final class AudioPlayer: Audible {
-//    
-//    private let audioFileManager = AudioFileManager.instance
-//    private var audioPlayer: AVAudioPlayer?
-//    private weak var appearence: AudioAppearanceProtocol?
-//    
-//    init(_ appearence: AudioAppearanceProtocol) {
-//        self.appearence = appearence
-//        print("SERVICE\t\t🪗\tAudioPlayer")
-//    }
-//    
-//    deinit {
-//        print("SERVICE\t\t♻️\tAudioPlayer")
-//    }
-//    
-//    func play(_ scenario: GameAudioScenario) {
-//        guard
-//            let appearence = appearence,
-//            appearence.sound
-//        else { return }
-//        
-//
-//        if let url = audioFileManager.url(scenario) {
-//            if audioPlayer?.isPlaying == true {
-//                audioPlayer?.stop()
-//            }
-//            do {
-//                try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
-//                try AVAudioSession.sharedInstance().setActive(true)
-//            
-//                audioPlayer = try AVAudioPlayer(contentsOf: url)
-//                audioPlayer?.volume = appearence.volume
-//                audioPlayer?.prepareToPlay()
-//                audioPlayer?.play()
-//            } catch let error {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-//    
-//    public func stop() {
-//        if audioPlayer?.isPlaying == true {
-//            audioPlayer?.stop()
-//        }
-//    }
-//}
 
 
 final class AudioEngine: Audible {
@@ -80,6 +34,9 @@ final class AudioEngine: Audible {
         print("SERVICE\t\t♻️\tAudioPlayer")
     }
     
+    
+    // MARK: - Audible
+    //
     public func play(_ scenario: GameAudioScenario) {
         guard let appearence = appearence, appearence.sound else { return }
         
@@ -93,6 +50,7 @@ final class AudioEngine: Audible {
                 
                 engine.attach(node)
                 engine.connect(node, to: engine.mainMixerNode, format: audioFile.processingFormat)
+                engine.prepare()
                 
                 nodes.append(node)
                 
@@ -102,8 +60,7 @@ final class AudioEngine: Audible {
                         self.removeNode(node)
                     }
                 }
-    
-//                engine.prepare()
+
                 if !engine.isRunning {
                     engine.prepare()
                     try engine.start()

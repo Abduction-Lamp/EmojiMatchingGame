@@ -11,11 +11,11 @@ import AVFoundation
 final class PlayBoardPresenter {
     
     private weak var viewController: PlayBoardDisplayable?
+    private weak var audio: Audible?
     
     private let router: PlayBoardRoutable
     private let storage: Storage
     private let emoji: EmojiGeneratable
-    private let audio: Audible
     
     var level: Levelable
     
@@ -80,7 +80,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
 
     func flip(index: Int) {
         
-        audio.play(.flip5)
+        audio?.play(.flip5)
         
         if startTime == nil { startTime = Date.now }
         taps += 1
@@ -123,7 +123,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                 
                 viewController?.flip(index: index, animated: animated) { [weak self] _ in
                     guard let self = self else { return }
-                    self.audio.play(.match1)
+                    self.audio?.play(.match1)
                     self.viewController?.matching(index: first, and: index, animated: animated) { [weak self] _ in
                         guard let self = self else { return }
                         self.remainingCards -= 2
@@ -196,25 +196,25 @@ extension PlayBoardPresenter: PlayBoardPresentable {
 extension PlayBoardPresenter {
     
     func goBackMainMenu() {
-        audio.play(.menu1)
+        audio?.play(.flip1)
         router.goBackMainMenu(animated: storage.appearance.animated)
     }
     
     func soundOnOff() {
         storage.appearance.sound = !storage.appearance.sound
         viewController?.setupSoundVolumeButton(volume: storage.appearance.sound ? storage.appearance.volume : 0.0)
-        audio.play(.menu2)
+        audio?.play(.menu2)
     }
     
     func soundGenerationToHideBoard() {
         if storage.appearance.animated, storage.appearance.sound {
-            audio.play(.navigation1)
+            audio?.play(.navigation1)
         }
     }
     
     func soundGenerationToShowBoard() {
         if storage.appearance.animated, storage.appearance.sound {
-            audio.play(.navigation2)
+            audio?.play(.navigation2)
         }
     }
 }

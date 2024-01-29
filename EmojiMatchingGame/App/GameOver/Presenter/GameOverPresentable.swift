@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GameOverPresentable {
+protocol GameOverPresentable: AnyObject {
     
     var animated: Bool { get }
     

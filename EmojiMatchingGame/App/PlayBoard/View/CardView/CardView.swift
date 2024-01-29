@@ -34,18 +34,12 @@ final class CardView: UIView {
     private var color: UIColor = .clear
     
     
+    // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configure()
-        
-//        print("\tVIEW\t😈\tCard")
     }
-    
-    deinit {
-//        print("\tVIEW\t♻️\tCard")
-    }
-    
+
     required init?(coder: NSCoder) {
         fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
@@ -94,7 +88,7 @@ extension CardView {
 
 // MARK: - Card Actions And Animation
 //
-extension CardView {
+extension CardView: CardAnimatable {
     
     private func changeState() {
         backgroundColor = emoji.isHidden ? .clear : color
