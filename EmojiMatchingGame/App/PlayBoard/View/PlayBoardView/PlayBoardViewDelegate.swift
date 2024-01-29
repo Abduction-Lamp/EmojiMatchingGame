@@ -14,6 +14,6 @@ protocol PlayBoardViewDelegate: AnyObject {
     func backButtonTapped(_ sender: UIButton)
     func soundVolumeButtonTapped(_ sender: UIButton)
     
-    func soundGenerationToHiddenBoard()
+    func soundGenerationToHideBoard()
     func soundGenerationToShowBoard()
 }

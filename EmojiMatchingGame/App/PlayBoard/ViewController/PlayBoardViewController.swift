@@ -49,7 +49,7 @@ final class PlayBoardViewController: UIViewController {
                 }
             }
         } else {
-            playBoardView.hiddenLevelMenu()
+            playBoardView.hideLevelMenu()
         }
     }
     
@@ -68,14 +68,12 @@ final class PlayBoardViewController: UIViewController {
 extension PlayBoardViewController: PlayBoardDisplayable {
 
     func play(level: Sizeable, with sequence: [String], and color: UIColor, animated flag: Bool) {
-        presenter?.soundGenerationToHideBoard()
         playBoardView.clean(animated: flag) { [weak self] in
             guard let self = self else { return }
 //            //  MARK: ManualLayout
 //            self.cards.forEach { $0.removeFromSuperview() }
 //            //
             self.makeNewSetCards(sequence, color: color)
-            presenter?.soundGenerationToShowBoard()
             self.playBoardView.play(level: level, with: cards, animated: flag)
         }
     }
@@ -140,7 +138,7 @@ extension PlayBoardViewController: PlayBoardViewDelegate {
         presenter?.soundOnOff()
     }
     
-    func soundGenerationToHiddenBoard() {
+    func soundGenerationToHideBoard() {
         presenter?.soundGenerationToHideBoard()
     }
     

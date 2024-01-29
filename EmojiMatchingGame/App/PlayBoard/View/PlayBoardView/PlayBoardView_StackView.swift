@@ -109,7 +109,7 @@ final class PlayBoardView_StackView: UIView {
 
         let current = Design.PseudoUserInterfaceSizeClass.current
         updateConstraints(for: .current)
-        current == .compact ? showLevelMenu() : hiddenLevelMenu()
+        current == .compact ? showLevelMenu() : hideLevelMenu()
     }
     
     private func updateConstraints(for sizeClass: Design.PseudoUserInterfaceSizeClass) {
@@ -148,10 +148,21 @@ extension PlayBoardView_StackView: PlayBoardViewDisplayable {
             completion?()
             return
         }
+                
+        /// Синхронизируем анимацию и вызов звука скрытие игрового поля
+        /// ---------------------------------------------------
+        /// Если игральных карт много, то анимация стартует не сразу, есть небольшая задержка, видимо связана с вычислением кадра.
+        /// Чтобы звук исчезновение игрового поля начался одновременно с началом анимацией
+        /// создаем `displaylink`, который вызовет `callDisplayLinkForHideBoard` при первом кадре анимации.
+        /// В `callDisplayLinkForHideBoard` вызывает соответствующий звук и сразу же инвалидирует `displaylink`, чтобы тот больше не вызывался
+        ///
+        let displaylink = CADisplayLink(target: self, selector: #selector(callDisplayLinkForHideBoard))
+        displaylink.add(to: .main, forMode: .default)
+        
         
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut]) { [weak self] in
             guard let self = self else { return }
-            self.hiddenBoard()
+            self.hideBoard()
         } completion: { [weak self] _ in
             guard let self = self else { return }
             self.remove()
@@ -166,9 +177,20 @@ extension PlayBoardView_StackView: PlayBoardViewDisplayable {
             levelMenu.isUserInteractionEnabled = true
             return
         }
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        
+        /// Синхронизируем анимацию и вызов звука скрытие игрового поля
+        /// ---------------------------------------------------
+        /// Если игральных карт много, то анимация стартует не сразу, есть небольшая задержка, видимо связана с вычислением кадра.
+        /// Чтобы звук появление игрового поля начался одновременно с началом анимацией
+        /// создаем `displaylink`, который вызовет `callDisplayLinkForHideBoard` при первом кадре анимации.
+        /// В `callDisplayLinkForHideBoard` вызывает соответствующий звук и сразу же инвалидирует `displaylink`, чтобы тот больше не вызывался
+        ///
+        let displaylink = CADisplayLink(target: self, selector: #selector(callDisplayLinkForShowBoard))
+        displaylink.add(to: .main, forMode: .default)
+        
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut]) { [weak self] in
             guard let self = self else { return }
-            
             self.showBoard()
         } completion: { [weak self] _ in
             guard let self = self else { return }
@@ -214,7 +236,7 @@ extension PlayBoardView_StackView: PlayBoardViewDisplayable {
 // MARK: - Actions for Will Transition
 extension PlayBoardView_StackView {
     
-    func hiddenLevelMenu() {
+    func hideLevelMenu() {
         levelMenuYAnchor.constant = -200
         layoutIfNeeded()
     }
@@ -229,7 +251,7 @@ extension PlayBoardView_StackView {
         layoutIfNeeded()
     }
     
-    func hiddenButtons() {
+    func hideButtons() {
         backButton.transform = CGAffineTransform.init(translationX: -250, y: 0)
         soundVolumeButton.transform = CGAffineTransform.init(translationX: 250, y: 0)
     }
@@ -239,16 +261,12 @@ extension PlayBoardView_StackView {
         soundVolumeButton.transform = .identity
     }
     
-    func hiddenBoard() {
-        delegate?.soundGenerationToHiddenBoard()
-        
+    func hideBoard() {
         board.transform = CGAffineTransform(scaleX: -0.001, y: -0.001)
         board.layer.opacity = 0
     }
     
     func showBoard() {
-        delegate?.soundGenerationToShowBoard()
-        
         board.transform = .identity
         board.layer.opacity = 1
     }
@@ -271,5 +289,23 @@ extension PlayBoardView_StackView {
     @objc
     private func soundVolumeButtonTapped(_ sender: UIButton) {
         delegate?.soundVolumeButtonTapped(sender)
+    }
+}
+
+
+// MARK: Synchronization using CADisplayLink
+//
+extension PlayBoardView_StackView {
+    
+    @objc
+    private func callDisplayLinkForHideBoard(displaylink: CADisplayLink) {
+        delegate?.soundGenerationToHideBoard()
+        displaylink.invalidate()
+    }
+    
+    @objc
+    private func callDisplayLinkForShowBoard(displaylink: CADisplayLink) {
+        delegate?.soundGenerationToShowBoard()
+        displaylink.invalidate()
     }
 }

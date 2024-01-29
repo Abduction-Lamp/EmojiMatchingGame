@@ -18,14 +18,14 @@ protocol PlayBoardViewDisplayable {
     func clean(animated: Bool, completion: (() -> Void)?)
     
     // Действия при переходе (Will Transition)
-    func hiddenLevelMenu()
+    func hideLevelMenu()
     func showLevelMenu()
     func shiftLevelMenu()
     
-    func hiddenButtons()
+    func hideButtons()
     func showButtons()
     
-    func hiddenBoard()
+    func hideBoard()
     func showBoard()
 }
 

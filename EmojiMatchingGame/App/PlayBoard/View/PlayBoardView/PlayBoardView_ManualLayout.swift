@@ -82,7 +82,7 @@ extension PlayBoardView_ManualLayout: PlayBoardViewDisplayable {
     }
     
     
-    func hiddenLevelMenu() {
+    func hideLevelMenu() {
     
     }
     
@@ -94,7 +94,7 @@ extension PlayBoardView_ManualLayout: PlayBoardViewDisplayable {
         
     }
     
-    func hiddenButtons() {
+    func hideButtons() {
         
     }
     
@@ -102,7 +102,7 @@ extension PlayBoardView_ManualLayout: PlayBoardViewDisplayable {
         
     }
     
-    func hiddenBoard() {
+    func hideBoard() {
         
     }
     

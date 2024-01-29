@@ -24,8 +24,8 @@ final class PushAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransit
         transitionContext.containerView.addSubview(playBoardView)
         transitionContext.containerView.addSubview(fromView)
     
-        playBoardView.hiddenLevelMenu()
-        playBoardView.hiddenButtons()
+        playBoardView.hideLevelMenu()
+        playBoardView.hideButtons()
         
         UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeCubicPaced) {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.4) {

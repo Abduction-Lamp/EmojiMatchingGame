@@ -34,12 +34,12 @@ final class PopAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransiti
             }
             UIView.addKeyframe(withRelativeStartTime: 0.07, relativeDuration: 0.3) {
                 if current == .compact {
-                    playBoardView.hiddenLevelMenu()
+                    playBoardView.hideLevelMenu()
                 }
-                playBoardView.hiddenButtons()
+                playBoardView.hideButtons()
             }
             UIView.addKeyframe(withRelativeStartTime: 0.15, relativeDuration: 0.3) {
-                playBoardView.hiddenBoard()
+                playBoardView.hideBoard()
             }
             UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0.6) {
                 playBoardView.alpha = 0
