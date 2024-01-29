@@ -33,6 +33,11 @@ final class SettingsViewController: UIViewController {
     deinit {
         print("VC\t\t\t♻️\tSettings ")
     }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        presenter?.soundGenerationToDismiss()
+        super.dismiss(animated: flag, completion: completion)
+    }
 }
 
 

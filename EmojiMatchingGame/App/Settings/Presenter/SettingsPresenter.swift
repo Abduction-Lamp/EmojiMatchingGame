@@ -48,17 +48,23 @@ final class SettingsPresenter: SettingsPresentable {
     func update(isSoundOn: Bool) {
         appearance.sound = isSoundOn
         if isSoundOn {
-            audio.play(.navigation)
+            audio.play(.menu2)
         }
     }
     
     func update(volume: Float) {
         appearance.volume = volume
-        audio.play(.navigation)
+        audio.play(.menu2)
     }
     
     func reset() {
         appearance.clear()
+    }
+    
+    func soundGenerationToDismiss() {
+        if appearance.sound {
+            audio.play(.navigation2)
+        }
     }
 }
 

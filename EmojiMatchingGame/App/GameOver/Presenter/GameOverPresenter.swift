@@ -11,6 +11,7 @@ final class GameOverPresenter: GameOverPresentable {
     
     private weak var viewController: GameOverDisplayable?
     private let router: GameOverRoutable
+    private weak var audio: Audible? 
     
     let animated: Bool
     
@@ -22,6 +23,7 @@ final class GameOverPresenter: GameOverPresentable {
     
     init(_ viewController: GameOverDisplayable,
          router:           GameOverRoutable,
+         audio:            Audible,
          animated:         Bool,
          time:             TimeInterval?,
          taps:             UInt,
@@ -30,6 +32,7 @@ final class GameOverPresenter: GameOverPresentable {
         
         self.viewController = viewController
         self.router = router
+        self.audio = audio
         self.animated = animated
         
         self.time = time
@@ -50,10 +53,18 @@ final class GameOverPresenter: GameOverPresentable {
     }
     
     func next() {
+        audio?.play(.menu1)
         router.goToNextLevel(animated: animated)
     }
     
     func replay() {
+        audio?.play(.menu1)
         router.goToRepeatLevel(animated: animated)
+    }
+    
+    func soundGenerationToFireworks() {
+        if animated {
+            audio?.play(.fireworks2)
+        }
     }
 }

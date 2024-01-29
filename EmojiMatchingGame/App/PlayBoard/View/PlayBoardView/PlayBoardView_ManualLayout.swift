@@ -77,6 +77,39 @@ final class PlayBoardView_ManualLayout: UIView {
 }
 
 extension PlayBoardView_ManualLayout: PlayBoardViewDisplayable {
+    func setupSoundVolumeButton(volume: Float) {
+        
+    }
+    
+    
+    func hiddenLevelMenu() {
+    
+    }
+    
+    func showLevelMenu() {
+        
+    }
+    
+    func shiftLevelMenu() {
+        
+    }
+    
+    func hiddenButtons() {
+        
+    }
+    
+    func showButtons() {
+        
+    }
+    
+    func hiddenBoard() {
+        
+    }
+    
+    func showBoard() {
+        
+    }
+    
         
     func setupLevelMenu(unlock: Indexable) {
         levelSegmentedControl.unlock(unlock)

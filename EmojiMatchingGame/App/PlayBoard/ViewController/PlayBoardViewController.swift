@@ -31,13 +31,9 @@ final class PlayBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        playBoardView.backButton.addTarget(self, action: #selector(backMenuButtonTapped(_:)), for: .touchUpInside)
-        playBoardView.soundVolumeButton.addTarget(self, action: #selector(soundButtonTapped(_:)), for: .touchUpInside)
-        playBoardView.levelMenu.addTarget(self, action: #selector(lavelDidChange(_:)), for: .valueChanged)
-        
+
+        playBoardView.delegate = self
         presenter?.viewDidLoad()
     }
     
@@ -72,12 +68,14 @@ final class PlayBoardViewController: UIViewController {
 extension PlayBoardViewController: PlayBoardDisplayable {
 
     func play(level: Sizeable, with sequence: [String], and color: UIColor, animated flag: Bool) {
+        presenter?.soundGenerationToHideBoard()
         playBoardView.clean(animated: flag) { [weak self] in
             guard let self = self else { return }
 //            //  MARK: ManualLayout
 //            self.cards.forEach { $0.removeFromSuperview() }
 //            //
             self.makeNewSetCards(sequence, color: color)
+            presenter?.soundGenerationToShowBoard()
             self.playBoardView.play(level: level, with: cards, animated: flag)
         }
     }
@@ -90,8 +88,8 @@ extension PlayBoardViewController: PlayBoardDisplayable {
         playBoardView.selectLevelMenu(level: level)
     }
     
-    func setupSoundButton(volume: Float) {
-        playBoardView.soundVolumeButton.setup(value: volume)
+    func setupSoundVolumeButton(volume: Float) {
+        playBoardView.setupSoundVolumeButton(volume: volume)
     }
     
     func disable(index first: Int, and second: Int) {
@@ -127,12 +125,29 @@ extension PlayBoardViewController: PlayBoardDisplayable {
 }
 
 
-extension PlayBoardViewController {
-
-    @objc
-    private func backMenuButtonTapped(_ sender: UIButton) {
+extension PlayBoardViewController: PlayBoardViewDelegate {
+    
+    func lavelDidChange(_ sender: UISegmentedControl) {
+        let level = sender.selectedSegmentIndex
+        presenter?.play(mode: .index(level))
+    }
+    
+    func backButtonTapped(_ sender: UIButton) {
         presenter?.goBackMainMenu()
     }
+    
+    func soundVolumeButtonTapped(_ sender: UIButton) {
+        presenter?.soundOnOff()
+    }
+    
+    func soundGenerationToHiddenBoard() {
+        presenter?.soundGenerationToHideBoard()
+    }
+    
+    func soundGenerationToShowBoard() {
+        presenter?.soundGenerationToShowBoard()
+    }
+    
 
     @objc
     private func cardTapped(_ sender: UILongPressGestureRecognizer) {
@@ -157,16 +172,5 @@ extension PlayBoardViewController {
         default: 
             card.select(false)
         }
-    }
-    
-    @objc
-    private func lavelDidChange(_ sender: UISegmentedControl) {
-        let level = sender.selectedSegmentIndex
-        presenter?.play(mode: .index(level))
-    }
-    
-    @objc
-    private func soundButtonTapped(_ sender: UIButton) {
-        presenter?.sound()
     }
 }

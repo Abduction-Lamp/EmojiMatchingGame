@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 
-protocol Audible {
+protocol Audible: AnyObject {
     func play(_ scenario: GameAudioScenario)
     func stop()
 }
@@ -103,7 +103,9 @@ final class AudioEngine: Audible {
                     }
                 }
     
+//                engine.prepare()
                 if !engine.isRunning {
+                    engine.prepare()
                     try engine.start()
                 }
                 

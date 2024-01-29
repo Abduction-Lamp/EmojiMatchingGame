@@ -49,7 +49,8 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     
     func viewDidLoad() {
         viewController?.setupLevelMenu(unlock: storage.user.unlockLevel)
-        viewController?.setupSoundButton(volume: storage.appearance.sound ? storage.appearance.volume : 0.0)
+        viewController?.setupSoundVolumeButton(volume: storage.appearance.sound ? storage.appearance.volume : 0.0)
+        
         play(mode: .current)
     }
     
@@ -78,7 +79,8 @@ extension PlayBoardPresenter: PlayBoardPresentable {
 
 
     func flip(index: Int) {
-        audio.play(.flip)
+        
+        audio.play(.flip5)
         
         if startTime == nil { startTime = Date.now }
         taps += 1
@@ -121,6 +123,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
                 
                 viewController?.flip(index: index, animated: animated) { [weak self] _ in
                     guard let self = self else { return }
+                    self.audio.play(.match1)
                     self.viewController?.matching(index: first, and: index, animated: animated) { [weak self] _ in
                         guard let self = self else { return }
                         self.remainingCards -= 2
@@ -193,13 +196,25 @@ extension PlayBoardPresenter: PlayBoardPresentable {
 extension PlayBoardPresenter {
     
     func goBackMainMenu() {
-        audio.play(.navigation)
+        audio.play(.menu1)
         router.goBackMainMenu(animated: storage.appearance.animated)
     }
     
-    func sound() {
+    func soundOnOff() {
         storage.appearance.sound = !storage.appearance.sound
-        viewController?.setupSoundButton(volume: storage.appearance.sound ? storage.appearance.volume : 0.0)
-        audio.play(.navigation)
+        viewController?.setupSoundVolumeButton(volume: storage.appearance.sound ? storage.appearance.volume : 0.0)
+        audio.play(.menu2)
+    }
+    
+    func soundGenerationToHideBoard() {
+        if storage.appearance.animated, storage.appearance.sound {
+            audio.play(.navigation1)
+        }
+    }
+    
+    func soundGenerationToShowBoard() {
+        if storage.appearance.animated, storage.appearance.sound {
+            audio.play(.navigation2)
+        }
     }
 }

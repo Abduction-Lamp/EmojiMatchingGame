@@ -14,6 +14,7 @@ protocol GameOverPresentable {
     init(
         _ viewController: GameOverDisplayable,
          router:          GameOverRoutable,
+         audio:           Audible,
          animated:        Bool,
          time:            TimeInterval?,
          taps:            UInt,
@@ -25,4 +26,6 @@ protocol GameOverPresentable {
     
     func next()
     func replay()
+    
+    func soundGenerationToFireworks()
 }

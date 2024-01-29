@@ -28,16 +28,21 @@ final class PlayBoardView_StackView: UIView {
     private var boardWidthAnchor: NSLayoutConstraint = .init()
     private var boardHeightAnchor: NSLayoutConstraint = .init()
     
-    private(set) var levelMenu: UISegmentedControl & LevelSegmentedCustomizable = LevelSegmentedControl()
+    private var levelMenu: UISegmentedControl & LevelSegmentedCustomizable = LevelSegmentedControl()
     private var levelMenuYAnchor: NSLayoutConstraint = .init()
     
-    private(set) var backButton: UIButton = BackButton()
-    private(set) var soundVolumeButton: any UIButton & SoundVolumeButtonCustomizable = SoundVolumeButton()
+    private var backButton: UIButton = BackButton()
+    private var soundVolumeButton: any UIButton & SoundVolumeButtonCustomizable = SoundVolumeButton()
 
-
+    
+    // MARK: - PlayBoardView Delegate
+    weak var delegate: PlayBoardViewDelegate?
+    
+    
+    // MARK: - Initional
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        buildUI()
         
         print("\tVIEW\t😈\tPlayBoardView_StackView")
     }
@@ -63,14 +68,23 @@ final class PlayBoardView_StackView: UIView {
     }
     
     
-    private func configure() {
+    // MARK: - UI Building
+    private func buildUI() {
         backgroundColor = .systemGray6
         
         addSubview(board)
-        addSubview(backButton)
         addSubview(levelMenu)
+        addSubview(backButton)
         addSubview(soundVolumeButton)
         
+        levelMenu.addTarget(self, action: #selector(lavelDidChange(_ : )), for: .valueChanged)
+        backButton.addTarget(self, action: #selector(backButtonTapped(_ : )), for: .touchUpInside)
+        soundVolumeButton.addTarget(self, action: #selector(soundVolumeButtonTapped(_:)), for: .touchUpInside)
+        
+        configure()
+    }
+    
+    private func configure() {
         boardWidthAnchor = board.widthAnchor.constraint(equalToConstant: 0)
         boardHeightAnchor = board.heightAnchor.constraint(equalToConstant: 0)
         
@@ -111,43 +125,8 @@ final class PlayBoardView_StackView: UIView {
 }
 
 
-extension PlayBoardView_StackView: PlayBoardViewDisplayableDetails {
-    
-    func shiftLevelMenu() {
-        levelMenuYAnchor.constant = self.levelMenu.frame.height
-        layoutIfNeeded()
-    }
-    
-    func hiddenLevelMenu() {
-        levelMenuYAnchor.constant = -200
-        layoutIfNeeded()
-    }
-    
-    func showLevelMenu() {
-        levelMenuYAnchor.constant = 0
-        layoutIfNeeded()
-    }
-    
-    func hiddenButtons() {
-        backButton.transform = CGAffineTransform.init(translationX: -250, y: 0)
-        soundVolumeButton.transform = CGAffineTransform.init(translationX: 250, y: 0)
-    }
-    
-    func showButtons() {
-        backButton.transform = .identity
-        soundVolumeButton.transform = .identity
-    }
-    
-    func hiddenBoard() {
-        self.board.transform = CGAffineTransform(scaleX: -0.001, y: -0.001)
-        self.board.layer.opacity = 0
-    }
-    
-    func showBoard() {
-        self.board.transform = .identity
-        self.board.layer.opacity = 1
-    }
-    
+// MARK: - Displayable
+extension PlayBoardView_StackView: PlayBoardViewDisplayable {
     
     func setupLevelMenu(unlock: Indexable) {
         levelMenu.unlock(unlock)
@@ -156,11 +135,11 @@ extension PlayBoardView_StackView: PlayBoardViewDisplayableDetails {
     func selectLevelMenu(level: Indexable) {
         levelMenu.select(level)
     }
-}
-
-
-extension PlayBoardView_StackView: PlayBoardViewDisplayable {
-
+    
+    func setupSoundVolumeButton(volume: Float) {
+        soundVolumeButton.setup(volume: volume)
+    }
+    
     func clean(animated: Bool, completion: (() -> Void)? = nil) {
         levelMenu.isUserInteractionEnabled = false
         guard animated else {
@@ -189,6 +168,7 @@ extension PlayBoardView_StackView: PlayBoardViewDisplayable {
         }
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
+            
             self.showBoard()
         } completion: { [weak self] _ in
             guard let self = self else { return }
@@ -227,5 +207,69 @@ extension PlayBoardView_StackView: PlayBoardViewDisplayable {
                 board.addArrangedSubview(row)
             }
         }
+    }
+}
+
+
+// MARK: - Actions for Will Transition
+extension PlayBoardView_StackView {
+    
+    func hiddenLevelMenu() {
+        levelMenuYAnchor.constant = -200
+        layoutIfNeeded()
+    }
+    
+    func showLevelMenu() {
+        levelMenuYAnchor.constant = 0
+        layoutIfNeeded()
+    }
+    
+    func shiftLevelMenu() {
+        levelMenuYAnchor.constant = levelMenu.frame.height
+        layoutIfNeeded()
+    }
+    
+    func hiddenButtons() {
+        backButton.transform = CGAffineTransform.init(translationX: -250, y: 0)
+        soundVolumeButton.transform = CGAffineTransform.init(translationX: 250, y: 0)
+    }
+    
+    func showButtons() {
+        backButton.transform = .identity
+        soundVolumeButton.transform = .identity
+    }
+    
+    func hiddenBoard() {
+        delegate?.soundGenerationToHiddenBoard()
+        
+        board.transform = CGAffineTransform(scaleX: -0.001, y: -0.001)
+        board.layer.opacity = 0
+    }
+    
+    func showBoard() {
+        delegate?.soundGenerationToShowBoard()
+        
+        board.transform = .identity
+        board.layer.opacity = 1
+    }
+}
+
+
+// MARK: - Delegate
+extension PlayBoardView_StackView {
+    
+    @objc
+    private func lavelDidChange(_ sender: UISegmentedControl) {
+        delegate?.lavelDidChange(sender)
+    }
+    
+    @objc
+    private func backButtonTapped(_ sender: UIButton) {
+        delegate?.backButtonTapped(sender)
+    }
+
+    @objc
+    private func soundVolumeButtonTapped(_ sender: UIButton) {
+        delegate?.soundVolumeButtonTapped(sender)
     }
 }

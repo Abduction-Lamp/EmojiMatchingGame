@@ -35,6 +35,7 @@ final class Builder: Buildable {
         let vc = GameOverViewController()
         let presenter = GameOverPresenter(vc,
                                           router: router,
+                                          audio: audio,
                                           animated: storage.appearance.animated,
                                           time: time,
                                           taps: taps,

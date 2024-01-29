@@ -30,6 +30,9 @@ protocol PlayBoardPresentable: AnyObject {
     func play(mode: LevelGameMode)
     func flip(index: Int)
     
-    func sound()
+    func soundGenerationToHideBoard()
+    func soundGenerationToShowBoard()
+    
+    func soundOnOff()
     func goBackMainMenu()
 }

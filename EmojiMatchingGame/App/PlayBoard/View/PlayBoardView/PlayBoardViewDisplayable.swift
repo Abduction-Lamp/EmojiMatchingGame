@@ -11,19 +11,16 @@ protocol PlayBoardViewDisplayable {
     
     func setupLevelMenu(unlock: Indexable)
     func selectLevelMenu(level: Indexable)
-
+    
+    func setupSoundVolumeButton(volume: Float)
+    
     func play(level: Sizeable, with cards: [CardView], animated: Bool)
     func clean(animated: Bool, completion: (() -> Void)?)
-}
-
-extension PlayBoardViewDisplayable where Self: UIView { }
-
-
-protocol PlayBoardViewDisplayableDetails {
     
-    func shiftLevelMenu()
+    // Действия при переходе (Will Transition)
     func hiddenLevelMenu()
     func showLevelMenu()
+    func shiftLevelMenu()
     
     func hiddenButtons()
     func showButtons()
@@ -31,3 +28,5 @@ protocol PlayBoardViewDisplayableDetails {
     func hiddenBoard()
     func showBoard()
 }
+
+extension PlayBoardViewDisplayable where Self: UIView { }

@@ -11,8 +11,8 @@ protocol SoundVolumeButtonCustomizable where Self: UIButton {
     
     associatedtype SoundVolumeType
     
-    func setup(value: SoundVolumeType)
-    func setup(value: Float)
+    func setup(volume: SoundVolumeType)
+    func setup(volume: Float)
 }
 
 
@@ -77,17 +77,17 @@ final class SoundVolumeButton: UIButton, SoundVolumeButtonCustomizable {
         fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
     
-    public func setup(value: SoundVolume) {
-        configuration?.image = value.image
+    public func setup(volume: SoundVolume) {
+        configuration?.image = volume.image
     }
     
-    public func setup(value: Float) {
-        switch value {
-        case 0                  : setup(value: .disabled)
-        case .ulpOfOne ..< 0.15 : setup(value: .quiet)
-        case 0.15      ..< 0.45 : setup(value: .medium)
-        case 0.45      ..< 0.7  : setup(value: .loud)
-        case 0.7       ... 1    : setup(value: .veryLoud)
+    public func setup(volume: Float) {
+        switch volume {
+        case 0                  : setup(volume: .disabled)
+        case .ulpOfOne ..< 0.15 : setup(volume: .quiet)
+        case 0.15      ..< 0.45 : setup(volume: .medium)
+        case 0.45      ..< 0.7  : setup(volume: .loud)
+        case 0.7       ... 1    : setup(volume: .veryLoud)
         default                 : break
         }
     }
