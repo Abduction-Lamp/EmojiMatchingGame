@@ -15,6 +15,18 @@
 		4E13EF9E2B67F56D0000B29E /* CardAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13EF9D2B67F56D0000B29E /* CardAnimatable.swift */; };
 		4E15FCDC2B5405C00037A70F /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15FCDB2B5405C00037A70F /* Audio.swift */; };
 		4E22CF8F2B16499900044EBD /* MainMenuSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22CF8E2B16499900044EBD /* MainMenuSetupable.swift */; };
+		4E23F7F42B77D4D20025F332 /* 4182.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7E82B77D4D10025F332 /* 4182.caf */; };
+		4E23F7F52B77D4D20025F332 /* 4240.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7E92B77D4D10025F332 /* 4240.caf */; };
+		4E23F7F62B77D4D20025F332 /* 4319.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7EA2B77D4D10025F332 /* 4319.caf */; };
+		4E23F7F72B77D4D20025F332 /* 4151.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7EB2B77D4D10025F332 /* 4151.caf */; };
+		4E23F7F82B77D4D20025F332 /* 4251.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7EC2B77D4D10025F332 /* 4251.caf */; };
+		4E23F7F92B77D4D20025F332 /* 4268.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7ED2B77D4D10025F332 /* 4268.caf */; };
+		4E23F7FA2B77D4D20025F332 /* 4366.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7EE2B77D4D10025F332 /* 4366.caf */; };
+		4E23F7FB2B77D4D20025F332 /* 4337.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7EF2B77D4D10025F332 /* 4337.caf */; };
+		4E23F7FC2B77D4D20025F332 /* 4203.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7F02B77D4D10025F332 /* 4203.caf */; };
+		4E23F7FD2B77D4D20025F332 /* 4238.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7F12B77D4D10025F332 /* 4238.caf */; };
+		4E23F7FE2B77D4D20025F332 /* 4147.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7F22B77D4D20025F332 /* 4147.caf */; };
+		4E23F7FF2B77D4D20025F332 /* 4233.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E23F7F32B77D4D20025F332 /* 4233.caf */; };
 		4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */; };
 		4E2C473B2B61256300B6B078 /* 4163.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E2C473A2B61256300B6B078 /* 4163.caf */; };
 		4E2C473D2B61257600B6B078 /* 4323.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E2C473C2B61257600B6B078 /* 4323.caf */; };
@@ -72,18 +84,6 @@
 		4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */; };
 		4ED35E472A55B146004B54AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E462A55B146004B54AC /* Assets.xcassets */; };
 		4ED35E4A2A55B146004B54AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */; };
-		4ED57E6C2B62DA9200C7EE3D /* 4337.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E602B62DA9200C7EE3D /* 4337.caf */; };
-		4ED57E6D2B62DA9200C7EE3D /* 4182.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E612B62DA9200C7EE3D /* 4182.caf */; };
-		4ED57E6E2B62DA9200C7EE3D /* 4203.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E622B62DA9200C7EE3D /* 4203.caf */; };
-		4ED57E6F2B62DA9200C7EE3D /* 4319.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E632B62DA9200C7EE3D /* 4319.caf */; };
-		4ED57E702B62DA9200C7EE3D /* 4238.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E642B62DA9200C7EE3D /* 4238.caf */; };
-		4ED57E712B62DA9200C7EE3D /* 4147.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E652B62DA9200C7EE3D /* 4147.caf */; };
-		4ED57E722B62DA9200C7EE3D /* 4151.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E662B62DA9200C7EE3D /* 4151.caf */; };
-		4ED57E732B62DA9200C7EE3D /* 4240.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E672B62DA9200C7EE3D /* 4240.caf */; };
-		4ED57E742B62DA9200C7EE3D /* 4251.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E682B62DA9200C7EE3D /* 4251.caf */; };
-		4ED57E752B62DA9200C7EE3D /* 4268.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E692B62DA9200C7EE3D /* 4268.caf */; };
-		4ED57E762B62DA9200C7EE3D /* 4366.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E6A2B62DA9200C7EE3D /* 4366.caf */; };
-		4ED57E772B62DA9200C7EE3D /* 4233.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED57E6B2B62DA9200C7EE3D /* 4233.caf */; };
 		4EDB4A172AF12D7000FE32D8 /* SlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB4A162AF12D7000FE32D8 /* SlotView.swift */; };
 		4EDC61322B14AEBE0069AB50 /* ResultsViewSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC61312B14AEBE0069AB50 /* ResultsViewSetupable.swift */; };
 		4EDC61342B14DE700069AB50 /* SettingsViewSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC61332B14DE700069AB50 /* SettingsViewSetupable.swift */; };
@@ -122,6 +122,18 @@
 		4E13EF9D2B67F56D0000B29E /* CardAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAnimatable.swift; sourceTree = "<group>"; };
 		4E15FCDB2B5405C00037A70F /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		4E22CF8E2B16499900044EBD /* MainMenuSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuSetupable.swift; sourceTree = "<group>"; };
+		4E23F7E82B77D4D10025F332 /* 4182.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4182.caf; sourceTree = "<group>"; };
+		4E23F7E92B77D4D10025F332 /* 4240.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4240.caf; sourceTree = "<group>"; };
+		4E23F7EA2B77D4D10025F332 /* 4319.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4319.caf; sourceTree = "<group>"; };
+		4E23F7EB2B77D4D10025F332 /* 4151.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4151.caf; sourceTree = "<group>"; };
+		4E23F7EC2B77D4D10025F332 /* 4251.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4251.caf; sourceTree = "<group>"; };
+		4E23F7ED2B77D4D10025F332 /* 4268.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4268.caf; sourceTree = "<group>"; };
+		4E23F7EE2B77D4D10025F332 /* 4366.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4366.caf; sourceTree = "<group>"; };
+		4E23F7EF2B77D4D10025F332 /* 4337.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4337.caf; sourceTree = "<group>"; };
+		4E23F7F02B77D4D10025F332 /* 4203.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4203.caf; sourceTree = "<group>"; };
+		4E23F7F12B77D4D10025F332 /* 4238.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4238.caf; sourceTree = "<group>"; };
+		4E23F7F22B77D4D20025F332 /* 4147.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4147.caf; sourceTree = "<group>"; };
+		4E23F7F32B77D4D20025F332 /* 4233.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4233.caf; sourceTree = "<group>"; };
 		4E2AFDDF2AAB57A700E00A1B /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		4E2C473A2B61256300B6B078 /* 4163.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4163.caf; sourceTree = "<group>"; };
 		4E2C473C2B61257600B6B078 /* 4323.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4323.caf; sourceTree = "<group>"; };
@@ -184,18 +196,6 @@
 		4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardViewController.swift; sourceTree = "<group>"; };
 		4ED35E462A55B146004B54AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ED35E4B2A55B146004B54AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4ED57E602B62DA9200C7EE3D /* 4337.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4337.caf; path = "../../../../../../Desktop/Новая папка/4337.caf"; sourceTree = "<group>"; };
-		4ED57E612B62DA9200C7EE3D /* 4182.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4182.caf; path = "../../../../../../Desktop/Новая папка/4182.caf"; sourceTree = "<group>"; };
-		4ED57E622B62DA9200C7EE3D /* 4203.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4203.caf; path = "../../../../../../Desktop/Новая папка/4203.caf"; sourceTree = "<group>"; };
-		4ED57E632B62DA9200C7EE3D /* 4319.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4319.caf; path = "../../../../../../Desktop/Новая папка/4319.caf"; sourceTree = "<group>"; };
-		4ED57E642B62DA9200C7EE3D /* 4238.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4238.caf; path = "../../../../../../Desktop/Новая папка/4238.caf"; sourceTree = "<group>"; };
-		4ED57E652B62DA9200C7EE3D /* 4147.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4147.caf; path = "../../../../../../Desktop/Новая папка/4147.caf"; sourceTree = "<group>"; };
-		4ED57E662B62DA9200C7EE3D /* 4151.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4151.caf; path = "../../../../../../Desktop/Новая папка/4151.caf"; sourceTree = "<group>"; };
-		4ED57E672B62DA9200C7EE3D /* 4240.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4240.caf; path = "../../../../../../Desktop/Новая папка/4240.caf"; sourceTree = "<group>"; };
-		4ED57E682B62DA9200C7EE3D /* 4251.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4251.caf; path = "../../../../../../Desktop/Новая папка/4251.caf"; sourceTree = "<group>"; };
-		4ED57E692B62DA9200C7EE3D /* 4268.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4268.caf; path = "../../../../../../Desktop/Новая папка/4268.caf"; sourceTree = "<group>"; };
-		4ED57E6A2B62DA9200C7EE3D /* 4366.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4366.caf; path = "../../../../../../Desktop/Новая папка/4366.caf"; sourceTree = "<group>"; };
-		4ED57E6B2B62DA9200C7EE3D /* 4233.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 4233.caf; path = "../../../../../../Desktop/Новая папка/4233.caf"; sourceTree = "<group>"; };
 		4EDB4A162AF12D7000FE32D8 /* SlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotView.swift; sourceTree = "<group>"; };
 		4EDC61312B14AEBE0069AB50 /* ResultsViewSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewSetupable.swift; sourceTree = "<group>"; };
 		4EDC61332B14DE700069AB50 /* SettingsViewSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewSetupable.swift; sourceTree = "<group>"; };
@@ -313,18 +313,18 @@
 		4E15FCDD2B5408BD0037A70F /* UISounds */ = {
 			isa = PBXGroup;
 			children = (
-				4ED57E652B62DA9200C7EE3D /* 4147.caf */,
-				4ED57E662B62DA9200C7EE3D /* 4151.caf */,
-				4ED57E612B62DA9200C7EE3D /* 4182.caf */,
-				4ED57E622B62DA9200C7EE3D /* 4203.caf */,
-				4ED57E6B2B62DA9200C7EE3D /* 4233.caf */,
-				4ED57E642B62DA9200C7EE3D /* 4238.caf */,
-				4ED57E672B62DA9200C7EE3D /* 4240.caf */,
-				4ED57E682B62DA9200C7EE3D /* 4251.caf */,
-				4ED57E692B62DA9200C7EE3D /* 4268.caf */,
-				4ED57E632B62DA9200C7EE3D /* 4319.caf */,
-				4ED57E602B62DA9200C7EE3D /* 4337.caf */,
-				4ED57E6A2B62DA9200C7EE3D /* 4366.caf */,
+				4E23F7F22B77D4D20025F332 /* 4147.caf */,
+				4E23F7EB2B77D4D10025F332 /* 4151.caf */,
+				4E23F7F32B77D4D20025F332 /* 4233.caf */,
+				4E23F7F02B77D4D10025F332 /* 4203.caf */,
+				4E23F7F12B77D4D10025F332 /* 4238.caf */,
+				4E23F7EC2B77D4D10025F332 /* 4251.caf */,
+				4E23F7ED2B77D4D10025F332 /* 4268.caf */,
+				4E23F7EF2B77D4D10025F332 /* 4337.caf */,
+				4E23F7E82B77D4D10025F332 /* 4182.caf */,
+				4E23F7E92B77D4D10025F332 /* 4240.caf */,
+				4E23F7EA2B77D4D10025F332 /* 4319.caf */,
+				4E23F7EE2B77D4D10025F332 /* 4366.caf */,
 				4E2C473A2B61256300B6B078 /* 4163.caf */,
 				4E2C473C2B61257600B6B078 /* 4323.caf */,
 			);
@@ -797,22 +797,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ED35E4A2A55B146004B54AC /* LaunchScreen.storyboard in Resources */,
-				4ED57E6E2B62DA9200C7EE3D /* 4203.caf in Resources */,
-				4ED57E6C2B62DA9200C7EE3D /* 4337.caf in Resources */,
-				4ED57E762B62DA9200C7EE3D /* 4366.caf in Resources */,
-				4ED57E712B62DA9200C7EE3D /* 4147.caf in Resources */,
-				4ED57E752B62DA9200C7EE3D /* 4268.caf in Resources */,
+				4E23F7F82B77D4D20025F332 /* 4251.caf in Resources */,
+				4E23F7FC2B77D4D20025F332 /* 4203.caf in Resources */,
+				4E23F7F92B77D4D20025F332 /* 4268.caf in Resources */,
+				4E23F7F72B77D4D20025F332 /* 4151.caf in Resources */,
+				4E23F7FE2B77D4D20025F332 /* 4147.caf in Resources */,
 				4ED35E472A55B146004B54AC /* Assets.xcassets in Resources */,
+				4E23F7F52B77D4D20025F332 /* 4240.caf in Resources */,
+				4E23F7F42B77D4D20025F332 /* 4182.caf in Resources */,
+				4E23F7F62B77D4D20025F332 /* 4319.caf in Resources */,
 				4E2C473B2B61256300B6B078 /* 4163.caf in Resources */,
-				4ED57E772B62DA9200C7EE3D /* 4233.caf in Resources */,
-				4ED57E742B62DA9200C7EE3D /* 4251.caf in Resources */,
-				4ED57E732B62DA9200C7EE3D /* 4240.caf in Resources */,
 				4E560ACB2B3C7FA900088648 /* Localizable.xcstrings in Resources */,
-				4ED57E722B62DA9200C7EE3D /* 4151.caf in Resources */,
-				4ED57E6D2B62DA9200C7EE3D /* 4182.caf in Resources */,
-				4ED57E6F2B62DA9200C7EE3D /* 4319.caf in Resources */,
+				4E23F7FA2B77D4D20025F332 /* 4366.caf in Resources */,
 				4E2C473D2B61257600B6B078 /* 4323.caf in Resources */,
-				4ED57E702B62DA9200C7EE3D /* 4238.caf in Resources */,
+				4E23F7FD2B77D4D20025F332 /* 4238.caf in Resources */,
+				4E23F7FF2B77D4D20025F332 /* 4233.caf in Resources */,
+				4E23F7FB2B77D4D20025F332 /* 4337.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
