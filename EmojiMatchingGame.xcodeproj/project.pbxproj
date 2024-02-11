@@ -416,7 +416,7 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
-		4E5EB6DC2AA61E9D0074C7B5 /* Resources  */ = {
+		4E5EB6DC2AA61E9D0074C7B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				4E15FCDD2B5408BD0037A70F /* UISounds */,
@@ -424,7 +424,7 @@
 				4ED35E462A55B146004B54AC /* Assets.xcassets */,
 				4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */,
 			);
-			path = "Resources ";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		4E64AD8F2A602A5100A7E40C /* Presenter */ = {
@@ -588,7 +588,7 @@
 		4ED35E3C2A55B145004B54AC /* EmojiMatchingGame */ = {
 			isa = PBXGroup;
 			children = (
-				4E5EB6DC2AA61E9D0074C7B5 /* Resources  */,
+				4E5EB6DC2AA61E9D0074C7B5 /* Resources */,
 				4E17E23B2A66DF2F00391454 /* Entities */,
 				4E17E23C2A66DF5200391454 /* Core */,
 				4E027BBC2A5DAAB6009CB092 /* Services */,
