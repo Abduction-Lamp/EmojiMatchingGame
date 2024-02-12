@@ -15,7 +15,6 @@ protocol Storageable: AnyObject {
 
 
 protocol UserStorageable: Storageable {
-    
     var unlockLevel: Levelable { get set }
     var startLevel:  Levelable { get set }
    
@@ -28,16 +27,17 @@ protocol UserStorageable: Storageable {
 
 
 protocol AppearanceStorageable: Storageable, AudioAppearanceProtocol, Observer {
+    var mode:     UIUserInterfaceStyle  { get set }
+    func fetchOnliMode()
     
-    var color:    UIColor { get set }
-    var animated: Bool    { get set }
+    var color:    UIColor               { get set }
+    var animated: Bool                  { get set }
     
-    var sound:  Bool      { get set }
-    var volume: Float     { get set }
+    var sound:    Bool                  { get set }
+    var volume:   Float                 { get set }
 }
 
 protocol AudioAppearanceProtocol: AnyObject {
-
     var sound:  Bool  { get }
     var volume: Float { get }
 }

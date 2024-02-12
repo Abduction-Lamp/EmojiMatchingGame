@@ -15,18 +15,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let navigation = NavigationController() //UINavigationController()
-        
         let emoji = Emoji()
         let user: any UserStorageable = User.shared
         let appearance: AppearanceStorageable = Appearance.shared
         let audio = AudioEngine(appearance)
-        let builder: Buildable = Builder(storage: (user, appearance), emoji: emoji, audio: audio)
+        appearance.fetchOnliMode()
         
+        let builder: Buildable = Builder(storage: (user, appearance), emoji: emoji, audio: audio)
+        let navigation = NavigationController()
         router = Router(navigation: navigation, builder: builder)
         router?.initVC()
         
         window = UIWindow(windowScene: windowScene)
+        window?.overrideUserInterfaceStyle = appearance.mode
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }

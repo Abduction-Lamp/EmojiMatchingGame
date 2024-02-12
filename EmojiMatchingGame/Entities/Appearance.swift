@@ -13,12 +13,15 @@ final class Appearance {
     
     private let defaults = UserDefaults.standard
     
+    private var _mode:     UIUserInterfaceStyle
     private var _color:    UIColor
     private var _animated: Bool
     private var _sound:    Bool
     private var _volume:   Float
+
     
     private init() {
+        _mode     = Design.Default.appearance.mode
         _color    = Design.Default.appearance.color
         _animated = Design.Default.appearance.animated
         _sound    = Design.Default.appearance.sound
@@ -32,10 +35,31 @@ final class Appearance {
 extension Appearance: AppearanceStorageable {
     
     enum UserDefaultsKeys: String, CaseIterable {
+        case mode      = "EmojiMatching.Storage.Appearance.Mode"
         case color     = "EmojiMatching.Storage.Appearance.Color"
         case animation = "EmojiMatching.Storage.Appearance.Animation"
         case sound     = "EmojiMatching.Storage.Appearance.Sound"
         case volume    = "EmojiMatching.Storage.Appearance.Volume"
+    }
+    
+    
+    var mode: UIUserInterfaceStyle {
+        get {
+            _mode
+        }
+        set {
+            guard
+                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let curentMode = windowScene.windows.first?.overrideUserInterfaceStyle,
+                newValue != curentMode
+            else { return }
+            windowScene.windows.first?.overrideUserInterfaceStyle = newValue
+            
+            guard newValue != _mode else { return }
+            _mode = newValue
+            let key = UserDefaultsKeys.mode
+            defaults.setValue(newValue.rawValue, forKey: key.rawValue)
+        }
     }
     
     var color: UIColor {
@@ -92,11 +116,21 @@ extension Appearance: AppearanceStorageable {
         }
     }
     
+    func fetchOnliMode() {
+        print("APPEARANCE\t🌗\tFetch Onli Mode")
+        if let raw = defaults.value(forKey: UserDefaultsKeys.mode.rawValue) as? UIUserInterfaceStyle.RawValue,
+           let saved = UIUserInterfaceStyle(rawValue: raw) {
+            _mode = saved
+        }
+    }
     
     func fetch() {
         print("APPEARANCE\t🎨\tFetch > Start")
         UserDefaultsKeys.allCases.forEach { key in
+
             switch key {
+            case .mode:
+                fetchOnliMode()
             case .color:
                 if let hex = defaults.value(forKey: key.rawValue) as? String,
                    let saved = UIColor(hex: hex) {
@@ -127,6 +161,10 @@ extension Appearance: AppearanceStorageable {
         UserDefaultsKeys.allCases.forEach { key in
             defaults.setValue(nil, forKey: key.rawValue)
         }
+        
+        ///  Сохраняем в публичную переменную значение по умолчанию
+        ///  Т.к. именно в сетторе (set) происходит вызов системной функции отвечающей за режим представления
+        mode      = Design.Default.appearance.mode
         
         _color    = Design.Default.appearance.color
         _animated = Design.Default.appearance.animated
