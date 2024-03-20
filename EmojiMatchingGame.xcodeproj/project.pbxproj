@@ -75,6 +75,7 @@
 		4E87BEBB2B31E81C000EEF32 /* EmojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87BEBA2B31E81C000EEF32 /* EmojiTests.swift */; };
 		4E87BEBD2B31F6E7000EEF32 /* FlagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87BEBC2B31F6E7000EEF32 /* FlagTests.swift */; };
 		4E98C57B2A5890040034522B /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E98C57A2A5890040034522B /* Emoji.swift */; };
+		4EADD4792BA1D75E00FA623E /* ThemeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EADD4782BA1D75E00FA623E /* ThemeSegmentedControl.swift */; };
 		4EB867BE2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB867BD2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift */; };
 		4EC574F82B02626800295E57 /* PlayBoardViewDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */; };
 		4ECA02EA2B5C5A56005ABE9B /* AudioFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA02E92B5C5A56005ABE9B /* AudioFileManager.swift */; };
@@ -186,6 +187,7 @@
 		4E87BEBA2B31E81C000EEF32 /* EmojiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTests.swift; sourceTree = "<group>"; };
 		4E87BEBC2B31F6E7000EEF32 /* FlagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagTests.swift; sourceTree = "<group>"; };
 		4E98C57A2A5890040034522B /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		4EADD4782BA1D75E00FA623E /* ThemeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSegmentedControl.swift; sourceTree = "<group>"; };
 		4EB867BD2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardViewDisplayable.swift; sourceTree = "<group>"; };
 		4ECA02E92B5C5A56005ABE9B /* AudioFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileManager.swift; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 			children = (
 				4EDC61332B14DE700069AB50 /* SettingsViewSetupable.swift */,
 				4EDB4A162AF12D7000FE32D8 /* SlotView.swift */,
+				4EADD4782BA1D75E00FA623E /* ThemeSegmentedControl.swift */,
 				4E777D9E2AE7F8F800C6F716 /* SettingsView.swift */,
 			);
 			path = View;
@@ -863,6 +866,7 @@
 				4E22CF8F2B16499900044EBD /* MainMenuSetupable.swift in Sources */,
 				4E027BBB2A5D8C43009CB092 /* Flag.swift in Sources */,
 				4EE427032ABB3464003FCECD /* FireworksLayer.swift in Sources */,
+				4EADD4792BA1D75E00FA623E /* ThemeSegmentedControl.swift in Sources */,
 				4E31F43D2AFD3C45005EA317 /* SoundVolumeButton.swift in Sources */,
 				4E5EB6E62AA636620074C7B5 /* MainMenuPresenter.swift in Sources */,
 				4E2AFDE02AAB57A700E00A1B /* GameOverView.swift in Sources */,

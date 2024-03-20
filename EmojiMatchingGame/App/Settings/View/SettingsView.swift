@@ -83,14 +83,6 @@ final class SettingsView: UIView {
             let toggle = UISwitch()
             toggle.addTarget(self, action: #selector(soundToggleSwitched(_:)), for: .touchUpInside)
             return toggle
-//            let size = Design.Typography.font(.title).height
-//            let imgge = UIImage(systemName: "speaker.wave.3.fill")
-//            let imageView = UIImageView()
-//            imageView.image = imgge
-//            imageView.contentMode = .scaleAspectFill
-//            imageView.widthAnchor.constraint(equalToConstant: size).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: size).isActive = true
-//            return imageView
         }()
     )
     
@@ -101,6 +93,7 @@ final class SettingsView: UIView {
         slider.isContinuous = false
         return slider
     }()
+    lazy var segmentRadioButton = ThemeSegmentedControl()
     
     private var reset: UIButton = {
         let button = UIButton(configuration: .plain())
@@ -138,6 +131,7 @@ final class SettingsView: UIView {
     private func configure() {
         addSubview(blur)
         addSubview(title)
+        addSubview(segmentRadioButton)
         addSubview(stack)
         addSubview(reset)
         
@@ -146,15 +140,26 @@ final class SettingsView: UIView {
         stack.addArrangedSubview(soundSlotView)
         stack.addArrangedSubview(soundVolumeSlider)
         
+        segmentRadioButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        segmentRadioButton.addTarget(self, action: #selector(tapped(_:)), for: .valueChanged)
+
+        
+        
         let padding = Design.Padding.title.spacing
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             title.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             
-            stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            stack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            segmentRadioButton.topAnchor.constraint(equalTo: title.bottomAnchor, constant: padding),
+            segmentRadioButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            segmentRadioButton.widthAnchor.constraint(equalToConstant: 350),
+            segmentRadioButton.heightAnchor.constraint(equalToConstant: 150),
+            
+            stack.topAnchor.constraint(equalTo: segmentRadioButton.bottomAnchor, constant: padding),
             stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
             stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             
             reset.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             reset.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding)
@@ -220,5 +225,12 @@ extension SettingsView {
     @objc
     private func resetTapped(_ sender: UIButton) {
         delegate?.resetTapped()
+    }
+    
+    
+    
+    @objc
+    private func tapped(_ sender: UIControl) {
+        print("aaa")
     }
 }
