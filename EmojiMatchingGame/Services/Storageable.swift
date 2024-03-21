@@ -28,7 +28,7 @@ protocol UserStorageable: Storageable {
 
 protocol AppearanceStorageable: Storageable, AudioAppearanceProtocol, Observer {
     var mode:     UIUserInterfaceStyle  { get set }
-    func fetchOnliMode()
+    func fetchOnlyMode()
     
     var color:    UIColor               { get set }
     var animated: Bool                  { get set }

@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class RadioButtonSegmentedItem: UIView {
+fileprivate protocol ItemSegmentable where Self: UIView {
+    var isSelected: Bool { get set }
+}
+
+final fileprivate class RadioButtonSegmentedItem: UIView, ItemSegmentable {
     
     private let imageSelected: UIImage? = {
         var img = UIImage(systemName: "checkmark.circle.fill")
@@ -18,7 +22,7 @@ final class RadioButtonSegmentedItem: UIView {
     
     private let imageNotSelected: UIImage? = {
         var img = UIImage(systemName: "circle")
-        img = img?.applyingSymbolConfiguration(.init(paletteColors: [.systemGray]))
+        img = img?.applyingSymbolConfiguration(.init(paletteColors: [.systemGray4]))
         img = img?.applyingSymbolConfiguration(.init(weight: .thin))
         return img
     }()
@@ -28,12 +32,12 @@ final class RadioButtonSegmentedItem: UIView {
             if isSelected {
                 backgroundColor = .systemGray.withAlphaComponent(0.17)
                 checkImageView.image = imageSelected
-                contentImageView.preferredSymbolConfiguration = .init(paletteColors: [.systemBlue])
+                contentImage.preferredSymbolConfiguration = .init(paletteColors: [.systemBlue])
                 contentLabel.font = .systemFont(ofSize: UIFont.labelFontSize, weight: .bold)
             } else {
                 backgroundColor = .clear
                 checkImageView.image = imageNotSelected
-                contentImageView.preferredSymbolConfiguration = .init(paletteColors: [.systemGray3])
+                contentImage.preferredSymbolConfiguration = .init(paletteColors: [.systemGray4])
                 contentLabel.font = .systemFont(ofSize: UIFont.labelFontSize, weight: .light)
             }
         }
@@ -47,11 +51,11 @@ final class RadioButtonSegmentedItem: UIView {
         return imageView
     }()
     
-    private lazy var contentImageView: UIImageView = {
+    private var contentImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.preferredSymbolConfiguration = .init(paletteColors: [.systemGray3])
+        imageView.preferredSymbolConfiguration = .init(paletteColors: [.systemGray4])
         return imageView
     }()
     
@@ -62,10 +66,11 @@ final class RadioButtonSegmentedItem: UIView {
     }()
     
     
+    
     init(title: String, image: UIImage?) {
         super.init(frame: .zero)
         
-        contentImageView.image = image?.applyingSymbolConfiguration(.init(weight: .thin))
+        contentImage.image = image?.applyingSymbolConfiguration(.init(weight: .thin))
         contentLabel.text = title
         configure()
     }
@@ -80,25 +85,24 @@ final class RadioButtonSegmentedItem: UIView {
         fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
     }
     
-    
     private func configure() {
         layer.masksToBounds = true
         layer.cornerRadius = 12
         
         addSubview(checkImageView)
-        addSubview(contentImageView)
+        addSubview(contentImage)
         addSubview(contentLabel)
         
         NSLayoutConstraint.activate([
             checkImageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             checkImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            checkImageView.widthAnchor.constraint(equalToConstant: 28),
-            checkImageView.heightAnchor.constraint(equalToConstant: 28),
+            checkImageView.widthAnchor.constraint(equalToConstant: 30),
+            checkImageView.heightAnchor.constraint(equalToConstant: 30),
             
-            contentImageView.topAnchor.constraint(equalTo: checkImageView.bottomAnchor, constant: 2 * directionalLayoutMargins.top),
-            contentImageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            contentImageView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            contentImageView.bottomAnchor.constraint(equalTo: contentLabel.topAnchor, constant: -directionalLayoutMargins.top),
+            contentImage.topAnchor.constraint(equalTo: checkImageView.bottomAnchor, constant: 2 * directionalLayoutMargins.top),
+            contentImage.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            contentImage.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            contentImage.bottomAnchor.constraint(equalTo: contentLabel.topAnchor, constant: -directionalLayoutMargins.top),
 
             contentLabel.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
             contentLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
@@ -108,14 +112,13 @@ final class RadioButtonSegmentedItem: UIView {
 
 
 
-
-
-
-
-
 final class ThemeSegmentedControl: UIControl {
 
-    var items: [RadioButtonSegmentedItem] = []
+    private var items: [ItemSegmentable] = []
+    
+    var numberOfSegments: Int {
+        items.count
+    }
     
     var selectedSegmentIndex: Int = -1 {
         willSet {
@@ -127,7 +130,6 @@ final class ThemeSegmentedControl: UIControl {
             }
         }
     }
-    
     
     private var stack: UIStackView = {
         let stackView = UIStackView()
@@ -144,17 +146,6 @@ final class ThemeSegmentedControl: UIControl {
         super.init(frame: frame)
         
         addSubview(stack)
-        
-        items.append(RadioButtonSegmentedItem(title: "Светлая",   image: .init(systemName: "sun.max.circle.fill")))     //  sun.horizon.circle.fill
-        items.append(RadioButtonSegmentedItem(title: "Темная",    image: .init(systemName: "moon.circle.fill")))
-        items.append(RadioButtonSegmentedItem(title: "Системная", image: .init(systemName: "moonphase.first.quarter")))
-        
-        items.forEach {
-            stack.addArrangedSubview($0)
-        }
-        
-        selectedSegmentIndex = 5
-        
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: topAnchor),
             stack.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -165,6 +156,18 @@ final class ThemeSegmentedControl: UIControl {
     
     required init?(coder: NSCoder) {
         fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
+    }
+    
+    func addItem(title: String, image: UIImage?) {
+        let item = RadioButtonSegmentedItem(title: title, image: image)
+        
+        items.append(item)
+        stack.addArrangedSubview(item)
+    }
+    
+    func removeItem(at index: Int) {
+        let item = items.remove(at: index)
+        stack.removeArrangedSubview(item)
     }
 }
 

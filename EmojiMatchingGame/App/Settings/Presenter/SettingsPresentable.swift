@@ -12,6 +12,7 @@ protocol SettingsPresentable: AnyObject {
     init(_ viewController: SettingsDisplayable, appearance: AppearanceStorageable, audio: Audible)
     
     func fetch()
+    func update(mode: Int)
     func update(color: UIColor)
     func update(isAnimation: Bool)
     func update(isSoundOn: Bool)

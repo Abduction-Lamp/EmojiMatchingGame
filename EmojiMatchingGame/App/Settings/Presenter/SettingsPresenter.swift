@@ -27,6 +27,15 @@ final class SettingsPresenter: SettingsPresentable {
     }
     
     private func display() {
+        var mode = -1
+        switch appearance.mode {
+        case .light:       mode =  0
+        case .dark:        mode =  1
+        case .unspecified: mode =  2
+        @unknown default:  mode = -1
+        }
+        
+        viewController?.displayTheme(mode)
         viewController?.displayColor(appearance.color)
         viewController?.displayAnimation(appearance.animated)
         viewController?.displaySoundVolume(appearance.sound, volume: appearance.volume)
@@ -35,6 +44,15 @@ final class SettingsPresenter: SettingsPresentable {
     func fetch() {
         appearance.fetch()
         display()
+    }
+    
+    func update(mode: Int) {
+        switch mode {
+        case 0: appearance.mode = .light
+        case 1: appearance.mode = .dark
+        case 2: appearance.mode = .unspecified
+        default: return
+        }
     }
     
     func update(color: UIColor) {

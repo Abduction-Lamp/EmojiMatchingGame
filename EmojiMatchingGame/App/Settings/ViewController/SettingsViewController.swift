@@ -48,6 +48,10 @@ final class SettingsViewController: UIViewController {
 
 extension SettingsViewController: SettingsDisplayable {
     
+    func displayTheme(_ mode: Int) {
+        let _ = settingsView.setupTheme(mode)
+    }
+    
     func displayColor(_ color: UIColor) {
         let _ = settingsView.setupColor(color)
     }
@@ -63,6 +67,11 @@ extension SettingsViewController: SettingsDisplayable {
 
 
 extension SettingsViewController: SettingsViewDelegate {
+    
+    
+    func themeChangedValue(_ mode: Int) {
+        presenter?.update(mode: mode)
+    }
     
     func colorButtonTapped(_ sender: UIButton) {
         guard let current = sender.configuration?.baseBackgroundColor else { return }

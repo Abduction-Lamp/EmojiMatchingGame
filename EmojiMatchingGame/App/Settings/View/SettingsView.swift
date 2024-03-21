@@ -93,7 +93,8 @@ final class SettingsView: UIView {
         slider.isContinuous = false
         return slider
     }()
-    lazy var segmentRadioButton = ThemeSegmentedControl()
+    
+    private let themeSegmentedControl = ThemeSegmentedControl()
     
     private var reset: UIButton = {
         let button = UIButton(configuration: .plain())
@@ -131,7 +132,7 @@ final class SettingsView: UIView {
     private func configure() {
         addSubview(blur)
         addSubview(title)
-        addSubview(segmentRadioButton)
+        addSubview(themeSegmentedControl)
         addSubview(stack)
         addSubview(reset)
         
@@ -140,10 +141,11 @@ final class SettingsView: UIView {
         stack.addArrangedSubview(soundSlotView)
         stack.addArrangedSubview(soundVolumeSlider)
         
-        segmentRadioButton.translatesAutoresizingMaskIntoConstraints = false
+        themeSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
-        segmentRadioButton.addTarget(self, action: #selector(tapped(_:)), for: .valueChanged)
-
+        themeSegmentedControl.addItem(title: String(localized: "Settings.Theme.Light"),  image: .init(systemName: "sun.max.circle.fill"))
+        themeSegmentedControl.addItem(title: String(localized: "Settings.Theme.Dark"),   image: .init(systemName: "moon.circle.fill"))
+        themeSegmentedControl.addItem(title: String(localized: "Settings.Theme.System"), image: .init(systemName: "moonphase.first.quarter"))
         
         
         let padding = Design.Padding.title.spacing
@@ -151,12 +153,12 @@ final class SettingsView: UIView {
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             title.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             
-            segmentRadioButton.topAnchor.constraint(equalTo: title.bottomAnchor, constant: padding),
-            segmentRadioButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            segmentRadioButton.widthAnchor.constraint(equalToConstant: 350),
-            segmentRadioButton.heightAnchor.constraint(equalToConstant: 150),
+            themeSegmentedControl.topAnchor.constraint(equalTo: title.bottomAnchor, constant: padding),
+            themeSegmentedControl.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            themeSegmentedControl.widthAnchor.constraint(equalToConstant: 350),
+            themeSegmentedControl.heightAnchor.constraint(equalToConstant: 150),
             
-            stack.topAnchor.constraint(equalTo: segmentRadioButton.bottomAnchor, constant: padding),
+            stack.topAnchor.constraint(equalTo: themeSegmentedControl.bottomAnchor, constant: padding),
             stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
             stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             stack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
@@ -165,6 +167,7 @@ final class SettingsView: UIView {
             reset.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
         
+        themeSegmentedControl.addTarget(self, action: #selector(themeSegmentedChanged(_:)), for: .valueChanged)
         soundVolumeSlider.addTarget(self, action: #selector(volumeSlidercChanged), for: .valueChanged)
         reset.addTarget(self, action: #selector(resetTapped(_:)), for: .touchUpInside)
     }
@@ -172,6 +175,12 @@ final class SettingsView: UIView {
 
 
 extension SettingsView: SettingsViewSetupable {
+    
+    func setupTheme(_ mode: Int) -> Bool {
+        guard (0...2).contains(mode) else { return false }
+        themeSegmentedControl.selectedSegmentIndex = mode
+        return true
+    }
     
     func setupColor(_ color: UIColor) -> Bool {
         guard let control = colorSlotView.trailing as? UIButton else { return false }
@@ -203,6 +212,11 @@ extension SettingsView: SettingsViewSetupable {
 extension SettingsView {
     
     @objc
+    private func themeSegmentedChanged(_ sender: ThemeSegmentedControl) {
+        delegate?.themeChangedValue(sender.selectedSegmentIndex)
+    }
+    
+    @objc
     private func colorButtonTapped(_ sender: UIButton) {
         self.delegate?.colorButtonTapped(sender)
     }
@@ -225,12 +239,5 @@ extension SettingsView {
     @objc
     private func resetTapped(_ sender: UIButton) {
         delegate?.resetTapped()
-    }
-    
-    
-    
-    @objc
-    private func tapped(_ sender: UIControl) {
-        print("aaa")
     }
 }

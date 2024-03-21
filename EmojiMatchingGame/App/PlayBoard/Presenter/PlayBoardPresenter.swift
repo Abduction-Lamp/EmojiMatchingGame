@@ -56,7 +56,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
     }
     
     func play(mode: LevelGameMode) {
-        storage.appearance.mode = .dark
+
         switch mode {
         case .current: 
             break

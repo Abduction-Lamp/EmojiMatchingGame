@@ -116,8 +116,8 @@ extension Appearance: AppearanceStorageable {
         }
     }
     
-    func fetchOnliMode() {
-        print("APPEARANCE\t🌗\tFetch Onli Mode")
+    func fetchOnlyMode() {
+        print("APPEARANCE\t🌗\tFetch only Mode")
         if let raw = defaults.value(forKey: UserDefaultsKeys.mode.rawValue) as? UIUserInterfaceStyle.RawValue,
            let saved = UIUserInterfaceStyle(rawValue: raw) {
             _mode = saved
@@ -130,7 +130,7 @@ extension Appearance: AppearanceStorageable {
 
             switch key {
             case .mode:
-                fetchOnliMode()
+                fetchOnlyMode()
             case .color:
                 if let hex = defaults.value(forKey: key.rawValue) as? String,
                    let saved = UIColor(hex: hex) {

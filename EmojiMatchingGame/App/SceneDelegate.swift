@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let user: any UserStorageable = User.shared
         let appearance: AppearanceStorageable = Appearance.shared
         let audio = AudioEngine(appearance)
-        appearance.fetchOnliMode()
+        appearance.fetchOnlyMode()
         
         let builder: Buildable = Builder(storage: (user, appearance), emoji: emoji, audio: audio)
         let navigation = NavigationController()

@@ -11,6 +11,7 @@ protocol SettingsViewSetupable: AnyObject where Self: UIView {
     
     var delegate: SettingsViewDelegate? { get set }
     
+    func setupTheme(_ mode: Int) -> Bool
     func setupColor(_ color: UIColor) -> Bool
     func setupAnimation(_ isAnimation: Bool) -> Bool
     func setupSoundVolume(_ isOn: Bool, volume: Float) -> Bool
@@ -18,6 +19,7 @@ protocol SettingsViewSetupable: AnyObject where Self: UIView {
 
 protocol SettingsViewDelegate: AnyObject {
     
+    func themeChangedValue(_ mode: Int)
     func colorButtonTapped(_ sender: UIButton)
     func animationToggleSwitched(_ isOn: Bool)
     func soundToggleSwitched(_ isOn: Bool)
