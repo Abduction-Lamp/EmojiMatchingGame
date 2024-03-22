@@ -28,10 +28,11 @@ final class AppearanceTests: XCTestCase {
     }
 
     func testInitExample() throws {
+        XCTAssertEqual(appearance.mode, Design.Default.appearance.mode)
         XCTAssertEqual(appearance.color.hex, Design.Default.appearance.color.hex)
         XCTAssertEqual(appearance.animated, Design.Default.appearance.animated)
-        XCTAssertEqual(appearance.haptics, Design.Default.appearance.haptics)
-        XCTAssertFalse(appearance.isSupportsHaptics)
+        XCTAssertEqual(appearance.sound, Design.Default.appearance.sound)
+        XCTAssertEqual(appearance.volume, Design.Default.appearance.volume)
     }
     
     func testSetFetchClean() throws {
@@ -42,24 +43,32 @@ final class AppearanceTests: XCTestCase {
         XCTAssertEqual(appearance.animated, Design.Default.appearance.animated)
         appearance.animated = false
         XCTAssertFalse(appearance.animated)
-        appearance.animated = true
-        XCTAssertTrue(appearance.animated)
         
-        XCTAssertEqual(appearance.haptics, Design.Default.appearance.haptics)
-        appearance.haptics = false
-        XCTAssertFalse(appearance.haptics)
-        appearance.haptics = true
-        XCTAssertTrue(appearance.haptics)
+        XCTAssertEqual(appearance.mode, Design.Default.appearance.mode)
+        appearance.mode = .dark
+        XCTAssertEqual(appearance.mode, UIUserInterfaceStyle.dark)
+        
+        XCTAssertEqual(appearance.volume, Design.Default.appearance.volume)
+        appearance.volume = 0.5
+        XCTAssertEqual(appearance.volume, 0.5)
+        
+        appearance.sound = false
+        XCTAssertFalse(appearance.sound)
+        
         
         appearance.fetch()
+        XCTAssertEqual(appearance.mode, UIUserInterfaceStyle.dark)
         XCTAssertEqual(appearance.color.hex, UIColor.red.hex)
-        XCTAssertTrue(appearance.animated)
-        XCTAssertTrue(appearance.haptics)
+        XCTAssertFalse(appearance.animated)
+        XCTAssertFalse(appearance.sound)
+        XCTAssertEqual(appearance.volume, 0.5)
         
         appearance.clear()
+        XCTAssertEqual(appearance.mode, Design.Default.appearance.mode)
         XCTAssertEqual(appearance.color.hex, Design.Default.appearance.color.hex)
         XCTAssertEqual(appearance.animated, Design.Default.appearance.animated)
-        XCTAssertEqual(appearance.haptics, Design.Default.appearance.haptics)
+        XCTAssertEqual(appearance.sound, Design.Default.appearance.sound)
+        XCTAssertEqual(appearance.volume, Design.Default.appearance.volume)
     }
     
     func testObserver() throws {
