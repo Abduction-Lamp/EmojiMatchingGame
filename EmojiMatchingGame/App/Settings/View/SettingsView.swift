@@ -145,7 +145,7 @@ final class SettingsView: UIView {
         
         themeSegmentedControl.addItem(title: String(localized: "Settings.Theme.Light"),  image: .init(systemName: "sun.max.circle.fill"))
         themeSegmentedControl.addItem(title: String(localized: "Settings.Theme.Dark"),   image: .init(systemName: "moon.circle.fill"))
-        themeSegmentedControl.addItem(title: String(localized: "Settings.Theme.System"), image: .init(systemName: "moonphase.first.quarter"))
+        themeSegmentedControl.addItem(title: String(localized: "Settings.Theme.System"), image: .init(systemName: "circle.lefthalf.filled"))
         
         
         let padding = Design.Padding.title.spacing

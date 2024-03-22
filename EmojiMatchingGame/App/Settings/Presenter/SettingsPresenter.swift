@@ -47,6 +47,9 @@ final class SettingsPresenter: SettingsPresentable {
     }
     
     func update(mode: Int) {
+        if appearance.sound {
+            audio?.play(.flip1)
+        }
         switch mode {
         case 0: appearance.mode = .light
         case 1: appearance.mode = .dark
