@@ -57,7 +57,7 @@ final class ResultsView: UIView {
         super.layoutSubviews()
         
         blur.frame = bounds
-        resetCenterXAnchor.constant = bounds.width/3
+        resetCenterXAnchor.constant = -bounds.width/6
     }
     
     private func configure() {
@@ -68,7 +68,7 @@ final class ResultsView: UIView {
         
         let padding = Design.Padding.title.spacing
 
-        resetCenterXAnchor = reset.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
+        resetCenterXAnchor = reset.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             title.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
