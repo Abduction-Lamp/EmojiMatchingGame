@@ -4,6 +4,12 @@
     "Alert.Cancel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإلغاء"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -45,6 +51,12 @@
     "Alert.Results.Reset" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف النتائج"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -86,6 +98,12 @@
     "Alert.Results.Reset.Title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل تريد حقًا إعادة تعيين جميع نتائج اللعبة؟"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -127,6 +145,12 @@
     "Alert.Settings.Reset" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة ضبط الإعدادات"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -168,6 +192,12 @@
     "Alert.Settings.Reset.Title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل تريد حقًا إعادة ضبط جميع إعدادات اللعبة؟"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -210,6 +240,12 @@
       "comment" : "Главное меню - Новая игра",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لعبة جديدة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -252,6 +288,12 @@
       "comment" : "Частичка салюта",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رائع!"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -294,6 +336,12 @@
       "comment" : "Сброс",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة تعيين"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -336,6 +384,12 @@
       "comment" : "Главное меню - Результаты",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "النتائج"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -378,10 +432,16 @@
       "comment" : "Главное меню - Настройки",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإعدادات"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Programmeinstellungen"
+            "value" : "Einstellungen"
           }
         },
         "en" : {
@@ -420,6 +480,12 @@
       "comment" : "Настройки - Анимация",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الرسوم المتحركة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -462,6 +528,12 @@
       "comment" : "Настройки - Цвет рубашки",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لون البطاقة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -504,6 +576,12 @@
       "comment" : "Настройка - Громкость звука",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حجم الصوت"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -545,6 +623,12 @@
     "Settings.Theme.Dark" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مظلم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -586,6 +670,12 @@
     "Settings.Theme.Light" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فاتح"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -627,6 +717,12 @@
     "Settings.Theme.System" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "النظام"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",

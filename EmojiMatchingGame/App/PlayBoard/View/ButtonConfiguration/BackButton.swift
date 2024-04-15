@@ -25,9 +25,9 @@ final class BackButton: UIButton {
     private func configure() -> UIButton.Configuration {
         let name: String
         if #available(iOS 16, *) {
-            name = "arrowshape.left"
+            name = "arrowshape.backward"
         } else {
-            name = "chevron.left.circle.fill"
+            name = "chevron.forward.circle.fill"
         }
         
         let img = UIImage(systemName: name)

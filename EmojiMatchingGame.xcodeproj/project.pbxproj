@@ -771,6 +771,7 @@
 				uk,
 				de,
 				es,
+				ar,
 			);
 			mainGroup = 4ED35E312A55B145004B54AC;
 			productRefGroup = 4ED35E3B2A55B145004B54AC /* Products */;
