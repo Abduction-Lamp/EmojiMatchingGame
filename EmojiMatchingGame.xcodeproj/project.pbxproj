@@ -772,6 +772,11 @@
 				de,
 				es,
 				ar,
+				el,
+				it,
+				cs,
+				"pt-PT",
+				tr,
 			);
 			mainGroup = 4ED35E312A55B145004B54AC;
 			productRefGroup = 4ED35E3B2A55B145004B54AC /* Products */;
