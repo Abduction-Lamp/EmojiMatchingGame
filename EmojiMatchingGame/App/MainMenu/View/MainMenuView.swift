@@ -37,12 +37,6 @@ final class MainMenuView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        
-        print("\tVIEW\t😈\tMenu")
-    }
-    
-    deinit {
-        print("\tVIEW\t♻️\tMenu")
     }
     
     required init?(coder: NSCoder) {

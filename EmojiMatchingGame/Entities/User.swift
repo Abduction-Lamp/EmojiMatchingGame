@@ -92,32 +92,27 @@ extension User: UserStorageable {
     }
     
     func fetch() {
-        print("USER\t\t🤗\tFetch > Start")
         UserDefaultsKeys.allCases.forEach { key in
             switch key {
             case .unlockLevel:
                 if let level = defaults.value(forKey: key.rawValue) as? Int {
                     _unlockLevel = Level(rawValue: level) ?? _unlockLevel
-                    print("\t✅ Unlock Level: \(_unlockLevel)")
                 }
             case .startLevel:
                 if let level = defaults.value(forKey: key.rawValue) as? Int, level <= _unlockLevel.index {
                     _startLevel = Level(rawValue: level) ?? _startLevel
-                    print("\t✅ Start Level: \(_startLevel)")
                 }
             case .bestResults:
                 if let results = defaults.value(forKey: key.rawValue) as? Data {
                     switch unarchive(results) {
                     case let .success(best):
                         _bestResults = best
-                        print("\t✅ Best Results for \(_bestResults.count) level(s)")
                     case let .failure(error):
                         print("⚠️ Error load best results: \(error.localizedDescription)")
                     }
                 }
             }
         }
-        print("USER\t\t🤗\tFetch > Stop")
     }
 
     func unlock() {

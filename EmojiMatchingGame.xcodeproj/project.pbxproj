@@ -79,7 +79,6 @@
 		4EB867BE2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB867BD2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift */; };
 		4EC574F82B02626800295E57 /* PlayBoardViewDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */; };
 		4ECA02EA2B5C5A56005ABE9B /* AudioFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA02E92B5C5A56005ABE9B /* AudioFileManager.swift */; };
-		4ED1D0452B18906B00F8B73F /* PlayBoardView_ManualLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1D0442B18906B00F8B73F /* PlayBoardView_ManualLayout.swift */; };
 		4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E3D2A55B145004B54AC /* AppDelegate.swift */; };
 		4ED35E402A55B145004B54AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */; };
 		4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */; };
@@ -191,7 +190,6 @@
 		4EB867BD2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardViewDisplayable.swift; sourceTree = "<group>"; };
 		4ECA02E92B5C5A56005ABE9B /* AudioFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileManager.swift; sourceTree = "<group>"; };
-		4ED1D0442B18906B00F8B73F /* PlayBoardView_ManualLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardView_ManualLayout.swift; sourceTree = "<group>"; };
 		4ED35E3A2A55B145004B54AC /* EmojiMatchingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiMatchingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED35E3D2A55B145004B54AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -554,7 +552,6 @@
 				4E13EF9B2B67C9EC0000B29E /* PlayBoardViewDelegate.swift */,
 				4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */,
 				4E86D6072A55B75900E23388 /* PlayBoardView_StackView.swift */,
-				4ED1D0442B18906B00F8B73F /* PlayBoardView_ManualLayout.swift */,
 			);
 			path = PlayBoardView;
 			sourceTree = "<group>";
@@ -853,7 +850,6 @@
 				4E5EB6E22AA625F30074C7B5 /* Buildable.swift in Sources */,
 				4ED35E3E2A55B145004B54AC /* AppDelegate.swift in Sources */,
 				4E13C40D2ACEE1E600F40235 /* GameOverPresenter.swift in Sources */,
-				4ED1D0452B18906B00F8B73F /* PlayBoardView_ManualLayout.swift in Sources */,
 				4E98C57B2A5890040034522B /* Emoji.swift in Sources */,
 				4E7FAB3C2A9F7A170020C771 /* MainMenuViewController.swift in Sources */,
 				4EE0EA082B0F8ED6008BDC72 /* ResultsViewController.swift in Sources */,

@@ -110,17 +110,11 @@ final class SettingsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configure()
-        print("\tVIEW\t😈\tSettings")
     }
     
     required init?(coder: NSCoder) {
         fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        print("\tVIEW\t♻️\tSettings")
     }
     
     override func layoutSubviews() {

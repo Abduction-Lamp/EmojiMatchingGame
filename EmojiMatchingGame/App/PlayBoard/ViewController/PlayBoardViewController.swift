@@ -18,13 +18,8 @@ final class PlayBoardViewController: UIViewController {
         }
         return view
     }
-    
-    deinit {
-        print("VC\t\t\t♻️\tPlayBoard")
-    }
-    
+
     override func loadView() {
-        print("VC\t\t\t😈\tPlayBoard (loadView)")
         view = PlayBoardView_StackView()
     }
 

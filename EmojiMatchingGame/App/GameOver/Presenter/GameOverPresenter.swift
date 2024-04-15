@@ -39,12 +39,6 @@ final class GameOverPresenter: GameOverPresentable {
         self.taps = taps
         self.isBest = isBest
         self.isFinalLevel = isFinalLevel
-        
-        print("PRESENTER\t😈\tGameOver")
-    }
-    
-    deinit {
-        print("PRESENTER\t♻️\tGameOver")
     }
     
     func viewWillAppear() {

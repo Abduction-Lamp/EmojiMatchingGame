@@ -20,7 +20,6 @@ final class ResultsViewController: UIViewController {
     
     
     override func loadView() {
-        print("VC\t\t\t😈\tResults (loadView)")
         view = ResultsView()
     }
     
@@ -42,10 +41,6 @@ final class ResultsViewController: UIViewController {
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: completion)
         presenter?.soundGenerationToDismiss()
-    }
-    
-    deinit {
-        print("VC\t\t\t♻️\tResults")
     }
 }
 
@@ -70,9 +65,6 @@ extension ResultsViewController: ResultsDisplayable {
     
     @objc
     private func resetTapped(_ sender: UIButton) {
-        
-        
-        
         let title = String(localized: "Alert.Results.Reset.Title")
         let cancel = String(localized: "Alert.Cancel")
         let delete = String(localized: "Alert.Settings.Reset")

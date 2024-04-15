@@ -18,12 +18,10 @@ final class SettingsPresenter: SettingsPresentable {
         self.audio = audio
         self.appearance = appearance
         self.appearance.register(self)
-        print("PRESENTER\t😈\tSettings")
     }
     
     deinit {
         appearance.unsubscribe(self)
-        print("PRESENTER\t♻️\tSettings")
     }
     
     private func display() {

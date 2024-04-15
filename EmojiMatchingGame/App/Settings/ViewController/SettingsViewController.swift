@@ -19,7 +19,6 @@ final class SettingsViewController: UIViewController {
     var presenter: SettingsPresentable?
 
     override func loadView() {
-        print("VC\t\t\t😈\tSettings (loadView)")
         view = SettingsView()
     }
     
@@ -33,10 +32,6 @@ final class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter?.soundGenerationToViewWillAppear()
-    }
-    
-    deinit {
-        print("VC\t\t\t♻️\tSettings ")
     }
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {

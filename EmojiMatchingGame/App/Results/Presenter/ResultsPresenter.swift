@@ -18,12 +18,6 @@ final class ResultsPresenter: ResultsPresentable {
         self.viewController = viewController
         self.audio = audio
         self.storage = storage
-        
-        print("PRESENTER\t😈\tResults")
-    }
-    
-    deinit {
-        print("PRESENTER\t♻️\tResults")
     }
     
     func fetch() {

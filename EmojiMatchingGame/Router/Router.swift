@@ -15,12 +15,6 @@ final class Router: Routable {
     init(navigation: UINavigationController, builder: Buildable) {
         self.navigation = navigation
         self.builder = builder
-        
-        print("ROUTER\t\t😈\tRouter")
-    }
-    
-    deinit {
-        print("ROUTER\t\t♻️\tRouter")
     }
     
     func initVC() {
@@ -37,7 +31,7 @@ final class Router: Routable {
     }
     
     private func errorCase(_ msgLog: String) {
-        // FIXME: -- Добавить Alert
+        // FIXME: -- Добавить Alert? Logger? 
         print(msgLog)
         popToRootVC(animated: false)
     }

@@ -115,17 +115,4 @@ final class Flag: FlagGeneratable {
     func getRandomFlag() -> String {
         return makeFlag(countryTags[.random(in: 0 ..< countryTags.count)])
     }
-    
-    
-    
-    //
-    // TODO: - Logging info
-    //
-    init() {
-        print("SERVICE\t\t🚩\tFlag")
-    }
-    
-    deinit {
-        print("SERVICE\t\t♻️\tFlag")
-    }
 }

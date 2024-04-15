@@ -46,17 +46,11 @@ final class ResultsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configure()
-        print("\tVIEW\t😈\tResults")
     }
     
     required init?(coder: NSCoder) {
         fatalError("⚠️ \(Self.description()) init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        print("\tVIEW\t♻️\tResults")
     }
     
     override func layoutSubviews() {

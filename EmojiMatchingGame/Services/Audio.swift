@@ -27,11 +27,6 @@ final class AudioEngine: Audible {
     
     init(_ appearence: AudioAppearanceProtocol) {
         self.appearence = appearence
-        print("SERVICE\t\t🪗\tAudioPlayer")
-    }
-    
-    deinit {
-        print("SERVICE\t\t♻️\tAudioPlayer")
     }
     
     

@@ -117,7 +117,6 @@ extension Appearance: AppearanceStorageable {
     }
     
     func fetchOnlyMode() {
-        print("APPEARANCE\t🌗\tFetch only Mode")
         if let raw = defaults.value(forKey: UserDefaultsKeys.mode.rawValue) as? UIUserInterfaceStyle.RawValue,
            let saved = UIUserInterfaceStyle(rawValue: raw) {
             _mode = saved
@@ -125,9 +124,7 @@ extension Appearance: AppearanceStorageable {
     }
     
     func fetch() {
-        print("APPEARANCE\t🎨\tFetch > Start")
         UserDefaultsKeys.allCases.forEach { key in
-
             switch key {
             case .mode:
                 fetchOnlyMode()
@@ -135,26 +132,21 @@ extension Appearance: AppearanceStorageable {
                 if let hex = defaults.value(forKey: key.rawValue) as? String,
                    let saved = UIColor(hex: hex) {
                     _color = saved
-                    print("\t✅ Color: hex > \(hex), rgba > \(_color)")
                 }
             case .animation:
                 if let saved = defaults.value(forKey: key.rawValue) as? Bool {
                     _animated = saved
-                    print("\t✅ Animation: \(_animated)")
                 }
             case .sound:
                 if let saved = defaults.value(forKey: key.rawValue) as? Bool {
                     _sound = saved
-                    print("\t✅ Sound: \(_sound)")
                 }
             case .volume:
                 if let saved = defaults.value(forKey: key.rawValue) as? Float, (0.0 ... 1.0).contains(saved) {
                     _volume = saved
-                    print("\t✅ Volume: \(_volume)")
                 }
             }
         }
-        print("APPEARANCE\t🎨\tFetch > Stop")
     }
     
     func clear() {

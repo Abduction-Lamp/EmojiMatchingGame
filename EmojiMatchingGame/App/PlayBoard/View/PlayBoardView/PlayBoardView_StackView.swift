@@ -43,12 +43,6 @@ final class PlayBoardView_StackView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildUI()
-        
-        print("\tVIEW\t😈\tPlayBoardView_StackView")
-    }
-    
-    deinit {
-        print("\tVIEW\t♻️\tPlayBoardView_StackView")
     }
     
     required init?(coder: NSCoder) {

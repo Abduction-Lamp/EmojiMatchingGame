@@ -19,12 +19,7 @@ final class MainMenuViewController: UIViewController {
     var presenter: MainMenuPresentable?
 
     override func loadView() {
-        print("VC\t\t\t😈\tMenu (loadView)")
         view = MainMenuView()
-    }
-    
-    deinit {
-        print("VC\t\t\t♻️\tMenu")
     }
 
     override func viewDidLoad() {

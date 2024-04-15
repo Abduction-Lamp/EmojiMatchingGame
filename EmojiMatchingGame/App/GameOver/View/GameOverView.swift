@@ -125,12 +125,6 @@ final class GameOverView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        
-        print("\tVIEW\t😈\tGameOverView")
-    }
-    
-    deinit {
-        print("\tVIEW\t♻️\tGameOverView")
     }
     
     required init?(coder: NSCoder) {

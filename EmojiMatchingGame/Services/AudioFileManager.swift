@@ -69,13 +69,8 @@ final class AudioFileManager: AudioFileManagerProtocol {
                 dictionaryAudioFiles[scenario] = url
             }
         }
-        
-        print("SERVICE\t\t🪗\tAudioFileManager")
     }
-    
-    deinit {
-        print("SERVICE\t\t♻️\tAudioFileManager")
-    }
+
     
     public func url(_ scenario: GameAudioScenario) -> URL? {
         dictionaryAudioFiles[scenario]

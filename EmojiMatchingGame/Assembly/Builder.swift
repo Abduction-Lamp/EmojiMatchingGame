@@ -65,16 +65,10 @@ final class Builder: Buildable {
     // TODO: - Logging info
     //
     init(storage: Storage, emoji: EmojiGeneratable, audio: Audible) {
-        print("ASSEMBLY\t👷‍♂️\tBuilder")
-        
         self.emoji = emoji
         self.storage = storage
         self.storage.user.fetch()
         self.storage.appearance.fetch()
         self.audio = audio
-    }
-    
-    deinit {
-        print("ASSEMBLY\t♻️\tBuilder")
     }
 }

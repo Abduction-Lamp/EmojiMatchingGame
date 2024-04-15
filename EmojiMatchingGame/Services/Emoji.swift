@@ -168,17 +168,9 @@ final class Emoji: EmojiGeneratable {
     
     private let flag: FlagGeneratable
     
-    //
-    // TODO: - Logging info
-    //
+    
     init(flag service: FlagGeneratable = Flag()) {
         flag = service
-        
-        print("SERVICE\t\t😈\tEmoji")
-    }
-    
-    deinit {
-        print("SERVICE\t\t♻️\tEmoji")
     }
     
     

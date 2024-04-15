@@ -28,12 +28,6 @@ final class PlayBoardPresenter {
         self.audio = audio
         
         level = storage.user.startLevel
-        
-        print("PRESENTER\t😈\tPlayBoard")
-    }
-    
-    deinit {
-        print("PRESENTER\t♻️\tPlayBoard")
     }
     
     private var cards: [String] = []

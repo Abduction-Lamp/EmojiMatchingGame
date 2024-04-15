@@ -17,13 +17,6 @@ final class MainMenuPresenter {
         self.viewController = viewController
         self.router = router
         self.appearance = appearance
-        
-        let memoryAddress = Unmanaged.passUnretained(self).toOpaque()
-        print("PRESENTER\t😈\tMenu > \(memoryAddress)")
-    }
-    
-    deinit {
-        print("PRESENTER\t♻️\tMenu")
     }
 }
 
