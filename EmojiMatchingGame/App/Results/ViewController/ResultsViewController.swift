@@ -67,7 +67,7 @@ extension ResultsViewController: ResultsDisplayable {
     private func resetTapped(_ sender: UIButton) {
         let title = String(localized: "Alert.Results.Reset.Title")
         let cancel = String(localized: "Alert.Cancel")
-        let delete = String(localized: "Alert.Settings.Reset")
+        let delete = String(localized: "Alert.Results.Reset")
         
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: cancel, style: .cancel, handler: nil))

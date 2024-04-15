@@ -18,7 +18,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Cancelar"
           }
         },
@@ -36,8 +36,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Відмінивши"
+            "state" : "translated",
+            "value" : "Скасування"
           }
         }
       }
@@ -59,7 +59,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Eliminar resultados"
           }
         },
@@ -77,7 +77,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Видалити результати"
           }
         }
@@ -100,7 +100,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "¿Realmente quieres restablecer todos los resultados del juego?"
           }
         },
@@ -118,7 +118,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ви дійсно хочете скинути всі результати гри?"
           }
         }
@@ -141,7 +141,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Restablecer la configuración"
           }
         },
@@ -159,7 +159,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Скинути налаштування"
           }
         }
@@ -182,7 +182,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "¿Realmente quieres restablecer todas las configuraciones del juego?"
           }
         },
@@ -200,7 +200,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ви дійсно хочете скинути всі налаштування гри?"
           }
         }
@@ -224,7 +224,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nuevo juego"
           }
         },
@@ -242,7 +242,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Нова гра"
           }
         }
@@ -266,7 +266,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "¡Felicitaciones!"
           }
         },
@@ -284,7 +284,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Вітаю!"
           }
         }
@@ -308,7 +308,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Restablecer"
           }
         },
@@ -326,7 +326,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Скидання"
           }
         }
@@ -339,7 +339,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suchergebnisse"
+            "value" : "Ergebnisse"
           }
         },
         "en" : {
@@ -350,7 +350,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Resultados"
           }
         },
@@ -368,7 +368,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Результат"
           }
         }
@@ -381,7 +381,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Einstellung"
+            "value" : "Programmeinstellungen"
           }
         },
         "en" : {
@@ -392,8 +392,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ajustes"
+            "state" : "translated",
+            "value" : "Configuración"
           }
         },
         "fr" : {
@@ -410,8 +410,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Настройка"
+            "state" : "translated",
+            "value" : "Налаштування"
           }
         }
       }
@@ -434,7 +434,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Animación"
           }
         },
@@ -452,7 +452,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Анімація"
           }
         }
@@ -465,7 +465,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Farbe des Kartenhemdes"
+            "value" : "Die Farbe der Spielkarte"
           }
         },
         "en" : {
@@ -476,14 +476,14 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Color de la camisa de la tarjeta"
+            "state" : "translated",
+            "value" : "El color del naipe"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couleur de la chemise de carte"
+            "value" : "La couleur de la carte à jouer"
           }
         },
         "ru" : {
@@ -494,8 +494,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Колір сорочки картки"
+            "state" : "translated",
+            "value" : "Колір гральної карти"
           }
         }
       }
@@ -518,7 +518,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Volumen del sonido"
           }
         },
@@ -536,7 +536,7 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Гучність звуку"
           }
         }
@@ -601,7 +601,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ligero"
+            "value" : "Luminoso"
           }
         },
         "fr" : {
