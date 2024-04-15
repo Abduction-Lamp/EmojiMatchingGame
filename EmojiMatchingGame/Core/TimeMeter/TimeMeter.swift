@@ -15,5 +15,6 @@ final class TimeMeter {
         let end = DispatchTime.now()
         let nanoseconds = end.uptimeNanoseconds - start.uptimeNanoseconds
         let time = Double(nanoseconds) / 1_000_000_000
+        print("\(title) > ⏱️ \(time)")
     }
 }
