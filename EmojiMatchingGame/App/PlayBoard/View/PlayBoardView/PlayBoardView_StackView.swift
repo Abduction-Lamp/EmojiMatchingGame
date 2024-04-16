@@ -246,8 +246,9 @@ extension PlayBoardView_StackView {
     }
     
     func hideButtons() {
-        backButton.transform = CGAffineTransform.init(translationX: -250, y: 0)
-        soundVolumeButton.transform = CGAffineTransform.init(translationX: 250, y: 0)
+        let inversion: CGFloat = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight ? -1 : 1
+        backButton.transform = CGAffineTransform.init(translationX: inversion * 250, y: 0)
+        soundVolumeButton.transform = CGAffineTransform.init(translationX: -inversion * 250, y: 0)
     }
     
     func showButtons() {
