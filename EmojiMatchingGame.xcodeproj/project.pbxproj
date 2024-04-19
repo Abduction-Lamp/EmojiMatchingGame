@@ -156,11 +156,7 @@
 		4E4EAC392AD04C1D00AF5D35 /* GameOverPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPresentable.swift; sourceTree = "<group>"; };
 		4E4EAC3B2AD04C9F00AF5D35 /* GameOverDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverDisplayable.swift; sourceTree = "<group>"; };
 		4E560AC22B3C75F100088648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4E560AC52B3C794C00088648 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		4E560AC72B3C7ADC00088648 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		4E560AC82B3C7B9600088648 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4E560ACA2B3C7FA900088648 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		4E560ACC2B3C7FF700088648 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4E5EB6DD2AA620F90074C7B5 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		4E5EB6DF2AA622770074C7B5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4E5EB6E12AA625F30074C7B5 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
@@ -935,10 +931,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E560AC22B3C75F100088648 /* Base */,
-				4E560AC52B3C794C00088648 /* en */,
-				4E560AC72B3C7ADC00088648 /* ru */,
-				4E560AC82B3C7B9600088648 /* fr */,
-				4E560ACC2B3C7FF700088648 /* uk */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

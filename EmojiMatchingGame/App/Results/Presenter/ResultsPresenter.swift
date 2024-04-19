@@ -20,13 +20,13 @@ final class ResultsPresenter: ResultsPresentable {
         self.storage = storage
     }
     
-    func fetch() {
+    func fetch() {        
         Level.allCases.forEach { level in
             var time: String?
             var taps: String?
             if let result = storage.user.bestResults[level.description] {
                 time = result.time.toString()
-                taps = result.taps.description
+                taps = result.taps.formatted()
             }
             let lock = storage.user.unlockLevel.index < level.index
             viewController?.display(level: (1 + level.index).description, isLock: lock, time: time, taps: taps)
