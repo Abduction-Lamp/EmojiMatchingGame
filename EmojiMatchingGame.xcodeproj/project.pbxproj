@@ -84,6 +84,7 @@
 		4ED35E422A55B145004B54AC /* PlayBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */; };
 		4ED35E472A55B146004B54AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E462A55B146004B54AC /* Assets.xcassets */; };
 		4ED35E4A2A55B146004B54AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED35E482A55B146004B54AC /* LaunchScreen.storyboard */; };
+		4ED6F9692BD0580E00B7AB1C /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED6F9682BD0580E00B7AB1C /* Array.swift */; };
 		4EDB4A172AF12D7000FE32D8 /* SlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB4A162AF12D7000FE32D8 /* SlotView.swift */; };
 		4EDC61322B14AEBE0069AB50 /* ResultsViewSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC61312B14AEBE0069AB50 /* ResultsViewSetupable.swift */; };
 		4EDC61342B14DE700069AB50 /* SettingsViewSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC61332B14DE700069AB50 /* SettingsViewSetupable.swift */; };
@@ -196,6 +197,7 @@
 		4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardViewController.swift; sourceTree = "<group>"; };
 		4ED35E462A55B146004B54AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ED35E4B2A55B146004B54AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4ED6F9682BD0580E00B7AB1C /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4EDB4A162AF12D7000FE32D8 /* SlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotView.swift; sourceTree = "<group>"; };
 		4EDC61312B14AEBE0069AB50 /* ResultsViewSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewSetupable.swift; sourceTree = "<group>"; };
 		4EDC61332B14DE700069AB50 /* SettingsViewSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewSetupable.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				4E433E792AE15DDC004B4E98 /* UIColor.swift */,
 				4E73BB142AF25BE1004EDEC0 /* UIFont.swift */,
 				4EE0EA0F2B0FA568008BDC72 /* TimeInterval.swift */,
+				4ED6F9682BD0580E00B7AB1C /* Array.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -887,6 +890,7 @@
 				4EC574F82B02626800295E57 /* PlayBoardViewDisplayable.swift in Sources */,
 				4EF3B8442B220767002C36C5 /* NavigationController.swift in Sources */,
 				4EDB4A172AF12D7000FE32D8 /* SlotView.swift in Sources */,
+				4ED6F9692BD0580E00B7AB1C /* Array.swift in Sources */,
 				4EDC61322B14AEBE0069AB50 /* ResultsViewSetupable.swift in Sources */,
 				4E4EAC302AD03EB700AF5D35 /* MainMenuPresentable.swift in Sources */,
 				4E777D9F2AE7F8F800C6F716 /* SettingsView.swift in Sources */,

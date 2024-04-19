@@ -67,7 +67,7 @@ extension PlayBoardPresenter: PlayBoardPresentable {
         remove()
         viewController?.selectLevelMenu(level: level)
         
-        cards = emoji.makeSequence(for: level)
+        cards = emoji.sequence(for: level)
         remainingCards = cards.count
         
         viewController?.play(level: level, with: cards, and: storage.appearance.color, animated: storage.appearance.animated)

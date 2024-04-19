@@ -11,9 +11,11 @@ import Foundation
 protocol FlagGeneratable {
     
     var count: Int { get }
+    var range: ClosedRange<UInt32> { get }
     
-    func makeFlag(_ tag: String) -> String
-    func getRandomFlag() -> String
+    func make(_ tag: String) -> String
+    func random() -> String
+    func all() -> [String]
 }
 
 
@@ -26,36 +28,41 @@ protocol FlagGeneratable {
 ///      Флаг Украины из 🇺️и 🇦️ = 🇺️🇦️
 ///
 fileprivate let literals: [String: String] = [
-    "A": "🇦️",       //  -   🇦️   -   0x1F1E6
-    "B": "🇧️",       //  -   🇧️   -   0x1F1E7
-    "C": "🇨️",       //  -   🇨️   -   0x1F1E8
-    "D": "🇩️",       //  -   🇩️   -   0x1F1E9
-    "E": "🇪️",       //  -   🇪️   -   0x1F1EA
-    "F": "🇫️",       //  -   🇫️   -   0x1F1EB
-    "G": "🇬️",       //  -   🇬️   -   0x1F1EC
-    "H": "🇭️",       //  -   🇭️   -   0x1F1ED
-    "I": "🇮️",       //  -   🇮️   -   0x1F1EE
-    "J": "🇯️",       //  -   🇯️   -   0x1F1EF
-    "K": "🇰️",       //  -   🇰️   -   0x1F1F0
-    "L": "🇱️",       //  -   🇱️   -   0x1F1F1
-    "M": "🇲️",       //  -   🇲️   -   0x1F1F2
-    "N": "🇳️",       //  -   🇳️   -   0x1F1F3
-    "O": "🇴️",       //  -   🇴️   -   0x1F1F4
-    "P": "🇵️",       //  -   🇵️   -   0x1F1F5
-    "Q": "🇶️",       //  -   🇶️   -   0x1F1F6
-    "R": "🇷️",       //  -   🇷️   -   0x1F1F7
-    "S": "🇸️",       //  -   🇸️   -   0x1F1F8
-    "T": "🇹️",       //  -   🇹️   -   0x1F1F9
-    "U": "🇺️",       //  -   🇺️   -   0x1F1FA
-    "V": "🇻️",       //  -   🇻️   -   0x1F1FB
-    "W": "🇼️",       //  -   🇼️   -   0x1F1FC
-    "X": "🇽️",       //  -   🇽️   -   0x1F1FD
-    "Y": "🇾️",       //  -   🇾️   -   0x1F1FE
-    "Z": "🇿️",       //  -   🇿️   -   0x1F1FF
+    "A": "\u{1F1E6}",       //  -   🇦️   -   0x1F1E6
+    "B": "\u{1F1E7}",       //  -   🇧️   -   0x1F1E7
+    "C": "\u{1F1E8}",       //  -   🇨️   -   0x1F1E8
+    "D": "\u{1F1E9}",       //  -   🇩️   -   0x1F1E9
+    "E": "\u{1F1EA}",       //  -   🇪️   -   0x1F1EA
+    "F": "\u{1F1EB}",       //  -   🇫️   -   0x1F1EB
+    "G": "\u{1F1EC}",       //  -   🇬️   -   0x1F1EC
+    "H": "\u{1F1ED}",       //  -   🇭️   -   0x1F1ED
+    "I": "\u{1F1EE}",       //  -   🇮️   -   0x1F1EE
+    "J": "\u{1F1EF}",       //  -   🇯️   -   0x1F1EF
+    "K": "\u{1F1F0}",       //  -   🇰️   -   0x1F1F0
+    "L": "\u{1F1F1}",       //  -   🇱️   -   0x1F1F1
+    "M": "\u{1F1F2}",       //  -   🇲️   -   0x1F1F2
+    "N": "\u{1F1F3}",       //  -   🇳️   -   0x1F1F3
+    "O": "\u{1F1F4}",       //  -   🇴️   -   0x1F1F4
+    "P": "\u{1F1F5}",       //  -   🇵️   -   0x1F1F5
+    "Q": "\u{1F1F6}",       //  -   🇶️   -   0x1F1F6
+    "R": "\u{1F1F7}",       //  -   🇷️   -   0x1F1F7
+    "S": "\u{1F1F8}",       //  -   🇸️   -   0x1F1F8
+    "T": "\u{1F1F9}",       //  -   🇹️   -   0x1F1F9
+    "U": "\u{1F1FA}",       //  -   🇺️   -   0x1F1FA
+    "V": "\u{1F1FB}",       //  -   🇻️   -   0x1F1FB
+    "W": "\u{1F1FC}",       //  -   🇼️   -   0x1F1FC
+    "X": "\u{1F1FD}",       //  -   🇽️   -   0x1F1FD
+    "Y": "\u{1F1FE}",       //  -   🇾️   -   0x1F1FE
+    "Z": "\u{1F1FF}",       //  -   🇿️   -   0x1F1FF
     
+    "0": "\u{1F3F4}\u{200D}\u{2620}\u{FE0F}",                               //  0x1F3F4 0x0200D 0x02620 0x0FE0F                             🏴‍☠️
     "1": "\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}", //  0x1F3F4 0xE0067 0xE0062 0xE0065 0xE006E 0xE0067 0xE007F     🏴󠁧󠁢󠁥󠁮󠁧󠁿  England
     "2": "\u{1F3F4}\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}", //  0x1F3F4 0xE0067 0xE0062 0xE0073 0xE0063 0xE0074 0xE007F     🏴󠁧󠁢󠁳󠁣󠁴󠁿  Scotland
-    "3": "\u{1F3F4}\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}"  //  0x1F3F4 0xE0067 0xE0062 0xE0077 0xE006C 0xE0073 0xE007F     🏴󠁧󠁢󠁷󠁬󠁳󠁿  Wales
+    "3": "\u{1F3F4}\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}", //  0x1F3F4 0xE0067 0xE0062 0xE0077 0xE006C 0xE0073 0xE007F     🏴󠁧󠁢󠁷󠁬󠁳󠁿  Wales
+    
+    "4": "\u{1F3F3}\u{FE0F}\u{200D}\u{1F308}",                              //  0x1F3F3 0x0FE0F 0x0200D 0x1F308                             🏳️‍🌈
+    "5": "\u{1F3F3}\u{FE0F}\u{200D}\u{26A7}\u{FE0F}"                        //  0x1F3F3 0x0FE0F 0x0200D 0x026A7 0x0FE0F                     🏳️‍⚧️
+    
 ]
 
 
@@ -91,18 +98,29 @@ fileprivate let countryTags: [String] = [
     "YE", "YT",
     "ZA", "ZM", "ZW",
     
-    // Дополнительные значения для флагов England (1), Scotland (2), Wales (3)
-    "1", "2", "3"
+    ///
+    /// Дополнительные значения для флагов
+    ///
+    /// 0 -
+    /// 1 - England
+    /// 2 - Scotland
+    /// 3 - Wales
+    ///
+    "0", "1", "2", "3"
 ]
 
 
 final class Flag: FlagGeneratable {
     
-    var count: Int {
-        return countryTags.count
+    var range: ClosedRange<UInt32> {
+        0x1F1E6 ... 0x1F1FF
     }
     
-    func makeFlag(_ tag: String) -> String {
+    var count: Int {
+        countryTags.count
+    }
+    
+    func make(_ tag: String) -> String {
         var flag = ""
         tag.forEach { char in
             if let literal = literals[String(char)] {
@@ -112,7 +130,11 @@ final class Flag: FlagGeneratable {
         return flag
     }
     
-    func getRandomFlag() -> String {
-        return makeFlag(countryTags[.random(in: 0 ..< countryTags.count)])
+    func random() -> String {
+        return make(countryTags[.random(in: 0 ..< countryTags.count)])
+    }
+    
+    func all() -> [String] {
+        countryTags.map { make($0) }
     }
 }
