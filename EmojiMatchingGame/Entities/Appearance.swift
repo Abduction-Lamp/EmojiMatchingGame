@@ -67,8 +67,6 @@ extension Appearance: AppearanceStorageable {
             _color
         }
         set {
-            print(newValue)
-            
             guard newValue != _color else { return }
             _color = newValue
             notify()
