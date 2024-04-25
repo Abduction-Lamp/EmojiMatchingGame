@@ -8,16 +8,7 @@
 import UIKit
 
 extension CAGradientLayer {
-    
-    private var allowedSetColors: [[UIColor]] {
-        [
-            [.blue, .systemBlue, .systemIndigo, .cyan, .systemCyan, .systemMint, .systemTeal],
-            [.brown, .systemBrown, .yellow, .orange, .systemYellow, .systemOrange],
-            [.green, .systemGreen],
-            [.purple, .systemPurple, .red, .systemPink, .systemRed, .magenta]
-        ]
-    }
-    
+        
     /// Именованные координаты некоторых точек пространства
     ///
     /// Координаты начинаются в левом верхнем углу точка (0, 0) и заканчиваются в правом нижнем углу с координатой (1, 1)
@@ -133,21 +124,8 @@ extension CAGradientLayer {
 
 
 extension CAGradientLayer {
-        
-    private func randomAllowedColors(for number: Int?) -> [CGColor] {
-        guard let number = number, number > 0, number < allowedSetColors.count else { return [] }
-        var indexSetColors = (0 ..< allowedSetColors.count).map { $0 }
-        var output: [CGColor] = []
-        
-        for _ in 0 ..< number {
-            let indexSet = indexSetColors.remove(at: .random(in: 0 ..< indexSetColors.count))
-            let index = Int.random(in: 0 ..< allowedSetColors[indexSet].count)
-            output.append(allowedSetColors[indexSet][index].cgColor)
-        }
-        return output
-    }
-    
-    private func randomColors() -> [CGColor] {
+            
+    private func getRandomColors() -> [CGColor] {
         var set: [CGColor] = [] // UIColor.randomSet(count: 2)
         set.append(UIColor.random(.hue).cgColor)
         set.append(UIColor.random(.hue).cgColor)
@@ -155,7 +133,7 @@ extension CAGradientLayer {
     }
     
     private func generateLocation(for number: Int?) -> [NSNumber] {
-        guard let number = number, number > 0, number < allowedSetColors.count else { return [] }
+        guard let number = number, number > 0 else { return [] }
         
         var output: [NSNumber] = []
         let step: Float = 1 / Float(number - 1)
@@ -170,8 +148,7 @@ extension CAGradientLayer {
     
     
     func setRandomProperty() {
-        let newColors = randomColors()
-//        let newColors = randomAllowedColors(for: colors?.count ?? 2)
+        let newColors = getRandomColors()
         let newLocation = generateLocation(for: newColors.count)
         let newDirection = GradientDirection(start: GradientScreenPoint(startPoint), end: GradientScreenPoint(endPoint)).new()
         
