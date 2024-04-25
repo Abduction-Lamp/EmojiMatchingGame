@@ -27,7 +27,7 @@ extension UIColor {
 
     public convenience init?(hex: String, alpha: CGFloat = 1.0) {
         var pure = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
+       
         if pure.hasPrefix("#") {
             pure.remove(at: pure.startIndex)
         }
@@ -67,20 +67,60 @@ extension UIColor {
     public convenience init?(hex: Int, alpha: CGFloat = 1.0) {
         guard hex >= 0x000000, hex <= 0xFFFFFF else { return nil }
         
-        let r: CGFloat = CGFloat((hex >> 16) & 0xFF) / 255          // red component
-        let g: CGFloat = CGFloat((hex >> 8) & 0xFF) / 255           // green component
-        let b: CGFloat = CGFloat(hex & 0xFF) / 255                  // blue component
-        let a: CGFloat = (alpha >= 0 && alpha <= 1) ? alpha : 1.0   // alpha component
+        let r: CGFloat = CGFloat((hex >> 16) & 0xFF)
+        let g: CGFloat = CGFloat((hex >> 8) & 0xFF)
+        let b: CGFloat = CGFloat(hex & 0xFF)
+        let a: CGFloat = (alpha >= 0 && alpha <= 1) ? alpha : 1.0
         
-        self.init(red: r, green: g, blue: b, alpha: a)
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: a)
     }
 }
 
 
 extension UIColor {
     
-    public static func random() -> UIColor {
-        let randomHex = Int.random(in: 0x000000 ... 0xFFFFFF)
-        return UIColor(hex: randomHex) ?? .white
+    public enum Model {
+        case rgb
+        case hue
+    }
+
+    public static func random(_ model: UIColor.Model = .rgb) -> UIColor {
+        switch model {
+        case .rgb:
+            let randomHex = Int.random(in: 0x000000 ... 0xFFFFFF)
+            return UIColor(hex: randomHex) ?? .white
+        case .hue:
+            let hue: CGFloat = CGFloat.random(in: 0 ... 360)
+            let saturation: CGFloat = CGFloat.random(in: 0.5 ... 1)
+            let brightness: CGFloat = CGFloat.random(in: 0.7 ... 0.9)
+            return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+        }
+    }
+    
+    public static func randomSet(count: Int) -> [CGColor] {
+        var set: [CGColor] = []
+        
+        let full = 0 ... 35
+        let cropped = 2 ... 33
+        let sign = (Int.random(in: 1 ... 2) % 2) == 0 ? 1 : -1
+        
+        let hue1 = Int.random(in: full)
+        var hue2 = hue1 + sign * Int.random(in: cropped)
+        
+        switch hue2 {
+        case (36 ... .max): hue2 = hue2 - 35
+        case (.min ..< 0) : hue2 = hue2 + 35
+        default: break
+        }
+        
+        set.append(UIColor(hue: CGFloat(hue1)/100,
+                           saturation: CGFloat.random(in: 0.5 ... 1),
+                           brightness: CGFloat.random(in: 0.7 ... 0.9),
+                           alpha: 1).cgColor)
+        set.append(UIColor(hue: CGFloat(hue2)/100,
+                           saturation: CGFloat.random(in: 0.5 ... 0.9),
+                           brightness: CGFloat.random(in: 0.7 ... 0.9),
+                           alpha: 1).cgColor)
+        return set
     }
 }

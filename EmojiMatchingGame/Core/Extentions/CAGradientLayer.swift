@@ -148,11 +148,9 @@ extension CAGradientLayer {
     }
     
     private func randomColors() -> [CGColor] {
-        var set: [CGColor] = []
-        let count: Int = colors?.count ?? 2
-        for _ in 0 ..< count {
-            set.append(UIColor.random().cgColor)
-        }
+        var set: [CGColor] = [] // UIColor.randomSet(count: 2)
+        set.append(UIColor.random(.hue).cgColor)
+        set.append(UIColor.random(.hue).cgColor)
         return set
     }
     
