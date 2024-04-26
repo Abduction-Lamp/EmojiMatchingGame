@@ -19,14 +19,16 @@ final class AudioEngine: Audible {
     
     private let audioFileManager = AudioFileManager.instance
 
-    private var engine = AVAudioEngine()
-    private var nodes = [AVAudioPlayerNode]()
+    private var engine: AVAudioEngine
+    private var nodes: [AVAudioPlayerNode]
     
     private weak var appearence: AudioAppearanceProtocol?
     
     
     init(_ appearence: AudioAppearanceProtocol) {
         self.appearence = appearence
+        engine = AVAudioEngine()
+        nodes = []
     }
     
     
@@ -36,26 +38,21 @@ final class AudioEngine: Audible {
         guard let appearence = appearence, appearence.sound else { return }
         
         if let url = audioFileManager.url(scenario) {
-            let node = AVAudioPlayerNode()
-            do {
-                try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
-                try AVAudioSession.sharedInstance().setActive(true)
-                
+            do {            
                 let audioFile = try AVAudioFile(forReading: url)
                 
+                let node = AVAudioPlayerNode()
                 engine.attach(node)
                 engine.connect(node, to: engine.mainMixerNode, format: audioFile.processingFormat)
-                engine.prepare()
-                
-                nodes.append(node)
-                
+
                 node.scheduleFile(audioFile, at: nil, completionCallbackType: .dataPlayedBack) { [weak self] _ in
                     DispatchQueue.main.async {
                         guard let self = self else { return }
                         self.removeNode(node)
                     }
                 }
-
+                nodes.append(node)
+                
                 if !engine.isRunning {
                     engine.prepare()
                     try engine.start()
