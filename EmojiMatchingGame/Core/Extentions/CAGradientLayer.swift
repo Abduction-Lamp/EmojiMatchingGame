@@ -157,4 +157,14 @@ extension CAGradientLayer {
         startPoint = newDirection.direction.start
         endPoint = newDirection.direction.end
     }
+    
+    func setStartProperty() {
+        let color = UIColor(red: 51/255, green: 59/255, blue: 100/255, alpha: 1)
+        let newLocation = generateLocation(for: 2)
+        
+        colors = [color.cgColor, color.cgColor]
+        locations = newLocation
+        startPoint = GradientScreenPoint.topLeft.point
+        endPoint = GradientScreenPoint.bottomRight.point
+    }
 }

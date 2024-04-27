@@ -13,7 +13,7 @@ final class MainMenuView: UIView {
     private let gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.type = .axial
-        gradient.setRandomProperty()
+        gradient.setStartProperty()
         return gradient
     }()
     
