@@ -24,7 +24,7 @@
 Пока что игра не добавлена в AppStore, но вы сможите запустить ее у себя в симуляторе
 
 1. Клонируйте репозиторий: `git clone https://github.com/Abduction-Lamp/EmojiOdyssey`
-2. Откройте проект: `EmojiMatchingGame.xcodeproj`
+2. Откройте проект: `EmojiOdyssey.xcodeproj`
 3. Выберите симулятор `iPad` с установленной версией `iOS 15` или новее
 4. Запустите проект: Нажмите кнопку "Run" в Xcode или используйте горячие клавиши Cmd + R.
 
