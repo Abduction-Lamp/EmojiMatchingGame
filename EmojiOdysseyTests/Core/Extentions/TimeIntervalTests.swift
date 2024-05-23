@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import EmojiMatchingGame
+@testable import EmojiOdyssey
 
 final class TimeIntervalTests: XCTestCase {
 

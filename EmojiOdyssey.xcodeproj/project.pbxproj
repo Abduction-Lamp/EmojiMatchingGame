@@ -115,7 +115,7 @@
 
 /* Begin PBXFileReference section */
 		4E027BBA2A5D8C43009CB092 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
-		4E0678022B309DA300493EA2 /* EmojiMatchingGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiMatchingGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E0678022B309DA300493EA2 /* EmojiOdysseyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiOdysseyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E06780D2B309EB200493EA2 /* TimeIntervalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalTests.swift; sourceTree = "<group>"; };
 		4E13C40A2ACED8AC00F40235 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		4E13C40C2ACEE1E600F40235 /* GameOverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPresenter.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		4EB867BD2B23BC8500B19EB3 /* PopAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		4EC574F72B02626800295E57 /* PlayBoardViewDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardViewDisplayable.swift; sourceTree = "<group>"; };
 		4ECA02E92B5C5A56005ABE9B /* AudioFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileManager.swift; sourceTree = "<group>"; };
-		4ED35E3A2A55B145004B54AC /* EmojiMatchingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiMatchingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4ED35E3A2A55B145004B54AC /* EmojiOdyssey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiOdyssey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED35E3D2A55B145004B54AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ED35E3F2A55B145004B54AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4ED35E412A55B145004B54AC /* PlayBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBoardViewController.swift; sourceTree = "<group>"; };
@@ -243,14 +243,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		4E0678032B309DA300493EA2 /* EmojiMatchingGameTests */ = {
+		4E0678032B309DA300493EA2 /* EmojiOdysseyTests */ = {
 			isa = PBXGroup;
 			children = (
 				4E87BEB02B31BAB9000EEF32 /* Entities */,
 				4E06780B2B309E6800493EA2 /* Core */,
 				4E87BEB92B31E7F3000EEF32 /* Services */,
 			);
-			path = EmojiMatchingGameTests;
+			path = EmojiOdysseyTests;
 			sourceTree = "<group>";
 		};
 		4E06780B2B309E6800493EA2 /* Core */ = {
@@ -567,8 +567,8 @@
 		4ED35E312A55B145004B54AC = {
 			isa = PBXGroup;
 			children = (
-				4ED35E3C2A55B145004B54AC /* EmojiMatchingGame */,
-				4E0678032B309DA300493EA2 /* EmojiMatchingGameTests */,
+				4ED35E3C2A55B145004B54AC /* EmojiOdyssey */,
+				4E0678032B309DA300493EA2 /* EmojiOdysseyTests */,
 				4ED35E3B2A55B145004B54AC /* Products */,
 				4E2C473E2B6127DC00B6B078 /* Frameworks */,
 			);
@@ -577,13 +577,13 @@
 		4ED35E3B2A55B145004B54AC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4ED35E3A2A55B145004B54AC /* EmojiMatchingGame.app */,
-				4E0678022B309DA300493EA2 /* EmojiMatchingGameTests.xctest */,
+				4ED35E3A2A55B145004B54AC /* EmojiOdyssey.app */,
+				4E0678022B309DA300493EA2 /* EmojiOdysseyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4ED35E3C2A55B145004B54AC /* EmojiMatchingGame */ = {
+		4ED35E3C2A55B145004B54AC /* EmojiOdyssey */ = {
 			isa = PBXGroup;
 			children = (
 				4E5EB6DC2AA61E9D0074C7B5 /* Resources */,
@@ -595,7 +595,7 @@
 				4E7FAB362A9F797D0020C771 /* App */,
 				4ED35E4B2A55B146004B54AC /* Info.plist */,
 			);
-			path = EmojiMatchingGame;
+			path = EmojiOdyssey;
 			sourceTree = "<group>";
 		};
 		4EE0EA012B0F89D7008BDC72 /* Results */ = {
@@ -704,9 +704,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4E0678012B309DA300493EA2 /* EmojiMatchingGameTests */ = {
+		4E0678012B309DA300493EA2 /* EmojiOdysseyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E06780A2B309DA300493EA2 /* Build configuration list for PBXNativeTarget "EmojiMatchingGameTests" */;
+			buildConfigurationList = 4E06780A2B309DA300493EA2 /* Build configuration list for PBXNativeTarget "EmojiOdysseyTests" */;
 			buildPhases = (
 				4E0677FE2B309DA300493EA2 /* Sources */,
 				4E0677FF2B309DA300493EA2 /* Frameworks */,
@@ -717,14 +717,14 @@
 			dependencies = (
 				4E0678072B309DA300493EA2 /* PBXTargetDependency */,
 			);
-			name = EmojiMatchingGameTests;
+			name = EmojiOdysseyTests;
 			productName = EmojiMatchingGameTests;
-			productReference = 4E0678022B309DA300493EA2 /* EmojiMatchingGameTests.xctest */;
+			productReference = 4E0678022B309DA300493EA2 /* EmojiOdysseyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4ED35E392A55B145004B54AC /* EmojiMatchingGame */ = {
+		4ED35E392A55B145004B54AC /* EmojiOdyssey */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4ED35E4E2A55B146004B54AC /* Build configuration list for PBXNativeTarget "EmojiMatchingGame" */;
+			buildConfigurationList = 4ED35E4E2A55B146004B54AC /* Build configuration list for PBXNativeTarget "EmojiOdyssey" */;
 			buildPhases = (
 				4ED35E362A55B145004B54AC /* Sources */,
 				4ED35E372A55B145004B54AC /* Frameworks */,
@@ -734,9 +734,9 @@
 			);
 			dependencies = (
 			);
-			name = EmojiMatchingGame;
+			name = EmojiOdyssey;
 			productName = EmojiMatchingGame;
-			productReference = 4ED35E3A2A55B145004B54AC /* EmojiMatchingGame.app */;
+			productReference = 4ED35E3A2A55B145004B54AC /* EmojiOdyssey.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -758,7 +758,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4ED35E352A55B145004B54AC /* Build configuration list for PBXProject "EmojiMatchingGame" */;
+			buildConfigurationList = 4ED35E352A55B145004B54AC /* Build configuration list for PBXProject "EmojiOdyssey" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -785,8 +785,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4ED35E392A55B145004B54AC /* EmojiMatchingGame */,
-				4E0678012B309DA300493EA2 /* EmojiMatchingGameTests */,
+				4ED35E392A55B145004B54AC /* EmojiOdyssey */,
+				4E0678012B309DA300493EA2 /* EmojiOdysseyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -921,7 +921,7 @@
 /* Begin PBXTargetDependency section */
 		4E0678072B309DA300493EA2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4ED35E392A55B145004B54AC /* EmojiMatchingGame */;
+			target = 4ED35E392A55B145004B54AC /* EmojiOdyssey */;
 			targetProxy = 4E0678062B309DA300493EA2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -952,7 +952,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Vladimir.Lesnykh.EmojiMatchingGameTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.Vladimir.Lesnykh.Emoji-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -962,7 +962,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiMatchingGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmojiMatchingGame";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiOdyssey.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmojiOdyssey";
 			};
 			name = Debug;
 		};
@@ -980,7 +980,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Vladimir.Lesnykh.EmojiMatchingGameTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.Vladimir.Lesnykh.Emoji-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -989,7 +989,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiMatchingGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmojiMatchingGame";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiOdyssey.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmojiOdyssey";
 			};
 			name = Release;
 		};
@@ -1093,6 +1093,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1126,7 +1127,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8532FW2M88;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = EmojiMatchingGame/Info.plist;
+				INFOPLIST_FILE = EmojiOdyssey/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Emoji Odyssey";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1163,7 +1164,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8532FW2M88;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = EmojiMatchingGame/Info.plist;
+				INFOPLIST_FILE = EmojiOdyssey/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Emoji Odyssey";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1192,7 +1193,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4E06780A2B309DA300493EA2 /* Build configuration list for PBXNativeTarget "EmojiMatchingGameTests" */ = {
+		4E06780A2B309DA300493EA2 /* Build configuration list for PBXNativeTarget "EmojiOdysseyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E0678082B309DA300493EA2 /* Debug */,
@@ -1201,7 +1202,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4ED35E352A55B145004B54AC /* Build configuration list for PBXProject "EmojiMatchingGame" */ = {
+		4ED35E352A55B145004B54AC /* Build configuration list for PBXProject "EmojiOdyssey" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4ED35E4C2A55B146004B54AC /* Debug */,
@@ -1210,7 +1211,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4ED35E4E2A55B146004B54AC /* Build configuration list for PBXNativeTarget "EmojiMatchingGame" */ = {
+		4ED35E4E2A55B146004B54AC /* Build configuration list for PBXNativeTarget "EmojiOdyssey" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4ED35E4F2A55B146004B54AC /* Debug */,
